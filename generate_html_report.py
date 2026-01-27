@@ -45,8 +45,14 @@ with open('categorized_papers.json', 'r', encoding='utf-8') as f:
 llm_papers = data.get('llm_papers', [])
 agent_papers = data.get('agent_papers', [])
 dataset_papers = data.get('dataset_papers', [])
+date_range = data.get('date_range', {})
 
 total_papers = len(llm_papers) + len(agent_papers) + len(dataset_papers)
+
+# Format date range display
+date_range_text = ""
+if date_range.get('start_date') and date_range.get('end_date'):
+    date_range_text = f"检索时间范围: {date_range['start_date']} 至 {date_range['end_date']}"
 
 html_content = '''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -106,6 +112,16 @@ html_content = '''<!DOCTYPE html>
         header p {
             color: #a0aec0;
             font-size: 1.2em;
+        }
+
+        header .date-range {
+            color: #718096;
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .stats {
@@ -532,7 +548,8 @@ html_content = '''<!DOCTYPE html>
     <div class="container">
         <header>
             <h1>arXiv 医疗领域 AI 学术进展报告</h1>
-            <p class="subtitle">Large Language Models, Agents, and Datasets (2025.12 - 2026.01)</p>
+            <p class="subtitle">Large Language Models, Agents, and Datasets ''' + ('(' + date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') + ')' if date_range else '') + '''</p>
+            <p class="date-range">''' + date_range_text + '''</p>
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-number">''' + str(total_papers) + '''</div>
@@ -653,7 +670,7 @@ html_content += '''
 
         <footer>
             <p>Generated on ''' + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '''</p>
-            <p>Data source: arXiv (2025.12 - 2026.01)</p>
+            <p>Data source: arXiv ''' + (date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') if date_range else 'recent papers') + '''</p>
         </footer>
     </div>
 

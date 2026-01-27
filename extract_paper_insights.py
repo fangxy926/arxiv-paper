@@ -50,7 +50,13 @@ def extract_insights(client, title, abstract, max_retries=2):
 
 def main():
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
-        papers = json.load(f)
+        input_data = json.load(f)
+
+    # Handle both old format (list) and new format (dict with 'papers' key)
+    if isinstance(input_data, list):
+        papers = input_data
+    else:
+        papers = input_data.get('papers', [])
 
     client = arxiv.Client()
     llm_client = get_llm_client()
@@ -83,8 +89,14 @@ def main():
         except Exception as e:
             print(f"[ERR] {arxiv_id}: {e}")
 
+    # Preserve date_range from original input if it exists
+    output_data = papers if isinstance(input_data, list) else {
+        'papers': papers,
+        'date_range': input_data.get('date_range', {})
+    }
+
     with open(INPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(papers, f, ensure_ascii=False, indent=2)
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
 
     print(f"\n=== Summary ===")
     print(f"Updated: {updated_count}/{len(papers)} papers")

@@ -5,7 +5,11 @@ Categorize medical AI papers into LLM, Agent, and Dataset categories
 import json
 
 with open('relative_papers.json', 'r', encoding='utf-8') as f:
-    papers = json.load(f)
+    input_data = json.load(f)
+
+# Extract papers and date range
+papers = input_data.get('papers', [])
+date_range = input_data.get('date_range', {})
 
 # Classify papers
 llm_papers = []
@@ -44,12 +48,13 @@ for p in papers:
 
 print(f'LLM: {len(llm_papers)}, Agent: {len(agent_papers)}, Dataset: {len(dataset_papers)}')
 
-# Save categorized results
+# Save categorized results with date range
 with open('categorized_papers.json', 'w', encoding='utf-8') as f:
     json.dump({
         'llm_papers': llm_papers,
         'agent_papers': agent_papers,
-        'dataset_papers': dataset_papers
+        'dataset_papers': dataset_papers,
+        'date_range': date_range
     }, f, ensure_ascii=False, indent=2)
 
 print("Categorized papers saved to categorized_papers.json")

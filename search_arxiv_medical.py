@@ -138,10 +138,17 @@ for term in search_terms:
 # Sort by date (most recent first)
 all_results.sort(key=lambda x: x["published"], reverse=True)
 
-# Save results
+# Save results with date range metadata
 output_file = "relative_papers.json"
+output_data = {
+    "papers": all_results,
+    "date_range": {
+        "start_date": start_date.strftime("%Y-%m-%d"),
+        "end_date": end_date.strftime("%Y-%m-%d")
+    }
+}
 with open(output_file, "w", encoding="utf-8") as f:
-    json.dump(all_results, f, ensure_ascii=False, indent=2)
+    json.dump(output_data, f, ensure_ascii=False, indent=2)
 
 print(f"\n=== Summary ===")
 print(f"Total unique papers found: {len(all_results)}")
