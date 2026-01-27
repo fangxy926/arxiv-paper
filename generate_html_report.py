@@ -1,24 +1,52 @@
 #!/usr/bin/env python3
 """
 Generate HTML report from categorized papers
+Dynamically generates columns based on TOPIC from environment
 """
 import json
+import os
 from datetime import datetime
+from dotenv import load_dotenv
 
-def card_color(category):
-    colors = {
-        'llm': '#667eea',
-        'agent': '#11998e',
-        'dataset': '#fc4a1a'
+# Load .env file
+load_dotenv()
+
+# Read topics from environment variable
+TOPICS_RAW = os.getenv('TOPICS', '')
+TOPICS = [t.strip() for t in TOPICS_RAW.split(',') if t.strip()]
+
+# Default colors for topics
+DEFAULT_COLORS = ['#667eea', '#11998e', '#fc4a1a', '#4facfe', '#a18cd1', '#ff6b6b', '#ee5a24', '#0ba360']
+
+def get_topic_config(topic):
+    """Generate config for a topic based on its name - fully dynamic"""
+    import hashlib
+
+    # Generate consistent values from topic name
+    hash_val = int(hashlib.md5(topic.encode()).hexdigest()[:8], 16)
+
+    # Select color based on hash
+    color_idx = hash_val % len(DEFAULT_COLORS)
+    color = DEFAULT_COLORS[color_idx]
+
+    # Select icon from a diverse set based on hash
+    ICONS = ['🤖', '📊', '🛡️', '📈', '🔬', '💊', '🧬', '🧪', '🏥', '🔍', '📱', '💻', '🎯', '📋', '📑']
+    icon_idx = hash_val % len(ICONS)
+    icon = ICONS[icon_idx]
+
+    return {
+        'icon': icon,
+        'color': color,
+        'gradient': f'linear-gradient(135deg, {color} 0%, {DEFAULT_COLORS[(color_idx+1)%len(DEFAULT_COLORS)]} 100%)',
+        'label': topic  # 使用主题名称作为显示标签
     }
-    return colors.get(category, '#667eea')
 
 def format_authors(authors):
     """Format authors list"""
     if not authors:
         return '<span class="author-tag">Unknown</span>'
     author_list = []
-    for author in authors[:5]:  # Max 5 authors
+    for author in authors[:5]:
         if isinstance(author, dict):
             name = author.get('name', 'Unknown')
         else:
@@ -32,42 +60,94 @@ def format_keywords(keywords):
     """Format keywords list"""
     if not keywords:
         return ''
-    # Handle both list and comma-separated string
     if isinstance(keywords, str):
         keyword_list = [kw.strip() for kw in keywords.split(',')]
     else:
         keyword_list = keywords
-    return ''.join([f'<span class="keyword-tag">{kw}</span>' for kw in keyword_list])
+    return ''.join([f'<span class="keyword-tag">{kw}</span>' for kw in keyword_list[:10]])
 
+# Read categorized papers
 with open('categorized_papers.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-llm_papers = data.get('llm_papers', [])
-agent_papers = data.get('agent_papers', [])
-dataset_papers = data.get('dataset_papers', [])
+# Get papers for each topic
+topic_papers = {}
+for topic in TOPICS:
+    topic_papers[topic] = data.get(topic, [])
+
 date_range = data.get('date_range', {})
 
-total_papers = len(llm_papers) + len(agent_papers) + len(dataset_papers)
+# Calculate totals
+total_papers = sum(len(p) for p in topic_papers.values())
 
 # Format date range display
 date_range_text = ""
 if date_range.get('start_date') and date_range.get('end_date'):
     date_range_text = f"检索时间范围: {date_range['start_date']} 至 {date_range['end_date']}"
 
-html_content = '''<!DOCTYPE html>
+# Generate filter buttons HTML
+filter_buttons_html = '<button class="filter-btn active" data-filter="all">全部论文</button>\n'
+for topic in TOPICS:
+    config = get_topic_config(topic)
+    filter_buttons_html += f'            <button class="filter-btn" data-filter="{topic}">{config["icon"]} {config["label"]}</button>\n'
+
+# Generate stats HTML
+stats_html = f'''
+                <div class="stat-box">
+                    <div class="stat-number">{total_papers}</div>
+                    <div class="stat-label">论文总数</div>
+                </div>
+'''
+for topic in TOPICS:
+    config = get_topic_config(topic)
+    count = len(topic_papers[topic])
+    stats_html += f'''
+                <div class="stat-box">
+                    <div class="stat-number">{count}</div>
+                    <div class="stat-label">{config["label"]}</div>
+                </div>
+'''
+
+# Generate CSS for topics
+topic_css = ''
+topic_style = ''
+for i, topic in enumerate(TOPICS):
+    config = get_topic_config(topic)
+    topic_lower = topic.replace(' ', '_').lower()
+    topic_css += f'''
+        .filter-btn[data-filter="{topic}"] {{
+            background: {config["gradient"]};
+            color: white;
+        }}
+
+        .section-title.{topic_lower} {{
+            background: linear-gradient(135deg, {config["color"]}22 0%, {config["color"]}44 100%);
+            border-left: 4px solid {config["color"]};
+        }}
+
+        .card[data-category="{topic}"] {{
+            border-top: 3px solid {config["color"]};
+        }}
+
+        .card[data-category="{topic}"] .card-header {{
+            background: linear-gradient(135deg, {config["color"]}1a 0%, {config["color"]}33 100%);
+        }}
+'''
+
+html_content = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arXiv 医疗领域 AI 学术进展报告 (2025.12-2026.01)</title>
+    <title>arXiv 学术进展报告</title>
     <style>
-        * {
+        * {{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        }}
 
-        :root {
+        :root {{
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --secondary-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             --orange-gradient: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
@@ -75,22 +155,22 @@ html_content = '''<!DOCTYPE html>
             --purple-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
             --red-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
             --green-gradient: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
-        }
+        }}
 
-        body {
+        body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
-        }
+        }}
 
-        .container {
+        .container {{
             max-width: 1800px;
             margin: 0 auto;
-        }
+        }}
 
-        header {
+        header {{
             text-align: center;
             padding: 60px 20px;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -98,23 +178,23 @@ html_content = '''<!DOCTYPE html>
             margin-bottom: 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        }}
 
-        header h1 {
+        header h1 {{
             font-size: 2.5em;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 20px;
-        }
+        }}
 
-        header p {
+        header p {{
             color: #a0aec0;
             font-size: 1.2em;
-        }
+        }}
 
-        header .date-range {
+        header .date-range {{
             color: #718096;
             font-size: 0.9em;
             margin-top: 10px;
@@ -122,53 +202,53 @@ html_content = '''<!DOCTYPE html>
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             display: inline-block;
-        }
+        }}
 
-        .stats {
+        .stats {{
             display: flex;
             justify-content: center;
             gap: 30px;
             margin-top: 40px;
             flex-wrap: wrap;
-        }
+        }}
 
-        .stat-box {
+        .stat-box {{
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 20px 40px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease;
-        }
+        }}
 
-        .stat-box:hover {
+        .stat-box:hover {{
             transform: translateY(-5px);
-        }
+        }}
 
-        .stat-number {
+        .stat-number {{
             font-size: 2.5em;
             font-weight: bold;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
+        }}
 
-        .stat-label {
+        .stat-label {{
             color: #a0aec0;
             font-size: 0.9em;
             margin-top: 5px;
-        }
+        }}
 
-        .filter-bar {
+        .filter-bar {{
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-        }
+        }}
 
-        .filter-btn {
+        .filter-btn {{
             padding: 12px 30px;
             border: none;
             border-radius: 25px;
@@ -176,34 +256,20 @@ html_content = '''<!DOCTYPE html>
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
-        }
+        }}
 
-        .filter-btn.active {
+        .filter-btn.active {{
             transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+        }}
 
-        .filter-btn[data-filter="all"] {
+        .filter-btn[data-filter="all"] {{
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-        }
+        }}
 
-        .filter-btn[data-filter="llm"] {
-            background: var(--primary-gradient);
-            color: white;
-        }
-
-        .filter-btn[data-filter="agent"] {
-            background: var(--secondary-gradient);
-            color: white;
-        }
-
-        .filter-btn[data-filter="dataset"] {
-            background: var(--orange-gradient);
-            color: white;
-        }
-
-        .section-title {
+{topic_css}
+        .section-title {{
             font-size: 1.4em;
             margin: 30px 0 15px;
             padding: 15px 20px;
@@ -211,43 +277,28 @@ html_content = '''<!DOCTYPE html>
             display: flex;
             align-items: center;
             gap: 12px;
-        }
+        }}
 
-        .section-title.llm {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-            border-left: 4px solid #667eea;
-        }
-
-        .section-title.agent {
-            background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.2) 100%);
-            border-left: 4px solid #11998e;
-        }
-
-        .section-title.dataset {
-            background: linear-gradient(135deg, rgba(252, 74, 26, 0.2) 0%, rgba(247, 183, 51, 0.2) 100%);
-            border-left: 4px solid #fc4a1a;
-        }
-
-        .papers-grid {
+        .papers-grid {{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-bottom: 30px;
-        }
+        }}
 
-        @media (max-width: 1200px) {
-            .papers-grid {
+        @media (max-width: 1200px) {{
+            .papers-grid {{
                 grid-template-columns: repeat(2, 1fr);
-            }
-        }
+            }}
+        }}
 
-        @media (max-width: 768px) {
-            .papers-grid {
+        @media (max-width: 768px) {{
+            .papers-grid {{
                 grid-template-columns: 1fr;
-            }
-        }
+            }}
+        }}
 
-        .card {
+        .card {{
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
             overflow: hidden;
@@ -258,93 +309,69 @@ html_content = '''<!DOCTYPE html>
             flex-direction: column;
             height: auto;
             max-height: 900px;
-        }
+        }}
 
-        .card:hover {
+        .card:hover {{
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 255, 255, 0.2);
-        }
+        }}
 
-        .card[data-category="llm"] {
-            border-top: 3px solid #667eea;
-        }
-
-        .card[data-category="agent"] {
-            border-top: 3px solid #11998e;
-        }
-
-        .card[data-category="dataset"] {
-            border-top: 3px solid #fc4a1a;
-        }
-
-        .card-header {
+        .card-header {{
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             gap: 10px;
-        }
+        }}
 
-        .card[data-category="llm"] .card-header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        }
-
-        .card[data-category="agent"] .card-header {
-            background: linear-gradient(135deg, rgba(17, 153, 142, 0.1) 0%, rgba(56, 239, 125, 0.1) 100%);
-        }
-
-        .card[data-category="dataset"] .card-header {
-            background: linear-gradient(135deg, rgba(252, 74, 26, 0.1) 0%, rgba(247, 183, 51, 0.1) 100%);
-        }
-
-        .card-title {
+        .card-title {{
             font-size: 1.1em;
             font-weight: 600;
             color: #fff;
             line-height: 1.4;
-        }
+        }}
 
-        .card-badge {
+        .card-badge {{
             background: rgba(255, 255, 255, 0.1);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.75em;
             color: #a0aec0;
             white-space: nowrap;
-        }
+        }}
 
-        .meta-grid {
+        .meta-grid {{
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px;
             padding: 10px 15px;
             background: rgba(0, 0, 0, 0.15);
             font-size: 0.8em;
-        }
+        }}
 
-        .meta-item {
+        .meta-item {{
             display: flex;
             align-items: center;
             gap: 8px;
             color: #a0aec0;
-        }
+        }}
 
-        .meta-icon {
+        .meta-icon {{
             width: 16px;
             height: 16px;
             opacity: 0.7;
-        }
+        }}
 
-        .card-body {
+        .card-body {{
             padding: 15px;
             flex: 1;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-        }
+        }}
 
-        .abstract {
+        .abstract {{
             color: #cbd5e0;
             font-size: 0.85em;
             line-height: 1.6;
@@ -355,129 +382,128 @@ html_content = '''<!DOCTYPE html>
             border-left: 3px solid #4facfe;
             flex: 1;
             overflow-y: auto;
-        }
+        }}
 
-        .abstract.original {
+        .abstract.original {{
             border-left-color: #667eea;
             background: rgba(102, 126, 234, 0.05);
-        }
+        }}
 
-        .abstract-label {
+        .abstract-label {{
             display: block;
             font-size: 0.75em;
             color: #4facfe;
             margin-bottom: 4px;
             font-weight: 600;
-        }
+        }}
 
-        .abstract.original .abstract-label {
+        .abstract.original .abstract-label {{
             color: #667eea;
-        }
+        }}
 
-        /* Scrollbar styling */
-        .abstract::-webkit-scrollbar {
+        .abstract::-webkit-scrollbar {{
             width: 6px;
-        }
+        }}
 
-        .abstract::-webkit-scrollbar-track {
+        .abstract::-webkit-scrollbar-track {{
             background: rgba(255, 255, 255, 0.05);
             border-radius: 3px;
-        }
+        }}
 
-        .abstract::-webkit-scrollbar-thumb {
+        .abstract::-webkit-scrollbar-thumb {{
             background: rgba(102, 126, 234, 0.5);
             border-radius: 3px;
-        }
+        }}
 
-        .abstract::-webkit-scrollbar-thumb:hover {
+        .abstract::-webkit-scrollbar-thumb:hover {{
             background: rgba(102, 126, 234, 0.7);
-        }
+        }}
 
-        .summary {
+        .summary {{
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
             border-left: 3px solid #667eea;
             padding: 12px;
             margin-top: 10px;
             border-radius: 0 8px 8px 0;
-        }
+        }}
 
-        .summary-label {
+        .summary-label {{
             display: block;
             font-size: 0.8em;
             color: #a3bffa;
             margin-bottom: 6px;
             font-weight: 600;
-        }
+        }}
 
-        .summary-text {
+        .summary-text {{
             color: #e2e8f0;
             font-size: 0.9em;
             line-height: 1.6;
-        }
+        }}
 
-        .keywords-section {
+        .keywords-section {{
             margin-top: 10px;
             padding-top: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        }}
 
-        .keywords-section label {
+        .keywords-section label {{
             font-size: 0.75em;
             color: #718096;
             display: block;
             margin-bottom: 6px;
-        }
+        }}
 
-        .keyword-list {
+        .keyword-list {{
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-        }
+        }}
 
-        .keyword-tag {
+        .keyword-tag {{
             background: rgba(102, 126, 234, 0.2);
             color: #a3bffa;
             padding: 3px 10px;
             border-radius: 12px;
             font-size: 0.75em;
-        }
+        }}
 
-        .authors-section {
+        .authors-section {{
             margin-top: 10px;
             padding-top: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        }}
 
-        .authors-section label {
+        .authors-section label {{
             font-size: 0.75em;
             color: #718096;
             display: block;
             margin-bottom: 6px;
-        }
+        }}
 
-        .author-list {
+        .author-list {{
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-        }
+        }}
 
-        .author-tag {
+        .author-tag {{
             background: rgba(255, 255, 255, 0.08);
             color: #e2e8f0;
             padding: 3px 8px;
             border-radius: 10px;
             font-size: 0.75em;
-        }
+        }}
 
-        .card-footer {
+        .card-footer {{
             padding: 10px 15px;
             background: rgba(0, 0, 0, 0.15);
             display: flex;
             gap: 8px;
             margin-top: auto;
-        }
+        }}
 
-        .btn {
+        .btn {{
             flex: 1;
             padding: 8px;
             border: none;
@@ -488,93 +514,75 @@ html_content = '''<!DOCTYPE html>
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
-        }
+        }}
 
-        .btn-primary {
+        .btn-primary {{
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-        }
+        }}
 
-        .btn-primary:hover {
+        .btn-primary:hover {{
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
+        }}
 
-        .btn-secondary {
+        .btn-secondary {{
             background: rgba(255, 255, 255, 0.1);
             color: #a0aec0;
-        }
+        }}
 
-        .btn-secondary:hover {
+        .btn-secondary:hover {{
             background: rgba(255, 255, 255, 0.15);
-        }
+        }}
 
-        footer {
+        footer {{
             text-align: center;
             padding: 40px;
             color: #718096;
             font-size: 0.9em;
-        }
+        }}
 
-        @media (max-width: 768px) {
-            header h1 {
+        @media (max-width: 768px) {{
+            header h1 {{
                 font-size: 1.8em;
-            }
+            }}
 
-            .stats {
+            .stats {{
                 gap: 15px;
-            }
+            }}
 
-            .stat-box {
+            .stat-box {{
                 padding: 15px 25px;
-            }
+            }}
 
-            .filter-bar {
+            .filter-bar {{
                 gap: 10px;
-            }
+            }}
 
-            .filter-btn {
+            .filter-btn {{
                 padding: 10px 20px;
                 font-size: 0.9em;
-            }
-        }
+            }}
+        }}
 
-        .hidden {
+        .hidden {{
             display: none !important;
-        }
+        }}
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>arXiv 医疗领域 AI 学术进展报告</h1>
-            <p class="subtitle">Large Language Models, Agents, and Datasets ''' + ('(' + date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') + ')' if date_range else '') + '''</p>
-            <p class="date-range">''' + date_range_text + '''</p>
+            <h1>arXiv 学术进展报告</h1>
+            <p class="subtitle">{' / '.join([get_topic_config(t)['icon'] + ' ' + get_topic_config(t)['label'] for t in TOPICS])}</p>
+            <p class="date-range">{date_range_text}</p>
             <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-number">''' + str(total_papers) + '''</div>
-                    <div class="stat-label">论文总数</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">''' + str(len(llm_papers)) + '''</div>
-                    <div class="stat-label">大语言模型</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">''' + str(len(agent_papers)) + '''</div>
-                    <div class="stat-label">智能体系统</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">''' + str(len(dataset_papers)) + '''</div>
-                    <div class="stat-label">数据集/基准</div>
-                </div>
+{stats_html}
             </div>
         </header>
 
         <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all">全部论文</button>
-            <button class="filter-btn" data-filter="llm">大语言模型</button>
-            <button class="filter-btn" data-filter="agent">智能体系统</button>
-            <button class="filter-btn" data-filter="dataset">数据集/基准</button>
+{filter_buttons_html}
         </div>
 '''
 
@@ -588,8 +596,6 @@ def generate_card(paper, category):
     authors = paper.get('authors', [])
     keywords = paper.get('llm_keywords', '')
     pdf_url = paper.get('pdf_url', f'https://arxiv.org/pdf/{arxiv_id}')
-
-    # Use LLM-generated summary if available, otherwise generate fallback
     summary = paper.get('llm_summary', '')
 
     # Build abstract section with translation
@@ -639,42 +645,25 @@ def generate_card(paper, category):
         </div>
 '''
 
-# Add LLM section
-html_content += '''
-        <h2 class="section-title llm">🤖 医疗大语言模型 (LLM) - ''' + str(len(llm_papers)) + '''篇</h2>
+# Generate sections for each topic
+for topic in TOPICS:
+    config = get_topic_config(topic)
+    topic_lower = topic.replace(' ', '_').lower()
+    papers = topic_papers.get(topic, [])
+    html_content += f'''
+        <h2 class="section-title {topic_lower}">{config['icon']} {config['label']} - {len(papers)}篇</h2>
         <div class="papers-grid">
 '''
-for paper in llm_papers:
-    html_content += generate_card(paper, 'llm')
-
-# Add Agent section
-html_content += '''
+    for paper in papers:
+        html_content += generate_card(paper, topic)
+    html_content += '''
         </div>
-        <h2 class="section-title agent">🛡️ 医疗智能体 (Agent) - ''' + str(len(agent_papers)) + '''篇</h2>
-        <div class="papers-grid">
 '''
-for paper in agent_papers:
-    html_content += generate_card(paper, 'agent')
 
-# Add Dataset section
-html_content += '''
-        </div>
-        <h2 class="section-title dataset">📁 医疗数据集与基准 (Dataset) - ''' + str(len(dataset_papers)) + '''篇</h2>
-        <div class="papers-grid">
-'''
-for paper in dataset_papers:
-    html_content += generate_card(paper, 'dataset')
+# Generate filter JavaScript
+filter_js = '''
+        const topicFilters = ['all', ''' + ', '.join([f"'{t}'" for t in TOPICS]) + '''];
 
-html_content += '''
-        </div>
-
-        <footer>
-            <p>Generated on ''' + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '''</p>
-            <p>Data source: arXiv ''' + (date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') if date_range else 'recent papers') + '''</p>
-        </footer>
-    </div>
-
-    <script>
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -690,6 +679,17 @@ html_content += '''
                 });
             });
         });
+'''
+
+html_content += f'''
+        <footer>
+            <p>Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+            <p>Data source: arXiv {date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') if date_range else 'recent papers'}</p>
+        </footer>
+    </div>
+
+    <script>
+{filter_js}
     </script>
 </body>
 </html>
@@ -699,7 +699,6 @@ with open('medical_ai_report.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
 print(f'HTML report generated: medical_ai_report.html')
-print(f'Total papers: {total_papers}')
-print(f'  - LLM: {len(llm_papers)}')
-print(f'  - Agent: {len(agent_papers)}')
-print(f'  - Dataset: {len(dataset_papers)}')
+print(f'Total paper-topic pairs: {total_papers}')
+for topic in TOPICS:
+    print(f"  - {topic}: {len(topic_papers[topic])} papers")

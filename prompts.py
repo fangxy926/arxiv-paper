@@ -1,17 +1,39 @@
-# Prompt templates for medical AI paper analysis
+# Prompt templates for paper analysis
 
-# LLM filter prompt: determines if paper is related to medical AI
-TOPIC_RELATED_PROMPT = """判断以下论文是否与医疗AI相关。
+# LLM filter prompt: determines if paper is related to given topics and which topic(s) it belongs to
+TOPIC_RELATED_PROMPT = """判断以下论文是否与给定的主题相关，并返回具体所属的主题。
 
 论文标题：{title}
 论文摘要：{abstract}
 
-只判断是否属于以下三类之一：
-1. 医疗大模型（医疗领域的语言模型、预训练模型、微调模型等）
-2. 医疗数据集（医疗基准测试、医疗训练数据集、医疗评测等）
-3. 医疗智能体（医疗决策系统、医疗Agent、临床推理系统等）
+只判断是否属于以下给定的主题：{topics}
 
-请只返回 "yes" 或 "no"，不要其他内容。"""
+请按照以下JSON格式返回（不要用markdown包裹，仅输出JSON字符串）：
+{{
+    "related": true 或 false,
+    "topics": ["主题1", "主题2"] 或 []
+}}
+"""
+
+# Generate arXiv search terms based on given topics
+GENERATE_SEARCH_TERMS_PROMPT = """根据以下研究主题，生成用于 arXiv 搜索的关键词组合。
+
+研究主题：{topics}
+
+请生成 5 个搜索词/词组，每个搜索词应该：
+1. 精确匹配该领域的研究热点
+2. 适合在 arXiv 上搜索学术论文
+3. 包含主题相关的英文关键词
+4. 不要使用过于宽泛的词
+
+请按照以下JSON格式返回（不要用markdown包裹，仅输出JSON字符串）：
+{{
+    "search_terms": ["搜索词1", "搜索词2", "搜索词3", "搜索词4", "搜索词5"]
+}}
+
+示例：
+{{"search_terms": ["medical \"large language model\"", "clinical \"reasoning model\"", "\"medical dataset\" benchmark", "\"healthcare AI\" agent", "medical \"vision-language\" model"]}}
+"""
 
 # Extract keywords, Chinese summary, and translated abstract from paper
 EXTRACT_PAPER_INSIGHTS = """请分析以下论文信息，返回JSON格式：
