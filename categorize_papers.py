@@ -4,6 +4,8 @@ Categorize medical AI papers based on topics field from search_arxiv_medical.py
 Reads relative_papers.json and outputs categorized_papers.json
 """
 import json
+import os
+from datetime import datetime
 
 
 def categorize_papers(input_file: str = 'relative_papers.json', output_file: str = 'categorized_papers.json') -> dict:
@@ -61,6 +63,20 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
 
+    # Save metadata for index page (if in deploy mode)
+    output_dir = os.getenv('OUTPUT_DIR', '.')
+    if output_dir != '.' and os.path.exists(output_dir):
+        metadata = {
+            'date': datetime.now().strftime('%Y-%m-%d'),
+            'paper_count': len(papers),
+            'topics': list(categorized.keys()),
+            'date_range': date_range
+        }
+        metadata_file = os.path.join(output_dir, 'metadata.json')
+        with open(metadata_file, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
+        print(f"Metadata saved to: {metadata_file}")
+
     # Print summary
     print(f"Categorization complete:")
     for topic, topic_papers in categorized.items():
@@ -71,4 +87,8 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
 
 
 if __name__ == '__main__':
-    categorize_papers()
+    output_dir = os.getenv('OUTPUT_DIR', '.')
+    os.makedirs(output_dir, exist_ok=True)
+    input_file = os.path.join(output_dir, 'relative_papers.json')
+    output_file = os.path.join(output_dir, 'categorized_papers.json')
+    categorize_papers(input_file, output_file)

@@ -5,11 +5,16 @@ Dynamically generates columns based on TOPIC from environment
 """
 import json
 import os
+import sys
 from datetime import datetime
 from dotenv import load_dotenv
 
 # Load .env file
 load_dotenv()
+
+# Get output directory from command line argument or environment
+OUTPUT_DIR = sys.argv[1] if len(sys.argv) > 1 else os.getenv('OUTPUT_DIR', '.')
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Read topics from environment variable
 TOPICS_RAW = os.getenv('TOPICS', '')
@@ -66,8 +71,9 @@ def format_keywords(keywords):
         keyword_list = keywords
     return ''.join([f'<span class="keyword-tag">{kw}</span>' for kw in keyword_list[:10]])
 
-# Read categorized papers
-with open('categorized_papers.json', 'r', encoding='utf-8') as f:
+# Read categorized papers from OUTPUT_DIR
+data_file = os.path.join(OUTPUT_DIR, 'categorized_papers.json')
+with open(data_file, 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Get papers for each topic
@@ -85,26 +91,26 @@ date_range_text = ""
 if date_range.get('start_date') and date_range.get('end_date'):
     date_range_text = f"检索时间范围: {date_range['start_date']} 至 {date_range['end_date']}"
 
-# Generate filter buttons HTML
-filter_buttons_html = '<button class="filter-btn active" data-filter="all">全部论文</button>\n'
-for topic in TOPICS:
-    config = get_topic_config(topic)
-    filter_buttons_html += f'            <button class="filter-btn" data-filter="{topic}">{config["icon"]} {config["label"]}</button>\n'
-
-# Generate stats HTML
+# Generate stats HTML (now also serves as filter buttons)
 stats_html = f'''
-                <div class="stat-box">
-                    <div class="stat-number">{total_papers}</div>
-                    <div class="stat-label">论文总数</div>
+                <div class="stat-box active" data-filter="all">
+                    <span class="stat-icon">📊</span>
+                    <div class="stat-content">
+                        <div class="stat-number">{total_papers}</div>
+                        <div class="stat-label">全部论文</div>
+                    </div>
                 </div>
 '''
 for topic in TOPICS:
     config = get_topic_config(topic)
     count = len(topic_papers[topic])
     stats_html += f'''
-                <div class="stat-box">
-                    <div class="stat-number">{count}</div>
-                    <div class="stat-label">{config["label"]}</div>
+                <div class="stat-box" data-filter="{topic}">
+                    <span class="stat-icon">{config["icon"]}</span>
+                    <div class="stat-content">
+                        <div class="stat-number">{count}</div>
+                        <div class="stat-label">{config["label"]}</div>
+                    </div>
                 </div>
 '''
 
@@ -114,12 +120,9 @@ topic_style = ''
 for i, topic in enumerate(TOPICS):
     config = get_topic_config(topic)
     topic_lower = topic.replace(' ', '_').lower()
+    # Get next color for gradient
+    next_color = DEFAULT_COLORS[(DEFAULT_COLORS.index(config['color']) + 1) % len(DEFAULT_COLORS)]
     topic_css += f'''
-        .filter-btn[data-filter="{topic}"] {{
-            background: {config["gradient"]};
-            color: white;
-        }}
-
         .section-title.{topic_lower} {{
             background: linear-gradient(135deg, {config["color"]}22 0%, {config["color"]}44 100%);
             border-left: 4px solid {config["color"]};
@@ -131,6 +134,19 @@ for i, topic in enumerate(TOPICS):
 
         .card[data-category="{topic}"] .card-header {{
             background: linear-gradient(135deg, {config["color"]}1a 0%, {config["color"]}33 100%);
+        }}
+
+        .stat-box[data-filter="{topic}"].active {{
+            background: linear-gradient(135deg, {config["color"]}40 0%, {next_color}30 100%);
+            border-color: {config["color"]}80;
+            box-shadow: 0 4px 20px {config["color"]}50;
+        }}
+
+        .stat-box[data-filter="{topic}"].active .stat-number {{
+            background: {config["gradient"]};
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }}
 '''
 
@@ -253,20 +269,24 @@ html_content = f'''<!DOCTYPE html>
         .stats {{
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 35px;
+            gap: 12px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }}
 
         .stat-box {{
             background: var(--bg-card);
             border-radius: 16px;
-            padding: 25px 35px;
+            padding: 18px 28px;
             border: 1px solid var(--border-color);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 120px;
+            min-width: 130px;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }}
 
         .stat-box::after {{
@@ -275,24 +295,45 @@ html_content = f'''<!DOCTYPE html>
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             opacity: 0;
             transition: opacity 0.3s;
         }}
 
         .stat-box:hover {{
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-glow);
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.4);
         }}
 
         .stat-box:hover::after {{
+            opacity: 0.5;
+        }}
+
+        .stat-box.active {{
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.2));
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }}
+
+        .stat-box.active::after {{
             opacity: 1;
         }}
 
+        .stat-icon {{
+            font-size: 1.8em;
+            opacity: 0.9;
+        }}
+
+        .stat-content {{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }}
+
         .stat-number {{
-            font-size: 2.8em;
+            font-size: 2.2em;
             font-weight: 700;
             background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
             -webkit-background-clip: text;
@@ -303,47 +344,29 @@ html_content = f'''<!DOCTYPE html>
 
         .stat-label {{
             color: var(--text-secondary);
-            font-size: 0.9em;
-            margin-top: 8px;
+            font-size: 0.85em;
+            margin-top: 4px;
             font-weight: 500;
         }}
 
-        /* Filter Bar */
-        .filter-bar {{
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-        }}
-
-        .filter-btn {{
-            padding: 12px 24px;
-            border: 1px solid var(--border-color);
-            border-radius: 25px;
-            font-size: 0.95em;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            background: var(--bg-card);
-            color: var(--text-secondary);
-            backdrop-filter: blur(10px);
-        }}
-
-        .filter-btn:hover {{
-            border-color: rgba(99, 102, 241, 0.4);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }}
-
-        .filter-btn.active {{
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        /* Filter hint text */
+        .filter-hint {{
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-top: 12px;
+            opacity: 0.7;
         }}
 
 {topic_css}
+
+        /* Topic-specific stat box active states */
+        .stat-box[data-filter="all"].active .stat-number {{
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }}
         /* Section Title */
         .section-title {{
             font-size: 1.3em;
@@ -676,25 +699,26 @@ html_content = f'''<!DOCTYPE html>
             }}
 
             .stats {{
-                gap: 12px;
-            }}
-
-            .stat-box {{
-                padding: 18px 25px;
-                min-width: 100px;
-            }}
-
-            .stat-number {{
-                font-size: 2.2em;
-            }}
-
-            .filter-bar {{
                 gap: 8px;
             }}
 
-            .filter-btn {{
-                padding: 10px 18px;
-                font-size: 0.9em;
+            .stat-box {{
+                padding: 12px 16px;
+                min-width: auto;
+                flex: 1;
+                max-width: 140px;
+            }}
+
+            .stat-icon {{
+                font-size: 1.4em;
+            }}
+
+            .stat-number {{
+                font-size: 1.6em;
+            }}
+
+            .stat-label {{
+                font-size: 0.75em;
             }}
 
             .card-title {{
@@ -722,16 +746,12 @@ html_content = f'''<!DOCTYPE html>
     <div class="container">
         <header>
             <h1>arXiv 学术进展报告</h1>
-            <p class="subtitle">{''.join([f'<span>{get_topic_config(t)["icon"]} {get_topic_config(t)["label"]}</span>' for t in TOPICS])}</p>
             <p class="date-range">{date_range_text}</p>
             <div class="stats">
 {stats_html}
             </div>
+            <p class="filter-hint">点击上方卡片筛选论文</p>
         </header>
-
-        <div class="filter-bar">
-{filter_buttons_html}
-        </div>
 '''
 
 def generate_card(paper, category):
@@ -831,19 +851,43 @@ for topic in TOPICS:
 # Generate filter JavaScript with abstract toggle
 filter_js = '''
         // Filter functionality
-        const topicFilters = ['all', ''' + ', '.join([f"'{t}'" for t in TOPICS]) + '''];
+        const statBoxes = document.querySelectorAll('.stat-box');
+        const sectionTitles = document.querySelectorAll('.section-title');
 
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        statBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                // Update active state on stat boxes
+                statBoxes.forEach(b => b.classList.remove('active'));
+                box.classList.add('active');
 
-                const filter = btn.dataset.filter;
+                const filter = box.dataset.filter;
+
+                // Filter cards
                 document.querySelectorAll('.card').forEach(card => {
                     if (filter === 'all' || card.dataset.category === filter) {
                         card.classList.remove('hidden');
                     } else {
                         card.classList.add('hidden');
+                    }
+                });
+
+                // Show/hide section titles based on filter
+                sectionTitles.forEach(title => {
+                    // Extract category from class name
+                    const topicClasses = [''' + ', '.join([f"'{t.replace(' ', '_').lower()}'" for t in TOPICS]) + '''];
+                    const categoryClass = Array.from(title.classList).find(c =>
+                        c !== 'section-title' && topicClasses.includes(c)
+                    );
+
+                    const normalizedFilter = filter.replace(/ /g, '_').toLowerCase();
+                    const normalizedCategory = categoryClass ? categoryClass.replace(/ /g, '_').toLowerCase() : '';
+
+                    if (filter === 'all') {
+                        title.classList.remove('hidden');
+                    } else if (normalizedCategory === normalizedFilter) {
+                        title.classList.remove('hidden');
+                    } else {
+                        title.classList.add('hidden');
                     }
                 });
             });
@@ -880,10 +924,11 @@ html_content += f'''
 </html>
 '''
 
-with open('medical_ai_report.html', 'w', encoding='utf-8') as f:
+output_path = os.path.join(OUTPUT_DIR, 'index.html')
+with open(output_path, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print(f'HTML report generated: medical_ai_report.html')
+print(f'HTML report generated: {output_path}')
 print(f'Total paper-topic pairs: {total_papers}')
 for topic in TOPICS:
     print(f"  - {topic}: {len(topic_papers[topic])} papers")

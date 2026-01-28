@@ -9,7 +9,7 @@ import os
 from llm import get_llm_client
 from prompts import EXTRACT_PAPER_INSIGHTS
 
-INPUT_FILE = 'relative_papers.json'
+INPUT_FILE = os.path.join(os.getenv('OUTPUT_DIR', '.'), 'relative_papers.json')
 
 
 def extract_insights(client, title, abstract, max_retries=2):

@@ -110,11 +110,21 @@ def save_search_terms_cache(topics, terms):
         print(f"[WARN] Failed to save search terms cache: {e}")
     
 
-# Calculate date range dynamically
-now = datetime.now(timezone.utc)
-end_date = datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=timezone.utc)
-start_date = end_date - timedelta(days=DAYS_BACK - 1)
-start_date = datetime(start_date.year, start_date.month, start_date.day, 0, 0, 0, tzinfo=timezone.utc)
+# Calculate date range
+force_start = os.getenv('FORCE_DATE_START')
+force_end = os.getenv('FORCE_DATE_END')
+
+if force_start and force_end:
+    # Use forced date range (from GitHub Actions)
+    start_date = datetime.strptime(force_start, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+    end_date = datetime.strptime(force_end, '%Y-%m-%d').replace(hour=23, minute=59, second=59, tzinfo=timezone.utc)
+    print(f"[INFO] Using forced date range: {force_start} to {force_end}")
+else:
+    # Calculate date range dynamically
+    now = datetime.now(timezone.utc)
+    end_date = datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=timezone.utc)
+    start_date = end_date - timedelta(days=DAYS_BACK - 1)
+    start_date = datetime(start_date.year, start_date.month, start_date.day, 0, 0, 0, tzinfo=timezone.utc)
 
 all_results = []
 
@@ -245,7 +255,9 @@ for term in search_terms:
 all_results.sort(key=lambda x: x["published"], reverse=True)
 
 # Save results with date range metadata
-output_file = "relative_papers.json"
+output_dir = os.getenv('OUTPUT_DIR', '.')
+os.makedirs(output_dir, exist_ok=True)
+output_file = os.path.join(output_dir, "relative_papers.json")
 output_data = {
     "papers": all_results,
     "date_range": {

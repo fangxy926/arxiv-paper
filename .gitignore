@@ -15,3 +15,4 @@ nul
 .claude/
 *.json
 *.html
+.playwright-mcp/
