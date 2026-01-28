@@ -37,9 +37,9 @@ jobs:
 
     - name: Generate weekly report
       env:
-        OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+        OPENAI_API_BASE: ${{ vars.OPENAI_API_BASE }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        OPENAI_MODEL: ${{ secrets.OPENAI_MODEL || 'gpt-4o-mini' }}
+        OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
         TOPICS: ${{ vars.TOPICS || '医疗大模型,医疗数据集,医疗智能体' }}
         FILTER_KEYWORDS: ${{ vars.FILTER_KEYWORDS || 'medical,clinical,healthcare,hospital,patient,diagnosis,disease,treatment,therapy,pharmaceutical,drug,radiology,pathology,biomedical,bioscience,ehr,electronic health,medical record,symptom,prognosis,triage,oncology,cardiology,neurology,dermatology,ophthalmology,genomic,genetic,language model,llm,large language model,transformer,encoder,decoder,decoder-only,encoder-decoder,pre-trained,instruction tuning,rlhf,fine-tuned,domain adaptation,foundation model,generative ai,dataset,benchmark,corpus,training data,evaluation set,agent,multi-agent,agentic,reasoning,chain-of-thought,cot,tool use,function call,autonomous,workflow,decision support,multimodal,vision-language,image-text,medical imaging' }}
         DEPLOY_MODE: 'true'
