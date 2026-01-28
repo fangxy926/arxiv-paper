@@ -90,32 +90,77 @@ FILTER_KEYWORDS=medical,clinical,healthcare,...
 
 ## GitHub Actions 部署
 
-### 1. 配置 Secrets
+### 1. 设置仓库为 Public
 
-在 GitHub 仓库的 Settings -> Secrets and variables -> Actions 中添加：
+GitHub Pages 免费托管要求仓库必须是 **Public**。在仓库的 Settings -> General -> Danger Zone 中：
+- 点击 "Change visibility"
+- 选择 "Make public"
+
+### 2. 配置 Secrets 和 Variables
+
+在 GitHub 仓库的 **Settings → Secrets and variables → Actions** 中配置：
+
+**⚠️ 重要：使用 Environment 配置**
+
+由于 workflow 使用了 `environment: Default`，需要在 **Environment secrets** 中配置：
+
+1. 点击 **Manage environment secrets**
+2. 创建或选择 **Default** 环境
+3. 在该环境下添加：
 
 **Secrets (加密):**
-- `OPENAI_API_BASE`: LLM API 基础 URL
 - `OPENAI_API_KEY`: LLM API 密钥
 
 **Variables (非加密):**
-- `OPENAI_MODEL`: 模型名称 (默认: gpt-4o-mini)
-- `TOPICS`: 主题列表 (默认: 医疗大模型,医疗数据集,医疗智能体)
+- `OPENAI_API_BASE`: LLM API 基础 URL (如: `https://api.deepseek.com/v1`)
+- `OPENAI_MODEL`: 模型名称 (默认: `gpt-4o-mini`)
+- `TOPICS`: 主题列表 (默认: `医疗大模型,医疗数据集,医疗智能体`)
 - `FILTER_KEYWORDS`: 过滤关键词
 
-### 2. 启用 GitHub Pages
+### 3. 启用 GitHub Pages
 
-在仓库的 Settings -> Pages 中：
-- Source: GitHub Actions
+在仓库的 **Settings → Pages** 中：
+1. Source 选择 **GitHub Actions**
+2. 点击 **Save**
 
-### 3. 自动运行
+**⚠️ 注意：必须先完成步骤 1（设为 Public），否则会出现 "Resource not accessible by integration" 错误。**
+
+### 4. 自动运行
 
 - **定时执行**: 每周一 00:00 UTC (北京时间 08:00) 自动运行
 - **手动触发**: 在 Actions 页面点击 "Run workflow"
 
-### 4. 访问网站
+### 5. 访问网站
 
 部署完成后，访问 `https://your-username.github.io/your-repo-name/`
+
+## 常见问题排查
+
+### Error: "Resource not accessible by integration"
+
+**原因**: 仓库未设置为 Public，或 GitHub Pages 未启用。
+
+**解决**:
+1. 确保仓库是 **Public**（Settings → General → Danger Zone）
+2. 确保已启用 GitHub Pages（Settings → Pages → Source: GitHub Actions）
+
+### Error: "LLM client is required to generate search terms"
+
+**原因**: `OPENAI_API_KEY` 未正确配置或 workflow 无法访问 Environment secrets。
+
+**解决**:
+1. 确认 `OPENAI_API_KEY` 配置在 **Environment secrets** 中（不是 Repository secrets）
+2. 确认 environment 名称为 **Default**
+3. 确认 workflow 中设置了 `environment: Default`
+
+### 无法访问部署的网站
+
+**原因**: GitHub Pages 部署可能需要几分钟时间。
+
+**解决**:
+1. 在 Actions 页面确认 deploy job 已完成
+2. 等待 2-3 分钟后刷新
+3. 检查 URL 格式是否正确：`https://username.github.io/repo-name/`
 
 ## 自定义配置
 
