@@ -41,16 +41,9 @@ def main():
 
     # Calculate date range based on days_back
     today = datetime.now()
-    # Find the start date (days_back days ago, aligned to Monday if days_back=7)
-    if days_back == 7:
-        # Default: last Monday to Sunday
-        days_since_monday = today.weekday()
-        start_date = today - timedelta(days=days_since_monday + 7)
-    else:
-        # Custom: last N days
-        start_date = today - timedelta(days=days_back)
-
-    end_date = start_date + timedelta(days=days_back - 1)
+    # Get the most recent days_back days (including today)
+    start_date = today - timedelta(days=days_back - 1)
+    end_date = today
 
     # Use today's date for directory structure (report generation date)
     year = today.strftime('%Y')
