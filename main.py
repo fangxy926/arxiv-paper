@@ -40,10 +40,12 @@ def main():
     days_back = int(os.getenv('ARXIV_DAYS_BACK', '7'))
 
     # Calculate date range based on days_back
+    # Retrieve papers from the past N days (excluding today)
+    # ARXIV_DAYS_BACK=1 -> yesterday only
+    # ARXIV_DAYS_BACK=3 -> from 3 days ago to yesterday
     today = datetime.now()
-    # Get the most recent days_back days (including today)
-    start_date = today - timedelta(days=days_back - 1)
-    end_date = today
+    end_date = today - timedelta(days=1)  # Yesterday
+    start_date = end_date - timedelta(days=days_back - 1)  # N days back from yesterday
 
     # Use today's date for directory structure (report generation date)
     year = today.strftime('%Y')

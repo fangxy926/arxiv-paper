@@ -120,9 +120,12 @@ if force_start and force_end:
     end_date = datetime.strptime(force_end, '%Y-%m-%d').replace(hour=23, minute=59, second=59, tzinfo=timezone.utc)
     print(f"[INFO] Using forced date range: {force_start} to {force_end}")
 else:
-    # Calculate date range dynamically
+    # Calculate date range dynamically (past N days, excluding today)
+    # ARXIV_DAYS_BACK=1 -> yesterday only
+    # ARXIV_DAYS_BACK=3 -> from 3 days ago to yesterday
     now = datetime.now(timezone.utc)
-    end_date = datetime(now.year, now.month, now.day, 23, 59, 59, tzinfo=timezone.utc)
+    yesterday = now - timedelta(days=1)
+    end_date = datetime(yesterday.year, yesterday.month, yesterday.day, 23, 59, 59, tzinfo=timezone.utc)
     start_date = end_date - timedelta(days=DAYS_BACK - 1)
     start_date = datetime(start_date.year, start_date.month, start_date.day, 0, 0, 0, tzinfo=timezone.utc)
 
