@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate HTML report from categorized papers
-Dynamically generates columns based on TOPIC from environment
+Academic professional design inspired by arXiv, Nature, and PubMed
 """
 import json
 import os
@@ -20,46 +20,45 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 TOPICS_RAW = os.getenv('TOPICS', '')
 TOPICS = [t.strip() for t in TOPICS_RAW.split(',') if t.strip()]
 
-# Default colors for topics
-DEFAULT_COLORS = ['#667eea', '#11998e', '#fc4a1a', '#4facfe', '#a18cd1', '#ff6b6b', '#ee5a24', '#0ba360']
+# Academic color palette - muted, professional
+TOPIC_COLORS = {
+    '医疗大模型': '#1e40af',
+    '医疗数据集': '#047857',
+    '医疗智能体': '#7c3aed',
+    '医学影像AI': '#0369a1',
+    '临床决策支持': '#be123c',
+}
 
-def get_topic_config(topic):
-    """Generate config for a topic based on its name - fully dynamic"""
+def get_topic_color(topic):
+    """Get color for topic - use predefined or generate consistent color"""
     import hashlib
-
-    # Generate consistent values from topic name
+    if topic in TOPIC_COLORS:
+        return TOPIC_COLORS[topic]
+    # Generate consistent color from topic name
     hash_val = int(hashlib.md5(topic.encode()).hexdigest()[:8], 16)
-
-    # Select color based on hash
-    color_idx = hash_val % len(DEFAULT_COLORS)
-    color = DEFAULT_COLORS[color_idx]
-
-    # Select icon from a diverse set based on hash
-    ICONS = ['🤖', '📊', '🛡️', '📈', '🔬', '💊', '🧬', '🧪', '🏥', '🔍', '📱', '💻', '🎯', '📋', '📑']
-    icon_idx = hash_val % len(ICONS)
-    icon = ICONS[icon_idx]
-
-    return {
-        'icon': icon,
-        'color': color,
-        'gradient': f'linear-gradient(135deg, {color} 0%, {DEFAULT_COLORS[(color_idx+1)%len(DEFAULT_COLORS)]} 100%)',
-        'label': topic  # 使用主题名称作为显示标签
-    }
+    colors = ['#1e40af', '#047857', '#7c3aed', '#0369a1', '#be123c', '#b45309', '#4338ca']
+    return colors[hash_val % len(colors)]
 
 def format_authors(authors):
-    """Format authors list"""
+    """Format authors list in academic style"""
     if not authors:
-        return '<span class="author-tag">Unknown</span>'
+        return '<span class="author">未知作者</span>'
     author_list = []
-    for author in authors[:5]:
+    for author in authors[:6]:
         if isinstance(author, dict):
-            name = author.get('name', 'Unknown')
+            name = author.get('name', '未知作者')
         else:
             name = str(author)
-        author_list.append(name)
-    if len(authors) > 5:
-        author_list.append(f'... +{len(authors)-5} more')
-    return ''.join([f'<span class="author-tag">{a}</span>' for a in author_list])
+        # 格式化为 "Lastname FM" 学术格式
+        parts = name.split()
+        if len(parts) > 1:
+            formatted = parts[-1] + ' ' + ''.join(p[0] for p in parts[:-1])
+        else:
+            formatted = name
+        author_list.append(f'<span class="author">{formatted}</span>')
+    if len(authors) > 6:
+        author_list.append(f'<span class="author">等</span>')
+    return ', '.join(author_list)
 
 def format_keywords(keywords):
     """Format keywords list"""
@@ -69,7 +68,7 @@ def format_keywords(keywords):
         keyword_list = [kw.strip() for kw in keywords.split(',')]
     else:
         keyword_list = keywords
-    return ''.join([f'<span class="keyword-tag">{kw}</span>' for kw in keyword_list[:10]])
+    return ''.join([f'<span class="keyword">{kw}</span>' for kw in keyword_list[:8]])
 
 # Read categorized papers from OUTPUT_DIR
 data_file = os.path.join(OUTPUT_DIR, 'categorized_papers.json')
@@ -89,65 +88,32 @@ total_papers = sum(len(p) for p in topic_papers.values())
 # Format date range display
 date_range_text = ""
 if date_range.get('start_date') and date_range.get('end_date'):
-    date_range_text = f"检索时间范围: {date_range['start_date']} 至 {date_range['end_date']}"
+    date_range_text = f"{date_range['start_date']} — {date_range['end_date']}"
 
-# Generate stats HTML (now also serves as filter buttons)
-stats_html = f'''
-                <div class="stat-box active" data-filter="all">
-                    <span class="stat-icon">📊</span>
-                    <div class="stat-content">
-                        <div class="stat-number">{total_papers}</div>
-                        <div class="stat-label">全部论文</div>
-                    </div>
-                </div>
-'''
+# Generate stats HTML
+stats_html = ''
 for topic in TOPICS:
-    config = get_topic_config(topic)
+    color = get_topic_color(topic)
     count = len(topic_papers[topic])
     stats_html += f'''
-                <div class="stat-box" data-filter="{topic}">
-                    <span class="stat-icon">{config["icon"]}</span>
-                    <div class="stat-content">
-                        <div class="stat-number">{count}</div>
-                        <div class="stat-label">{config["label"]}</div>
-                    </div>
+                <div class="stat-item" data-filter="{topic}">
+                    <span class="stat-dot" style="background: {color};"></span>
+                    <span class="stat-name">{topic}</span>
+                    <span class="stat-count">{count}</span>
                 </div>
 '''
 
-# Generate CSS for topics
+# Generate topic-specific CSS
 topic_css = ''
-topic_style = ''
-for i, topic in enumerate(TOPICS):
-    config = get_topic_config(topic)
+for topic in TOPICS:
+    color = get_topic_color(topic)
     topic_lower = topic.replace(' ', '_').lower()
-    # Get next color for gradient
-    next_color = DEFAULT_COLORS[(DEFAULT_COLORS.index(config['color']) + 1) % len(DEFAULT_COLORS)]
     topic_css += f'''
-        .section-title.{topic_lower} {{
-            background: linear-gradient(135deg, {config["color"]}22 0%, {config["color"]}44 100%);
-            border-left: 4px solid {config["color"]};
-        }}
-
-        .card[data-category="{topic}"] {{
-            border-top: 3px solid {config["color"]};
-        }}
-
-        .card[data-category="{topic}"] .card-header {{
-            background: linear-gradient(135deg, {config["color"]}1a 0%, {config["color"]}33 100%);
-        }}
-
-        .stat-box[data-filter="{topic}"].active {{
-            background: linear-gradient(135deg, {config["color"]}40 0%, {next_color}30 100%);
-            border-color: {config["color"]}80;
-            box-shadow: 0 4px 20px {config["color"]}50;
-        }}
-
-        .stat-box[data-filter="{topic}"].active .stat-number {{
-            background: {config["gradient"]};
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }}
+        .section-header.{topic_lower} {{ border-left-color: {color}; }}
+        .section-header.{topic_lower} .section-icon {{ color: {color}; }}
+        .paper-card[data-category="{topic}"] {{ border-left-color: {color}; }}
+        .paper-card[data-category="{topic}"] .paper-category {{ color: {color}; }}
+        .stat-item[data-filter="{topic}"].active .stat-dot {{ box-shadow: 0 0 0 3px {color}30; }}
 '''
 
 html_content = f'''<!DOCTYPE html>
@@ -155,382 +121,407 @@ html_content = f'''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arXiv 学术进展报告</title>
+    <title>医疗AI学术进展 | {date_range.get('start_date', '')}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {{
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }}
 
-        :root {{
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: rgba(30, 41, 59, 0.6);
-            --border-color: rgba(148, 163, 184, 0.15);
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --accent-primary: #6366f1;
-            --accent-secondary: #8b5cf6;
-            --accent-cyan: #06b6d4;
-            --accent-emerald: #10b981;
-            --accent-amber: #f59e0b;
-            --accent-rose: #f43f5e;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }}
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 
         body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
-            background: var(--bg-primary);
-            background-image:
-                radial-gradient(ellipse at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
             line-height: 1.6;
+            font-size: 17px;
         }}
 
-        .container {{
-            max-width: 1600px;
+        /* Header */
+        .header {{
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }}
+
+        .header-top {{
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
         }}
 
-        /* Header Styles */
-        header {{
-            text-align: center;
-            padding: 50px 30px;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-            border-radius: 24px;
-            margin-bottom: 35px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
+        .header-brand {{
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }}
 
-        header::before {{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-cyan));
-        }}
-
-        header h1 {{
-            font-size: 2.8em;
+        .header-logo {{
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
             font-weight: 700;
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
+        }}
+
+        .header-title-group {{}}
+
+        .header-title {{
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
             letter-spacing: -0.02em;
         }}
 
-        header .subtitle {{
-            color: var(--text-secondary);
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }}
-
-        header .subtitle span {{
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 20px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }}
-
-        header .date-range {{
-            color: var(--text-muted);
-            font-size: 0.9em;
-            padding: 10px 20px;
-            background: rgba(148, 163, 184, 0.1);
-            border-radius: 20px;
-            display: inline-block;
-            border: 1px solid var(--border-color);
-        }}
-
-        /* Stats Styles */
-        .stats {{
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }}
-
-        .stat-box {{
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 18px 28px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 130px;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }}
-
-        .stat-box::after {{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }}
-
-        .stat-box:hover {{
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-            border-color: rgba(99, 102, 241, 0.4);
-        }}
-
-        .stat-box:hover::after {{
-            opacity: 0.5;
-        }}
-
-        .stat-box.active {{
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.2));
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-        }}
-
-        .stat-box.active::after {{
-            opacity: 1;
-        }}
-
-        .stat-icon {{
-            font-size: 1.8em;
-            opacity: 0.9;
-        }}
-
-        .stat-content {{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }}
-
-        .stat-number {{
-            font-size: 2.2em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }}
-
-        .stat-label {{
-            color: var(--text-secondary);
-            font-size: 0.85em;
+        .header-subtitle {{
+            font-size: 14px;
+            color: var(--color-text-muted);
             margin-top: 4px;
+        }}
+
+        .header-meta {{
+            text-align: right;
+        }}
+
+        .header-date {{
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }}
+
+        .header-range {{
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }}
+
+        .header-total {{
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }}
+
+        .header-total-label {{
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }}
+
+        /* Navigation Bar */
+        .nav-bar {{
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }}
+
+        .nav-content {{
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }}
+
+        .nav-item {{
+            padding: 12px 16px;
+            font-size: 14px;
             font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
         }}
 
-        /* Filter hint text */
-        .filter-hint {{
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85em;
-            margin-top: 12px;
-            opacity: 0.7;
+        .nav-item:hover {{
+            color: var(--color-text);
+            background: var(--color-border-light);
         }}
 
-{topic_css}
-
-        /* Topic-specific stat box active states */
-        .stat-box[data-filter="all"].active .stat-number {{
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .nav-item.active {{
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
         }}
-        /* Section Title */
-        .section-title {{
-            font-size: 1.3em;
-            margin: 30px 0 20px;
-            padding: 14px 22px;
-            border-radius: 12px;
+
+        /* Main Content */
+        .main {{
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }}
+
+        /* Stats Panel */
+        .stats-panel {{
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }}
+
+        .stats-title {{
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }}
+
+        .stats-grid {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }}
+
+        .stat-item {{
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }}
+
+        .stat-item:hover {{
+            background: var(--color-border-light);
+        }}
+
+        .stat-item.active {{
+            background: var(--color-accent-light);
+        }}
+
+        .stat-dot {{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }}
+
+        .stat-name {{
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }}
+
+        .stat-item.active .stat-name {{
+            color: var(--color-accent);
             font-weight: 600;
+        }}
+
+        .stat-count {{
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }}
+
+        .stat-item.active .stat-count {{
+            background: var(--color-accent);
+            color: white;
+        }}
+
+        /* Section */
+        .section {{
+            margin-bottom: 24px;
+        }}
+
+        .section-header {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }}
+
+        .section-icon {{
+            font-size: 18px;
+        }}
+
+        .section-title {{
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }}
+
+        .section-count {{
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
         }}
 
         /* Papers Grid */
         .papers-grid {{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 35px;
-            align-items: start;
+            gap: 12px;
         }}
 
         @media (max-width: 1100px) {{
-            .papers-grid {{
-                grid-template-columns: 1fr;
-            }}
+            .papers-grid {{ grid-template-columns: 1fr; }}
         }}
 
-        /* Card Styles */
-        .card {{
-            background: var(--bg-card);
-            border-radius: 16px;
+        /* Paper Card */
+        .paper-card {{
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
             overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(10px);
+            transition: box-shadow 0.15s, border-color 0.15s;
         }}
 
-        .card:hover {{
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(99, 102, 241, 0.25);
+        .paper-card:hover {{
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
         }}
 
-        .card-header {{
-            padding: 18px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            border-bottom: 1px solid var(--border-color);
+        .paper-header {{
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
         }}
 
-        .card-title {{
-            font-size: 1.15em;
-            font-weight: 600;
-            color: var(--text-primary);
-            line-height: 1.5;
-            flex: 1;
-        }}
-
-        .card-badge {{
-            background: rgba(99, 102, 241, 0.15);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            color: #818cf8;
-            white-space: nowrap;
-            font-weight: 500;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }}
-
-        .meta-grid {{
-            display: flex;
-            gap: 20px;
-            padding: 12px 20px;
-            background: rgba(15, 23, 42, 0.5);
-            font-size: 0.85em;
-            border-bottom: 1px solid var(--border-color);
-        }}
-
-        .meta-item {{
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-muted);
-        }}
-
-        .card-body {{
-            padding: 18px 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }}
-
-        /* Summary Section */
-        .summary {{
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-            border-left: 3px solid var(--accent-primary);
-            padding: 14px 16px;
-            border-radius: 0 10px 10px 0;
-        }}
-
-        .summary-label {{
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8em;
-            color: #818cf8;
-            margin-bottom: 8px;
+        .paper-category {{
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            margin-bottom: 8px;
         }}
 
-        .summary-text {{
-            color: var(--text-primary);
-            font-size: 0.95em;
+        .paper-title {{
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }}
+
+        .paper-title a {{
+            color: inherit;
+            text-decoration: none;
+        }}
+
+        .paper-title a:hover {{
+            color: var(--color-accent);
+            text-decoration: underline;
+        }}
+
+        .paper-meta {{
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }}
+
+        .paper-meta-item {{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }}
+
+        .paper-body {{
+            padding: 12px 16px;
+        }}
+
+        .paper-summary {{
+            font-size: 16px;
             line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
         }}
 
-        /* Abstract Collapsible */
+        .paper-summary::before {{
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }}
+
+        /* Abstract */
         .abstract-section {{
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            overflow: hidden;
-            background: rgba(15, 23, 42, 0.4);
+            margin-top: 12px;
         }}
 
         .abstract-toggle {{
             width: 100%;
-            padding: 12px 16px;
-            background: transparent;
+            padding: 8px 0;
+            background: none;
             border: none;
-            color: var(--text-secondary);
-            font-size: 0.9em;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.2s;
+            transition: color 0.15s;
         }}
 
         .abstract-toggle:hover {{
-            background: rgba(99, 102, 241, 0.05);
-            color: var(--text-primary);
+            color: #1e3a8a;
         }}
 
-        .abstract-toggle .toggle-icon {{
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .abstract-toggle-icon {{
+            transition: transform 0.2s;
         }}
 
-        .abstract-toggle.expanded .toggle-icon {{
+        .abstract-toggle.expanded .abstract-toggle-icon {{
             transform: rotate(180deg);
         }}
 
         .abstract-content {{
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: max-height 0.3s ease-out;
         }}
 
         .abstract-content.expanded {{
@@ -538,226 +529,189 @@ html_content = f'''<!DOCTYPE html>
         }}
 
         .abstract-inner {{
-            padding: 0 16px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
         }}
 
-        .abstract-item {{
-            color: var(--text-secondary);
-            font-size: 0.88em;
-            line-height: 1.7;
-            padding: 12px;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 8px;
-            border-left: 2px solid var(--accent-cyan);
-        }}
-
-        .abstract-item.original {{
-            border-left-color: var(--accent-emerald);
+        .abstract-block {{
+            margin-bottom: 12px;
         }}
 
         .abstract-label {{
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.75em;
-            color: var(--accent-cyan);
-            margin-bottom: 6px;
+            font-size: 11px;
             font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
         }}
 
-        .abstract-item.original .abstract-label {{
-            color: var(--accent-emerald);
+        .abstract-text {{
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
         }}
 
         /* Authors & Keywords */
-        .info-section {{
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .paper-footer {{
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
         }}
 
-        .info-block {{
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        .paper-authors {{
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
         }}
 
-        .info-block label {{
-            font-size: 0.75em;
-            color: var(--text-muted);
+        .author {{
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }}
 
-        .tag-list {{
+        .paper-keywords {{
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }}
 
-        .author-tag {{
-            background: rgba(148, 163, 184, 0.1);
-            color: var(--text-secondary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8em;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s;
+        .keyword {{
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
         }}
 
-        .author-tag:hover {{
-            background: rgba(148, 163, 184, 0.2);
-            color: var(--text-primary);
-        }}
-
-        .keyword-tag {{
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
-            color: #a5b4fc;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            transition: all 0.2s;
-        }}
-
-        .keyword-tag:hover {{
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25));
-            transform: translateY(-1px);
-        }}
-
-        /* Card Footer */
-        .card-footer {{
-            padding: 14px 20px;
-            background: rgba(15, 23, 42, 0.5);
+        /* Paper Actions */
+        .paper-actions {{
             display: flex;
-            gap: 10px;
-            border-top: 1px solid var(--border-color);
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
         }}
 
         .btn {{
-            flex: 1;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9em;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-weight: 500;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
         }}
 
         .btn-primary {{
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: var(--color-accent);
             color: white;
-            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
         }}
 
         .btn-primary:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            background: #1e3a8a;
         }}
 
         .btn-secondary {{
-            background: rgba(148, 163, 184, 0.1);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
         }}
 
         .btn-secondary:hover {{
-            background: rgba(148, 163, 184, 0.2);
-            color: var(--text-primary);
-            border-color: rgba(148, 163, 184, 0.3);
+            background: var(--color-border-light);
+            color: var(--color-text);
         }}
 
         /* Footer */
-        footer {{
+        .footer {{
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
         }}
 
-        footer p {{
-            margin: 6px 0;
+        .footer-text {{
+            font-size: 12px;
+            color: var(--color-text-muted);
         }}
+
+        /* Hidden state */
+        .hidden {{ display: none !important; }}
 
         /* Responsive */
         @media (max-width: 768px) {{
-            header h1 {{
-                font-size: 2em;
+            .header-top {{
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
             }}
-
-            .stats {{
-                gap: 8px;
-            }}
-
-            .stat-box {{
-                padding: 12px 16px;
-                min-width: auto;
-                flex: 1;
-                max-width: 140px;
-            }}
-
-            .stat-icon {{
-                font-size: 1.4em;
-            }}
-
-            .stat-number {{
-                font-size: 1.6em;
-            }}
-
-            .stat-label {{
-                font-size: 0.75em;
-            }}
-
-            .card-title {{
-                font-size: 1em;
-            }}
+            .header-meta {{ text-align: left; }}
+            .nav-content {{ padding: 0 20px; }}
+            .main {{ padding: 20px; }}
+            .papers-grid {{ grid-template-columns: 1fr; }}
         }}
 
-        .hidden {{
-            display: none !important;
-        }}
-
-        /* Smooth scroll */
-        html {{
-            scroll-behavior: smooth;
-        }}
-
-        /* Selection */
-        ::selection {{
-            background: rgba(99, 102, 241, 0.3);
-            color: var(--text-primary);
-        }}
+{topic_css}
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>arXiv 学术进展报告</h1>
-            <p class="date-range">{date_range_text}</p>
-            <div class="stats">
-{stats_html}
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
             </div>
-            <p class="filter-hint">点击上方卡片筛选论文</p>
-        </header>
+            <div class="header-meta">
+                <div class="header-date">{datetime.now().strftime('%B %d, %Y')}</div>
+                <div class="header-range">{date_range_text}</div>
+                <div class="header-total">{total_papers}</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+'''
+
+# Add stats items
+html_content += f'''                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">{total_papers}</span>
+                </div>
+'''
+
+for topic in TOPICS:
+    color = get_topic_color(topic)
+    count = len(topic_papers[topic])
+    html_content += f'''                <div class="stat-item" data-filter="{topic}">
+                    <span class="stat-dot" style="background: {color};"></span>
+                    <span class="stat-name">{topic}</span>
+                    <span class="stat-count">{count}</span>
+                </div>
+'''
+
+html_content += '''            </div>
+        </div>
 '''
 
 def generate_card(paper, category):
     arxiv_id = paper.get('arxiv_id', '')
     title = paper.get('title', 'No title')
-    published = paper.get('published', 'Unknown')
+    published = paper.get('published', '未知日期')
     category_tag = paper.get('category', 'cs.AI')
     abstract = paper.get('abstract', 'No abstract available')
     abstract_cn = paper.get('abstract_cn', '')
@@ -766,159 +720,152 @@ def generate_card(paper, category):
     pdf_url = paper.get('pdf_url', f'https://arxiv.org/pdf/{arxiv_id}')
     summary = paper.get('llm_summary', '')
 
-    # Build abstract section with collapsible content
+    # Build abstract section
     abstract_html = ''
     has_abstract = bool(abstract_cn or abstract)
 
     if has_abstract:
         abstract_items = ''
         if abstract_cn:
-            abstract_items += f'''<div class="abstract-item"><span class="abstract-label">📄 中文摘要</span>{abstract_cn}</div>'''
+            abstract_items += f'''<div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">{abstract_cn}</div>
+                        </div>'''
         if abstract:
-            abstract_items += f'''<div class="abstract-item original"><span class="abstract-label">📄 原文摘要</span>{abstract}</div>'''
+            abstract_items += f'''<div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">{abstract}</div>
+                        </div>'''
 
         abstract_html = f'''
-            <div class="abstract-section">
-                <button class="abstract-toggle" onclick="toggleAbstract(this)">
-                    <span>📄 查看摘要详情</span>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="abstract-content">
-                    <div class="abstract-inner">
-                        {abstract_items}
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            {abstract_items}
+                        </div>
                     </div>
                 </div>
-            </div>
         '''
 
     return f'''
-        <div class="card" data-category="{category}">
-            <div class="card-header">
-                <span class="card-title">{title}</span>
-                <span class="card-badge">{category_tag}</span>
+        <article class="paper-card" data-category="{category}">
+            <div class="paper-header">
+                <div class="paper-category">{category} · {category_tag}</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/{arxiv_id}" target="_blank">{title}</a></h3>
             </div>
-            <div class="meta-grid">
-                <div class="meta-item">
-                    <span>📅 {published}</span>
-                </div>
-                <div class="meta-item">
-                    <span>🆔 {arxiv_id}</span>
-                </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    {published}
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:{arxiv_id}
+                </span>
             </div>
-            <div class="card-body">
-                <div class="summary">
-                    <div class="summary-label">📋 研究总结</div>
-                    <div class="summary-text">{summary}</div>
-                </div>
+            <div class="paper-body">
+                <p class="paper-summary">{summary}</p>
                 {abstract_html}
-                <div class="info-section">
-                    <div class="info-block">
-                        <label>作者</label>
-                        <div class="tag-list">
-                            {format_authors(authors)}
-                        </div>
-                    </div>
-                    <div class="info-block">
-                        <label>关键词</label>
-                        <div class="tag-list">
-                            {format_keywords(keywords)}
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="card-footer">
-                <a href="{pdf_url}" target="_blank" class="btn btn-primary">📄 PDF</a>
-                <a href="https://arxiv.org/abs/{arxiv_id}" target="_blank" class="btn btn-secondary">📖 arXiv</a>
+            <div class="paper-footer">
+                <div class="paper-authors">{format_authors(authors)}</div>
+                <div class="paper-keywords">{format_keywords(keywords)}</div>
             </div>
-        </div>
+            <div class="paper-actions">
+                <a href="{pdf_url}" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/{arxiv_id}" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
 '''
 
 # Generate sections for each topic
 for topic in TOPICS:
-    config = get_topic_config(topic)
+    color = get_topic_color(topic)
     topic_lower = topic.replace(' ', '_').lower()
     papers = topic_papers.get(topic, [])
     html_content += f'''
-        <h2 class="section-title {topic_lower}">{config['icon']} {config['label']} - {len(papers)}篇</h2>
-        <div class="papers-grid">
+        <section class="section">
+            <div class="section-header {topic_lower}">
+                <span class="section-icon" style="color: {color};">◆</span>
+                <h2 class="section-title">{topic}</h2>
+                <span class="section-count">{len(papers)} 篇论文</span>
+            </div>
+            <div class="papers-grid">
 '''
     for paper in papers:
         html_content += generate_card(paper, topic)
-    html_content += '''
-        </div>
+    html_content += '''            </div>
+        </section>
 '''
 
-# Generate filter JavaScript with abstract toggle
-filter_js = '''
+# JavaScript for filtering and abstract toggle
+html_content += '''    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 ''' + datetime.now().strftime('%Y-%m-%d %H:%M') + ''' · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
         // Filter functionality
-        const statBoxes = document.querySelectorAll('.stat-box');
-        const sectionTitles = document.querySelectorAll('.section-title');
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
 
-        statBoxes.forEach(box => {
-            box.addEventListener('click', () => {
-                // Update active state on stat boxes
-                statBoxes.forEach(b => b.classList.remove('active'));
-                box.classList.add('active');
-
-                const filter = box.dataset.filter;
-
-                // Filter cards
-                document.querySelectorAll('.card').forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-
-                // Show/hide section titles based on filter
-                sectionTitles.forEach(title => {
-                    // Extract category from class name
-                    const topicClasses = [''' + ', '.join([f"'{t.replace(' ', '_').lower()}'" for t in TOPICS]) + '''];
-                    const categoryClass = Array.from(title.classList).find(c =>
-                        c !== 'section-title' && topicClasses.includes(c)
-                    );
-
-                    const normalizedFilter = filter.replace(/ /g, '_').toLowerCase();
-                    const normalizedCategory = categoryClass ? categoryClass.replace(/ /g, '_').toLowerCase() : '';
-
-                    if (filter === 'all') {
-                        title.classList.remove('hidden');
-                    } else if (normalizedCategory === normalizedFilter) {
-                        title.classList.remove('hidden');
-                    } else {
-                        title.classList.add('hidden');
-                    }
-                });
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
             });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
         });
 
-        // Abstract toggle functionality
+        // Abstract toggle
         function toggleAbstract(btn) {
             const content = btn.nextElementSibling;
             const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
 
             if (isExpanded) {
                 content.classList.remove('expanded');
                 btn.classList.remove('expanded');
-                btn.querySelector('span:first-child').textContent = '📄 查看摘要详情';
+                textSpan.textContent = '查看摘要';
             } else {
                 content.classList.add('expanded');
                 btn.classList.add('expanded');
-                btn.querySelector('span:first-child').textContent = '📄 收起摘要详情';
+                textSpan.textContent = '收起摘要';
             }
         }
-'''
-
-html_content += f'''
-        <footer>
-            <p>Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-            <p>Data source: arXiv {date_range.get('start_date', '') + ' - ' + date_range.get('end_date', '') if date_range else 'recent papers'}</p>
-        </footer>
-    </div>
-
-    <script>
-{filter_js}
     </script>
 </body>
 </html>
