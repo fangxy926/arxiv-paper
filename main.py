@@ -45,13 +45,27 @@ def main():
     start_date = today - timedelta(days=days_back - 1)
     end_date = today
 
-    # Use today's date for directory structure (report generation date)
-    year = today.strftime('%Y')
-    month = today.strftime('%m')
-    day = today.strftime('%d')
+    # Use start_date for directory structure so different searches go to different directories
+    # This allows multiple reports for different date ranges to coexist
+    year = start_date.strftime('%Y')
+    month = start_date.strftime('%m')
+    day = start_date.strftime('%d')
 
     # Set output directory (always use dated directory under docs/)
-    output_dir = os.path.join('docs', year, month, day)
+    # If directory already exists and is not empty, add a suffix to avoid overwriting
+    base_output_dir = os.path.join('docs', year, month, day)
+    output_dir = base_output_dir
+    suffix = 1
+    while os.path.exists(output_dir):
+        # Check if directory has existing report files
+        index_file = os.path.join(output_dir, 'index.html')
+        if os.path.exists(index_file):
+            # Directory has a report, try next suffix
+            output_dir = f"{base_output_dir}-{suffix}"
+            suffix += 1
+        else:
+            # Directory exists but empty or no index.html, use it
+            break
     os.makedirs(output_dir, exist_ok=True)
 
     # Set date range for arXiv search
@@ -60,6 +74,7 @@ def main():
 
     print(f"Generating report for {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')} ({days_back} days)")
     print(f"Output directory: {output_dir}")
+    print(f"DEPLOY_MODE: {is_deploy}")
 
     # Pass OUTPUT_DIR to all steps
     env = {'OUTPUT_DIR': output_dir}

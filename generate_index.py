@@ -28,9 +28,14 @@ def scan_reports(docs_dir='docs'):
             month = month_dir.name
 
             for day_dir in sorted(month_dir.iterdir(), reverse=True):
-                if not day_dir.is_dir() or not day_dir.name.isdigit():
+                if not day_dir.is_dir():
                     continue
-                day = day_dir.name
+                # Handle day directories with optional suffix (e.g., "28", "28-1", "28-2")
+                day_name = day_dir.name
+                day_base = day_name.split('-')[0]  # Get base day number
+                if not day_base.isdigit():
+                    continue
+                day = day_base
 
                 report_file = day_dir / 'index.html'
                 if report_file.exists():
@@ -47,15 +52,22 @@ def scan_reports(docs_dir='docs'):
                         except:
                             pass
 
+                    # Get date range from metadata
+                    date_range = metadata.get('date_range', {})
+
+                    # Use full directory name (including suffix) for path
+                    full_dir_name = day_dir.name
+
                     reports.append({
                         'date': date_str,
                         'date_obj': date_obj,
-                        'path': f'{year}/{month}/{day}/',
+                        'path': f'{year}/{month}/{full_dir_name}/',
                         'year': year,
                         'month': month,
                         'day': day,
                         'paper_count': metadata.get('paper_count', 0),
-                        'topics': metadata.get('topics', [])
+                        'topics': metadata.get('topics', []),
+                        'date_range': date_range
                     })
 
     return sorted(reports, key=lambda x: x['date_obj'], reverse=True)
@@ -87,6 +99,13 @@ def generate_index(reports, docs_dir='docs'):
             paper_count = report['paper_count']
             count_badge = f'<span class="paper-count">{paper_count} 篇论文</span>' if paper_count else ''
 
+            # Get actual date range from metadata
+            date_range = report.get('date_range', {})
+            if date_range.get('start_date') and date_range.get('end_date'):
+                date_range_text = f"{date_range['start_date']} 至 {date_range['end_date']}"
+            else:
+                date_range_text = f"{report['date']} 至 {(report['date_obj'] + timedelta(days=6)).strftime('%Y-%m-%d')}"
+
             reports_html += f'''    <a href="{report['path']}" class="report-card">
       <div class="report-date">
         <span class="date-day">{report['day']}</span>
@@ -96,7 +115,7 @@ def generate_index(reports, docs_dir='docs'):
         <div class="report-title">{date_display} {weekday_cn}周报</div>
         <div class="report-meta">
           {count_badge}
-          <span class="date-range">{report['date']} 至 {(report['date_obj'] + timedelta(days=6)).strftime('%Y-%m-%d')}</span>
+          <span class="date-range">{date_range_text}</span>
         </div>
       </div>
       <div class="report-arrow">→</div>
