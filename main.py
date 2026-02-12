@@ -45,11 +45,10 @@ def main():
     start_date = today - timedelta(days=days_back - 1)
     end_date = today
 
-    # Use start_date for directory structure so different searches go to different directories
-    # This allows multiple reports for different date ranges to coexist
-    year = start_date.strftime('%Y')
-    month = start_date.strftime('%m')
-    day = start_date.strftime('%d')
+    # Use today's date for directory structure (report generation date)
+    year = today.strftime('%Y')
+    month = today.strftime('%m')
+    day = today.strftime('%d')
 
     # Set output directory (always use dated directory under docs/)
     # If directory already exists and is not empty, add a suffix to avoid overwriting
