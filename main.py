@@ -108,16 +108,14 @@ def main():
             print(f"Removed: {file_path}")
     print("Cleanup complete")
 
-    # Step 6: Generate index page (deploy mode only)
-    if is_deploy:
-        if not run_step("Generate index page", "generate_index.py"):
-            return
+    # Step 6: Generate index page
+    if not run_step("Generate index page", "generate_index.py"):
+        return
 
     print("\n" + "=" * 50)
     print("All steps completed successfully!")
     print(f"Output: {output_dir}/index.html")
-    if is_deploy:
-        print("Index: docs/index.html")
+    print("Index: docs/index.html")
     print("=" * 50)
 
 if __name__ == "__main__":

@@ -61,7 +61,7 @@ def scan_reports(docs_dir='docs'):
                     reports.append({
                         'date': date_str,
                         'date_obj': date_obj,
-                        'path': f'{year}/{month}/{full_dir_name}/',
+                        'path': f'{year}/{month}/{full_dir_name}/index.html',
                         'year': year,
                         'month': month,
                         'day': day,
@@ -112,7 +112,7 @@ def generate_index(reports, docs_dir='docs'):
         <span class="date-month">{int(report['month'])}月</span>
       </div>
       <div class="report-info">
-        <div class="report-title">{date_display} {weekday_cn}周报</div>
+        <div class="report-title">{date_display} {weekday_cn}报告</div>
         <div class="report-meta">
           {count_badge}
           <span class="date-range">{date_range_text}</span>
@@ -131,7 +131,7 @@ def generate_index(reports, docs_dir='docs'):
         latest_html = f'''
         <div class="latest-report">
             <div class="latest-badge">最新报告</div>
-            <h3>{latest_report['date_obj'].strftime('%Y年%m月%d日')}周报</h3>
+            <h3>{latest_report['date_obj'].strftime('%Y年%m月%d日')}报告</h3>
             <p>包含 {latest_report['paper_count']} 篇精选论文</p>
             <a href="{latest_report['path']}" class="btn-primary">查看最新报告 →</a>
         </div>
@@ -142,7 +142,7 @@ def generate_index(reports, docs_dir='docs'):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arXiv 学术进展周报 - 历史存档</title>
+    <title>arXiv 学术进展报告 - 历史存档</title>
     <style>
         :root {{
             --bg-primary: #0f172a;
@@ -376,11 +376,11 @@ def generate_index(reports, docs_dir='docs'):
 <body>
     <div class="container">
         <header>
-            <h1>arXiv 学术进展周报</h1>
-            <p>每周自动整理医疗AI领域最新研究进展</p>
+            <h1>arXiv 学术进展报告</h1>
+            <p>自动整理医疗AI领域最新研究进展</p>
         </header>
 
-        {latest_html if latest_report else '<div class="empty-state"><h2>暂无报告</h2><p>报告将在每周一自动生成</p></div>'}
+        {latest_html if latest_report else '<div class="empty-state"><h2>暂无报告</h2><p>报告将自动生成</p></div>'}
 
         {reports_html if reports else ''}
 

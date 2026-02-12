@@ -16,3 +16,4 @@ nul
 *.json
 *.html
 .playwright-mcp/
+docs
