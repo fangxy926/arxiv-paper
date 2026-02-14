@@ -40,6 +40,8 @@ jobs:
         OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         TOPICS: ${{ vars.TOPICS }}
         FILTER_KEYWORDS: ${{ vars.FILTER_KEYWORDS }}
+        ARXIV_DAYS_BACK: ${{ vars.ARXIV_DAYS_BACK }}
+        ARXIV_MAX_RESULTS: ${{ vars.ARXIV_MAX_RESULTS }}
         DEPLOY_MODE: 'true'
       run: uv run main.py
 
