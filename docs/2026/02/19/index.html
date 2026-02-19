@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-02-18</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">February 19, 2026</div>
+                <div class="header-range">2026-02-18 — 2026-02-18</div>
+                <div class="header-total">6</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">6</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">3</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">1</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">2</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">3 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16709v1" target="_blank">Knowledge-Embedded Latent Projection for Robust Representation Learning</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16709v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文针对高维离散数据矩阵（如电子健康记录）在维度不平衡时的估计难题，提出了一种知识嵌入的潜在投影模型。该方法利用外部语义嵌入（如临床概念的预训练嵌入）作为侧信息来正则化表示学习，通过再生核希尔伯特空间中的映射将列嵌入建模为语义嵌入的平滑函数。研究开发了高效的两步估计程序，结合了核主成分分析和可扩展的投影梯度下降，并建立了误差界和局部收敛保证。模拟研究和真实EHR应用验证了方法的有效性。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">潜在空间模型(Latent space models)被广泛用于分析高维离散数据矩阵，例如电子健康记录(EHRs)中的患者-特征矩阵，其通过低维嵌入捕捉复杂的依赖结构。然而，在不平衡体制下，即矩阵的一个维度远大于另一个维度时，估计变得具有挑战性。在EHR应用中，队列规模常受疾病流行率或数据可用性限制，而由于医学编码系统(medical coding system)的广度，特征空间仍然极其庞大。受日益可用的外部语义嵌入（例如EHR中临床概念的预训练嵌入）的启发，我们提出了一种知识嵌入的潜在投影模型(knowledge-embedded latent projection model)，该模型利用语义侧信息(semantic side information)来正则化表示学习。具体来说，我们通过再生核希尔伯特空间(reproducing kernel Hilbert space)中的映射，将列嵌入建模为语义嵌入的平滑函数。我们开发了一种计算高效的两步估计程序，它结合了通过核主成分分析(kernel principal component analysis)进行的语义引导子空间构造和可扩展的投影梯度下降(projected gradient descent)。我们建立了估计误差界，刻画了统计误差与核投影引起的近似误差之间的权衡。此外，我们为非凸优化程序提供了局部收敛保证。大量的模拟研究和一个真实的EHR应用证明了所提方法的有效性。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Latent space models are widely used for analyzing high-dimensional discrete data matrices, such as patient-feature matrices in electronic health records (EHRs), by capturing complex dependence structures through low-dimensional embeddings. However, estimation becomes challenging in the imbalanced regime, where one matrix dimension is much larger than the other. In EHR applications, cohort sizes are often limited by disease prevalence or data availability, whereas the feature space remains extremely large due to the breadth of medical coding system. Motivated by the increasing availability of external semantic embeddings, such as pre-trained embeddings of clinical concepts in EHRs, we propose a knowledge-embedded latent projection model that leverages semantic side information to regularize representation learning. Specifically, we model column embeddings as smooth functions of semantic embeddings via a mapping in a reproducing kernel Hilbert space. We develop a computationally efficient two-step estimation procedure that combines semantically guided subspace construction via kernel principal component analysis with scalable projected gradient descent. We establish estimation error bounds that characterize the trade-off between statistical error and approximation error induced by the kernel projection. Furthermore, we provide local convergence guarantees for our non-convex optimization procedure. Extensive simulation studies and a real-world EHR application demonstrate the effectiveness of the proposed method.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Tang W</span>, <span class="author">Yuan M</span>, <span class="author">Xia Z</span>, <span class="author">Cai T</span></div>
+                <div class="paper-keywords"><span class="keyword">潜在空间模型</span><span class="keyword">表示学习</span><span class="keyword">知识嵌入</span><span class="keyword">核方法</span><span class="keyword">电子健康记录</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16709v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16709v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16684v1" target="_blank">Retrieval-Augmented Foundation Models for Matched Molecular Pair Transformations to Recapitulate Medicinal Chemistry Intuition</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16684v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出了一种基于检索增强的匹配分子对变换基础模型，通过可变到可变生成和提示机制，实现了对药物化学类比设计的可控生成，并在实验中展现了良好的多样性、新颖性和实用性。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">匹配分子对（MMPs）捕捉了药物化学家设计类似物时常用的局部化学修饰，但现有的机器学习方法要么在全分子水平上操作且编辑可控性有限，要么从受限设置和小型模型中学习MMP式编辑。我们提出了类比生成的变量到变量（variable-to-variable）公式，并在大规模MMP变换（MMPTs）上训练了一个基础模型，以根据输入变量生成多样化的变量。为了实现实际控制，我们开发了提示（prompting）机制，允许用户在生成过程中指定偏好的变换模式。我们进一步引入了MMPT-RAG，这是一个检索增强（retrieval-augmented）框架，它使用外部参考类似物作为上下文指导来引导生成，并从项目特定的系列中泛化。在通用化学语料库和专利特定数据集上的实验证明了改进的多样性、新颖性和可控性，并表明我们的方法在实际发现场景中能恢复出真实的类似物结构。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Matched molecular pairs (MMPs) capture the local chemical edits that medicinal chemists routinely use to design analogs, but existing ML approaches either operate at the whole-molecule level with limited edit controllability or learn MMP-style edits from restricted settings and small models. We propose a variable-to-variable formulation of analog generation and train a foundation model on large-scale MMP transformations (MMPTs) to generate diverse variables conditioned on an input variable. To enable practical control, we develop prompting mechanisms that let the users specify preferred transformation patterns during generation. We further introduce MMPT-RAG, a retrieval-augmented framework that uses external reference analogs as contextual guidance to steer generation and generalize from project-specific series. Experiments on general chemical corpora and patent-specific datasets demonstrate improved diversity, novelty, and controllability, and show that our method recovers realistic analog structures in practical discovery scenarios.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Pan B</span>, <span class="author">Zhang PZ</span>, <span class="author">Pang H</span>, <span class="author">Zhu A</span>, <span class="author">Yu X</span>, <span class="author">Zhang L</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">匹配分子对</span><span class="keyword">检索增强生成</span><span class="keyword">药物化学直觉</span><span class="keyword">基础模型</span><span class="keyword">类比生成</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16684v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16684v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16664v1" target="_blank">Unpaired Image-to-Image Translation via a Self-Supervised Semantic Bridge</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16664v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出自监督语义桥框架，通过引入自监督视觉编码器学习外观不变但保留几何结构的表征，构建共享潜在空间来引导扩散桥模型，实现了无需跨域监督的空间保真图像翻译，在医学图像合成等任务上优于现有方法。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">对抗性扩散和扩散反转方法在无配对图像到图像翻译方面取得了进展，但各自面临关键限制。对抗性方法在训练时需要目标域对抗损失，这可能限制其对未见数据的泛化能力，而扩散反转方法由于向噪声潜在表示的反转不完美，通常产生低保真度的翻译结果。在这项工作中，我们提出了自监督语义桥，这是一个通用框架，它将外部语义先验集成到扩散桥模型中，以实现无需跨域监督的空间保真翻译。我们的核心思想是利用自监督视觉编码器来学习对外观变化不变但能捕捉几何结构的表征，形成一个共享的潜在空间来条件化扩散桥。大量实验表明，SSB在域内和域外设置的具有挑战性的医学图像合成任务中都优于先前的方法，并且可以轻松扩展到高质量的文本引导编辑。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Adversarial diffusion and diffusion-inversion methods have advanced unpaired image-to-image translation, but each faces key limitations. Adversarial approaches require target-domain adversarial loss during training, which can limit generalization to unseen data, while diffusion-inversion methods often produce low-fidelity translations due to imperfect inversion into noise-latent representations. In this work, we propose the Self-Supervised Semantic Bridge (SSB), a versatile framework that integrates external semantic priors into diffusion bridge models to enable spatially faithful translation without cross-domain supervision. Our key idea is to leverage self-supervised visual encoders to learn representations that are invariant to appearance changes but capture geometric structure, forming a shared latent space that conditions the diffusion bridges. Extensive experiments show that SSB outperforms strong prior methods for challenging medical image synthesis in both in-domain and out-of-domain settings, and extends easily to high-quality text-guided editing.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Liu J</span>, <span class="author">Petersen F</span>, <span class="author">Gao Y</span>, <span class="author">Zhang Y</span>, <span class="author">Kim H</span>, <span class="author">Chaudhari AS</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">无配对图像翻译</span><span class="keyword">自监督语义桥</span><span class="keyword">扩散模型</span><span class="keyword">语义先验</span><span class="keyword">医学图像合成</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16664v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16664v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">1 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16437v1" target="_blank">Mapping tuberculosis fatalities by region and age group in South Korea: A dataset for targeted health policy optimization</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16437v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究构建了韩国2014-2022年228个区县的高分辨率结核病死亡与医院可及性数据集，通过整合省级年龄别数据与区级空间人口数据，重建了区级年龄别结核病死亡情况。基于此，研究将医院分配模型扩展为年龄加权形式，优化分配以减少死亡，结果表明考虑年龄结构会产生不同的优化分配模式，揭示了效率与人口目标间的权衡。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">在韩国，由于隐私限制，区级年龄别结核病（TB）数据未公开，限制了医疗可及性的精细分析。为应对此限制，我们提出了一个关于韩国结核病（TB）死亡率和医院可及性的高分辨率、区级数据集，涵盖2014年至2022年228个区。该数据集采用一种重建方法构建，通过整合省级年龄别统计数据与区级空间和人口数据，推断出区级年龄别结核病病例和死亡人数，从而支持同时考虑空间异质性和年龄结构的分析。基于现有的医院分配框架，我们将目标函数扩展为年龄加权形式，并将其应用于重建的数据集，以在不同年龄加权方案下最小化结核病死亡人数。我们证明，即使最小化的总死亡人数相似，纳入年龄结构也会产生明显不同的优化医院分配模式，揭示了效率与人口目标之间的权衡。此外，该数据集支持对结核病负担、医院可用性和人口结构随时间变化进行时序分析，并为需要高分辨率人口和医疗数据的空间流行病学和优化研究提供了一个测试平台。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">In South Korea, age-disaggregated tuberculosis (TB) data at the district level are not publicly available due to privacy constraints, limiting fine-scale analyses of healthcare accessibility. To address this limitation, we present a high-resolution, district-level dataset on tuberculosis (TB) fatalities and hospital accessibility in South Korea, covering the years 2014 to 2022 across 228 districts. The dataset is constructed using a reconstruction method that infers age-disaggregated TB cases and fatalities at the district level by integrating province-level age-specific statistics with district-level spatial and demographic data, enabling analyses that account for both spatial heterogeneity and age structure. Building on an existing hospital allocation framework, we extend the objective function to an age-weighted formulation and apply it to the reconstructed dataset to minimize TB fatalities under different age-weighting schemes. We demonstrate that incorporating age structure can give rise to distinct optimized hospital allocation patterns, even when the total number of minimized fatalities is similar, revealing trade-offs between efficiency and demographic targeting. In addition, the dataset supports temporal analyses of TB burden, hospital availability, and demographic variation over time, and provides a testbed for spatial epidemiology and optimization studies that require high-resolution demographic and healthcare data.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Kwon Y</span>, <span class="author">Lee D</span>, <span class="author">Lee MJ</span>, <span class="author">Son S</span></div>
+                <div class="paper-keywords"><span class="keyword">结核病死亡率</span><span class="keyword">医院可及性</span><span class="keyword">空间优化</span><span class="keyword">年龄结构</span><span class="keyword">卫生政策</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16437v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16437v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">2 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16708v1" target="_blank">Policy Compiler for Secure Agentic Systems</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16708v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出PCAS，一种用于智能体系统的策略编译器，通过将系统状态建模为依赖图，以声明式规则表达策略，并在执行前拦截违规动作，实现了独立于模型推理的确定性策略执行，显著提升了策略合规性。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">基于LLM的智能体越来越多地部署在需要复杂授权策略的上下文中：客户服务协议、审批工作流、数据访问限制和法规遵从。将这些策略嵌入提示中无法提供执行保证。我们提出了PCAS，一个用于智能体系统的策略编译器，它提供确定性的策略执行。执行此类策略需要跟踪跨智能体的信息流，这是线性消息历史无法捕捉的。相反，PCAS将智能体系统状态建模为捕获事件（如工具调用、工具结果和消息）间因果关系的依赖图。策略用一种源自Datalog的语言表达，作为考虑传递性信息流和跨智能体溯源的声明式规则。一个参考监视器拦截所有动作并在执行前阻止违规，提供独立于模型推理的确定性执行。PCAS接收现有的智能体实现和策略规范，并将它们编译成一个通过构造即符合策略的仪器化系统，无需进行特定于安全的重构。我们在三个案例研究中评估PCAS：用于提示注入防御的信息流策略、多智能体药物警戒系统中的审批工作流以及客户服务的组织策略。在客户服务任务上，PCAS将前沿模型的策略合规性从48%提高到93%，在仪器化运行中实现了零策略违规。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">LLM-based agents are increasingly being deployed in contexts requiring complex authorization policies: customer service protocols, approval workflows, data access restrictions, and regulatory compliance. Embedding these policies in prompts provides no enforcement guarantees. We present PCAS, a Policy Compiler for Agentic Systems that provides deterministic policy enforcement.
+  Enforcing such policies requires tracking information flow across agents, which linear message histories cannot capture. Instead, PCAS models the agentic system state as a dependency graph capturing causal relationships among events such as tool calls, tool results, and messages. Policies are expressed in a Datalog-derived language, as declarative rules that account for transitive information flow and cross-agent provenance. A reference monitor intercepts all actions and blocks violations before execution, providing deterministic enforcement independent of model reasoning.
+  PCAS takes an existing agent implementation and a policy specification, and compiles them into an instrumented system that is policy-compliant by construction, with no security-specific restructuring required. We evaluate PCAS on three case studies: information flow policies for prompt injection defense, approval workflows in a multi-agent pharmacovigilance system, and organizational policies for customer service. On customer service tasks, PCAS improves policy compliance from 48% to 93% across frontier models, with zero policy violations in instrumented runs.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Palumbo N</span>, <span class="author">Choudhary S</span>, <span class="author">Choi J</span>, <span class="author">Chalasani P</span>, <span class="author">Christodorescu M</span>, <span class="author">Jha S</span></div>
+                <div class="paper-keywords"><span class="keyword">策略编译器</span><span class="keyword">智能体系统</span><span class="keyword">信息流控制</span><span class="keyword">确定性策略执行</span><span class="keyword">依赖图</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16708v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16708v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2602.16553v1" target="_blank">Agentic AI, Medical Morality, and the Transformation of the Patient-Physician Relationship</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-02-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2602.16553v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文探讨了代理型AI在医疗领域的兴起及其对医患关系和医疗伦理的潜在重塑。文章指出，代理型AI不同于传统生成式AI，具有自主行动和任务协调能力，可能改变医疗决策、关系和认知的道德基础。作者呼吁在广泛部署前进行伦理前瞻，并将其融入设计和使用中。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">代理型AI（agentic AI）的出现标志着医疗保健数字化转型的新阶段。与传统生成式AI（generative AI）不同，代理型AI系统能够进行自主的、目标导向的行动和复杂的任务协调。它们有望以日益独立的方式支持甚至与临床医生和患者协作。虽然代理型AI引发了关于安全性、问责制和偏见的常见道德担忧，但本文关注一个较少被探讨的维度：其改变医疗保健本身道德结构（moral fabric）的能力。借鉴技术道德变革（techno-moral change）框架以及决策（decision）、关系（relation）和认知（perception）三个领域，我们研究了代理型AI可能如何重塑患者-医生关系（patient-physician relationship）并重新配置医疗道德（medical morality）的核心概念。我们认为，这些转变虽然无法完全预测，但在广泛部署之前需要得到伦理关注。最终，本文呼吁将伦理前瞻（ethical foresight）整合到代理型AI的设计和使用中。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The emergence of agentic AI marks a new phase in the digital transformation of healthcare. Distinct from conventional generative AI, agentic AI systems are capable of autonomous, goal-directed actions and complex task coordination. They promise to support or even collaborate with clinicians and patients in increasingly independent ways. While agentic AI raises familiar moral concerns regarding safety, accountability, and bias, this article focuses on a less explored dimension: its capacity to transform the moral fabric of healthcare itself. Drawing on the framework of techno-moral change and the three domains of decision, relation and perception, we investigate how agentic AI might reshape the patient-physician relationship and reconfigure core concepts of medical morality. We argue that these shifts, while not fully predictable, demand ethical attention before widespread deployment. Ultimately, the paper calls for integrating ethical foresight into the design and use of agentic AI.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Ranisch R</span>, <span class="author">Salloch S</span></div>
+                <div class="paper-keywords"><span class="keyword">代理型人工智能</span><span class="keyword">医患关系</span><span class="keyword">技术道德变革</span><span class="keyword">医疗伦理</span><span class="keyword">自主系统</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2602.16553v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2602.16553v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-02-19 22:32 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
