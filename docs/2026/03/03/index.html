@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-03-02</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">March 03, 2026</div>
+                <div class="header-range">2026-03-02 — 2026-03-02</div>
+                <div class="header-total">9</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">9</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">5</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">3</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">1</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">5 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02162v1" target="_blank">Bridging the gap between Performance and Interpretability: An Explainable Disentangled Multimodal Framework for Cancer Survival Prediction</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02162v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出了一种名为DIMAFx的可解释多模态框架，用于癌症生存预测。该框架从组织病理学全切片图像和转录组学数据中生成解耦的、可解释的模态特定和模态共享表征，在保持高性能的同时提升了模型的可解释性，揭示了关键的多模态相互作用和生物学信息。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">尽管多模态生存预测模型越来越准确，但其复杂性往往降低了可解释性，限制了对不同数据源如何影响预测的洞察。为此，我们提出了DIMAFx，一个用于癌症生存预测的可解释多模态框架，它从组织病理学全切片图像（whole-slide images）和转录组学（transcriptomics）数据中生成解耦的、可解释的模态特定（modality-specific）和模态共享（modality-shared）表征。在多个癌症队列中，DIMAFx实现了最先进的性能并改善了表征解耦（representation disentanglement）。利用其可解释的设计和SHapley Additive exPlanations（SHAP），DIMAFx系统地揭示了关键的多模态相互作用以及解耦表征中编码的生物学信息。在乳腺癌生存预测中，最具预测性的特征包含模态共享信息，其中一个捕获了主要由晚期雌激素反应（late estrogen response）背景化的实体肿瘤形态学，其中更高级别的形态学与通路上调和风险增加相关，这与已知的乳腺癌生物学一致。关键的模态特定特征从相互作用的脂肪和基质形态中捕获微环境信号。这些结果表明，多模态模型可以克服性能和可解释性之间的传统权衡，支持其在精准医学（precision medicine）中的应用。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">While multimodal survival prediction models are increasingly more accurate, their complexity often reduces interpretability, limiting insight into how different data sources influence predictions. To address this, we introduce DIMAFx, an explainable multimodal framework for cancer survival prediction that produces disentangled, interpretable modality-specific and modality-shared representations from histopathology whole-slide images and transcriptomics data. Across multiple cancer cohorts, DIMAFx achieves state-of-the-art performance and improved representation disentanglement. Leveraging its interpretable design and SHapley Additive exPlanations, DIMAFx systematically reveals key multimodal interactions and the biological information encoded in the disentangled representations. In breast cancer survival prediction, the most predictive features contain modality-shared information, including one capturing solid tumor morphology contextualized primarily by late estrogen response, where higher-grade morphology aligned with pathway upregulation and increased risk, consistent with known breast cancer biology. Key modality-specific features capture microenvironmental signals from interacting adipose and stromal morphologies. These results show that multimodal models can overcome the traditional trade-off between performance and explainability, supporting their application in precision medicine.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Eijpe A</span>, <span class="author">Lakbir S</span>, <span class="author">Cesur ME</span>, <span class="author">Oliveira SP</span>, <span class="author">Chatzimparmpas A</span>, <span class="author">Abeln S</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">可解释性</span><span class="keyword">多模态学习</span><span class="keyword">癌症生存预测</span><span class="keyword">表征解耦</span><span class="keyword">精准医疗</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02162v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02162v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02097v1" target="_blank">ClinConsensus: A Consensus-Based Benchmark for Evaluating Chinese Medical LLMs across Difficulty Levels</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02097v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文介绍了ClinConsensus，一个由临床专家构建和验证的中文医学大语言模型评测基准。它包含2500个开放式病例，覆盖诊疗全流程和多个专科，并引入基于量规的评分协议和双评审框架进行可靠评估。评估揭示了现有模型在推理、证据使用和纵向随访能力上的差异，并指出临床可操作的治疗规划仍是关键瓶颈。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">大语言模型（LLMs）越来越多地应用于健康管理，在疾病预防、临床决策和长期护理方面展现出潜力。然而，现有的医学评测基准在很大程度上仍然是静态和任务孤立的，未能捕捉真实世界临床工作流的开放性、纵向结构以及安全关键复杂性。我们引入了ClinConsensus，这是一个由临床专家精心策划、验证和质量控制的中文医学评测基准。ClinConsensus包含2500个开放式病例，涵盖从预防、干预到长期随访的全程护理，覆盖36个医学专科、12种常见临床任务类型以及渐进增加的复杂度。为了对此类复杂场景进行可靠评估，我们采用了基于量规的评分协议，并提出了临床适用一致性分数（CACS@k）。我们进一步引入了双评审评估框架，将高性能的LLM-as-judge与通过监督微调训练的、可本地部署的蒸馏评审模型相结合，从而实现与医生判断一致的可扩展且可复现的评估。利用ClinConsensus，我们对多个领先的大语言模型进行了全面评估，揭示了模型在不同任务主题、护理阶段和医学专科之间存在显著的异质性。虽然表现最佳的模型获得了相近的总分，但它们在推理、证据使用和纵向随访能力方面差异明显，并且临床可操作的治疗规划仍然是一个关键瓶颈。我们发布ClinConsensus作为一个可扩展的基准，以支持开发与评估那些稳健、基于临床且已准备好投入真实世界部署的医学大语言模型。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Large language models (LLMs) are increasingly applied to health management, showing promise across disease prevention, clinical decision-making, and long-term care. However, existing medical benchmarks remain largely static and task-isolated, failing to capture the openness, longitudinal structure, and safety-critical complexity of real-world clinical workflows. We introduce ClinConsensus, a Chinese medical benchmark curated, validated, and quality-controlled by clinical experts. ClinConsensus comprises 2500 open-ended cases spanning the full continuum of care--from prevention and intervention to long-term follow-up--covering 36 medical specialties, 12 common clinical task types, and progressively increasing levels of complexity. To enable reliable evaluation of such complex scenarios, we adopt a rubric-based grading protocol and propose the Clinically Applicable Consistency Score (CACS@k). We further introduce a dual-judge evaluation framework, combining a high-capability LLM-as-judge with a distilled, locally deployable judge model trained via supervised fine-tuning, enabling scalable and reproducible evaluation aligned with physician judgment. Using ClinConsensus, we conduct a comprehensive assessment of several leading LLMs and reveal substantial heterogeneity across task themes, care stages, and medical specialties. While top-performing models achieve comparable overall scores, they differ markedly in reasoning, evidence use, and longitudinal follow-up capabilities, and clinically actionable treatment planning remains a key bottleneck. We release ClinConsensus as an extensible benchmark to support the development and evaluation of medical LLMs that are robust, clinically grounded, and ready for real-world deployment.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Zheng X</span>, <span class="author">Li H</span>, <span class="author">Luo W</span>, <span class="author">Zhai W</span>, <span class="author">Li Y</span>, <span class="author">Yan C</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">医学大语言模型</span><span class="keyword">中文医学评测基准</span><span class="keyword">临床工作流</span><span class="keyword">一致性评分</span><span class="keyword">专家验证</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02097v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02097v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02062v1" target="_blank">OpenRad: a Curated Repository of Open-access AI models for Radiology</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02062v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">OpenRad是一个经过人工审核、标准化的开放获取放射学AI模型库，旨在解决模型分散、可发现性和可重复性差的问题。该库通过自动化提取和专家审核，收录了约1700个涵盖所有成像模态和亚专科的模型，并提供搜索、筛选和社区贡献功能，为放射学界提供了一个全面的资源平台。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">放射学人工智能(AI)研究的快速发展产生了大量分散在不同平台和来源的模型，限制了其可发现性、可重复性和临床转化。为此，我们创建了OpenRad，这是一个经过人工审核、标准化、开放获取的存储库，它汇总了放射学AI模型，并提供预训练权重和交互式应用可用性等详细信息。我们对截至2025年12月收录于PubMed、arXiv和Scopus的同行评审文献和预印本进行了回顾性分析（n = 5239条记录）。模型记录使用本地托管的大型语言模型（gpt-oss:120b）基于RSNA AI路线图JSON模式生成，并由十位专家评审员手动验证。在225篇随机选择的论文上使用文本相似性指标评估了LLM输出的稳定性。经审查后，共纳入1694篇文章。纳入的模型涵盖所有成像模态（CT, MRI, X-ray, US）和放射学亚专科。自动化提取在结构化字段上表现出高稳定性（Levenshtein比率 > 90%），在专家评审中，78.5%的记录编辑被定性为轻微。对存储库的统计分析显示CNN和transformer架构占主导地位，而MRI是最常用的模态（在621个神经放射学AI模型中）。研究成果主要集中在中国和美国。OpenRad网络界面支持通过关键词搜索以及按模态、亚专科、预期用途、验证状态和演示可用性进行筛选来发现模型，并提供实时统计。社区可以通过专用门户贡献新模型。OpenRad包含约1700个开放获取、经过审核的放射学AI模型，具有标准化元数据，并辅以对代码仓库的分析，从而为放射学界创建了一个全面的、可搜索的资源。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The rapid developments in artificial intelligence (AI) research in radiology have produced numerous models that are scattered across various platforms and sources, limiting discoverability, reproducibility and clinical translation. Herein, OpenRad was created, a curated, standardized, open-access repository that aggregates radiology AI models and providing details such as the availability of pretrained weights and interactive applications. Retrospective analysis of peer reviewed literature and preprints indexed in PubMed, arXiv and Scopus was performed until Dec 2025 (n = 5239 records). Model records were generated using a locally hosted LLM (gpt-oss:120b), based on the RSNA AI Roadmap JSON schema, and manually verified by ten expert reviewers. Stability of LLM outputs was assessed on 225 randomly selected papers using text similarity metrics. A total of 1694 articles were included after review. Included models span all imaging modalities (CT, MRI, X-ray, US) and radiology subspecialties. Automated extraction demonstrated high stability for structured fields (Levenshtein ratio > 90%), with 78.5% of record edits being characterized as minor during expert review. Statistical analysis of the repository revealed CNN and transformer architectures as dominant, while MRI was the most commonly used modality (in 621 neuroradiology AI models). Research output was mostly concentrated in China and the United States. The OpenRad web interface enables model discovery via keyword search and filters for modality, subspecialty, intended use, verification status and demo availability, alongside live statistics. The community can contribute new models through a dedicated portal. OpenRad contains approx. 1700 open access, curated radiology AI models with standardized metadata, supplemented with analysis of code repositories, thereby creating a comprehensive, searchable resource for the radiology community.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Vrettos K</span>, <span class="author">Papadaki G</span>, <span class="author">Brilakis E</span>, <span class="author">Triantafyllou M</span>, <span class="author">Leventis D</span>, <span class="author">Staraki D</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">放射学AI</span><span class="keyword">开放获取</span><span class="keyword">模型库</span><span class="keyword">元数据标准化</span><span class="keyword">可发现性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02062v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02062v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02047v1" target="_blank">NICO-RAG: Multimodal Hypergraph Retrieval-Augmented Generation for Understanding the Nicotine Public Health Crisis</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02047v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文针对尼古丁成瘾公共卫生危机，提出了NICO多模态数据集和NICO-RAG框架。该框架利用超图组织图像和文本信息，实现了无需语言模型高成本处理的图像检索，并能通过视觉和语义相似性进行查询回答，在实验中表现优异。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">尼古丁成瘾（nicotine addiction）公共卫生危机持续蔓延。仅在本世纪，烟草行业就积极发布和营销新产品，以努力吸引新的年轻客户终身消费。此类创新和产品开发，即调味尼古丁或烟草产品（如尼古丁袋），已经抵消了多年的反烟草运动成果。过去的工作在范围和连接大规模数据点的能力上均存在局限。因此，我们引入了尼古丁创新反制（Nicotine Innovation Counter-Offensive, NICO）数据集，为公共卫生研究人员提供了超过200,000个多模态样本，涵盖55个烟草和尼古丁产品品牌，包括图像和文本描述。此外，为了向公共卫生研究人员提供大规模数据集中的事实关联，我们提出了NICO-RAG，一种检索增强生成（Retrieval-Augmented Generation, RAG）框架。该框架能够检索图像特征，而无需承担语言模型的高昂成本，以及处理如NICO这样大规模数据集中图像令牌（image tokens）的额外开销。在构建时，NICO-RAG将图像和文本提取的实体（entities）和关系（relations）组织成超图（hypergraphs），以生成尽可能符合事实的响应。这种联合多模态知识表示使NICO-RAG不仅能够通过视觉相似性，还能通过图像描述的语义相似性来检索图像以进行查询回答。实验表明，在处理超过100个问题时无需处理来自图像的额外令牌，NICO-RAG的性能与为图像适配的最先进（state-of-the-art）RAG方法相当。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The nicotine addiction public health crisis continues to be pervasive. In this century alone, the tobacco industry has released and marketed new products in an aggressive effort to lure new and young customers for life. Such innovations and product development, namely flavored nicotine or tobacco such as nicotine pouches, have undone years of anti-tobacco campaign work. Past work is limited both in scope and in its ability to connect large-scale data points. Thus, we introduce the Nicotine Innovation Counter-Offensive (NICO) Dataset to provide public health researchers with over 200,000 multimodal samples, including images and text descriptions, on 55 tobacco and nicotine product brands. In addition, to provide public health researchers with factual connections across a large-scale dataset, we propose NICO-RAG, a retrieval-augmented generation (RAG) framework that can retrieve image features without incurring the high-cost of language models, as well as the added cost of processing image tokens with large-scale datasets such as NICO. At construction time, NICO-RAG organizes image- and text-extracted entities and relations into hypergraphs to produce as factual responses as possible. This joint multimodal knowledge representation enables NICO-RAG to retrieve images for query answering not only by visual similarity but also by the semantic similarity of image descriptions. Experimentals show that without needing to process additional tokens from images for over 100 questions, NICO-RAG performs comparably to the state-of-the-art RAG method adapted for images.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Serna-Aguilera M</span>, <span class="author">Anderes R</span>, <span class="author">Dobbs P</span>, <span class="author">Luu K</span></div>
+                <div class="paper-keywords"><span class="keyword">尼古丁公共卫生危机</span><span class="keyword">多模态超图检索增强生成</span><span class="keyword">烟草产品数据集</span><span class="keyword">图像检索</span><span class="keyword">语义相似性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02047v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02047v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02026v1" target="_blank">Learning to Read Where to Look: Disease-Aware Vision-Language Pretraining for 3D CT</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02026v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究提出一种疾病感知的3D CT视觉语言预训练模型，利用大规模医院数据和公共数据集，结合对比学习和疾病监督，在文本-图像检索和疾病分类任务上达到先进水平，并引入片内文本片段定位新任务，显著提升定位精度。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">近期的三维CT视觉语言模型通过对比预训练将CT体数据与报告对齐，但通常依赖有限的公开数据且仅提供粗略的全局监督。我们在单个医院收集的98k份报告-体数据对（50k名患者）并结合公开数据集上训练了一个三维CT视觉语言模型，使用SigLIP风格的对比预训练以及在共享视觉-文本嵌入空间中进行基于提示（prompt）的疾病监督。在CT-RATE上，我们的模型在文本到图像检索（R@10 31.5 vs. 22.2）上达到了最先进的水平，并在疾病分类（AUC 83.8 vs. 83.8）上取得了有竞争力的结果，在Rad-ChestCT上也有一致的结果（AUC 77.0 vs. 77.3）。我们进一步观察到，放射科医生在报告中通常会引用特定的图像（例如，“系列X，图像Y”），将文本描述与精确的轴向位置联系起来。我们自动挖掘了262k个这样的文本片段-切片对，并引入了扫描内片段定位（intra-scan snippet localization）任务——预测文本片段所指的轴向深度——在12毫米特征分辨率下，将平均绝对误差降低到36.3毫米，而最佳基线为67.0毫米。添加此定位目标后，检索和分类任务在置信区间内基本保持不变，从而产生了一个用于检索、分类和扫描内定位（intra-scan grounding）的单一统一模型。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Recent 3D CT vision-language models align volumes with reports via contrastive pretraining, but typically rely on limited public data and provide only coarse global supervision. We train a 3D CT vision-language model on 98k report-volume pairs (50k patients) collected at a single hospital, combined with public datasets, using SigLIP-style contrastive pretraining together with prompt-based disease supervision in the shared vision-text embedding space. On CT-RATE, our model achieves state-of-the-art text-to-image retrieval (R@10 31.5 vs. 22.2) and competitive disease classification (AUC 83.8 vs. 83.8), with consistent results on Rad-ChestCT (AUC 77.0 vs. 77.3). We further observe that radiologists routinely reference specific images within their reports (e.g., ``series X, image Y''), linking textual descriptions to precise axial locations. We automatically mine 262k such snippet-slice pairs and introduce the task of intra-scan snippet localization -- predicting the axial depth referred to by a text snippet -- reducing mean absolute error to 36.3 mm at 12 mm feature resolution, compared with 67.0 mm for the best baseline. Adding this localization objective leaves retrieval and classification broadly unchanged within confidence bounds, yielding a single unified model for retrieval, classification, and intra-scan grounding.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Ging S</span>, <span class="author">Arnold P</span>, <span class="author">Walter S</span>, <span class="author">Alnahas H</span>, <span class="author">Bast H</span>, <span class="author">Kotter E</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">三维CT</span><span class="keyword">视觉语言模型</span><span class="keyword">对比预训练</span><span class="keyword">疾病监督</span><span class="keyword">片内定位</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02026v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02026v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">3 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02097v1" target="_blank">ClinConsensus: A Consensus-Based Benchmark for Evaluating Chinese Medical LLMs across Difficulty Levels</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02097v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文介绍了ClinConsensus，一个由临床专家构建和验证的中文医学大语言模型评测基准。它包含2500个开放式病例，覆盖诊疗全流程和多个专科，并引入基于量规的评分协议和双评审框架进行可靠评估。评估揭示了现有模型在推理、证据使用和纵向随访能力上的差异，并指出临床可操作的治疗规划仍是关键瓶颈。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">大语言模型（LLMs）越来越多地应用于健康管理，在疾病预防、临床决策和长期护理方面展现出潜力。然而，现有的医学评测基准在很大程度上仍然是静态和任务孤立的，未能捕捉真实世界临床工作流的开放性、纵向结构以及安全关键复杂性。我们引入了ClinConsensus，这是一个由临床专家精心策划、验证和质量控制的中文医学评测基准。ClinConsensus包含2500个开放式病例，涵盖从预防、干预到长期随访的全程护理，覆盖36个医学专科、12种常见临床任务类型以及渐进增加的复杂度。为了对此类复杂场景进行可靠评估，我们采用了基于量规的评分协议，并提出了临床适用一致性分数（CACS@k）。我们进一步引入了双评审评估框架，将高性能的LLM-as-judge与通过监督微调训练的、可本地部署的蒸馏评审模型相结合，从而实现与医生判断一致的可扩展且可复现的评估。利用ClinConsensus，我们对多个领先的大语言模型进行了全面评估，揭示了模型在不同任务主题、护理阶段和医学专科之间存在显著的异质性。虽然表现最佳的模型获得了相近的总分，但它们在推理、证据使用和纵向随访能力方面差异明显，并且临床可操作的治疗规划仍然是一个关键瓶颈。我们发布ClinConsensus作为一个可扩展的基准，以支持开发与评估那些稳健、基于临床且已准备好投入真实世界部署的医学大语言模型。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Large language models (LLMs) are increasingly applied to health management, showing promise across disease prevention, clinical decision-making, and long-term care. However, existing medical benchmarks remain largely static and task-isolated, failing to capture the openness, longitudinal structure, and safety-critical complexity of real-world clinical workflows. We introduce ClinConsensus, a Chinese medical benchmark curated, validated, and quality-controlled by clinical experts. ClinConsensus comprises 2500 open-ended cases spanning the full continuum of care--from prevention and intervention to long-term follow-up--covering 36 medical specialties, 12 common clinical task types, and progressively increasing levels of complexity. To enable reliable evaluation of such complex scenarios, we adopt a rubric-based grading protocol and propose the Clinically Applicable Consistency Score (CACS@k). We further introduce a dual-judge evaluation framework, combining a high-capability LLM-as-judge with a distilled, locally deployable judge model trained via supervised fine-tuning, enabling scalable and reproducible evaluation aligned with physician judgment. Using ClinConsensus, we conduct a comprehensive assessment of several leading LLMs and reveal substantial heterogeneity across task themes, care stages, and medical specialties. While top-performing models achieve comparable overall scores, they differ markedly in reasoning, evidence use, and longitudinal follow-up capabilities, and clinically actionable treatment planning remains a key bottleneck. We release ClinConsensus as an extensible benchmark to support the development and evaluation of medical LLMs that are robust, clinically grounded, and ready for real-world deployment.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Zheng X</span>, <span class="author">Li H</span>, <span class="author">Luo W</span>, <span class="author">Zhai W</span>, <span class="author">Li Y</span>, <span class="author">Yan C</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">医学大语言模型</span><span class="keyword">中文医学评测基准</span><span class="keyword">临床工作流</span><span class="keyword">一致性评分</span><span class="keyword">专家验证</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02097v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02097v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02047v1" target="_blank">NICO-RAG: Multimodal Hypergraph Retrieval-Augmented Generation for Understanding the Nicotine Public Health Crisis</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02047v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文针对尼古丁成瘾公共卫生危机，提出了NICO多模态数据集和NICO-RAG框架。该框架利用超图组织图像和文本信息，实现了无需语言模型高成本处理的图像检索，并能通过视觉和语义相似性进行查询回答，在实验中表现优异。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">尼古丁成瘾（nicotine addiction）公共卫生危机持续蔓延。仅在本世纪，烟草行业就积极发布和营销新产品，以努力吸引新的年轻客户终身消费。此类创新和产品开发，即调味尼古丁或烟草产品（如尼古丁袋），已经抵消了多年的反烟草运动成果。过去的工作在范围和连接大规模数据点的能力上均存在局限。因此，我们引入了尼古丁创新反制（Nicotine Innovation Counter-Offensive, NICO）数据集，为公共卫生研究人员提供了超过200,000个多模态样本，涵盖55个烟草和尼古丁产品品牌，包括图像和文本描述。此外，为了向公共卫生研究人员提供大规模数据集中的事实关联，我们提出了NICO-RAG，一种检索增强生成（Retrieval-Augmented Generation, RAG）框架。该框架能够检索图像特征，而无需承担语言模型的高昂成本，以及处理如NICO这样大规模数据集中图像令牌（image tokens）的额外开销。在构建时，NICO-RAG将图像和文本提取的实体（entities）和关系（relations）组织成超图（hypergraphs），以生成尽可能符合事实的响应。这种联合多模态知识表示使NICO-RAG不仅能够通过视觉相似性，还能通过图像描述的语义相似性来检索图像以进行查询回答。实验表明，在处理超过100个问题时无需处理来自图像的额外令牌，NICO-RAG的性能与为图像适配的最先进（state-of-the-art）RAG方法相当。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The nicotine addiction public health crisis continues to be pervasive. In this century alone, the tobacco industry has released and marketed new products in an aggressive effort to lure new and young customers for life. Such innovations and product development, namely flavored nicotine or tobacco such as nicotine pouches, have undone years of anti-tobacco campaign work. Past work is limited both in scope and in its ability to connect large-scale data points. Thus, we introduce the Nicotine Innovation Counter-Offensive (NICO) Dataset to provide public health researchers with over 200,000 multimodal samples, including images and text descriptions, on 55 tobacco and nicotine product brands. In addition, to provide public health researchers with factual connections across a large-scale dataset, we propose NICO-RAG, a retrieval-augmented generation (RAG) framework that can retrieve image features without incurring the high-cost of language models, as well as the added cost of processing image tokens with large-scale datasets such as NICO. At construction time, NICO-RAG organizes image- and text-extracted entities and relations into hypergraphs to produce as factual responses as possible. This joint multimodal knowledge representation enables NICO-RAG to retrieve images for query answering not only by visual similarity but also by the semantic similarity of image descriptions. Experimentals show that without needing to process additional tokens from images for over 100 questions, NICO-RAG performs comparably to the state-of-the-art RAG method adapted for images.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Serna-Aguilera M</span>, <span class="author">Anderes R</span>, <span class="author">Dobbs P</span>, <span class="author">Luu K</span></div>
+                <div class="paper-keywords"><span class="keyword">尼古丁公共卫生危机</span><span class="keyword">多模态超图检索增强生成</span><span class="keyword">烟草产品数据集</span><span class="keyword">图像检索</span><span class="keyword">语义相似性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02047v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02047v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.01878v1" target="_blank">CTForensics: A Comprehensive Dataset and Method for AI-Generated CT Image Detection</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.01878v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文针对AI生成的CT图像带来的安全风险，提出了一个包含十种生成方法的综合数据集CTForensics以评估检测模型的泛化能力，并设计了一种基于CNN的空间频率增强检测器ESF-CTFD，该模型通过融合小波、空间和频域特征，在不同生成模型上表现出优越的检测性能和泛化能力。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">随着生成式AI在医学成像领域的快速发展，合成计算机断层扫描（CT）图像在数据增强和临床诊断等应用中展现出巨大潜力，但也带来了严重的安全风险。尽管安全担忧日益增加，现有的CT伪造检测研究仍然有限，未能充分应对现实世界的挑战。这些局限性主要体现在两个方面：缺乏能够有效评估模型泛化能力以反映实际应用需求的数据集，以及依赖为自然图像设计的检测方法，这些方法对CT特有的伪造伪影不敏感。鉴于此，我们提出了CTForensics，一个旨在系统评估CT伪造检测方法泛化能力的综合数据集，其中包含十种不同的CT生成方法。此外，我们引入了增强空间频率CT伪造检测器（ESF-CTFD），这是一种高效的基于CNN的神经网络，能够捕捉小波、空间和频域中的伪造线索。首先，它将输入的CT图像转换为三个尺度，并通过小波增强中心主干（Wavelet-Enhanced Central Stem）在每个尺度提取特征。然后，从最大尺度的特征开始，空间处理块（Spatial Process Block）逐步与较小尺度的特征进行融合。最后，频率处理块（Frequency Process Block）学习频域信息以预测最终结果。实验表明，ESF-CTFD consistently outperforms existing methods and exhibits superior generalization across different CT generative models。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">With the rapid development of generative AI in medical imaging, synthetic Computed Tomography (CT) images have demonstrated great potential in applications such as data augmentation and clinical diagnosis, but they also introduce serious security risks. Despite the increasing security concerns, existing studies on CT forgery detection are still limited and fail to adequately address real-world challenges. These limitations are mainly reflected in two aspects: the absence of datasets that can effectively evaluate model generalization to reflect the real-world application requirements, and the reliance on detection methods designed for natural images that are insensitive to CT-specific forgery artifacts. In this view, we propose CTForensics, a comprehensive dataset designed to systematically evaluate the generalization capability of CT forgery detection methods, which includes ten diverse CT generative methods. Moreover, we introduce the Enhanced Spatial-Frequency CT Forgery Detector (ESF-CTFD), an efficient CNN-based neural network that captures forgery cues across the wavelet, spatial, and frequency domains. First, it transforms the input CT image into three scales and extracts features at each scale via the Wavelet-Enhanced Central Stem. Then, starting from the largest-scale features, the Spatial Process Block gradually performs feature fusion with the smaller-scale ones. Finally, the Frequency Process Block learns frequency-domain information for predicting the final results. Experiments demonstrate that ESF-CTFD consistently outperforms existing methods and exhibits superior generalization across different CT generative models.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Li Y</span>, <span class="author">Tan Z</span>, <span class="author">Xu G</span>, <span class="author">Ye Y</span>, <span class="author">Yang Y</span>, <span class="author">Lei Z</span></div>
+                <div class="paper-keywords"><span class="keyword">AI生成CT图像检测</span><span class="keyword">医学图像伪造</span><span class="keyword">综合数据集</span><span class="keyword">空间频率增强检测器</span><span class="keyword">模型泛化能力</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.01878v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.01878v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">1 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.02079v1" target="_blank">MMNavAgent: Multi-Magnification WSI Navigation Agent for Clinically Consistent Whole-Slide Analysis</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-02
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.02079v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出一种临床一致的多倍率全切片图像导航代理MMNavAgent，通过交叉倍率导航工具和倍率选择工具，模拟病理学家动态整合全局与细胞证据的诊断流程，在公开数据集上取得了优于非代理基线的诊断性能。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">近期的人工智能导航方法旨在通过建模空间探索和选择诊断相关区域来改进全切片图像（WSI）诊断，但大多在单一固定倍率下操作或依赖预定义的倍率遍历。在临床实践中，病理学家跨多个倍率检查切片，并选择性地仅检查必要的尺度，以顺序方式动态整合全局和细胞证据。这种不匹配阻碍了现有方法对真实诊断工作流程中固有的交叉倍率交互和自适应倍率选择进行建模。为此，我们提出了一种临床一致的多倍率WSI导航代理（MMNavAgent），它显式地建模了多倍率交互和自适应倍率选择。具体来说，我们引入了一个交叉倍率导航工具（CMT），它聚合来自相邻倍率的上下文信息，以增强导航路径上的判别性表征。我们进一步引入了一个倍率选择工具（MST），它在代理框架内利用记忆驱动的推理来实现交互式和自适应的倍率选择，模拟病理学家的顺序决策过程。在公开数据集上的大量实验证明了诊断性能的提升，相较于非代理基线，AUC提高了1.45%，BACC提高了2.93%。代码将在接受后公开。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Recent AI navigation approaches aim to improve Whole-Slide Image (WSI) diagnosis by modeling spatial exploration and selecting diagnostically relevant regions, yet most operate at a single fixed magnification or rely on predefined magnification traversal. In clinical practice, pathologists examine slides across multiple magnifications and selectively inspect only necessary scales, dynamically integrating global and cellular evidence in a sequential manner. This mismatch prevents existing methods from modeling cross-magnification interactions and adaptive magnification selection inherent to real diagnostic workflows. To these, we propose a clinically consistent Multi-Magnification WSI Navigation Agent (MMNavAgent) that explicitly models multi magnification interaction and adaptive magnification selection. Specifically, we introduce a Cross-Magnification navigation Tool (CMT) that aggregates contextual information from adjacent magnifications to enhance discriminative representations along the navigation path. We further introduce a Magnification Selection Tool (MST) that leverages memory-driven reasoning within the agent framework to enable interactive and adaptive magnification selection, mimicking the sequential decision process of pathologists. Extensive experiments on a public dataset demonstrate improved diagnostic performance, with 1.45% gain of AUC and 2.93% gain of BACC over a non-agent baseline. Code will be public upon acceptance.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Xu Z</span>, <span class="author">Li H</span>, <span class="author">Liu J</span>, <span class="author">Xie L</span>, <span class="author">Ma X</span>, <span class="author">You X</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">全切片图像分析</span><span class="keyword">多倍率导航</span><span class="keyword">自适应倍率选择</span><span class="keyword">临床一致性</span><span class="keyword">人工智能代理</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.02079v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.02079v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-03-03 22:32 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
