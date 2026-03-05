@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-03-04</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">March 05, 2026</div>
+                <div class="header-range">2026-03-04 — 2026-03-04</div>
+                <div class="header-total">10</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">10</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">5</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">4</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">1</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">5 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04348v1" target="_blank">RANGER: Sparsely-Gated Mixture-of-Experts with Adaptive Retrieval Re-ranking for Pathology Report Generation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04348v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出RANGER框架，通过稀疏门控专家混合与自适应检索重排序技术，解决病理报告生成中图像复杂、现有方法存在噪声的问题，在PathText数据集上取得显著性能提升。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">病理报告生成（Pathology report generation）仍然是一个相对未被充分探索的下游任务，这主要归因于全切片图像（Whole Slide Images, WSIs）的千兆像素尺度和复杂的形态异质性。现有的病理报告生成框架通常采用Transformer架构，依赖于同质的解码器架构和静态知识检索集成。这种架构限制了生成的专业化，并可能在报告生成过程中引入噪声性的外部指导。为了解决这些限制，我们提出了RANGER，一个用于病理报告生成的、带有自适应检索重排序（adaptive retrieval re-ranking）的稀疏门控专家混合（sparsely-gated Mixture-of-Experts, MoE）框架。具体来说，我们将稀疏门控MoE集成到解码器中，并结合噪声top-$k$路由（noisy top-$k$ routing）和负载均衡正则化（load-balancing regularization），以实现跨不同诊断模式的动态专家专业化。此外，我们引入了一个自适应检索重排序模块，该模块在集成前有选择地细化从知识库检索到的记忆，从而减少噪声并基于视觉特征表示改善语义对齐。我们在PathText-BRCA数据集上进行了广泛的实验，并在标准自然语言生成指标上证明了相对于现有方法的持续改进。我们的完整RANGER模型在PathText数据集上达到了最佳性能，BLEU-1至BLEU-4分数分别达到0.4598、0.3044、0.2036和0.1435，METEOR为0.1883，ROUGE-L为0.3038，验证了动态专家路由和自适应知识细化对于基于语义的病理报告生成的有效性。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Pathology report generation remains a relatively under-explored downstream task, primarily due to the gigapixel scale and complex morphological heterogeneity of Whole Slide Images (WSIs). Existing pathology report generation frameworks typically employ transformer architectures, relying on a homogeneous decoder architecture and static knowledge retrieval integration. Such architectures limit generative specialization and may introduce noisy external guidance during the report generation process. To address these limitations, we propose RANGER, a sparsely-gated Mixture-of-Experts (MoE) framework with adaptive retrieval re-ranking for pathology report generation. Specifically, we integrate a sparsely gated MoE into the decoder, along with noisy top-$k$ routing and load-balancing regularization, to enable dynamic expert specialization across various diagnostic patterns. Additionally, we introduce an adaptive retrieval re-ranking module that selectively refines retrieved memory from a knowledge base before integration, reducing noise and improving semantic alignment based on visual feature representations. We perform extensive experiments on the PathText-BRCA dataset and demonstrate consistent improvements over existing approaches across standard natural language generation metrics. Our full RANGER model achieves optimal performance on PathText dataset, reaching BLEU-1 to BLEU-4 scores of 0.4598, 0.3044, 0.2036, and 0.1435, respectively, with METEOR of 0.1883, and ROUGE-L of 0.3038, validating the effectiveness of dynamic expert routing and adaptive knowledge refinement for semantically grounded pathology report generation.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Chen Y</span>, <span class="author">Su Z</span>, <span class="author">Khan H</span>, <span class="author">Niazi MKK</span></div>
+                <div class="paper-keywords"><span class="keyword">稀疏门控专家混合</span><span class="keyword">自适应检索重排序</span><span class="keyword">病理报告生成</span><span class="keyword">全切片图像</span><span class="keyword">动态专家路由</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04348v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04348v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04321v1" target="_blank">SPRINT: Semi-supervised Prototypical Representation for Few-Shot Class-Incremental Tabular Learning</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04321v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出了首个针对表格数据的少样本类增量学习框架SPRINT。它利用置信度伪标签和低存储成本优势，通过混合情景训练策略，在六个跨领域基准测试中实现了最先进的性能。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">现实世界的系统必须能够从有限的数据中持续适应新概念，同时不遗忘先前获得的知识。虽然少样本类增量学习（FSCIL）在计算机视觉领域已经建立，但其在表格领域的应用在很大程度上仍未得到探索。与图像不同，表格流（例如，日志、传感器）提供了丰富的未标记数据、稀缺的专家标注和可忽略的存储成本，这些特征被依赖严格缓冲区的现有基于视觉的方法所忽视。我们引入了SPRINT，这是第一个为表格分布量身定制的FSCIL框架。SPRINT引入了一种混合情景训练策略，利用基于置信度的伪标签来丰富新类表示，并利用低存储成本来保留基类历史。在涵盖网络安全、医疗保健和生态领域的六个不同基准上进行广泛评估，证明了SPRINT的跨领域鲁棒性。它实现了77.37%（5-shot）的最先进平均准确率，比最强的增量基线高出4.45%。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Real-world systems must continuously adapt to novel concepts from limited data without forgetting previously acquired knowledge. While Few-Shot Class-Incremental Learning (FSCIL) is established in computer vision, its application to tabular domains remains largely unexplored. Unlike images, tabular streams (e.g., logs, sensors) offer abundant unlabeled data, a scarcity of expert annotations and negligible storage costs, features ignored by existing vision-based methods that rely on restrictive buffers. We introduce SPRINT, the first FSCIL framework tailored for tabular distributions. SPRINT introduces a mixed episodic training strategy that leverages confidence-based pseudo-labeling to enrich novel class representations and exploits low storage costs to retain base class history. Extensive evaluation across six diverse benchmarks spanning cybersecurity, healthcare, and ecological domains, demonstrates SPRINT's cross-domain robustness. It achieves a state-of-the-art average accuracy of 77.37% (5-shot), outperforming the strongest incremental baseline by 4.45%.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Suleymanov U</span>, <span class="author">Kantarcioglu M</span>, <span class="author">Chan KS</span>, <span class="author">Lucia MD</span>, <span class="author">Hamlen K</span>, <span class="author">Khan L</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">少样本类增量学习</span><span class="keyword">表格数据</span><span class="keyword">半监督原型表示</span><span class="keyword">伪标签</span><span class="keyword">跨领域鲁棒性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04321v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04321v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04142v1" target="_blank">A Multi-Agent Framework for Interpreting Multivariate Physiological Time Series</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04142v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出Vivaldi多智能体框架，用于解释多变量生理时间序列。研究发现，智能体推理对不同类型AI模型的影响存在差异：对非思考型模型提升显著，但对思考型模型可能降低解释质量。专家评估表明，智能体AI的价值在于选择性外部化计算与结构，而非最大化推理复杂度。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">持续生理监测是急救护理的核心，但部署可信赖的人工智能（AI）具有挑战性。虽然大型语言模型（LLMs）可以将复杂的生理信号转化为临床叙述，但尚不清楚智能体（agentic）系统相对于零样本推理的表现如何。为了解决这些问题，我们提出了Vivaldi，一个用于解释多变量生理时间序列的角色结构化多智能体系统。由于监管限制无法进行实时部署，我们在一个受控的临床试点中，向一小群高度资质的急诊医学专家实例化了Vivaldi。他们的评估揭示了一个依赖于具体情境的图景，这与普遍认为的智能体推理能一致提升性能的假设形成对比。我们的实验表明，智能体流程极大地有益于非思考型和医学微调模型，将专家评级的解释合理性和相关性分别提高了+6.9和+9.7分。相反，对于思考型模型，智能体编排通常会降低解释质量，包括相关性下降14分，同时提高了诊断精度（ESI F1 +3.6）。我们还发现，基于工具的显式计算对于可编码的临床指标具有决定性作用，而主观目标，如疼痛评分和住院时长，则显示出有限或不一致的变化。专家评估进一步表明，临床效用（clinical utility）的增益取决于可视化惯例，医学专用模型在效用和清晰度之间实现了最有利的权衡。总之，这些发现表明，智能体AI的价值在于选择性地外部化计算和结构，而非追求最大的推理复杂度，并突出了具体的设计权衡和经验教训，广泛适用于安全关键的医疗环境中的可解释AI（explainable AI）。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Continuous physiological monitoring is central to emergency care, yet deploying trustworthy AI is challenging. While LLMs can translate complex physiological signals into clinical narratives, it is unclear how agentic systems perform relative to zero-shot inference. To address these questions, we present Vivaldi, a role-structured multi-agent system that explains multivariate physiological time series. Due to regulatory constraints that preclude live deployment, we instantiate Vivaldi in a controlled, clinical pilot to a small, highly qualified cohort of emergency medicine experts, whose evaluations reveal a context-dependent picture that contrasts with prevailing assumptions that agentic reasoning uniformly improves performance. Our experiments show that agentic pipelines substantially benefit non-thinking and medically fine-tuned models, improving expert-rated explanation justification and relevance by +6.9 and +9.7 points, respectively. Contrarily, for thinking models, agentic orchestration often degrades explanation quality, including a 14-point drop in relevance, while improving diagnostic precision (ESI F1 +3.6). We also find that explicit tool-based computation is decisive for codifiable clinical metrics, whereas subjective targets, such as pain scores and length of stay, show limited or inconsistent changes. Expert evaluation further indicates that gains in clinical utility depend on visualization conventions, with medically specialized models achieving the most favorable trade-offs between utility and clarity. Together, these findings show that the value of agentic AI lies in the selective externalization of computation and structure rather than in maximal reasoning complexity, and highlight concrete design trade-offs and learned lessons, broadly applicable to explainable AI in safety-critical healthcare settings.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Gabrielli D</span>, <span class="author">Velardi P</span>, <span class="author">Faralli S</span>, <span class="author">Prenkaj B</span></div>
+                <div class="paper-keywords"><span class="keyword">多智能体系统</span><span class="keyword">生理时间序列</span><span class="keyword">可解释人工智能</span><span class="keyword">临床评估</span><span class="keyword">医疗人工智能</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04142v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04142v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04022v1" target="_blank">Rethinking the Efficiency and Effectiveness of Reinforcement Learning for Radiology Report Generation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04022v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文重新审视了强化学习在放射学报告生成任务中的效率和有效性。研究发现数据质量比数量更重要，并提出了一种基于诊断多样性的数据采样策略。同时，针对报告中关键诊断令牌稀少的问题，提出了诊断令牌加权策略优化方法，以临床F1分数作为奖励信号，直接优化临床准确性。实验表明，该框架在多个数据集上取得了最先进的性能，且所需训练样本更少。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">放射科医生非常期望用于放射学报告生成（R2G）的全自动AI，但现有方法在临床效用方面存在不足。强化学习（RL）有潜力解决这些缺点，但其在该任务中的应用仍未得到充分探索。在本文中，我们从数据效率和优化有效性的角度重新审视了用于R2G任务的RL。首先，我们探讨了数据数量和质量对RL在医学背景下性能的影响，揭示了数据质量比数量起着更关键的作用。为此，我们提出了一种基于诊断多样性（diagnostic diversity）的数据采样策略，能够以更少的样本实现可比的性能。其次，我们观察到放射学报告中的大多数令牌是模板式的且诊断信息不足，而临床关键令牌的低频率增加了其在优化过程中被忽视的风险。为了解决这个问题，我们引入了诊断令牌加权策略优化（Diagnostic Token-weighted Policy Optimization, DiTPO），它通过使用诊断F1分数（diagnostic F1 score）作为奖励信号，直接优化临床准确性。与平等对待所有令牌的标准RL方法不同，DiTPO通过基于规则或梯度的机制，明确地对不同令牌的不同重要性进行建模，以优先处理临床相关内容。在MIMIC-CXR、IU-Xray和CheXpert Plus数据集上进行的大量实验表明，我们的框架实现了最先进的（SOTA）性能，同时所需的RL训练样本大大减少。值得注意的是，在MIMIC-CXR上，我们的框架仅使用20%的RL训练样本就获得了0.516的F1分数。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Radiologists highly desire fully automated AI for radiology report generation (R2G), yet existing approaches fall short in clinical utility. Reinforcement learning (RL) holds potential to address these shortcomings, but its adoption in this task remains underexplored. In this paper, we revisit RL in terms of data efficiency and optimization effectiveness for R2G tasks. First, we explore the impact of data quantity and quality on the performance of RL in medical contexts, revealing that data quality plays a more critical role than quantity. To this end, we propose a diagnostic diversity-based data sampling strategy that enables comparable performance with fewer samples. Second, we observe that the majority of tokens in radiology reports are template-like and diagnostically uninformative, whereas the low frequency of clinically critical tokens heightens the risk of being overlooked during optimization. To tackle this, we introduce Diagnostic Token-weighted Policy Optimization (DiTPO), which directly optimizes for clinical accuracy by using a diagnostic F1 score as the reward signal. Unlike standard RL approaches that treat all tokens equally, DiTPO explicitly models the varying importance of different tokens through rule- or gradient-based mechanisms to prioritize clinically relevant content. Extensive experiments on the MIMIC-CXR, IU-Xray, and CheXpert Plus datasets demonstrate that our framework achieves state-of-the-art (SOTA) performance while requiring substantially fewer training samples in RL. Notably, on MIMIC-CXR, our framework attains an F1 score of 0.516 using only 20% of the RL training samples.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Lu Z</span>, <span class="author">Yuan R</span>, <span class="author">Cao W</span>, <span class="author">Chang W</span>, <span class="author">Wei Z</span>, <span class="author">Wang S</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">强化学习</span><span class="keyword">放射学报告生成</span><span class="keyword">数据效率</span><span class="keyword">诊断令牌加权优化</span><span class="keyword">临床准确性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04022v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04022v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04240v1" target="_blank">DeNuC: Decoupling Nuclei Detection and Classification in Histopathology</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04240v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出DeNuC方法，通过解耦细胞核检测与分类任务，解决了病理学基础模型在联合优化时出现的表示退化与计算负担问题。该方法先用轻量模型定位细胞核，再利用基础模型提取特征进行分类，在多个数据集上显著提升了性能并减少了参数量。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">病理学基础模型（Pathology Foundation Models, FMs）在广泛的病理学图像表示和诊断任务中表现出强大的性能。然而，在细胞核检测与分类（Nuclei Detection and Classification, NDC）任务中，FMs并未展现出相对于传统专用模型的预期性能优势。在这项工作中，我们揭示了联合优化细胞核检测和分类会导致FMs出现严重的表示退化（representation degradation）。此外，我们发现细胞核检测与细胞核分类之间任务难度的巨大内在差异，使得联合NDC优化对于检测阶段带来了不必要的计算负担。为了应对这些挑战，我们提出了DeNuC，这是一种简单而有效的方法，旨在通过解耦（Decoupling）细胞核检测与分类来突破现有瓶颈。DeNuC采用一个轻量级模型进行精确的细胞核定位，随后利用病理学FM对输入图像进行编码，并根据检测到的坐标查询细胞核特异性特征进行分类。在三个广泛使用的基准测试上进行的大量实验表明，DeNuC有效地释放了FMs在NDC任务中的表示潜力，并显著优于最先进的方法。值得注意的是，与其他方法相比，DeNuC在BRCAM2C和PUMA数据集上分别将F1分数提高了4.2%和3.6%（或更高），同时仅使用了16%（或更少）的可训练参数。代码可在 https://github.com/ZijiangY1116/DeNuC 获取。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Pathology Foundation Models (FMs) have shown strong performance across a wide range of pathology image representation and diagnostic tasks. However, FMs do not exhibit the expected performance advantage over traditional specialized models in Nuclei Detection and Classification (NDC). In this work, we reveal that jointly optimizing nuclei detection and classification leads to severe representation degradation in FMs. Moreover, we identify that the substantial intrinsic disparity in task difficulty between nuclei detection and nuclei classification renders joint NDC optimization unnecessarily computationally burdensome for the detection stage. To address these challenges, we propose DeNuC, a simple yet effective method designed to break through existing bottlenecks by Decoupling Nuclei detection and Classification. DeNuC employs a lightweight model for accurate nuclei localization, subsequently leveraging a pathology FM to encode input images and query nucleus-specific features based on the detected coordinates for classification. Extensive experiments on three widely used benchmarks demonstrate that DeNuC effectively unlocks the representational potential of FMs for NDC and significantly outperforms state-of-the-art methods. Notably, DeNuC improves F1 scores by 4.2% and 3.6% (or higher) on the BRCAM2C and PUMA datasets, respectively, while using only 16% (or fewer) trainable parameters compared to other methods. Code is available at https://github.com/ZijiangY1116/DeNuC.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Yang Z</span>, <span class="author">Kuang C</span>, <span class="author">Fu D</span></div>
+                <div class="paper-keywords"><span class="keyword">病理学基础模型</span><span class="keyword">细胞核检测与分类</span><span class="keyword">解耦学习</span><span class="keyword">表示退化</span><span class="keyword">计算效率</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04240v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04240v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">4 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04340v1" target="_blank">Balancing Fidelity, Utility, and Privacy in Synthetic Cardiac MRI Generation: A Comparative Study</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04340v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究系统评估了DDPM、LDM和FM三种生成模型在合成心脏MRI数据上的表现。结果表明，基于扩散的模型（尤其是DDPM）在有限数据条件下，能在下游分割任务效用、图像保真度和隐私保护之间取得最佳平衡，为医学影像的安全有效数据增强提供了框架。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">心脏MRI (CMR) 中的深度学习从根本上受到数据稀缺和隐私法规的双重限制。本研究系统地对三种生成架构：去噪扩散概率模型 (DDPM)、潜在扩散模型 (LDM) 和流匹配 (FM) 在合成CMR生成方面进行了基准测试。利用解剖掩码条件化图像合成的两阶段流程，我们从三个关键轴评估生成的数据：保真度、效用和隐私。我们的结果表明，在有限数据条件下，基于扩散的模型，特别是DDPM，在下游分割效用、图像保真度和隐私保护之间提供了最有效的平衡，而FM则显示出有前景的隐私特性，但任务级性能略低。这些发现量化了跨领域泛化与患者保密性之间的权衡，为医学成像中安全有效的合成数据增强建立了一个框架。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Deep learning in cardiac MRI (CMR) is fundamentally constrained by both data scarcity and privacy regulations. This study systematically benchmarks three generative architectures: Denoising Diffusion Probabilistic Models (DDPM), Latent Diffusion Models (LDM), and Flow Matching (FM) for synthetic CMR generation. Utilizing a two-stage pipeline where anatomical masks condition image synthesis, we evaluate generated data across three critical axes: fidelity, utility, and privacy. Our results show that diffusion-based models, particularly DDPM, provide the most effective balance between downstream segmentation utility, image fidelity, and privacy preservation under limited-data conditions, while FM demonstrates promising privacy characteristics with slightly lower task-level performance. These findings quantify the trade-offs between cross-domain generalization and patient confidentiality, establishing a framework for safe and effective synthetic data augmentation in medical imaging.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Edirisooriya M</span>, <span class="author">Kawya D</span>, <span class="author">Kumarasinghe I</span>, <span class="author">Devindi I</span>, <span class="author">Maleckar MM</span>, <span class="author">Ragel R</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">合成心脏MRI</span><span class="keyword">生成模型</span><span class="keyword">数据隐私</span><span class="keyword">图像保真度</span><span class="keyword">下游任务效用</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04340v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04340v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04288v1" target="_blank">A multi-center analysis of deep learning methods for video polyp detection and segmentation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04288v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究通过多中心合作构建数据集，评估了利用序列数据和时序信息的深度学习方法在实时结肠镜视频中对息肉进行检测与分割的适用性，旨在提高诊断精度、降低漏诊率并改善患者管理。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">结肠息肉是结直肠癌(CRC)公认的前兆，通常在结肠镜检查中发现。然而，这些息肉在外观、位置和大小上的可变性使其检测和切除变得复杂，给有效的监测、干预以及随后的CRC预防带来了挑战。结肠镜监测和息肉切除过程高度依赖胃肠病学家的专业知识，并发生在复杂的结肠结构环境中。因此，结肠息肉的漏检和不完全切除率很高，这可能对患者预后产生不利影响。最近，利用机器学习(ML)的自动化方法被开发出来，以增强息肉检测和分割，从而辅助临床流程并降低漏诊率。这些进展凸显了在实时应用中提高诊断准确性的潜力，最终有助于更有效的患者管理。此外，通过捕捉息肉生长的动态特性和随时间发生的变化，整合序列数据和时序信息可以显著提高这些方法的精度。为了严格研究这些挑战，数据科学家和胃肠病学专家合作编制了一个涵盖多个中心和不同人群的综合数据集。该举措旨在强调在开发稳健的自动化检测和分割方法时，纳入序列数据和时序信息的至关重要性。本研究评估了利用序列数据开发的深度学习(DL)技术在实时临床结肠镜任务中的适用性，强调了帧间时序关系在提高诊断精度方面的关键作用。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Colonic polyps are well-recognized precursors to colorectal cancer (CRC), typically detected during colonoscopy. However, the variability in appearance, location, and size of these polyps complicates their detection and removal, leading to challenges in effective surveillance, intervention, and subsequently CRC prevention. The processes of colonoscopy surveillance and polyp removal are highly reliant on the expertise of gastroenterologists and occur within the complexities of the colonic structure. As a result, there is a high rate of missed detections and incomplete removal of colonic polyps, which can adversely impact patient outcomes. Recently, automated methods that use machine learning have been developed to enhance polyps detection and segmentation, thus helping clinical processes and reducing missed rates. These advancements highlight the potential for improving diagnostic accuracy in real-time applications, which ultimately facilitates more effective patient management. Furthermore, integrating sequence data and temporal information could significantly enhance the precision of these methods by capturing the dynamic nature of polyp growth and the changes that occur over time. To rigorously investigate these challenges, data scientists and experts gastroenterologists collaborated to compile a comprehensive dataset that spans multiple centers and diverse populations. This initiative aims to underscore the critical importance of incorporating sequence data and temporal information in the development of robust automated detection and segmentation methods. This study evaluates the applicability of deep learning techniques developed in real-time clinical colonoscopy tasks using sequence data, highlighting the critical role of temporal relationships between frames in improving diagnostic precision.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Ghatwary N</span>, <span class="author">Solano PC</span>, <span class="author">Ibrahim MR</span>, <span class="author">Krenzer A</span>, <span class="author">Puppe F</span>, <span class="author">Realdon S</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">深度学习</span><span class="keyword">结肠息肉检测</span><span class="keyword">息肉分割</span><span class="keyword">序列数据</span><span class="keyword">计算机辅助诊断</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04288v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04288v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04323v1" target="_blank">PTOPOFL: Privacy-Preserving Personalised Federated Learning via Persistent Homology</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04323v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出PTOPOFL框架，通过使用持久同调生成的拓扑描述符替代梯度共享，同时解决联邦学习中的隐私泄露和非独立同分布数据导致的聚合质量下降问题。该方法在保护隐私的同时，实现了优于现有方法的模型性能。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">联邦学习（FL）面临两个结构性矛盾：梯度共享会引发数据重构攻击，而非独立同分布（non-IID）的客户端分布会降低聚合质量。我们提出了PTOPOFL框架，通过用持久同调（PH）导出的拓扑描述符取代梯度通信，同时应对这两个挑战。客户端仅传输48维的PH特征向量——这是一种紧凑的形状摘要，其多对一结构使得逆向重构被证明是不适定的——而非模型梯度。服务器执行拓扑引导的个性化聚合：根据客户端PH图之间的Wasserstein相似性进行聚类，对簇内模型进行拓扑加权，并将簇与全局共识进行混合。我们证明了一个信息收缩定理，表明在强凸损失函数下，PH描述符每样本泄露的互信息严格少于梯度，并且我们建立了Wasserstein加权聚合方案的线性收敛性，其误差下限严格小于FedAvg。在非独立同分布的医疗场景（8家医院，2个对抗性）和一个病理学基准测试（10个客户端）中，与FedAvg、FedProx、SCAFFOLD和pFedMe相比，PTOPOFL分别实现了AUC 0.841和0.910——在两种设置中均为最高——同时将重构风险相对于梯度共享降低了4.5倍。代码公开于 https://github.com/MorillaLab/TopoFederatedL，数据公开于 https://doi.org/10.5281/zenodo.18827595。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Federated learning (FL) faces two structural tensions: gradient sharing enables data-reconstruction attacks, while non-IID client distributions degrade aggregation quality. We introduce PTOPOFL, a framework that addresses both challenges simultaneously by replacing gradient communication with topological descriptors derived from persistent homology (PH). Clients transmit only 48-dimensional PH feature vectors-compact shape summaries whose many-to-one structure makes inversion provably ill-posed-rather than model gradients. The server performs topology-guided personalised aggregation: clients are clustered by Wasserstein similarity between their PH diagrams, intra-cluster models are topology-weighted,and clusters are blended with a global consensus. We prove an information-contraction theorem showing that PH descriptors leak strictly less mutual information per sample than gradients under strongly convex loss functions, and we establish linear convergence of the Wasserstein-weighted aggregation scheme with an error floor strictly smaller than FedAvg. Evaluated against FedAvg, FedProx, SCAFFOLD, and pFedMe on a non-IID healthcare scenario (8 hospitals, 2 adversarial) and a pathological benchmark (10 clients), PTOPOFL achieves AUC 0.841 and 0.910 respectively-the highest in both settings-while reducing reconstruction risk by a factor of 4.5 relative to gradient sharing. Code is publicly available at https://github.com/MorillaLab/TopoFederatedL and data at https://doi.org/10.5281/zenodo.18827595.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Vomo-Donfack KL</span>, <span class="author">Hoszu A</span>, <span class="author">Ginot G</span>, <span class="author">Morilla I</span></div>
+                <div class="paper-keywords"><span class="keyword">个性化联邦学习</span><span class="keyword">持久同调</span><span class="keyword">隐私保护</span><span class="keyword">拓扑特征</span><span class="keyword">非独立同分布</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04323v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04323v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04022v1" target="_blank">Rethinking the Efficiency and Effectiveness of Reinforcement Learning for Radiology Report Generation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04022v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文重新审视了强化学习在放射学报告生成任务中的效率和有效性。研究发现数据质量比数量更重要，并提出了一种基于诊断多样性的数据采样策略。同时，针对报告中关键诊断令牌稀少的问题，提出了诊断令牌加权策略优化方法，以临床F1分数作为奖励信号，直接优化临床准确性。实验表明，该框架在多个数据集上取得了最先进的性能，且所需训练样本更少。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">放射科医生非常期望用于放射学报告生成（R2G）的全自动AI，但现有方法在临床效用方面存在不足。强化学习（RL）有潜力解决这些缺点，但其在该任务中的应用仍未得到充分探索。在本文中，我们从数据效率和优化有效性的角度重新审视了用于R2G任务的RL。首先，我们探讨了数据数量和质量对RL在医学背景下性能的影响，揭示了数据质量比数量起着更关键的作用。为此，我们提出了一种基于诊断多样性（diagnostic diversity）的数据采样策略，能够以更少的样本实现可比的性能。其次，我们观察到放射学报告中的大多数令牌是模板式的且诊断信息不足，而临床关键令牌的低频率增加了其在优化过程中被忽视的风险。为了解决这个问题，我们引入了诊断令牌加权策略优化（Diagnostic Token-weighted Policy Optimization, DiTPO），它通过使用诊断F1分数（diagnostic F1 score）作为奖励信号，直接优化临床准确性。与平等对待所有令牌的标准RL方法不同，DiTPO通过基于规则或梯度的机制，明确地对不同令牌的不同重要性进行建模，以优先处理临床相关内容。在MIMIC-CXR、IU-Xray和CheXpert Plus数据集上进行的大量实验表明，我们的框架实现了最先进的（SOTA）性能，同时所需的RL训练样本大大减少。值得注意的是，在MIMIC-CXR上，我们的框架仅使用20%的RL训练样本就获得了0.516的F1分数。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Radiologists highly desire fully automated AI for radiology report generation (R2G), yet existing approaches fall short in clinical utility. Reinforcement learning (RL) holds potential to address these shortcomings, but its adoption in this task remains underexplored. In this paper, we revisit RL in terms of data efficiency and optimization effectiveness for R2G tasks. First, we explore the impact of data quantity and quality on the performance of RL in medical contexts, revealing that data quality plays a more critical role than quantity. To this end, we propose a diagnostic diversity-based data sampling strategy that enables comparable performance with fewer samples. Second, we observe that the majority of tokens in radiology reports are template-like and diagnostically uninformative, whereas the low frequency of clinically critical tokens heightens the risk of being overlooked during optimization. To tackle this, we introduce Diagnostic Token-weighted Policy Optimization (DiTPO), which directly optimizes for clinical accuracy by using a diagnostic F1 score as the reward signal. Unlike standard RL approaches that treat all tokens equally, DiTPO explicitly models the varying importance of different tokens through rule- or gradient-based mechanisms to prioritize clinically relevant content. Extensive experiments on the MIMIC-CXR, IU-Xray, and CheXpert Plus datasets demonstrate that our framework achieves state-of-the-art (SOTA) performance while requiring substantially fewer training samples in RL. Notably, on MIMIC-CXR, our framework attains an F1 score of 0.516 using only 20% of the RL training samples.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Lu Z</span>, <span class="author">Yuan R</span>, <span class="author">Cao W</span>, <span class="author">Chang W</span>, <span class="author">Wei Z</span>, <span class="author">Wang S</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">强化学习</span><span class="keyword">放射学报告生成</span><span class="keyword">数据效率</span><span class="keyword">诊断令牌加权优化</span><span class="keyword">临床准确性</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04022v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04022v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">1 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.04142v1" target="_blank">A Multi-Agent Framework for Interpreting Multivariate Physiological Time Series</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-04
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.04142v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出Vivaldi多智能体框架，用于解释多变量生理时间序列。研究发现，智能体推理对不同类型AI模型的影响存在差异：对非思考型模型提升显著，但对思考型模型可能降低解释质量。专家评估表明，智能体AI的价值在于选择性外部化计算与结构，而非最大化推理复杂度。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">持续生理监测是急救护理的核心，但部署可信赖的人工智能（AI）具有挑战性。虽然大型语言模型（LLMs）可以将复杂的生理信号转化为临床叙述，但尚不清楚智能体（agentic）系统相对于零样本推理的表现如何。为了解决这些问题，我们提出了Vivaldi，一个用于解释多变量生理时间序列的角色结构化多智能体系统。由于监管限制无法进行实时部署，我们在一个受控的临床试点中，向一小群高度资质的急诊医学专家实例化了Vivaldi。他们的评估揭示了一个依赖于具体情境的图景，这与普遍认为的智能体推理能一致提升性能的假设形成对比。我们的实验表明，智能体流程极大地有益于非思考型和医学微调模型，将专家评级的解释合理性和相关性分别提高了+6.9和+9.7分。相反，对于思考型模型，智能体编排通常会降低解释质量，包括相关性下降14分，同时提高了诊断精度（ESI F1 +3.6）。我们还发现，基于工具的显式计算对于可编码的临床指标具有决定性作用，而主观目标，如疼痛评分和住院时长，则显示出有限或不一致的变化。专家评估进一步表明，临床效用（clinical utility）的增益取决于可视化惯例，医学专用模型在效用和清晰度之间实现了最有利的权衡。总之，这些发现表明，智能体AI的价值在于选择性地外部化计算和结构，而非追求最大的推理复杂度，并突出了具体的设计权衡和经验教训，广泛适用于安全关键的医疗环境中的可解释AI（explainable AI）。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Continuous physiological monitoring is central to emergency care, yet deploying trustworthy AI is challenging. While LLMs can translate complex physiological signals into clinical narratives, it is unclear how agentic systems perform relative to zero-shot inference. To address these questions, we present Vivaldi, a role-structured multi-agent system that explains multivariate physiological time series. Due to regulatory constraints that preclude live deployment, we instantiate Vivaldi in a controlled, clinical pilot to a small, highly qualified cohort of emergency medicine experts, whose evaluations reveal a context-dependent picture that contrasts with prevailing assumptions that agentic reasoning uniformly improves performance. Our experiments show that agentic pipelines substantially benefit non-thinking and medically fine-tuned models, improving expert-rated explanation justification and relevance by +6.9 and +9.7 points, respectively. Contrarily, for thinking models, agentic orchestration often degrades explanation quality, including a 14-point drop in relevance, while improving diagnostic precision (ESI F1 +3.6). We also find that explicit tool-based computation is decisive for codifiable clinical metrics, whereas subjective targets, such as pain scores and length of stay, show limited or inconsistent changes. Expert evaluation further indicates that gains in clinical utility depend on visualization conventions, with medically specialized models achieving the most favorable trade-offs between utility and clarity. Together, these findings show that the value of agentic AI lies in the selective externalization of computation and structure rather than in maximal reasoning complexity, and highlight concrete design trade-offs and learned lessons, broadly applicable to explainable AI in safety-critical healthcare settings.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Gabrielli D</span>, <span class="author">Velardi P</span>, <span class="author">Faralli S</span>, <span class="author">Prenkaj B</span></div>
+                <div class="paper-keywords"><span class="keyword">多智能体系统</span><span class="keyword">生理时间序列</span><span class="keyword">可解释人工智能</span><span class="keyword">临床评估</span><span class="keyword">医疗人工智能</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.04142v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.04142v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-03-05 22:34 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
