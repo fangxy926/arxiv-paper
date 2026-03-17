@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-03-16</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">March 17, 2026</div>
+                <div class="header-range">2026-03-16 — 2026-03-16</div>
+                <div class="header-total">6</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">6</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">3</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">3</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">3 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15525v1" target="_blank">Clinically Aware Synthetic Image Generation for Concept Coverage in Chest X-ray Models</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15525v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出CARS框架，通过基于临床特征向量的针对性扰动生成合成胸部X光图像，以覆盖数据集中缺失的关键临床特征组合。实验表明，使用CARS生成的图像进行微调能提升模型性能、降低预测不确定性并改善校准，同时保持解剖结构的真实性，有助于提高AI诊断系统的可靠性和临床实用性。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">AI诊断模型的临床部署不仅需要基准准确性，更要求对疾病全谱表现的鲁棒性。然而，公开的胸部X光数据集系统性地缺乏关键临床特征组合，导致模型在临床风险最高的领域训练不足。我们提出了CARS，一个具有临床意识且基于解剖学的框架，通过原则性的合成图像生成来弥补这一差距。CARS对临床特征向量施加针对性扰动，从而在明确保持解剖结构的同时，实现病理发现的受控插入和删除。我们通过在合成子集上微调模型并在保留的MIMIC-CXR基准上进行测试，评估了CARS在七种骨干架构上的表现。与先前的特征扰动方法相比，在CARS生成的图像上进行微调持续提升了精确率-召回率性能，降低了预测不确定性，并改善了模型校准。结构和语义分析显示出高解剖保真度、强特征对齐和低语义不确定性。两位放射科专家的独立评估进一步证实了其真实性和临床一致性。随着该领域向受监管的临床AI发展，CARS证明，为获得更好的特征空间覆盖而进行解剖学上忠实的合成数据生成，是提高胸部X光分类系统性能和可信度的可行且有效的策略——且不损害临床完整性。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The clinical deployment of AI diagnostic models demands more than benchmark accuracy - it demands robustness across the full spectrum of disease presentations. However, publicly available chest radiographic datasets systematically underrepresent critical clinical feature combinations, leaving models under-trained precisely where clinical stakes are highest. We present CARS, a clinically aware and anatomically grounded framework that addresses this gap through principled synthetic image generation. CARS applies targeted perturbations to clinical feature vectors, enabling controlled insertion and deletion of pathological findings while explicitly preserving anatomical structure. We evaluate CARS across seven backbone architectures by fine-tuning models on synthetic subsets and testing on a held-out MIMIC-CXR benchmark. Compared to prior feature perturbation approaches, fine-tuning on CARS-generated images consistently improves precision-recall performance, reduces predictive uncertainty, and improves model calibration. Structural and semantic analyses demonstrate high anatomical fidelity, strong feature alignment, and low semantic uncertainty. Independent evaluation by two expert radiologists further confirms realism and clinical agreement. As the field moves toward regulated clinical AI, CARS demonstrates that anatomically faithful synthetic data generation for better feature space coverage is a viable and effective strategy for improving both the performance and trustworthiness of chest X-ray classification systems - without compromising clinical integrity.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Rafferty A</span>, <span class="author">Ramaesh R</span>, <span class="author">Rajan A</span></div>
+                <div class="paper-keywords"><span class="keyword">合成图像生成</span><span class="keyword">胸部X光模型</span><span class="keyword">临床特征覆盖</span><span class="keyword">模型鲁棒性</span><span class="keyword">解剖结构保持</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15525v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15525v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15513v1" target="_blank">ViX-Ray: A Vietnamese Chest X-Ray Dataset for Vision-Language Models</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15513v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文介绍了ViX-Ray，一个包含5400张越南语标注的胸部X光图像数据集，用于评估和提升视觉语言模型在越南临床领域的应用。研究分析了数据集的医学语言特征，并对多个开源模型进行了微调，发现现有模型在诊断印象生成上存在幻觉和精度不足的问题。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">越南医学研究已成为日益重要的领域，特别是随着旨在减轻临床诊断时间和资源负担的智能技术的兴起。视觉语言模型（VLMs）（如Gemini和GPT-4V）的最新进展引发了将人工智能应用于医疗保健的日益增长的兴趣。然而，大多数现有的VLMs缺乏对越南医学数据的接触，限制了其为越南患者生成准确且符合语境的诊断输出的能力。为了应对这一挑战，我们引入了ViX-Ray，这是一个新颖的数据集，包含5,400张越南胸部X光图像，并附有越南一家主要医院医生撰写的专家级发现（findings）和印象（impressions）。我们分析了数据集内的语言模式，包括提及的身体部位和诊断的频率，以识别越南放射学报告领域特定的语言特征。此外，我们在ViX-Ray上对五个最先进的开源VLMs进行了微调，并将其性能与领先的专有模型GPT-4V和Gemini进行了比较。我们的结果表明，虽然有几个模型生成的输出部分符合临床真实情况，但它们通常存在精度低和过度幻觉（hallucination）的问题，尤其是在印象生成方面。这些发现不仅证明了我们数据集的复杂性和挑战性，而且将ViX-Ray确立为评估和推进越南临床领域视觉语言模型的宝贵基准。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Vietnamese medical research has become an increasingly vital domain, particularly with the rise of intelligent technologies aimed at reducing time and resource burdens in clinical diagnosis. Recent advances in vision-language models (VLMs), such as Gemini and GPT-4V, have sparked a growing interest in applying AI to healthcare. However, most existing VLMs lack exposure to Vietnamese medical data, limiting their ability to generate accurate and contextually appropriate diagnostic outputs for Vietnamese patients. To address this challenge, we introduce ViX-Ray, a novel dataset comprising 5,400 Vietnamese chest X-ray images annotated with expert-written findings and impressions from physicians at a major Vietnamese hospital. We analyze linguistic patterns within the dataset, including the frequency of mentioned body parts and diagnoses, to identify domain-specific linguistic characteristics of Vietnamese radiology reports. Furthermore, we fine-tune five state-of-the-art open-source VLMs on ViX-Ray and compare their performance to leading proprietary models, GPT-4V and Gemini. Our results show that while several models generate outputs partially aligned with clinical ground truths, they often suffer from low precision and excessive hallucination, especially in impression generation. These findings not only demonstrate the complexity and challenge of our dataset but also establish ViX-Ray as a valuable benchmark for evaluating and advancing vision-language models in the Vietnamese clinical domain.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Nguyen DVM</span>, <span class="author">Truong CT</span>, <span class="author">Tran PH</span>, <span class="author">Le HT</span>, <span class="author">Dat NV</span>, <span class="author">Pham TH</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">越南语胸部X光数据集</span><span class="keyword">视觉语言模型</span><span class="keyword">医学人工智能</span><span class="keyword">放射学报告</span><span class="keyword">临床诊断</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15513v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15513v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15374v1" target="_blank">Spectral Rectification for Parameter-Efficient Adaptation of Foundation Models in Colonoscopy Depth Estimation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15374v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出SpecDepth框架，通过自适应光谱校正模块，针对结肠镜图像高频信息衰减的问题，对预训练基础模型进行参数高效适应，在C3VD和SimCol3D数据集上实现了最先进的深度估计性能。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">准确的单目深度估计在结肠镜检查中对病灶定位和导航至关重要。在自然图像上训练的基础模型无法直接泛化到结肠镜图像。我们发现核心问题并非语义鸿沟，而是频域的统计偏移：结肠镜图像缺乏这些模型进行几何推理所依赖的强高频边缘和纹理梯度。为解决此问题，我们提出了SpecDepth，一个参数高效的适应框架，它在保留预训练模型稳健几何表征的同时，适应结肠镜领域。其关键创新是一个自适应光谱校正模块，它使用可学习的小波分解来显式建模并放大特征图中衰减的高频成分。与可能扭曲高层语义特征的传统微调不同，这种有针对性的低层调整将输入信号与基础模型的原始归纳偏置重新对齐。在公开的C3VD和SimCol3D数据集上，SpecDepth分别取得了0.022和0.027的绝对相对误差，实现了最先进的性能。我们的工作表明，直接解决光谱失配是将视觉基础模型适应到专业医学成像任务的一种高效策略。代码将在手稿被接受发表后公开。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Accurate monocular depth estimation is critical in colonoscopy for lesion localization and navigation. Foundation models trained on natural images fail to generalize directly to colonoscopy. We identify the core issue not as a semantic gap, but as a statistical shift in the frequency domain: colonoscopy images lack the strong high-frequency edge and texture gradients that these models rely on for geometric reasoning. To address this, we propose SpecDepth, a parameter-efficient adaptation framework that preserves the robust geometric representations of the pre-trained models while adapting to the colonoscopy domain. Its key innovation is an adaptive spectral rectification module, which uses a learnable wavelet decomposition to explicitly model and amplify the attenuated high-frequency components in feature maps. Different from conventional fine-tuning that risks distorting high-level semantic features, this targeted, low-level adjustment realigns the input signal with the original inductive bias of the foundational model. On the public C3VD and SimCol3D datasets, SpecDepth achieved state-of-the-art performance with an absolute relative error of 0.022 and 0.027, respectively. Our work demonstrates that directly addressing spectral mismatches is a highly effective strategy for adapting vision foundation models to specialized medical imaging tasks. The code will be released publicly after the manuscript is accepted for publication.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Zhang X</span>, <span class="author">Shi M</span>, <span class="author">Li L</span></div>
+                <div class="paper-keywords"><span class="keyword">光谱校正</span><span class="keyword">参数高效适应</span><span class="keyword">单目深度估计</span><span class="keyword">结肠镜图像</span><span class="keyword">基础模型</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15374v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15374v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">3 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15539v1" target="_blank">Vib2ECG: A Paired Chest-Lead SCG-ECG Dataset and Benchmark for ECG Reconstruction</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15539v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究提出了首个配对的胸导联心震图-心电图数据集Vib2ECG，并基于此建立了利用轻量级U-Net模型从振动信号重建多导联心电图的基准。实验证明了通过低成本惯性传感器实现移动设备友好型心电监测的可行性，并分析了模型产生虚假波形的原因及缓解方向。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">十二导联心电图（ECG）对于心血管诊断至关重要，但其在日常生活中的长期采集受限于复杂且昂贵的硬件。近期研究探索了从低成本心脏振动信号（如心震图（SCG））重建心电图，然而，由于缺乏数据集，现有方法仅限于肢体导联，而临床诊断需要包括胸导联在内的多导联心电图。本工作中，我们提出了Vib2ECG，这是首个配对的、多通道心电-机械信号数据集，包含来自17名受试者的完整十二导联心电图以及在六个胸导联位置通过惯性测量单元（IMUs）采集的振动信号。基于此数据集，我们还提供了一个基准。实验结果表明，使用一个轻量级的364K参数U-Net，可以从振动信号重建不同位置的心脏电信号是可行的。此外，我们观察到模型中存在幻觉现象，即在没有相应电活动的区域生成了心电图波形。我们分析了这一现象的原因，并提出了潜在的缓解方向。本研究通过从使用IMU传感器采集的低成本振动信号预测胸导联心电图，证明了移动设备友好的心电图监测的可行性。它拓展了心脏振动信号的应用，并为心脏电活动与机械活动随空间位置变化的空间关系提供了新的见解。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Twelve-lead electrocardiography (ECG) is essential for cardiovascular diagnosis, but its long-term acquisition in daily life is constrained by complex and costly hardware. Recent efforts have explored reconstructing ECG from low-cost cardiac vibrational signals such as seismocardiography (SCG), however, due to the lack of a dataset, current methods are limited to limb leads, while clinical diagnosis requires multi-lead ECG, including chest leads. In this work, we propose Vib2ECG, the first paired, multi-channel electro-mechanical cardiac signal dataset, which includes complete twelve-lead ECGs and vibrational signals acquired by inertial measurement units (IMUs) at six chest-lead positions from 17 subjects. Based on this dataset, we also provide a benchmark. Experimental results demonstrate the feasibility of reconstructing electrical cardiac signals at variable locations from vibrational signals using a lightweight 364 K-parameter U-Net. Furthermore, we observe a hallucination phenomenon in the model, where ECG waveforms are generated in regions where no corresponding electrical activity is present. We analyze the causes of this phenomenon and propose potential directions for mitigation. This study demonstrates the feasibility of mobile-device-friendly ECG monitoring through chest-lead ECG prediction from low-cost vibrational signals acquired using IMU sensors. It expands the application of cardiac vibrational signals and provides new insights into the spatial relationship between cardiac electrical and mechanical activities with spatial location variation.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Lu G</span>, <span class="author">Cai X</span>, <span class="author">Stefanov T</span>, <span class="author">Chen Q</span></div>
+                <div class="paper-keywords"><span class="keyword">心电信号重建</span><span class="keyword">心震图</span><span class="keyword">配对数据集</span><span class="keyword">惯性测量单元</span><span class="keyword">深度学习</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15539v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15539v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15525v1" target="_blank">Clinically Aware Synthetic Image Generation for Concept Coverage in Chest X-ray Models</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15525v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出CARS框架，通过基于临床特征向量的针对性扰动生成合成胸部X光图像，以覆盖数据集中缺失的关键临床特征组合。实验表明，使用CARS生成的图像进行微调能提升模型性能、降低预测不确定性并改善校准，同时保持解剖结构的真实性，有助于提高AI诊断系统的可靠性和临床实用性。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">AI诊断模型的临床部署不仅需要基准准确性，更要求对疾病全谱表现的鲁棒性。然而，公开的胸部X光数据集系统性地缺乏关键临床特征组合，导致模型在临床风险最高的领域训练不足。我们提出了CARS，一个具有临床意识且基于解剖学的框架，通过原则性的合成图像生成来弥补这一差距。CARS对临床特征向量施加针对性扰动，从而在明确保持解剖结构的同时，实现病理发现的受控插入和删除。我们通过在合成子集上微调模型并在保留的MIMIC-CXR基准上进行测试，评估了CARS在七种骨干架构上的表现。与先前的特征扰动方法相比，在CARS生成的图像上进行微调持续提升了精确率-召回率性能，降低了预测不确定性，并改善了模型校准。结构和语义分析显示出高解剖保真度、强特征对齐和低语义不确定性。两位放射科专家的独立评估进一步证实了其真实性和临床一致性。随着该领域向受监管的临床AI发展，CARS证明，为获得更好的特征空间覆盖而进行解剖学上忠实的合成数据生成，是提高胸部X光分类系统性能和可信度的可行且有效的策略——且不损害临床完整性。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The clinical deployment of AI diagnostic models demands more than benchmark accuracy - it demands robustness across the full spectrum of disease presentations. However, publicly available chest radiographic datasets systematically underrepresent critical clinical feature combinations, leaving models under-trained precisely where clinical stakes are highest. We present CARS, a clinically aware and anatomically grounded framework that addresses this gap through principled synthetic image generation. CARS applies targeted perturbations to clinical feature vectors, enabling controlled insertion and deletion of pathological findings while explicitly preserving anatomical structure. We evaluate CARS across seven backbone architectures by fine-tuning models on synthetic subsets and testing on a held-out MIMIC-CXR benchmark. Compared to prior feature perturbation approaches, fine-tuning on CARS-generated images consistently improves precision-recall performance, reduces predictive uncertainty, and improves model calibration. Structural and semantic analyses demonstrate high anatomical fidelity, strong feature alignment, and low semantic uncertainty. Independent evaluation by two expert radiologists further confirms realism and clinical agreement. As the field moves toward regulated clinical AI, CARS demonstrates that anatomically faithful synthetic data generation for better feature space coverage is a viable and effective strategy for improving both the performance and trustworthiness of chest X-ray classification systems - without compromising clinical integrity.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Rafferty A</span>, <span class="author">Ramaesh R</span>, <span class="author">Rajan A</span></div>
+                <div class="paper-keywords"><span class="keyword">合成图像生成</span><span class="keyword">胸部X光模型</span><span class="keyword">临床特征覆盖</span><span class="keyword">模型鲁棒性</span><span class="keyword">解剖结构保持</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15525v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15525v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗数据集">
+            <div class="paper-header">
+                <div class="paper-category">医疗数据集 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.15513v1" target="_blank">ViX-Ray: A Vietnamese Chest X-Ray Dataset for Vision-Language Models</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-16
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.15513v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文介绍了ViX-Ray，一个包含5400张越南语标注的胸部X光图像数据集，用于评估和提升视觉语言模型在越南临床领域的应用。研究分析了数据集的医学语言特征，并对多个开源模型进行了微调，发现现有模型在诊断印象生成上存在幻觉和精度不足的问题。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">越南医学研究已成为日益重要的领域，特别是随着旨在减轻临床诊断时间和资源负担的智能技术的兴起。视觉语言模型（VLMs）（如Gemini和GPT-4V）的最新进展引发了将人工智能应用于医疗保健的日益增长的兴趣。然而，大多数现有的VLMs缺乏对越南医学数据的接触，限制了其为越南患者生成准确且符合语境的诊断输出的能力。为了应对这一挑战，我们引入了ViX-Ray，这是一个新颖的数据集，包含5,400张越南胸部X光图像，并附有越南一家主要医院医生撰写的专家级发现（findings）和印象（impressions）。我们分析了数据集内的语言模式，包括提及的身体部位和诊断的频率，以识别越南放射学报告领域特定的语言特征。此外，我们在ViX-Ray上对五个最先进的开源VLMs进行了微调，并将其性能与领先的专有模型GPT-4V和Gemini进行了比较。我们的结果表明，虽然有几个模型生成的输出部分符合临床真实情况，但它们通常存在精度低和过度幻觉（hallucination）的问题，尤其是在印象生成方面。这些发现不仅证明了我们数据集的复杂性和挑战性，而且将ViX-Ray确立为评估和推进越南临床领域视觉语言模型的宝贵基准。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Vietnamese medical research has become an increasingly vital domain, particularly with the rise of intelligent technologies aimed at reducing time and resource burdens in clinical diagnosis. Recent advances in vision-language models (VLMs), such as Gemini and GPT-4V, have sparked a growing interest in applying AI to healthcare. However, most existing VLMs lack exposure to Vietnamese medical data, limiting their ability to generate accurate and contextually appropriate diagnostic outputs for Vietnamese patients. To address this challenge, we introduce ViX-Ray, a novel dataset comprising 5,400 Vietnamese chest X-ray images annotated with expert-written findings and impressions from physicians at a major Vietnamese hospital. We analyze linguistic patterns within the dataset, including the frequency of mentioned body parts and diagnoses, to identify domain-specific linguistic characteristics of Vietnamese radiology reports. Furthermore, we fine-tune five state-of-the-art open-source VLMs on ViX-Ray and compare their performance to leading proprietary models, GPT-4V and Gemini. Our results show that while several models generate outputs partially aligned with clinical ground truths, they often suffer from low precision and excessive hallucination, especially in impression generation. These findings not only demonstrate the complexity and challenge of our dataset but also establish ViX-Ray as a valuable benchmark for evaluating and advancing vision-language models in the Vietnamese clinical domain.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Nguyen DVM</span>, <span class="author">Truong CT</span>, <span class="author">Tran PH</span>, <span class="author">Le HT</span>, <span class="author">Dat NV</span>, <span class="author">Pham TH</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">越南语胸部X光数据集</span><span class="keyword">视觉语言模型</span><span class="keyword">医学人工智能</span><span class="keyword">放射学报告</span><span class="keyword">临床诊断</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.15513v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.15513v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">0 篇论文</span>
+            </div>
+            <div class="papers-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-03-17 22:35 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
