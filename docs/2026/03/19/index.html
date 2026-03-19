@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-03-18</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">March 19, 2026</div>
+                <div class="header-range">2026-03-18 — 2026-03-18</div>
+                <div class="header-total">5</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">5</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">5</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">0</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">0</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">5 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17879v1" target="_blank">Differential Attention-Augmented BiomedCLIP with Asymmetric Focal Optimization for Imbalanced Multi-Label Video Capsule Endoscopy Classification</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.17879v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出一种用于视频胶囊内窥镜多标签分类的框架，通过改进BiomedCLIP模型，引入差分注意力机制抑制噪声，并结合多种采样、损失函数和优化策略处理Galar数据集的极端类别不平衡问题。在RARE-VISION测试集上取得了良好的性能，推理速度快。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">本研究提出了一种用于视频胶囊内窥镜(VCE)的多标签分类框架，通过结合架构和优化层面的策略来解决Galar数据集中固有的极端类别不平衡问题。我们的方法改进了生物医学视觉-语言基础模型BiomedCLIP，将其标准多头自注意力替换为差分注意力机制，该机制通过计算两个softmax注意力图之间的差异来抑制注意力噪声。为了对抗偏斜的标签分布（其中病理发现仅占所有标注帧的不到0.1%），采用了平方根频率加权采样器、非对称焦点损失(asymmetric focal loss)、混合正则化(mixup regularization)和每类阈值优化。在生成事件级JSON之前，通过中值滤波平滑和间隙合并来增强时间连贯性。在包含三个NaviCam检查（161,025帧）的保留测试集RARE-VISION上，该流程实现了0.2456的总体时间mAP@0.5和0.2353的mAP@0.95，在单个GPU上的总推理时间约为8.6分钟。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">This work presents a multi-label classification framework for video capsule endoscopy (VCE) that addresses the extreme class imbalance inherent in the Galar dataset through a combination of architectural and optimization-level strategies. Our approach modifies BiomedCLIP, a biomedical vision-language foundation model, by replacing its standard multi-head self-attention with a differential attention mechanism that computes the difference between two softmax attention maps to suppress attention noise. To counteract the skewed label distribution, where pathological findings constitute less than 0.1% of all annotated frames, a sqrt-frequency weighted sampler, asymmetric focal loss, mixup regularization, and per-class threshold optimization are employed. Temporal coherence is enforced through median-filter smoothing and gap merging prior to event-level JSON generation. On the held-out RARE-VISION test set comprising three NaviCam examinations (161,025 frames), the pipeline achieves an overall temporal mAP@0.5 of 0.2456 and mAP@0.95 of 0.2353, with total inference completed in approximately 8.6 minutes on a single GPU.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Chary PS</span>, <span class="author">Ganapathy N</span></div>
+                <div class="paper-keywords"><span class="keyword">视频胶囊内窥镜</span><span class="keyword">多标签分类</span><span class="keyword">类别不平衡</span><span class="keyword">注意力机制</span><span class="keyword">非对称焦点损失</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.17879v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.17879v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17765v1" target="_blank">Grounded Multimodal Retrieval-Augmented Drafting of Radiology Impressions Using Case-Based Similarity Search</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.17765v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究提出了一种多模态检索增强生成系统，用于生成胸部X光片印象的草稿。该系统结合了对比图像-文本嵌入、基于案例的相似性检索和引用约束的草稿生成，以确保与历史放射学报告的事实一致性。实验表明，多模态融合显著提高了检索性能，并产生了具有明确引用可追溯性的可解释输出，提高了可信度。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">随着深度学习和大语言模型的兴起，自动化放射学报告生成受到越来越多的关注。然而，完全生成式方法经常遭受幻觉问题并缺乏临床基础，限制了其在真实工作流程中的可靠性。在本研究中，我们提出了一种用于胸部X光片印象基础草稿生成的多模态检索增强生成系统。该系统结合了对比图像-文本嵌入、基于案例的相似性检索和引用约束的草稿生成，以确保与历史放射学报告的事实对齐。使用MIMIC-CXR数据集的精选子集构建了一个多模态检索数据库。图像嵌入使用CLIP编码器生成，而文本嵌入则来自结构化的印象部分。使用FAISS索引实现了一个融合相似性框架，用于可扩展的最近邻检索。检索到的案例用于构建基础提示以生成印象草稿，并通过安全机制强制执行引用覆盖和基于置信度的拒绝。实验结果表明，与仅图像检索相比，多模态融合显著提高了检索性能，在临床相关发现上实现了Recall@5高于0.95。基础草稿生成流程产生了具有明确引用可追溯性的可解释输出，与传统生成式方法相比，提高了可信度。这项工作凸显了检索增强多模态系统在可靠临床决策支持和放射学工作流程增强方面的潜力。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Automated radiology report generation has gained increasing attention with the rise of deep learning and large language models. However, fully generative approaches often suffer from hallucinations and lack clinical grounding, limiting their reliability in real-world workflows. In this study, we propose a multimodal retrieval-augmented generation (RAG) system for grounded drafting of chest radiograph impressions. The system combines contrastive image-text embeddings, case-based similarity retrieval, and citation-constrained draft generation to ensure factual alignment with historical radiology reports. A curated subset of the MIMIC-CXR dataset was used to construct a multimodal retrieval database. Image embeddings were generated using CLIP encoders, while textual embeddings were derived from structured impression sections. A fusion similarity framework was implemented using FAISS indexing for scalable nearest-neighbor retrieval. Retrieved cases were used to construct grounded prompts for draft impression generation, with safety mechanisms enforcing citation coverage and confidence-based refusal. Experimental results demonstrate that multimodal fusion significantly improves retrieval performance compared to image-only retrieval, achieving Recall@5 above 0.95 on clinically relevant findings. The grounded drafting pipeline produces interpretable outputs with explicit citation traceability, enabling improved trustworthiness compared to conventional generative approaches. This work highlights the potential of retrieval-augmented multimodal systems for reliable clinical decision support and radiology workflow augmentation</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Samanta H</span></div>
+                <div class="paper-keywords"><span class="keyword">多模态检索增强生成</span><span class="keyword">放射学报告生成</span><span class="keyword">基于案例的相似性搜索</span><span class="keyword">胸部X光片</span><span class="keyword">临床决策支持</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.17765v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.17765v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17746v1" target="_blank">Concept-to-Pixel: Prompt-Free Universal Medical Image Segmentation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.17746v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出Concept-to-Pixel（C2P），一种无需提示词的通用医学图像分割框架。它将解剖知识解耦为几何与语义表示，利用多模态大语言模型提取语义令牌，并引入几何令牌施加物理约束，通过动态卷积核进行精确分割。实验表明，该模型在跨模态和零样本任务上均表现出优越性能。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">通用医学图像分割旨在使用单一基础模型处理多种成像模态的多样化任务。然而，现有方法通常严重依赖手动视觉提示或检索的参考图像，这限制了其自动化和鲁棒性。此外，跨模态的简单联合训练往往无法解决大的域偏移。为了解决这些限制，我们提出了Concept-to-Pixel（C2P），一种新颖的提示词免（prompt-free）通用分割框架。C2P明确地将解剖知识分离为两个组件：几何（Geometric）和语义（Semantic）表示。它利用多模态大语言模型（MLLMs）将抽象的、高层次的医学概念提炼为可学习的语义令牌（Semantic Tokens），并引入显式监督的几何令牌（Geometric Tokens）来强制执行通用的物理和结构约束。这些解耦的令牌与图像特征深度交互，以生成输入特定的动态卷积核（dynamic kernels）进行精确的掩码预测。此外，我们引入了一种几何感知推理共识机制（Geometry-Aware Inference Consensus），该机制利用模型预测的几何约束来评估预测可靠性并抑制异常值。在一个包含七种模态、八个不同数据集的统一基准上进行的大量实验和分析表明，与通用或单一模型方法相比，我们的联合训练方法具有显著优越性。值得注意的是，我们的统一模型表现出强大的泛化能力，不仅在涉及未见病例的零样本（zero-shot）任务上取得了令人印象深刻的结果，而且在跨模态的类似任务转移中也表现出色。代码位于：https://github.com/Yundi218/Concept-to-Pixel</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Universal medical image segmentation seeks to use a single foundational model to handle diverse tasks across multiple imaging modalities. However, existing approaches often rely heavily on manual visual prompts or retrieved reference images, which limits their automation and robustness. In addition, naive joint training across modalities often fails to address large domain shifts. To address these limitations, we propose Concept-to-Pixel (C2P), a novel prompt-free universal segmentation framework. C2P explicitly separates anatomical knowledge into two components: Geometric and Semantic representations. It leverages Multimodal Large Language Models (MLLMs) to distill abstract, high-level medical concepts into learnable Semantic Tokens and introduces explicitly supervised Geometric Tokens to enforce universal physical and structural constraints. These disentangled tokens interact deeply with image features to generate input-specific dynamic kernels for precise mask prediction. Furthermore, we introduce a Geometry-Aware Inference Consensus mechanism, which utilizes the model's predicted geometric constraints to assess prediction reliability and suppress outliers. Extensive experiments and analysis on a unified benchmark comprising eight diverse datasets across seven modalities demonstrate the significant superiority of our jointly trained approach, compared to universe- or single-model approaches. Remarkably, our unified model demonstrates strong generalization, achieving impressive results not only on zero-shot tasks involving unseen cases but also in cross-modal transfers across similar tasks. Code is available at: https://github.com/Yundi218/Concept-to-Pixel</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Chen H</span>, <span class="author">Tang F</span>, <span class="author">Ma W</span>, <span class="author">Zhou SK</span></div>
+                <div class="paper-keywords"><span class="keyword">通用医学图像分割</span><span class="keyword">提示词免</span><span class="keyword">多模态大语言模型</span><span class="keyword">几何语义解耦</span><span class="keyword">动态卷积核</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.17746v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.17746v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17722v1" target="_blank">Predicting Trajectories of Long COVID in Adult Women: The Critical Role of Causal Disentanglement</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.17722v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究针对成年女性长新冠严重程度的早期预测难题，提出了一种基于大语言模型的因果网络框架。该框架整合静态临床资料与四周纵向可穿戴设备数据，能有效区分病理信号与更年期等混杂因素，在临床严重程度预测上达到86.7%的精确度。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">对SARS-CoV-2感染后急性后遗症严重程度的早期预测是女性健康的一项关键挑战，特别是考虑到PASC与更年期等常见激素转变在诊断上的重叠。识别并解释这些混杂因素对于准确的长期轨迹预测至关重要。我们利用美国国立卫生研究院RECOVER数据集，对1155名女性（平均年龄61岁）进行了回顾性研究。通过将静态临床资料与四周的纵向可穿戴设备数据（监测心脏活动和睡眠）相结合，我们开发了一个基于大语言模型的因果网络来预测未来的PASC评分。我们的框架在临床严重程度预测上达到了86.7%的精确度。我们的因果归因分析证明了该模型区分活动性病理与基线噪声的能力：直接指标如呼吸困难和不适达到了最大显著性，而更年期和糖尿病等混杂因素则被成功抑制。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Early prediction of Post-Acute Sequelae of SARS-CoV-2 severity is a critical challenge for women's health, particularly given the diagnostic overlap between PASC and common hormonal transitions such as menopause. Identifying and accounting for these confounding factors is essential for accurate long-term trajectory prediction. We conducted a retrospective study of 1,155 women (mean age 61) from the NIH RECOVER dataset. By integrating static clinical profiles with four weeks of longitudinal wearable data (monitoring cardiac activity and sleep), we developed a causal network based on a Large Language Model to predict future PASC scores. Our framework achieved a precision of 86.7\% in clinical severity prediction. Our causal attribution analysis demonstrate the model's ability to differentiate between active pathology and baseline noise: direct indicators such as breathlessness and malaise reached maximum saliency (1.00), while confounding factors like menopause and diabetes were successfully suppressed with saliency scores below 0.27.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Wang J</span>, <span class="author">Shen J</span>, <span class="author">Luo Y</span>, <span class="author">Sra A</span>, <span class="author">Xie Q</span>, <span class="author">Weiss JC</span></div>
+                <div class="paper-keywords"><span class="keyword">长新冠轨迹预测</span><span class="keyword">因果解耦</span><span class="keyword">女性健康</span><span class="keyword">可穿戴设备数据</span><span class="keyword">大语言模型</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.17722v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.17722v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.17718v1" target="_blank">DiffVP: Differential Visual Semantic Prompting for LLM-Based CT Report Generation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-18
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.17718v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出DiffVP方法，通过提取CT扫描与参考图像之间的高层次语义差异，而非绝对视觉特征，来引导大语言模型生成报告。该方法利用分层差异提取器捕获全局与局部差异，并将其转化为可学习的视觉提示令牌，有效抑制不变解剖背景并增强诊断相关证据，在多个基准测试中显著提升了报告生成质量。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">虽然大语言模型(LLMs)已经推进了CT(Computed Tomography)报告生成，但现有方法通常整体编码3D(Three-Dimensional)体积，未能从冗余的解剖背景中区分出信息性线索。受放射学认知减影(cognitive subtraction)启发，我们提出了差分视觉提示(Differential Visual Prompting, DiffVP)，它将报告生成的条件建立在显式的高层次语义扫描-参考差异上，而非仅仅依赖于绝对视觉特征。DiffVP采用一个分层差异提取器(hierarchical difference extractor)将互补的全局和局部语义差异捕获到一个共享的潜在空间(shared latent space)中，并配有一个差异到提示生成器(difference-to-prompt generator)，将这些信号转化为可学习的视觉前缀令牌(visual prefix tokens)用于LLM条件化。这些差异提示(difference prompts)作为结构化的条件信号，隐式地抑制不变的解剖结构，同时放大与诊断相关的视觉证据，从而无需显式病灶定位即可促进准确的报告生成。在两个大规模基准测试上，DiffVP始终优于先前的方法，分别将平均BLEU-1-4提高了+10.98和+4.36，并进一步提升了在RadGenome-ChestCT上的临床效能(F1分数0.421)。所有代码将在https://github.com/ArielTYH/DiffVP/发布。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">While large language models (LLMs) have advanced CT report generation, existing methods typically encode 3D volumes holistically, failing to distinguish informative cues from redundant anatomical background. Inspired by radiological cognitive subtraction, we propose Differential Visual Prompting (DiffVP), which conditions report generation on explicit, high-level semantic scan-to-reference differences rather than solely on absolute visual features. DiffVP employs a hierarchical difference extractor to capture complementary global and local semantic discrepancies into a shared latent space, along with a difference-to-prompt generator that transforms these signals into learnable visual prefix tokens for LLM conditioning. These difference prompts serve as structured conditioning signals that implicitly suppress invariant anatomy while amplifying diagnostically relevant visual evidence, thereby facilitating accurate report generation without explicit lesion localization. On two large-scale benchmarks, DiffVP consistently outperforms prior methods, improving the average BLEU-1-4 by +10.98 and +4.36, respectively, and further boosts clinical efficacy on RadGenome-ChestCT (F1 score 0.421). All codes will be released at https://github.com/ArielTYH/DiffVP/.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Tian Y</span>, <span class="author">Zhang K</span>, <span class="author">Ma H</span>, <span class="author">Yan R</span>, <span class="author">Li Y</span>, <span class="author">Wang R</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">CT报告生成</span><span class="keyword">大语言模型</span><span class="keyword">视觉语义提示</span><span class="keyword">差异提取</span><span class="keyword">放射学认知减影</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.17718v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.17718v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">0 篇论文</span>
+            </div>
+            <div class="papers-grid">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">0 篇论文</span>
+            </div>
+            <div class="papers-grid">
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-03-19 22:30 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
