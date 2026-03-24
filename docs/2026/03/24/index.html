@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗AI学术进展 | 2026-03-23</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --color-border-light: #f3f4f6;
+            --color-text: #111827;
+            --color-text-secondary: #4b5563;
+            --color-text-muted: #6b7280;
+            --color-accent: #1e40af;
+            --color-accent-light: #dbeafe;
+            --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0;
+        }
+
+        .header-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-title-group {}
+
+        .header-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-meta {
+            text-align: right;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        .header-range {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+        }
+
+        .header-total {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 8px;
+        }
+
+        .header-total-label {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .nav-item:hover {
+            color: var(--color-text);
+            background: var(--color-border-light);
+        }
+
+        .nav-item.active {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 40px;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .stat-item:hover {
+            background: var(--color-border-light);
+        }
+
+        .stat-item.active {
+            background: var(--color-accent-light);
+        }
+
+        .stat-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .stat-name {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .stat-item.active .stat-name {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .stat-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            background: var(--color-border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .stat-item.active .stat-count {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 4px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+
+        .section-icon {
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            font-size: 13px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 1100px) {
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Paper Card */
+        .paper-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-left-width: 3px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+            transition: box-shadow 0.15s, border-color 0.15s;
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d1d5db;
+        }
+
+        .paper-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .paper-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .paper-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--color-text);
+        }
+
+        .paper-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .paper-title a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .paper-meta {
+            display: flex;
+            gap: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border-light);
+            background: #fafafa;
+        }
+
+        .paper-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .paper-body {
+            padding: 12px 16px;
+        }
+
+        .paper-summary {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .paper-summary::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: var(--color-accent);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Abstract */
+        .abstract-section {
+            margin-top: 12px;
+        }
+
+        .abstract-toggle {
+            width: 100%;
+            padding: 8px 0;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-accent);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .abstract-toggle:hover {
+            color: #1e3a8a;
+        }
+
+        .abstract-toggle-icon {
+            transition: transform 0.2s;
+        }
+
+        .abstract-toggle.expanded .abstract-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .abstract-content.expanded {
+            max-height: 2000px;
+        }
+
+        .abstract-inner {
+            padding: 12px 0 4px;
+            border-top: 1px dashed var(--color-border);
+            margin-top: 8px;
+        }
+
+        .abstract-block {
+            margin-bottom: 12px;
+        }
+
+        .abstract-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .abstract-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Authors & Keywords */
+        .paper-footer {
+            padding: 10px 16px;
+            background: #fafafa;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .paper-authors {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-weight: 500;
+        }
+
+        .paper-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .keyword {
+            font-size: 11px;
+            color: var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* Paper Actions */
+        .paper-actions {
+            display: flex;
+            gap: 8px;
+            padding: 10px 16px;
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.15s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border-light);
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* Hidden state */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .header-meta { text-align: left; }
+            .nav-content { padding: 0 20px; }
+            .main { padding: 20px; }
+            .papers-grid { grid-template-columns: 1fr; }
+        }
+
+
+        .section-header.医疗大模型 { border-left-color: #1e40af; }
+        .section-header.医疗大模型 .section-icon { color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] { border-left-color: #1e40af; }
+        .paper-card[data-category="医疗大模型"] .paper-category { color: #1e40af; }
+        .stat-item[data-filter="医疗大模型"].active .stat-dot { box-shadow: 0 0 0 3px #1e40af30; }
+
+        .section-header.医疗数据集 { border-left-color: #047857; }
+        .section-header.医疗数据集 .section-icon { color: #047857; }
+        .paper-card[data-category="医疗数据集"] { border-left-color: #047857; }
+        .paper-card[data-category="医疗数据集"] .paper-category { color: #047857; }
+        .stat-item[data-filter="医疗数据集"].active .stat-dot { box-shadow: 0 0 0 3px #04785730; }
+
+        .section-header.医疗智能体 { border-left-color: #7c3aed; }
+        .section-header.医疗智能体 .section-icon { color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] { border-left-color: #7c3aed; }
+        .paper-card[data-category="医疗智能体"] .paper-category { color: #7c3aed; }
+        .stat-item[data-filter="医疗智能体"].active .stat-dot { box-shadow: 0 0 0 3px #7c3aed30; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-brand">
+                <div class="header-logo">arXiv</div>
+                <div class="header-title-group">
+                    <h1 class="header-title">医疗AI学术进展周报</h1>
+                    <p class="header-subtitle">自动文献综述与前沿追踪</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="header-date">March 24, 2026</div>
+                <div class="header-range">2026-03-23 — 2026-03-23</div>
+                <div class="header-total">9</div>
+                <div class="header-total-label">论文</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="stats-panel">
+            <div class="stats-title">按研究领域筛选</div>
+            <div class="stats-grid">
+                <div class="stat-item active" data-filter="all">
+                    <span class="stat-dot" style="background: var(--color-accent);"></span>
+                    <span class="stat-name">全部主题</span>
+                    <span class="stat-count">9</span>
+                </div>
+                <div class="stat-item" data-filter="医疗大模型">
+                    <span class="stat-dot" style="background: #1e40af;"></span>
+                    <span class="stat-name">医疗大模型</span>
+                    <span class="stat-count">6</span>
+                </div>
+                <div class="stat-item" data-filter="医疗数据集">
+                    <span class="stat-dot" style="background: #047857;"></span>
+                    <span class="stat-name">医疗数据集</span>
+                    <span class="stat-count">0</span>
+                </div>
+                <div class="stat-item" data-filter="医疗智能体">
+                    <span class="stat-dot" style="background: #7c3aed;"></span>
+                    <span class="stat-name">医疗智能体</span>
+                    <span class="stat-count">3</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header 医疗大模型">
+                <span class="section-icon" style="color: #1e40af;">◆</span>
+                <h2 class="section-title">医疗大模型</h2>
+                <span class="section-count">6 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22179v1" target="_blank">MARCUS: An agentic, multimodal vision-language model for cardiac diagnosis and management</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22179v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出了MARCUS，一种用于心脏诊断的智能体多模态视觉语言模型。它采用分层智能体架构，整合了针对心电图、超声心动图和心脏磁共振成像的专家模型，在大量医学影像和问答数据上训练。实验表明，MARCUS在多项心脏影像诊断任务上准确率显著超越前沿模型，尤其在多模态病例分析上表现优异，并展现出对幻觉推理的抵抗能力。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">心血管疾病仍然是全球死亡的主要原因，其进展受到人类对复杂心脏检查结果解读的限制。当前的人工智能（AI）视觉语言模型仅限于单模态输入且不具备交互性。我们提出了MARCUS（用于超声和信号的多模态自主推理与对话系统），这是一个用于端到端解读心电图（ECG）、超声心动图和心脏磁共振成像（CMR）的智能体视觉语言系统，可独立处理也可作为多模态输入处理。MARCUS采用分层智能体架构，包含特定模态的视觉语言专家模型，每个模型都集成了经过领域训练的视觉编码器和多阶段语言模型优化，并由一个多模态编排器协调。在1350万张图像（25万份ECG，130万张超声心动图图像，1200万张CMR图像）和我们新颖的专家策划的涵盖160万个问题的数据集上进行训练后，MARCUS实现了超越前沿模型（GPT-5 Thinking, Gemini 2.5 Pro Deep Think）的最先进性能。在内部（斯坦福大学）和外部（加州大学旧金山分校）测试队列中，MARCUS对ECG的准确率达到87-91%，超声心动图为67-86%，CMR为85-88%，优于前沿模型34-45%（P<0.001）。在多模态病例上，MARCUS达到了70%的准确率，几乎是前沿模型（22-28%）的三倍，其自由文本质量分数高出1.7-3.0倍。我们的智能体架构还赋予了对幻觉推理的抵抗力，即视觉语言模型从非预期的文本信号或幻觉的视觉内容中推导推理。MARCUS证明，结合领域特定视觉编码器和智能体编排器能够实现多模态心脏影像解读。我们将模型、代码和基准开源发布。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Cardiovascular disease remains the leading cause of global mortality, with progress hindered by human interpretation of complex cardiac tests. Current AI vision-language models are limited to single-modality inputs and are non-interactive. We present MARCUS (Multimodal Autonomous Reasoning and Chat for Ultrasound and Signals), an agentic vision-language system for end-to-end interpretation of electrocardiograms (ECGs), echocardiograms, and cardiac magnetic resonance imaging (CMR) independently and as multimodal input. MARCUS employs a hierarchical agentic architecture comprising modality-specific vision-language expert models, each integrating domain-trained visual encoders with multi-stage language model optimization, coordinated by a multimodal orchestrator. Trained on 13.5 million images (0.25M ECGs, 1.3M echocardiogram images, 12M CMR images) and our novel expert-curated dataset spanning 1.6 million questions, MARCUS achieves state-of-the-art performance surpassing frontier models (GPT-5 Thinking, Gemini 2.5 Pro Deep Think). Across internal (Stanford) and external (UCSF) test cohorts, MARCUS achieves accuracies of 87-91% for ECG, 67-86% for echocardiography, and 85-88% for CMR, outperforming frontier models by 34-45% (P<0.001). On multimodal cases, MARCUS achieved 70% accuracy, nearly triple that of frontier models (22-28%), with 1.7-3.0x higher free-text quality scores. Our agentic architecture also confers resistance to mirage reasoning, whereby vision-language models derive reasoning from unintended textual signals or hallucinated visual content. MARCUS demonstrates that domain-specific visual encoders with an agentic orchestrator enable multimodal cardiac interpretation. We release our models, code, and benchmark open-source.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">O'Sullivan JW</span>, <span class="author">Asadi M</span>, <span class="author">Elbe L</span>, <span class="author">Chaudhari A</span>, <span class="author">Nedaee T</span>, <span class="author">Haddad F</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">多模态人工智能</span><span class="keyword">心脏影像诊断</span><span class="keyword">智能体架构</span><span class="keyword">视觉语言模型</span><span class="keyword">医学影像分析</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22179v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22179v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22158v1" target="_blank">Multimodal Survival Analysis with Locally Deployable Large Language Models</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22158v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究提出一种利用本地可部署大语言模型整合临床文本、表格协变量和基因组图谱的多模态生存分析方法。该方法通过教师-学生蒸馏和原则性多模态融合，联合估计校准后的生存概率并生成证据充分的预后文本。在TCGA队列上，其性能优于标准基线，避免了云服务依赖和隐私风险，并减少了基础大语言模型中可能出现的幻觉或校准错误估计。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">我们研究利用本地可部署大语言模型整合临床文本、表格协变量和基因组图谱的多模态生存分析。由于许多机构面临严格的计算和隐私限制，这一场景促使我们使用轻量级、本地部署的模型。我们的方法通过教师-学生蒸馏和原则性多模态融合，联合估计校准的生存概率并生成简洁的、基于证据的预后文本。在TCGA队列上，它优于标准基线，避免了对云服务及相关隐私问题的依赖，并降低了在基础大语言模型中可能观察到的幻觉或校准错误估计的风险。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">We study multimodal survival analysis integrating clinical text, tabular covariates, and genomic profiles using locally deployable large language models (LLMs). As many institutions face tight computational and privacy constraints, this setting motivates the use of lightweight, on-premises models. Our approach jointly estimates calibrated survival probabilities and generates concise, evidence-grounded prognosis text via teacher-student distillation and principled multimodal fusion. On a TCGA cohort, it outperforms standard baselines, avoids reliance on cloud services and associated privacy concerns, and reduces the risk of hallucinated or miscalibrated estimates that can be observed in base LLMs.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Gögl M</span>, <span class="author">Yau C</span></div>
+                <div class="paper-keywords"><span class="keyword">多模态生存分析</span><span class="keyword">本地可部署大语言模型</span><span class="keyword">教师-学生蒸馏</span><span class="keyword">多模态融合</span><span class="keyword">生存概率校准</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22158v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22158v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22115v1" target="_blank">Designing Medical Chatbots where Accuracy and Acceptability are in Conflict: An Exploratory, Vignette-based Study in Urban India</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22115v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究通过情景实验调查了印度城市居民对医疗聊天机器人提供的、与当地常见医疗实践（如滥用抗生素）相悖但符合临床指南的建议的接受度。研究发现多数用户基于自身经验拒绝此类建议，但通过设计情境感知的干预措施，可以引导用户接受指南一致的建议，揭示了在全球南方公平设计医疗聊天机器人面临的核心矛盾。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">当医疗聊天机器人(medical chatbots)提供的建议与用户的实际护理经验(lived care experiences)相冲突时，用户需要去解读、协商并评估该建议的合法性。在印度，抗生素(antibiotics)、止泻药(antidiarrheals)和注射剂(injections)的普遍过度使用，已经使患者的期望偏离了聊天机器人被训练提供的、符合指南(guideline-aligned)的建议。我们展示了一项基于情景(vignette-based)的混合方法(mixed-methods)研究，对象是200名印度城市成年人，考察了他们对聊天机器人对话记录中符合指南但与常规(norm-divergent)相悖建议的偏好。我们发现，大多数用户基于其生活经验中的期望，援引多种理由拒绝此类建议。通过设计和引入情境感知(context-aware)的助推(nudges)，我们支持期望对齐(expectation alignment)，从而将偏好转向包含符合指南建议的对话记录。在此过程中，我们揭示了在全球南方(Global South)公平设计医疗聊天机器人所面临的关键矛盾。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">When medical chatbots provide advice that conflicts with users' lived care experiences, users are left to interpret, negotiate, and evaluate the legitimacy of that guidance. In India, the widespread overuse of antibiotics, antidiarrheals, and injections has shifted patient expectations away from the guideline-aligned advice that chatbots are trained to provide. We present a mixed-methods, vignette-based study with 200 urban Indian adults examining preferences for and against guideline-aligned, norm-divergent advice in chatbot transcripts. We find that a majority of users reject such advice, drawing on diverse rationales grounded in their lived expectations. Through the design and introduction of context-aware nudges, we support expectation alignment that shifts preferences towards transcripts containing guideline-aligned advice. In doing so, we surface key tensions in the equitable design of medical chatbots in the Global South.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Raghunath A</span>, <span class="author">Thies W</span>, <span class="author">Jain M</span></div>
+                <div class="paper-keywords"><span class="keyword">医疗聊天机器人</span><span class="keyword">用户接受度</span><span class="keyword">临床指南</span><span class="keyword">情境感知干预</span><span class="keyword">全球南方</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22115v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22115v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22096v1" target="_blank">GSEM: Graph-based Self-Evolving Memory for Experience Augmented Clinical Reasoning</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22096v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出GSEM，一种基于图的自演化记忆框架，用于增强临床推理。它将临床经验组织成双层记忆图，捕获决策结构和经验间关系，支持基于适用性的检索和在线反馈校准。实验表明，GSEM在两个基准测试中均取得了最高准确率。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">临床决策智能体可以从重用先前的决策经验中受益。然而，许多记忆增强方法将经验存储为独立记录，缺乏明确的关系结构，这可能导致检索噪声、不可靠的重用，并且在某些情况下甚至比直接LLM推理性能更差。我们提出了GSEM（基于图的自演化记忆），一个临床记忆框架，它将临床经验组织成一个双层记忆图，捕获每个经验内部的决策结构以及经验之间的依赖关系，并支持基于适用性的检索以及基于在线反馈的节点质量和边权重校准。在MedR-Bench和MedAgentsBench上使用两种LLM骨干网络（DeepSeek-V3.2和Qwen3.5-35B）的实验中，GSEM在所有基线中取得了最高的平均准确率，分别达到70.90%和69.24%。代码可在 https://github.com/xhan1022/gsem 获取。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Clinical decision-making agents can benefit from reusing prior decision experience. However, many memory-augmented methods store experiences as independent records without explicit relational structure, which may introduce noisy retrieval, unreliable reuse, and in some cases even hurt performance compared to direct LLM inference. We propose GSEM (Graph-based Self-Evolving Memory), a clinical memory framework that organizes clinical experiences into a dual-layer memory graph, capturing both the decision structure within each experience and the relational dependencies across experiences, and supporting applicability-aware retrieval and online feedback-driven calibration of node quality and edge weights. Across MedR-Bench and MedAgentsBench with two LLM backbones, GSEM achieves the highest average accuracy among all baselines, reaching 70.90\% and 69.24\% with DeepSeek-V3.2 and Qwen3.5-35B, respectively. Code is available at https://github.com/xhan1022/gsem.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Han X</span>, <span class="author">Fan Y</span>, <span class="author">Zhao S</span>, <span class="author">Wang H</span>, <span class="author">Qin B</span></div>
+                <div class="paper-keywords"><span class="keyword">临床决策智能体</span><span class="keyword">图记忆</span><span class="keyword">经验增强</span><span class="keyword">自演化记忆</span><span class="keyword">临床推理</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22096v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22096v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22002v1" target="_blank">SegMaFormer: A Hybrid State-Space and Transformer Model for Efficient Segmentation</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22002v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出SegMaFormer，一种结合Mamba和Transformer的轻量级混合模型，用于高效3D医学图像分割。该模型在早期高分辨率阶段使用Mamba层降低计算成本，在后期低分辨率阶段使用自注意力机制优化特征，在多个公开数据集上达到与大模型相当的精度，同时大幅减少参数和计算量。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">Transformer和基于Mamba的架构的出现，通过实现全局上下文建模，显著推动了3D医学图像分割的发展，这是传统卷积神经网络（CNNs）能力有限的领域。然而，最先进的Transformer模型通常涉及大量的计算复杂性和参数数量，这对于体积数据尤其不利，并且由于带标注的医学影像数据集的有限可用性而进一步加剧。为了解决这些限制，本文提出了SegMaFormer，一种轻量级的混合架构，它在分层体积编码器中协同Mamba和Transformer模块，以实现高效的长程依赖建模。该模型策略性地在早期高分辨率阶段使用基于Mamba的层来减少计算开销，同时捕获基本的空间上下文，并将自注意力机制保留给后期低分辨率阶段以细化特征表示。这一设计通过广义旋转位置嵌入（generalized rotary position embeddings）得到增强，以提高空间感知能力。尽管结构紧凑，SegMaFormer在三个公共基准测试（Synapse、BraTS和ACDC）上取得了有竞争力的性能，与显著更大的模型的Dice系数相当。经验表明，与当前最先进的模型相比，我们的方法将参数减少了高达75倍，并大幅降低了FLOPs，为3D医学图像分割建立了一个高效且高性能的解决方案。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">The advent of Transformer and Mamba-based architectures has significantly advanced 3D medical image segmentation by enabling global contextual modeling, a capability traditionally limited in Convolutional Neural Networks (CNNs). However, state-of-the-art Transformer models often entail substantial computational complexity and parameter counts, which is particularly prohibitive for volumetric data and further exacerbated by the limited availability of annotated medical imaging datasets. To address these limitations, this work introduces SegMaFormer, a lightweight hybrid architecture that synergizes Mamba and Transformer modules within a hierarchical volumetric encoder for efficient long-range dependency modeling. The model strategically employs Mamba-based layers in early, high-resolution stages to reduce computational overhead while capturing essential spatial context, and reserves self-attention mechanisms for later, lower-resolution stages to refine feature representation. This design is augmented with generalized rotary position embeddings to enhance spatial awareness. Despite its compact structure, SegMaFormer achieves competitive performance on three public benchmarks (Synapse, BraTS, and ACDC), matching the Dice coefficient of significantly larger models. Empirically, our approach reduces parameters by up to 75x and substantially decreases FLOPs compared to current state-of-the-art models, establishing an efficient and high-performing solution for 3D medical image segmentation.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Nguyen DD</span>, <span class="author">Tran-Truong PT</span></div>
+                <div class="paper-keywords"><span class="keyword">3D医学图像分割</span><span class="keyword">Transformer</span><span class="keyword">Mamba</span><span class="keyword">轻量级架构</span><span class="keyword">长程依赖建模</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22002v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22002v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗大模型">
+            <div class="paper-header">
+                <div class="paper-category">医疗大模型 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.21970v1" target="_blank">Parameter-Efficient Fine-Tuning for Medical Text Summarization: A Comparative Study of Lora, Prompt Tuning, and Full Fine-Tuning</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.21970v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文比较了LoRA、提示微调和全参数微调三种方法在医学文本摘要任务上的性能。实验表明，仅更新0.6%参数的LoRA方法在Flan-T5-Large模型上表现优于全参数微调，其低秩约束起到了有益的正则化作用。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">为医学文本摘要等特定领域任务微调大语言模型需要大量计算资源。参数高效微调方法通过仅更新一小部分参数提供了有前景的替代方案。本文在PubMed医学摘要数据集上，比较了Flan-T5模型家族的三种适应方法——低秩适应、提示微调和全参数微调。通过多次随机种子实验，我们证明LoRA始终优于全参数微调，在Flan-T5-Large模型上仅使用0.6%的可训练参数就取得了43.52 +/- 0.18的ROUGE-1分数，而全参数微调为40.67 +/- 0.21。敏感性分析了LoRA秩和提示词数量的影响。我们的发现表明低秩约束提供了有益的正则化，挑战了关于全参数更新必要性的假设。代码可在https://github.com/eracoding/llm-medical-summarization获取。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Fine-tuning large language models for domain-specific tasks such as medical text summarization demands substantial computational resources. Parameter-efficient fine-tuning (PEFT) methods offer promising alternatives by updating only a small fraction of parameters. This paper compares three adaptation approaches-Low-Rank Adaptation (LoRA), Prompt Tuning, and Full Fine-Tuning-across the Flan-T5 model family on the PubMed medical summarization dataset. Through experiments with multiple random seeds, we demonstrate that LoRA consistently outperforms full fine-tuning, achieving 43.52 +/- 0.18 ROUGE-1 on Flan-T5-Large with only 0.6% trainable parameters compared to 40.67 +/- 0.21 for full fine-tuning. Sensitivity analyses examine the impact of LoRA rank and prompt token count. Our findings suggest the low-rank constraint provides beneficial regularization, challenging assumptions about the necessity of full parameter updates. Code is available at https://github.com/eracoding/llm-medical-summarization</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Shernazarov U</span>, <span class="author">Svitsov R</span>, <span class="author">Shi B</span></div>
+                <div class="paper-keywords"><span class="keyword">参数高效微调</span><span class="keyword">医学文本摘要</span><span class="keyword">低秩适应</span><span class="keyword">提示微调</span><span class="keyword">全参数微调</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.21970v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.21970v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗数据集">
+                <span class="section-icon" style="color: #047857;">◆</span>
+                <h2 class="section-title">医疗数据集</h2>
+                <span class="section-count">0 篇论文</span>
+            </div>
+            <div class="papers-grid">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header 医疗智能体">
+                <span class="section-icon" style="color: #7c3aed;">◆</span>
+                <h2 class="section-title">医疗智能体</h2>
+                <span class="section-count">3 篇论文</span>
+            </div>
+            <div class="papers-grid">
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22179v1" target="_blank">MARCUS: An agentic, multimodal vision-language model for cardiac diagnosis and management</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22179v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出了MARCUS，一种用于心脏诊断的智能体多模态视觉语言模型。它采用分层智能体架构，整合了针对心电图、超声心动图和心脏磁共振成像的专家模型，在大量医学影像和问答数据上训练。实验表明，MARCUS在多项心脏影像诊断任务上准确率显著超越前沿模型，尤其在多模态病例分析上表现优异，并展现出对幻觉推理的抵抗能力。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">心血管疾病仍然是全球死亡的主要原因，其进展受到人类对复杂心脏检查结果解读的限制。当前的人工智能（AI）视觉语言模型仅限于单模态输入且不具备交互性。我们提出了MARCUS（用于超声和信号的多模态自主推理与对话系统），这是一个用于端到端解读心电图（ECG）、超声心动图和心脏磁共振成像（CMR）的智能体视觉语言系统，可独立处理也可作为多模态输入处理。MARCUS采用分层智能体架构，包含特定模态的视觉语言专家模型，每个模型都集成了经过领域训练的视觉编码器和多阶段语言模型优化，并由一个多模态编排器协调。在1350万张图像（25万份ECG，130万张超声心动图图像，1200万张CMR图像）和我们新颖的专家策划的涵盖160万个问题的数据集上进行训练后，MARCUS实现了超越前沿模型（GPT-5 Thinking, Gemini 2.5 Pro Deep Think）的最先进性能。在内部（斯坦福大学）和外部（加州大学旧金山分校）测试队列中，MARCUS对ECG的准确率达到87-91%，超声心动图为67-86%，CMR为85-88%，优于前沿模型34-45%（P<0.001）。在多模态病例上，MARCUS达到了70%的准确率，几乎是前沿模型（22-28%）的三倍，其自由文本质量分数高出1.7-3.0倍。我们的智能体架构还赋予了对幻觉推理的抵抗力，即视觉语言模型从非预期的文本信号或幻觉的视觉内容中推导推理。MARCUS证明，结合领域特定视觉编码器和智能体编排器能够实现多模态心脏影像解读。我们将模型、代码和基准开源发布。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Cardiovascular disease remains the leading cause of global mortality, with progress hindered by human interpretation of complex cardiac tests. Current AI vision-language models are limited to single-modality inputs and are non-interactive. We present MARCUS (Multimodal Autonomous Reasoning and Chat for Ultrasound and Signals), an agentic vision-language system for end-to-end interpretation of electrocardiograms (ECGs), echocardiograms, and cardiac magnetic resonance imaging (CMR) independently and as multimodal input. MARCUS employs a hierarchical agentic architecture comprising modality-specific vision-language expert models, each integrating domain-trained visual encoders with multi-stage language model optimization, coordinated by a multimodal orchestrator. Trained on 13.5 million images (0.25M ECGs, 1.3M echocardiogram images, 12M CMR images) and our novel expert-curated dataset spanning 1.6 million questions, MARCUS achieves state-of-the-art performance surpassing frontier models (GPT-5 Thinking, Gemini 2.5 Pro Deep Think). Across internal (Stanford) and external (UCSF) test cohorts, MARCUS achieves accuracies of 87-91% for ECG, 67-86% for echocardiography, and 85-88% for CMR, outperforming frontier models by 34-45% (P<0.001). On multimodal cases, MARCUS achieved 70% accuracy, nearly triple that of frontier models (22-28%), with 1.7-3.0x higher free-text quality scores. Our agentic architecture also confers resistance to mirage reasoning, whereby vision-language models derive reasoning from unintended textual signals or hallucinated visual content. MARCUS demonstrates that domain-specific visual encoders with an agentic orchestrator enable multimodal cardiac interpretation. We release our models, code, and benchmark open-source.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">O'Sullivan JW</span>, <span class="author">Asadi M</span>, <span class="author">Elbe L</span>, <span class="author">Chaudhari A</span>, <span class="author">Nedaee T</span>, <span class="author">Haddad F</span>, <span class="author">等</span></div>
+                <div class="paper-keywords"><span class="keyword">多模态人工智能</span><span class="keyword">心脏影像诊断</span><span class="keyword">智能体架构</span><span class="keyword">视觉语言模型</span><span class="keyword">医学影像分析</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22179v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22179v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22115v1" target="_blank">Designing Medical Chatbots where Accuracy and Acceptability are in Conflict: An Exploratory, Vignette-based Study in Urban India</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22115v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本研究通过情景实验调查了印度城市居民对医疗聊天机器人提供的、与当地常见医疗实践（如滥用抗生素）相悖但符合临床指南的建议的接受度。研究发现多数用户基于自身经验拒绝此类建议，但通过设计情境感知的干预措施，可以引导用户接受指南一致的建议，揭示了在全球南方公平设计医疗聊天机器人面临的核心矛盾。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">当医疗聊天机器人(medical chatbots)提供的建议与用户的实际护理经验(lived care experiences)相冲突时，用户需要去解读、协商并评估该建议的合法性。在印度，抗生素(antibiotics)、止泻药(antidiarrheals)和注射剂(injections)的普遍过度使用，已经使患者的期望偏离了聊天机器人被训练提供的、符合指南(guideline-aligned)的建议。我们展示了一项基于情景(vignette-based)的混合方法(mixed-methods)研究，对象是200名印度城市成年人，考察了他们对聊天机器人对话记录中符合指南但与常规(norm-divergent)相悖建议的偏好。我们发现，大多数用户基于其生活经验中的期望，援引多种理由拒绝此类建议。通过设计和引入情境感知(context-aware)的助推(nudges)，我们支持期望对齐(expectation alignment)，从而将偏好转向包含符合指南建议的对话记录。在此过程中，我们揭示了在全球南方(Global South)公平设计医疗聊天机器人所面临的关键矛盾。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">When medical chatbots provide advice that conflicts with users' lived care experiences, users are left to interpret, negotiate, and evaluate the legitimacy of that guidance. In India, the widespread overuse of antibiotics, antidiarrheals, and injections has shifted patient expectations away from the guideline-aligned advice that chatbots are trained to provide. We present a mixed-methods, vignette-based study with 200 urban Indian adults examining preferences for and against guideline-aligned, norm-divergent advice in chatbot transcripts. We find that a majority of users reject such advice, drawing on diverse rationales grounded in their lived expectations. Through the design and introduction of context-aware nudges, we support expectation alignment that shifts preferences towards transcripts containing guideline-aligned advice. In doing so, we surface key tensions in the equitable design of medical chatbots in the Global South.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Raghunath A</span>, <span class="author">Thies W</span>, <span class="author">Jain M</span></div>
+                <div class="paper-keywords"><span class="keyword">医疗聊天机器人</span><span class="keyword">用户接受度</span><span class="keyword">临床指南</span><span class="keyword">情境感知干预</span><span class="keyword">全球南方</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22115v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22115v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+
+        <article class="paper-card" data-category="医疗智能体">
+            <div class="paper-header">
+                <div class="paper-category">医疗智能体 · cs.AI</div>
+                <h3 class="paper-title"><a href="https://arxiv.org/abs/2603.22096v1" target="_blank">GSEM: Graph-based Self-Evolving Memory for Experience Augmented Clinical Reasoning</a></h3>
+            </div>
+            <div class="paper-meta">
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    2026-03-23
+                </span>
+                <span class="paper-meta-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    arXiv:2603.22096v1
+                </span>
+            </div>
+            <div class="paper-body">
+                <p class="paper-summary">本文提出GSEM，一种基于图的自演化记忆框架，用于增强临床推理。它将临床经验组织成双层记忆图，捕获决策结构和经验间关系，支持基于适用性的检索和在线反馈校准。实验表明，GSEM在两个基准测试中均取得了最高准确率。</p>
+                
+                <div class="abstract-section">
+                    <button class="abstract-toggle" onclick="toggleAbstract(this)">
+                        <span>查看摘要</span>
+                        <span class="abstract-toggle-icon">▼</span>
+                    </button>
+                    <div class="abstract-content">
+                        <div class="abstract-inner">
+                            <div class="abstract-block">
+                            <div class="abstract-label">中文摘要</div>
+                            <div class="abstract-text">临床决策智能体可以从重用先前的决策经验中受益。然而，许多记忆增强方法将经验存储为独立记录，缺乏明确的关系结构，这可能导致检索噪声、不可靠的重用，并且在某些情况下甚至比直接LLM推理性能更差。我们提出了GSEM（基于图的自演化记忆），一个临床记忆框架，它将临床经验组织成一个双层记忆图，捕获每个经验内部的决策结构以及经验之间的依赖关系，并支持基于适用性的检索以及基于在线反馈的节点质量和边权重校准。在MedR-Bench和MedAgentsBench上使用两种LLM骨干网络（DeepSeek-V3.2和Qwen3.5-35B）的实验中，GSEM在所有基线中取得了最高的平均准确率，分别达到70.90%和69.24%。代码可在 https://github.com/xhan1022/gsem 获取。</div>
+                        </div><div class="abstract-block">
+                            <div class="abstract-label">英文摘要</div>
+                            <div class="abstract-text">Clinical decision-making agents can benefit from reusing prior decision experience. However, many memory-augmented methods store experiences as independent records without explicit relational structure, which may introduce noisy retrieval, unreliable reuse, and in some cases even hurt performance compared to direct LLM inference. We propose GSEM (Graph-based Self-Evolving Memory), a clinical memory framework that organizes clinical experiences into a dual-layer memory graph, capturing both the decision structure within each experience and the relational dependencies across experiences, and supporting applicability-aware retrieval and online feedback-driven calibration of node quality and edge weights. Across MedR-Bench and MedAgentsBench with two LLM backbones, GSEM achieves the highest average accuracy among all baselines, reaching 70.90\% and 69.24\% with DeepSeek-V3.2 and Qwen3.5-35B, respectively. Code is available at https://github.com/xhan1022/gsem.</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="paper-footer">
+                <div class="paper-authors"><span class="author">Han X</span>, <span class="author">Fan Y</span>, <span class="author">Zhao S</span>, <span class="author">Wang H</span>, <span class="author">Qin B</span></div>
+                <div class="paper-keywords"><span class="keyword">临床决策智能体</span><span class="keyword">图记忆</span><span class="keyword">经验增强</span><span class="keyword">自演化记忆</span><span class="keyword">临床推理</span></div>
+            </div>
+            <div class="paper-actions">
+                <a href="https://arxiv.org/pdf/2603.22096v1" target="_blank" class="btn btn-primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    PDF
+                </a>
+                <a href="https://arxiv.org/abs/2603.22096v1" target="_blank" class="btn btn-secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    arXiv
+                </a>
+            </div>
+        </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">生成于 2026-03-24 22:34 · 数据来源：arXiv.org</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const statItems = document.querySelectorAll('.stat-item');
+        const sections = document.querySelectorAll('.section');
+
+        function filterPapers(filter) {
+            // Update stat items
+            statItems.forEach(item => {
+                item.classList.toggle('active', item.dataset.filter === filter);
+            });
+
+            // Filter cards
+            document.querySelectorAll('.paper-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.paper-card:not(.hidden)');
+                if (filter === 'all' || visibleCards.length > 0) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        statItems.forEach(item => {
+            item.addEventListener('click', () => filterPapers(item.dataset.filter));
+        });
+
+        // Abstract toggle
+        function toggleAbstract(btn) {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            const textSpan = btn.querySelector('span:first-child');
+
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                textSpan.textContent = '查看摘要';
+            } else {
+                content.classList.add('expanded');
+                btn.classList.add('expanded');
+                textSpan.textContent = '收起摘要';
+            }
+        }
+    </script>
+</body>
+</html>
