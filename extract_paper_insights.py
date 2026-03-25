@@ -8,6 +8,7 @@ import json
 import os
 from llm import get_llm_client
 from prompts import EXTRACT_PAPER_INSIGHTS
+from utils import load_json, save_json
 
 INPUT_FILE = os.path.join(os.getenv('OUTPUT_DIR', '.'), 'relative_papers.json')
 
@@ -49,8 +50,7 @@ def extract_insights(client, title, abstract, max_retries=2):
 
 
 def main():
-    with open(INPUT_FILE, 'r', encoding='utf-8') as f:
-        input_data = json.load(f)
+    input_data = load_json(INPUT_FILE, {})
 
     # Handle both old format (list) and new format (dict with 'papers' key)
     if isinstance(input_data, list):
@@ -95,8 +95,7 @@ def main():
         'date_range': input_data.get('date_range', {})
     }
 
-    with open(INPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, ensure_ascii=False, indent=2)
+    save_json(INPUT_FILE, output_data)
 
     print(f"\n=== Summary ===")
     print(f"Updated: {updated_count}/{len(papers)} papers")

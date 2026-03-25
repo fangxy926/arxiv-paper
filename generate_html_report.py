@@ -6,8 +6,10 @@ Academic professional design inspired by arXiv, Nature, and PubMed
 import json
 import os
 import sys
+import hashlib
 from datetime import datetime
 from dotenv import load_dotenv
+from utils import load_json
 
 # Load .env file
 load_dotenv()
@@ -31,7 +33,6 @@ TOPIC_COLORS = {
 
 def get_topic_color(topic):
     """Get color for topic - use predefined or generate consistent color"""
-    import hashlib
     if topic in TOPIC_COLORS:
         return TOPIC_COLORS[topic]
     # Generate consistent color from topic name
@@ -72,8 +73,7 @@ def format_keywords(keywords):
 
 # Read categorized papers from OUTPUT_DIR
 data_file = os.path.join(OUTPUT_DIR, 'categorized_papers.json')
-with open(data_file, 'r', encoding='utf-8') as f:
-    data = json.load(f)
+data = load_json(data_file, {})
 
 # Get papers for each topic
 topic_papers = {}

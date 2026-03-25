@@ -6,6 +6,7 @@ Reads relative_papers.json and outputs categorized_papers.json
 import json
 import os
 from datetime import datetime
+from utils import load_json, save_json
 
 
 def categorize_papers(input_file: str = 'relative_papers.json', output_file: str = 'categorized_papers.json') -> dict:
@@ -20,8 +21,7 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
     Returns:
         Dictionary with categorized papers and date range
     """
-    with open(input_file, 'r', encoding='utf-8') as f:
-        input_data = json.load(f)
+    input_data = load_json(input_file, {})
 
     papers = input_data.get('papers', [])
     date_range = input_data.get('date_range', {})
@@ -60,8 +60,7 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
     output_data['date_range'] = date_range
 
     # Save results
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, ensure_ascii=False, indent=2)
+    save_json(output_file, output_data)
 
     # Save metadata for index page (if in deploy mode)
     output_dir = os.getenv('OUTPUT_DIR', '.')

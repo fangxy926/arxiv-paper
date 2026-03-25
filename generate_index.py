@@ -7,6 +7,7 @@ import os
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+from utils import load_json
 
 def scan_reports(docs_dir='docs'):
     """Scan docs directory for all dated reports"""
@@ -49,11 +50,7 @@ def scan_reports(docs_dir='docs'):
                     metadata = {}
                     metadata_file = day_dir / 'metadata.json'
                     if metadata_file.exists():
-                        try:
-                            with open(metadata_file, 'r', encoding='utf-8') as f:
-                                metadata = json.load(f)
-                        except:
-                            pass
+                        metadata = load_json(metadata_file, {})
 
                     # Get date range from metadata
                     date_range = metadata.get('date_range', {})

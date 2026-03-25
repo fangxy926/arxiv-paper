@@ -9,6 +9,7 @@ import json
 import os
 from llm import get_llm_client
 from prompts import TOPIC_RELATED_PROMPT, GENERATE_SEARCH_TERMS_PROMPT
+from utils import save_json, load_json
 
 # Configuration from environment variables
 DAYS_BACK = int(os.getenv('ARXIV_DAYS_BACK', 7))  # Default: last 7 days
@@ -53,15 +54,8 @@ def generate_search_terms(client, topics, max_retries=2):
 
             content = response.choices[0].message.content.strip()
 
-            # 清理可能的markdown包装
-            content_clean = content
-            if content.startswith('```json'):
-                content_clean = content[7:]
-            if content.startswith('```'):
-                content_clean = content[3:]
-            if content_clean.endswith('```'):
-                content_clean = content_clean[:-3]
-            content_clean = content_clean.strip()
+            # Clean markdown code blocks and parse JSON
+            content_clean = clean_markdown_code_blocks(content)
 
             result = json.loads(content_clean)
             terms = result.get('search_terms', [])
@@ -86,14 +80,7 @@ def generate_search_terms(client, topics, max_retries=2):
 
 def load_search_terms_cache():
     """从缓存文件加载搜索词"""
-    if not os.path.exists(SEARCH_TERMS_CACHE_FILE):
-        return None
-    try:
-        with open(SEARCH_TERMS_CACHE_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"[WARN] Failed to load search terms cache: {e}")
-        return None
+    return load_json(SEARCH_TERMS_CACHE_FILE)
 
 
 def save_search_terms_cache(topics, terms):
@@ -103,11 +90,7 @@ def save_search_terms_cache(topics, terms):
         "terms": terms,
         "generated_at": datetime.now().isoformat()
     }
-    try:
-        with open(SEARCH_TERMS_CACHE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(cache_data, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        print(f"[WARN] Failed to save search terms cache: {e}")
+    save_json(SEARCH_TERMS_CACHE_FILE, cache_data)
     
 
 # Calculate date range
@@ -130,9 +113,22 @@ else:
     start_date = datetime(start_date.year, start_date.month, start_date.day, 0, 0, 0, tzinfo=timezone.utc)
 
 all_results = []
+seen_ids = set()  # O(1) lookup for deduplication
 
 client = arxiv.Client()
 llm_client = get_llm_client()
+
+
+def clean_markdown_code_blocks(content: str) -> str:
+    """Remove markdown code block wrappers from LLM responses."""
+    content = content.strip()
+    if content.startswith('```json'):
+        content = content[7:]
+    elif content.startswith('```'):
+        content = content[3:]
+    if content.endswith('```'):
+        content = content[:-3]
+    return content.strip()
 
 # 动态生成搜索词
 print(f"[INFO] Topics: {GIVEN_TOPICS}")
@@ -175,15 +171,9 @@ def llm_filter(client, title, abstract, max_retries=2):
             content = response.choices[0].message.content.strip()
 
             # 尝试解析JSON
-            import json
             try:
-                # 清理可能的markdown包装
-                content_clean = content
-                if content.startswith('```json'):
-                    content_clean = content[7:]
-                if content.endswith('```'):
-                    content_clean = content[:-3]
-                content_clean = content_clean.strip()
+                # Clean markdown code blocks
+                content_clean = clean_markdown_code_blocks(content)
 
                 result = json.loads(content_clean)
                 related = result.get('related', False)
@@ -247,7 +237,8 @@ for term in search_terms:
             arxiv_id = result.entry_id.split("/")[-1] if "/" in result.entry_id else result.entry_id
             paper_info["arxiv_id"] = arxiv_id
 
-            if arxiv_id not in [r["arxiv_id"] for r in all_results]:
+            if arxiv_id not in seen_ids:
+                seen_ids.add(arxiv_id)
                 all_results.append(paper_info)
                 print(f"  Found: {arxiv_id} - {paper_info['title'][:60]}...")
 
@@ -268,8 +259,7 @@ output_data = {
         "end_date": end_date.strftime("%Y-%m-%d")
     }
 }
-with open(output_file, "w", encoding="utf-8") as f:
-    json.dump(output_data, f, ensure_ascii=False, indent=2)
+save_json(output_file, output_data)
 
 print(f"\n=== Summary ===")
 print(f"Total unique papers found: {len(all_results)}")
