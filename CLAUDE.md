@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an automated arXiv academic progress weekly report generator focused on medical AI. It searches arXiv for papers, uses LLM for intelligent filtering and information extraction, generates HTML reports, and deploys to GitHub Pages via GitHub Actions.
+This is an automated arXiv academic progress daily report generator focused on medical AI. It searches arXiv for papers, uses LLM for intelligent filtering and information extraction, generates HTML reports, and deploys to GitHub Pages via GitHub Actions.
 
 ## Project Structure
 
@@ -15,17 +15,18 @@ This is an automated arXiv academic progress weekly report generator focused on 
 ├── extract_paper_insights.py   # Step 2: LLM insight extraction
 ├── categorize_papers.py        # Step 3: Topic categorization
 ├── generate_html_report.py     # Step 4: HTML report generation
-├── generate_index.py           # Index page generation for history
+├── generate_index.py           # Step 5: Historical index generation
 ├── llm.py                      # LLM client wrapper
 ├── prompts.py                  # LLM prompt templates
 ├── pyproject.toml              # Python project config (uv)
 ├── uv.lock                     # Dependency lock file
 ├── .env.example                # Environment template
-├── search_terms_cache.json     # Search terms cache
+├── search_terms_cache.json     # Search terms cache (auto-generated)
 ├── relative_papers.json        # Intermediate: filtered papers
 ├── categorized_papers.json     # Intermediate: grouped papers
-└── docs/                       # Output directory
+└── docs/                       # Output directory for GitHub Pages
     ├── index.html              # Historical index page
+    ├── .nojekyll               # Disable Jekyll processing
     └── YYYY/MM/DD/
         ├── index.html          # Daily report
         └── metadata.json       # Report metadata
@@ -36,7 +37,10 @@ This is an automated arXiv academic progress weekly report generator focused on 
 ### Running the Application
 
 ```bash
-# Run the complete workflow (search → extract → categorize → generate report)
+# Run the complete pipeline (uses OUTPUT_DIR from env or defaults to docs/YYYY/MM/DD/)
+uv run main.py
+
+# Or with explicit Python path
 .venv/Scripts/python.exe main.py
 
 # Run individual steps (useful for debugging)
@@ -44,7 +48,7 @@ This is an automated arXiv academic progress weekly report generator focused on 
 .venv/Scripts/python.exe extract_paper_insights.py   # Step 2: Extract paper insights with LLM
 .venv/Scripts/python.exe categorize_papers.py        # Step 3: Categorize papers by topic
 .venv/Scripts/python.exe generate_html_report.py     # Step 4: Generate HTML report
-.venv/Scripts/python.exe generate_index.py           # Generate history index page
+.venv/Scripts/python.exe generate_index.py           # Step 5: Generate history index page
 ```
 
 ### Dependency Management
@@ -83,6 +87,27 @@ generate_html_report.py + generate_index.py
        ↓
 docs/YYYY/MM/DD/index.html + docs/index.html
 ```
+
+### Dual Filtering Mechanism
+
+Papers go through two-stage filtering in `search_arxiv_medical.py`:
+
+1. **Keyword Pre-filtering** (`FILTER_KEYWORDS`): Fast regex-based matching against paper title/abstract
+2. **LLM Relevance Filtering** (`TOPIC_RELATED_PROMPT` in prompts.py): Semantic judgment of relevance to configured topics
+
+### Dynamic Search Terms
+
+`search_arxiv_medical.py` uses LLM to generate context-aware search terms based on configured topics. Results are cached in `search_terms_cache.json` (keyed by hash of `TOPICS` env var) to avoid regenerating on every run.
+
+### Prompt Templates (prompts.py)
+
+| Prompt | Purpose | Used In |
+|--------|---------|---------|
+| `GENERATE_SEARCH_TERMS_PROMPT` | Generate arXiv search terms from topics | search_arxiv_medical.py |
+| `TOPIC_RELATED_PROMPT` | Judge paper relevance to topics | search_arxiv_medical.py |
+| `EXTRACT_PAPER_INSIGHTS` | Extract keywords, summary, Chinese abstract | extract_paper_insights.py |
+
+All prompts expect JSON responses without markdown formatting.
 
 ### Data File Formats
 
@@ -135,24 +160,12 @@ docs/YYYY/MM/DD/index.html + docs/index.html
 }
 ```
 
-### Key Design Patterns
-
-**Dual Filtering Mechanism**: Papers go through two-stage filtering:
-1. Keyword pre-filtering (`FILTER_KEYWORDS` env var) - fast regex-based filtering
-2. LLM relevance filtering (`TOPIC_RELATED_PROMPT` in prompts.py) - semantic relevance judgment
-
-**Dynamic Search Terms**: `search_arxiv_medical.py` uses LLM to generate context-aware search terms based on configured topics. Results are cached in `search_terms_cache.json` to avoid regenerating on every run.
-
-**Date Directory Structure**: Reports are saved to `docs/YYYY/MM/DD/index.html` for historical archiving. Each report includes a `metadata.json` for index generation.
-
-**Environment-Driven Configuration**: All behavior is controlled via environment variables. No hardcoded config in source code.
-
 ### Module Responsibilities
 
 | Module | Responsibility | Input | Output |
 |--------|---------------|-------|--------|
 | `main.py` | Pipeline orchestration, date calculation, directory management | Environment variables | Coordinated execution |
-| `search_arxiv_medical.py` | arXiv API search, dual filtering | arXiv API | `relative_papers.json` |
+| `search_arxiv_medical.py` | arXiv API search, dual filtering, search term generation | arXiv API | `relative_papers.json` |
 | `extract_paper_insights.py` | LLM-based insight extraction | `relative_papers.json` | Enriched papers |
 | `categorize_papers.py` | Topic grouping | Enriched papers | `categorized_papers.json`, `metadata.json` |
 | `generate_html_report.py` | HTML report generation | `categorized_papers.json` | `docs/YYYY/MM/DD/index.html` |
@@ -172,7 +185,7 @@ main.py
 │   └── prompts.py (EXTRACT_PAPER_INSIGHTS)
 ├── categorize_papers.py
 ├── generate_html_report.py
-└── generate_index.py (only when DEPLOY_MODE=true)
+└── generate_index.py
 ```
 
 ## Environment Variables
@@ -193,8 +206,7 @@ main.py
 | `FILTER_KEYWORDS` | Pre-filter keywords (comma-separated) | Large medical AI keyword list |
 | `ARXIV_DAYS_BACK` | Days to search back | `7` |
 | `ARXIV_MAX_RESULTS` | Max results per search term | `50` |
-| `OUTPUT_DIR` | Output directory | `.` (current directory) |
-| `DEPLOY_MODE` | Enable index generation | `false` |
+| `OUTPUT_DIR` | Output directory | `docs/YYYY/MM/DD` (auto-generated) |
 | `FORCE_DATE_START` | Force specific start date | - |
 | `FORCE_DATE_END` | Force specific end date | - |
 
@@ -220,49 +232,11 @@ llm.py:
   - OPENAI_API_BASE, OPENAI_API_KEY, OPENAI_MODEL
 ```
 
-## Operation Modes
-
-### Local Development Mode
-
-- `DEPLOY_MODE=false` (default)
-- Generates only the dated report: `docs/YYYY/MM/DD/index.html`
-- Does not generate historical index
-- Useful for testing and debugging
-
-### Deploy Mode (GitHub Actions)
-
-- `DEPLOY_MODE=true`
-- Generates dated report + historical index page
-- Index page aggregates all historical reports
-- Triggered by GitHub Actions weekly
-
-### Manual Historical Report Generation
-
-To generate a report for a specific date range:
-
-```bash
-# Set environment variables
-export FORCE_DATE_START="2024-01-01"
-export FORCE_DATE_END="2024-01-07"
-export OUTPUT_DIR="docs/2024/01/07"
-
-# Run pipeline
-.venv/Scripts/python.exe main.py
-```
-
-## Cache Mechanism
-
-**search_terms_cache.json**
-- Caches LLM-generated search terms per topic configuration
-- Key: Hash of `TOPICS` environment variable
-- Value: List of search terms
-- Regenerates only when topics change
-
 ## GitHub Actions Integration
 
 **Workflow**: `.github/workflows/weekly-report.yml`
 
-**Schedule**: Every Monday at 00:00 UTC (08:00 Beijing Time)
+**Schedule**: Every day at 22:00 UTC (06:00 Beijing Time)
 
 **Steps**:
 1. Checkout repository
@@ -271,12 +245,21 @@ export OUTPUT_DIR="docs/2024/01/07"
 4. Run pipeline with `DEPLOY_MODE=true`
 5. Deploy `docs/` to GitHub Pages
 
-**Required Secrets/Variables**:
+**Required Secrets/Variables** (configured in Environment "Default"):
 - `OPENAI_API_KEY` (Secret)
 - `OPENAI_API_BASE` (Variable)
 - `OPENAI_MODEL` (Variable)
 - `TOPICS` (Variable)
 - `FILTER_KEYWORDS` (Variable)
+- `ARXIV_DAYS_BACK` (Variable)
+- `ARXIV_MAX_RESULTS` (Variable)
+
+## Date Calculation Logic
+
+In `main.py`:
+- `ARXIV_DAYS_BACK=7` (default): Searches papers from 7 days ago to yesterday
+- Report directory: `docs/YYYY/MM/DD/` using today's date
+- If directory exists with `index.html`, appends `-1`, `-2`, etc.
 
 ## Troubleshooting
 
@@ -295,10 +278,6 @@ export OUTPUT_DIR="docs/2024/01/07"
 - Run steps sequentially or use `main.py` for full pipeline
 - Check `OUTPUT_DIR` is consistent across runs
 
-### Index page not generated
-- Set `DEPLOY_MODE=true` to enable index generation
-- Index generation requires existing `metadata.json` files
-
 ## Development Guidelines
 
 ### Adding a New Processing Step
@@ -311,12 +290,7 @@ export OUTPUT_DIR="docs/2024/01/07"
 
 ### Modifying Prompts
 
-All LLM prompts are in `prompts.py`:
-- `TOPIC_RELATED_PROMPT` - Relevance filtering
-- `GENERATE_SEARCH_TERMS_PROMPT` - Search term generation
-- `EXTRACT_PAPER_INSIGHTS` - Insight extraction
-
-Prompts should return valid JSON. Use the `JSON_FORMAT_PROMPT` suffix pattern.
+All LLM prompts are in `prompts.py`. Prompts should return valid JSON without markdown formatting.
 
 ### Adding Environment Variables
 
