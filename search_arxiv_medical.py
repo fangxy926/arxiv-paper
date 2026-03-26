@@ -21,8 +21,6 @@ FILTER_KEYWORDS = FILTER_KEYWORDS_RAW.split(',') if FILTER_KEYWORDS_RAW else []
 
 GIVEN_TOPICS = os.getenv('TOPICS')
 
-# Cache file for generated search terms
-SEARCH_TERMS_CACHE_FILE = "search_terms_cache.json"
 
 
 def generate_search_terms(client, topics, max_retries=2):
@@ -80,7 +78,7 @@ def generate_search_terms(client, topics, max_retries=2):
 
 def load_search_terms_cache():
     """从缓存文件加载搜索词"""
-    return load_json(SEARCH_TERMS_CACHE_FILE)
+    return load_json("search_terms_cache.json")
 
 
 def save_search_terms_cache(topics, terms):
@@ -90,7 +88,7 @@ def save_search_terms_cache(topics, terms):
         "terms": terms,
         "generated_at": datetime.now().isoformat()
     }
-    save_json(SEARCH_TERMS_CACHE_FILE, cache_data)
+    save_json("search_terms_cache.json", cache_data)
     
 
 # Calculate date range
