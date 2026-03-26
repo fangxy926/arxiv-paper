@@ -9,7 +9,7 @@ import json
 import os
 from llm import get_llm_client
 from prompts import TOPIC_RELATED_PROMPT, GENERATE_SEARCH_TERMS_PROMPT
-from utils import save_json, load_json
+from utils import save_json
 
 # Configuration from environment variables
 DAYS_BACK = int(os.getenv('ARXIV_DAYS_BACK', 7))  # Default: last 7 days
@@ -29,12 +29,6 @@ def generate_search_terms(client, topics, max_retries=2):
     """
     if not client:
         raise ValueError("LLM client is required to generate search terms")
-
-    # 尝试从缓存读取
-    cache_data = load_search_terms_cache()
-    if cache_data and cache_data.get("topics") == topics:
-        print(f"[INFO] Using cached search terms for topics: {topics}")
-        return cache_data.get("terms", [])
 
     prompt = GENERATE_SEARCH_TERMS_PROMPT.format(topics=topics)
 
@@ -59,8 +53,6 @@ def generate_search_terms(client, topics, max_retries=2):
             terms = result.get('search_terms', [])
 
             if terms and len(terms) >= 1:
-                # 保存到缓存
-                save_search_terms_cache(topics, terms)
                 print(f"[INFO] Generated {len(terms)} search terms for topics: {topics}")
                 return terms
 
@@ -75,21 +67,6 @@ def generate_search_terms(client, topics, max_retries=2):
 
     raise ValueError("Failed to generate search terms from LLM")
 
-
-def load_search_terms_cache():
-    """从缓存文件加载搜索词"""
-    return load_json("search_terms_cache.json")
-
-
-def save_search_terms_cache(topics, terms):
-    """保存搜索词到缓存文件"""
-    cache_data = {
-        "topics": topics,
-        "terms": terms,
-        "generated_at": datetime.now().isoformat()
-    }
-    save_json("search_terms_cache.json", cache_data)
-    
 
 # Calculate date range
 force_start = os.getenv('FORCE_DATE_START')
