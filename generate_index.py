@@ -72,6 +72,38 @@ def scan_reports(docs_dir='docs'):
 
     return sorted(reports, key=lambda x: x['date_obj'], reverse=True)
 
+def build_calendar_data(reports):
+    """
+    将报告列表转换为按年月分组的字典
+    返回: {year: {month: {day: {'count': int, 'path': str, 'is_latest': bool}}}}
+    """
+    calendar_data = {}
+    if not reports:
+        return calendar_data
+
+    # 找到最新报告
+    latest_report = reports[0]  # reports 已按日期倒序排列
+
+    for report in reports:
+        year = report['year']
+        month = report['month']
+        day = report['day']
+
+        if year not in calendar_data:
+            calendar_data[year] = {}
+        if month not in calendar_data[year]:
+            calendar_data[year][month] = {}
+
+        is_latest = report['date'] == latest_report['date']
+
+        calendar_data[year][month][day] = {
+            'count': report['paper_count'],
+            'path': report['path'],
+            'is_latest': is_latest
+        }
+
+    return calendar_data
+
 def generate_index(reports, docs_dir='docs'):
     """Generate index HTML page"""
 
