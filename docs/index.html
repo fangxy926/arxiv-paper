@@ -155,145 +155,182 @@
             background: #1e3a8a;
         }
 
-        /* Archive */
-        .archive-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .archive-title {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .archive-count {
-            font-size: 13px;
-            color: var(--color-text-muted);
-        }
-
-        /* Year Section */
-        .year-section {
+        /* Calendar Container */
+        .calendar-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
             margin-bottom: 24px;
         }
 
-        .year-header {
+        /* Calendar Header */
+        .calendar-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border-light);
         }
 
-        .year-label {
+        .calendar-title {
             font-family: var(--font-serif);
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
+            color: var(--color-text);
         }
 
-        .year-count {
-            font-size: 12px;
-            color: var(--color-text-muted);
-            font-weight: 500;
+        .calendar-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.15s;
+            cursor: pointer;
         }
 
-        /* Reports List */
-        .reports-list {
+        .calendar-nav-btn:hover {
+            background: var(--color-bg);
+            border-color: var(--color-text-muted);
+        }
+
+        .calendar-nav-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Calendar Grid */
+        .calendar-grid {
             display: flex;
             flex-direction: column;
-            gap: 6px;
         }
 
-        .report-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.15s;
+        /* Weekdays Row */
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
-        .report-item:hover {
-            border-color: #d1d5db;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        .calendar-weekday {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            padding: 8px;
         }
 
-        .report-date {
+        /* Days Grid */
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-width: 56px;
-            padding: 8px;
-            background: var(--color-bg);
-            border-radius: 4px;
-            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.15s;
+            min-height: 80px;
         }
 
-        .date-day {
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-text);
-            line-height: 1;
+        .calendar-day.empty {
+            border: none;
+            background: transparent;
+            pointer-events: none;
         }
 
-        .date-month {
-            font-size: 11px;
-            font-weight: 600;
+        .calendar-day.no-report {
+            background: var(--color-border-light);
+            border-color: var(--color-border);
             color: var(--color-text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 2px;
         }
 
-        .report-info {
-            flex: 1;
+        .calendar-day.has-report {
+            background: #3b82f6;
+            border-color: #2563eb;
+            color: white;
+            cursor: pointer;
         }
 
-        .report-title {
-            font-size: 16px;
+        .calendar-day.has-report:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .calendar-day.latest {
+            background: #1e40af;
+            border-color: #1e3a8a;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }
+
+        .calendar-day.latest:hover {
+            background: #1e3a8a;
+            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.4);
+        }
+
+        .day-number {
+            font-size: 18px;
             font-weight: 600;
-            color: var(--color-text);
             margin-bottom: 4px;
         }
 
-        .report-range {
+        .day-count {
             font-size: 12px;
-            color: var(--color-text-muted);
+            opacity: 0.9;
         }
 
-        .report-meta {
+        .day-latest-badge {
+            font-size: 10px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+
+        /* Calendar Legend */
+        .calendar-legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border-light);
+            justify-content: center;
+        }
+
+        .legend-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
         }
 
-        .count-badge {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--color-accent);
-            background: var(--color-accent-light);
-            padding: 4px 10px;
-            border-radius: 12px;
-        }
-
-        .arrow {
-            font-size: 18px;
-            color: var(--color-text-muted);
-            transition: transform 0.15s;
-        }
-
-        .report-item:hover .arrow {
-            transform: translateX(4px);
-            color: var(--color-accent);
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
         }
 
         /* Footer */
@@ -325,13 +362,23 @@
         }
 
         /* Responsive */
-        @media (max-width: 640px) {
-            .header-content { padding: 32px 20px; }
-            .header-title { font-size: 28px; }
-            .main { padding: 24px 20px; }
-            .latest-report { padding: 24px; }
-            .report-item { padding: 14px 16px; }
-            .report-date { min-width: 48px; }
+        @media (max-width: 768px) {
+            .header-content { padding: 24px 20px 20px; }
+            .header-title { font-size: 24px; }
+            .main { padding: 16px 16px 32px; }
+            .latest-report { padding: 20px; }
+            .calendar-container { padding: 16px; }
+            .calendar-title { font-size: 20px; }
+            .calendar-day { min-height: 60px; }
+            .day-number { font-size: 14px; }
+            .day-count { font-size: 10px; }
+            .calendar-legend { flex-direction: column; gap: 10px; align-items: center; }
+        }
+
+        @media (max-width: 480px) {
+            .calendar-day { min-height: 50px; }
+            .day-number { font-size: 12px; }
+            .day-count { display: none; }
         }
     </style>
 </head>
@@ -357,618 +404,152 @@
         </div>
         
 
-        <div class="archive-header"><h2 class="archive-title">历史归档</h2><span class="archive-count">共 43 期</span></div>
-        <div class="year-section">
-  <div class="year-header">
-    <span class="year-label">2026</span>
-    <span class="year-count">43 期</span>
-  </div>
-  <div class="reports-list">
-    <a href="2026/03/26/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">26</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 26 · 周四</div>
-        <div class="report-range">2026-03-25 — 2026-03-25</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">4 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/25/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">25</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 25 · 周三</div>
-        <div class="report-range">2026-03-24 — 2026-03-24</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/24/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">24</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 24 · 周二</div>
-        <div class="report-range">2026-03-23 — 2026-03-23</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/23/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">23</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 23 · 周一</div>
-        <div class="report-range">2026-03-22 — 2026-03-22</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/22/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">22</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 22 · 周日</div>
-        <div class="report-range">2026-03-21 — 2026-03-21</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/21/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">21</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 21 · 周六</div>
-        <div class="report-range">2026-03-20 — 2026-03-20</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/20/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">20</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 20 · 周五</div>
-        <div class="report-range">2026-03-19 — 2026-03-19</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/19/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">19</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 19 · 周四</div>
-        <div class="report-range">2026-03-18 — 2026-03-18</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">5 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/18/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">18</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 18 · 周三</div>
-        <div class="report-range">2026-03-17 — 2026-03-17</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">8 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/17/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">17</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 17 · 周二</div>
-        <div class="report-range">2026-03-16 — 2026-03-16</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">4 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/16/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">16</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 16 · 周一</div>
-        <div class="report-range">2026-03-15 — 2026-03-15</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/15/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">15</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 15 · 周日</div>
-        <div class="report-range">2026-03-14 — 2026-03-14</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/14/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">14</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 14 · 周六</div>
-        <div class="report-range">2026-03-13 — 2026-03-13</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/13/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">13</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 13 · 周五</div>
-        <div class="report-range">2026-03-12 — 2026-03-12</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">3 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/12/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">12</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 12 · 周四</div>
-        <div class="report-range">2026-03-11 — 2026-03-11</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/11/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">11</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 11 · 周三</div>
-        <div class="report-range">2026-03-10 — 2026-03-10</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">9 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/10/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">10</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 10 · 周二</div>
-        <div class="report-range">2026-03-09 — 2026-03-09</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/09/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">09</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 09 · 周一</div>
-        <div class="report-range">2026-03-08 — 2026-03-08</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/08/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">08</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 08 · 周日</div>
-        <div class="report-range">2026-03-07 — 2026-03-07</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/07/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">07</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 07 · 周六</div>
-        <div class="report-range">2026-03-06 — 2026-03-06</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/06/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">06</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 06 · 周五</div>
-        <div class="report-range">2026-03-05 — 2026-03-05</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">3 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/05/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">05</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 05 · 周四</div>
-        <div class="report-range">2026-03-04 — 2026-03-04</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">8 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/04/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">04</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 04 · 周三</div>
-        <div class="report-range">2026-03-03 — 2026-03-03</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">8 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/03/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">03</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 03 · 周二</div>
-        <div class="report-range">2026-03-02 — 2026-03-02</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">7 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/02/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">02</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 02 · 周一</div>
-        <div class="report-range">2026-03-01 — 2026-03-01</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/03/01/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">01</span>
-        <span class="date-month">Mar</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Mar 01 · 周日</div>
-        <div class="report-range">2026-02-28 — 2026-02-28</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/28/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">28</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 28 · 周六</div>
-        <div class="report-range">2026-02-27 — 2026-02-27</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/27/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">27</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 27 · 周五</div>
-        <div class="report-range">2026-02-26 — 2026-02-26</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">8 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/26/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">26</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 26 · 周四</div>
-        <div class="report-range">2026-02-25 — 2026-02-25</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">7 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/25/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">25</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 25 · 周三</div>
-        <div class="report-range">2026-02-24 — 2026-02-24</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/24/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">24</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 24 · 周二</div>
-        <div class="report-range">2026-02-23 — 2026-02-23</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/23/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">23</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 23 · 周一</div>
-        <div class="report-range">2026-02-22 — 2026-02-22</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/22/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">22</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 22 · 周日</div>
-        <div class="report-range">2026-02-21 — 2026-02-21</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/21/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">21</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 21 · 周六</div>
-        <div class="report-range">2026-02-20 — 2026-02-20</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/20/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">20</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 20 · 周五</div>
-        <div class="report-range">2026-02-19 — 2026-02-19</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/19/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">19</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 19 · 周四</div>
-        <div class="report-range">2026-02-18 — 2026-02-18</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/18/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">18</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 18 · 周三</div>
-        <div class="report-range">2026-02-17 — 2026-02-17</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">7 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/17/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">17</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 17 · 周二</div>
-        <div class="report-range">2026-02-16 — 2026-02-16</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">6 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/16/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">16</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 16 · 周一</div>
-        <div class="report-range">2026-02-15 — 2026-02-15</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/15/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">15</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 15 · 周日</div>
-        <div class="report-range">2026-02-14 — 2026-02-14</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/14-1/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">14</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 14 · 周六</div>
-        <div class="report-range">2026-02-13 — 2026-02-13</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/14/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">14</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 14 · 周六</div>
-        <div class="report-range">2026-02-13 — 2026-02-13</div>
-      </div>
-      <div class="report-meta">
-        
-        <span class="arrow">→</span>
-      </div>
-    </a>
-    <a href="2026/02/12/index.html" class="report-item">
-      <div class="report-date">
-        <span class="date-day">12</span>
-        <span class="date-month">Feb</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">Feb 12 · 周四</div>
-        <div class="report-range">2026-02-11 — 2026-02-11</div>
-      </div>
-      <div class="report-meta">
-        <span class="count-badge">1 篇论文</span>
-        <span class="arrow">→</span>
-      </div>
-    </a>
-  </div>
+        <h2 style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-bottom: 16px;">历史归档</h2>
+        <div class="calendar-container">
+    <div class="calendar-header">
+        <a href="?year=2026&month=2" class="calendar-nav-btn">←</a>
+        <span class="calendar-title">2026年 三月</span>
+        <a href="?year=2026&month=4" class="calendar-nav-btn">→</a>
+    </div>
+    <div class="calendar-grid">
+        <div class="calendar-weekdays">
+            <div class="calendar-weekday">日</div><div class="calendar-weekday">一</div><div class="calendar-weekday">二</div><div class="calendar-weekday">三</div><div class="calendar-weekday">四</div><div class="calendar-weekday">五</div><div class="calendar-weekday">六</div>
+        </div>
+        <div class="calendar-days">
+            <a href="2026/03/01/index.html" class="calendar-day has-report">
+                <span class="day-number">1</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/02/index.html" class="calendar-day has-report">
+                <span class="day-number">2</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/03/index.html" class="calendar-day has-report">
+                <span class="day-number">3</span>
+                <span class="day-count">7 篇</span>
+                
+            </a><a href="2026/03/04/index.html" class="calendar-day has-report">
+                <span class="day-number">4</span>
+                <span class="day-count">8 篇</span>
+                
+            </a><a href="2026/03/05/index.html" class="calendar-day has-report">
+                <span class="day-number">5</span>
+                <span class="day-count">8 篇</span>
+                
+            </a><a href="2026/03/06/index.html" class="calendar-day has-report">
+                <span class="day-number">6</span>
+                <span class="day-count">3 篇</span>
+                
+            </a><a href="2026/03/07/index.html" class="calendar-day has-report">
+                <span class="day-number">7</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/08/index.html" class="calendar-day has-report">
+                <span class="day-number">8</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/09/index.html" class="calendar-day has-report">
+                <span class="day-number">9</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/10/index.html" class="calendar-day has-report">
+                <span class="day-number">10</span>
+                <span class="day-count">6 篇</span>
+                
+            </a><a href="2026/03/11/index.html" class="calendar-day has-report">
+                <span class="day-number">11</span>
+                <span class="day-count">9 篇</span>
+                
+            </a><a href="2026/03/12/index.html" class="calendar-day has-report">
+                <span class="day-number">12</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/13/index.html" class="calendar-day has-report">
+                <span class="day-number">13</span>
+                <span class="day-count">3 篇</span>
+                
+            </a><a href="2026/03/14/index.html" class="calendar-day has-report">
+                <span class="day-number">14</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/15/index.html" class="calendar-day has-report">
+                <span class="day-number">15</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/16/index.html" class="calendar-day has-report">
+                <span class="day-number">16</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/17/index.html" class="calendar-day has-report">
+                <span class="day-number">17</span>
+                <span class="day-count">4 篇</span>
+                
+            </a><a href="2026/03/18/index.html" class="calendar-day has-report">
+                <span class="day-number">18</span>
+                <span class="day-count">8 篇</span>
+                
+            </a><a href="2026/03/19/index.html" class="calendar-day has-report">
+                <span class="day-number">19</span>
+                <span class="day-count">5 篇</span>
+                
+            </a><a href="2026/03/20/index.html" class="calendar-day has-report">
+                <span class="day-number">20</span>
+                <span class="day-count">6 篇</span>
+                
+            </a><a href="2026/03/21/index.html" class="calendar-day has-report">
+                <span class="day-number">21</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/22/index.html" class="calendar-day has-report">
+                <span class="day-number">22</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/23/index.html" class="calendar-day has-report">
+                <span class="day-number">23</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/24/index.html" class="calendar-day has-report">
+                <span class="day-number">24</span>
+                <span class="day-count">6 篇</span>
+                
+            </a><a href="2026/03/25/index.html" class="calendar-day has-report">
+                <span class="day-number">25</span>
+                <span class="day-count">0 篇</span>
+                
+            </a><a href="2026/03/26/index.html" class="calendar-day has-report latest">
+                <span class="day-number">26</span>
+                <span class="day-count">4 篇</span>
+                <span class="day-latest-badge">最新</span>
+            </a><div class="calendar-day no-report">
+                <span class="day-number">27</span>
+            </div><div class="calendar-day no-report">
+                <span class="day-number">28</span>
+            </div><div class="calendar-day no-report">
+                <span class="day-number">29</span>
+            </div><div class="calendar-day no-report">
+                <span class="day-number">30</span>
+            </div><div class="calendar-day no-report">
+                <span class="day-number">31</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="calendar-legend">
+        <div class="legend-item">
+            <span class="legend-color" style="background: #1e40af;"></span>
+            <span>最新报告</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #3b82f6;"></span>
+            <span>有报告</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #e5e7eb;"></span>
+            <span>无报告</span>
+        </div>
+    </div>
+    
 </div>
-
     </main>
 
     <footer class="footer">
