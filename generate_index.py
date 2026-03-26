@@ -104,6 +104,127 @@ def build_calendar_data(reports):
 
     return calendar_data
 
+def generate_calendar_html(calendar_data, year, month, prev_month_url=None, next_month_url=None):
+    """
+    生成指定年月的日历HTML
+
+    Args:
+        calendar_data: {year: {month: {day: {'count': int, 'path': str, 'is_latest': bool}}}}
+        year: 年份 (int or str)
+        month: 月份 (int or str)
+        prev_month_url: 上一个月链接 (可选)
+        next_month_url: 下一个月链接 (可选)
+
+    Returns:
+        str: 日历HTML字符串
+    """
+    year_str = str(year)
+    month_str = str(month).zfill(2)
+    month_int = int(month)
+    year_int = int(year)
+
+    # 计算月份第一天是星期几 (0=周日)
+    first_day = datetime(year_int, month_int, 1)
+    first_weekday = first_day.weekday()  # Monday=0, Sunday=6
+    # 转换为 0=周日 格式
+    first_weekday = (first_weekday + 1) % 7
+
+    # 计算月份总天数
+    if month_int == 12:
+        next_month = datetime(year_int + 1, 1, 1)
+    else:
+        next_month = datetime(year_int, month_int + 1, 1)
+    days_in_month = (next_month - first_day).days
+
+    # 月份名称
+    month_names = ['一月', '二月', '三月', '四月', '五月', '六月',
+                   '七月', '八月', '九月', '十月', '十一月', '十二月']
+    month_name = month_names[month_int - 1]
+
+    # 获取当前月份的数据
+    month_data = calendar_data.get(year_str, {}).get(month_str, {})
+
+    # 生成星期标题
+    weekdays = ['日', '一', '二', '三', '四', '五', '六']
+    weekdays_html = ''.join([f'<div class="calendar-weekday">{wd}</div>' for wd in weekdays])
+
+    # 生成前导空白格子
+    days_html = ''
+    for _ in range(first_weekday):
+        days_html += '<div class="calendar-day empty"></div>'
+
+    # 遍历每一天
+    for day in range(1, days_in_month + 1):
+        day_str = str(day).zfill(2)
+
+        if day_str in month_data:
+            # 有报告的日期
+            day_data = month_data[day_str]
+            count = day_data['count']
+            path = day_data['path']
+            is_latest = day_data.get('is_latest', False)
+
+            if is_latest:
+                # 最新报告日期
+                day_class = 'calendar-day has-report latest'
+                badge_html = '<span class="day-latest-badge">最新</span>'
+            else:
+                day_class = 'calendar-day has-report'
+                badge_html = ''
+
+            days_html += f'''<a href="{path}" class="{day_class}">
+                <span class="day-number">{day}</span>
+                <span class="day-count">{count} 篇</span>
+                {badge_html}
+            </a>'''
+        else:
+            # 无报告日期
+            days_html += f'''<div class="calendar-day no-report">
+                <span class="day-number">{day}</span>
+            </div>'''
+
+    # 导航按钮
+    prev_btn = f'<a href="{prev_month_url}" class="calendar-nav-btn">←</a>' if prev_month_url else '<span class="calendar-nav-btn disabled">←</span>'
+    next_btn = f'<a href="{next_month_url}" class="calendar-nav-btn">→</a>' if next_month_url else '<span class="calendar-nav-btn disabled">→</span>'
+
+    # 图例
+    legend_html = '''
+    <div class="calendar-legend">
+        <div class="legend-item">
+            <span class="legend-color" style="background: #1e40af;"></span>
+            <span>最新报告</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #3b82f6;"></span>
+            <span>有报告</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #e5e7eb;"></span>
+            <span>无报告</span>
+        </div>
+    </div>
+    '''
+
+    # 组装完整HTML
+    html = f'''<div class="calendar-container">
+    <div class="calendar-header">
+        {prev_btn}
+        <span class="calendar-title">{year_int}年 {month_name}</span>
+        {next_btn}
+    </div>
+    <div class="calendar-grid">
+        <div class="calendar-weekdays">
+            {weekdays_html}
+        </div>
+        <div class="calendar-days">
+            {days_html}
+        </div>
+    </div>
+    {legend_html}
+</div>'''
+
+    return html
+
 def generate_index(reports, docs_dir='docs'):
     """Generate index HTML page"""
 
