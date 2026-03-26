@@ -259,33 +259,53 @@
         }
 
         .calendar-day.no-report {
-            background: var(--color-border-light);
-            border-color: var(--color-border);
-            color: var(--color-text-muted);
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border-color: #cbd5e1;
+            color: #94a3b8;
+            cursor: default;
+        }
+
+        .calendar-day.no-report .day-count {
+            font-size: 11px;
+            opacity: 0.7;
         }
 
         .calendar-day.has-report {
-            background: #3b82f6;
-            border-color: #2563eb;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: transparent;
             color: white;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
         }
 
         .calendar-day.has-report:hover {
-            background: #2563eb;
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
         }
 
         .calendar-day.latest {
-            background: #1e40af;
-            border-color: #1e3a8a;
-            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-day.latest::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .calendar-day.latest:hover {
-            background: #1e3a8a;
-            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.4);
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.45);
         }
 
         .day-number {
@@ -331,6 +351,21 @@
             height: 16px;
             border-radius: 4px;
             border: 1px solid var(--color-border);
+        }
+
+        .legend-color.latest {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            border-color: transparent;
+        }
+
+        .legend-color.has-report {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: transparent;
+        }
+
+        .legend-color.no-report {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border-color: #cbd5e1;
         }
 
         /* Footer */
@@ -416,15 +451,13 @@
             <div class="calendar-weekday">日</div><div class="calendar-weekday">一</div><div class="calendar-weekday">二</div><div class="calendar-weekday">三</div><div class="calendar-weekday">四</div><div class="calendar-weekday">五</div><div class="calendar-weekday">六</div>
         </div>
         <div class="calendar-days">
-            <a href="2026/03/01/index.html" class="calendar-day has-report">
+            <div class="calendar-day no-report">
                 <span class="day-number">1</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/02/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">2</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/03/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/03/index.html" class="calendar-day has-report">
                 <span class="day-number">3</span>
                 <span class="day-count">7 篇</span>
                 
@@ -440,19 +473,16 @@
                 <span class="day-number">6</span>
                 <span class="day-count">3 篇</span>
                 
-            </a><a href="2026/03/07/index.html" class="calendar-day has-report">
+            </a><div class="calendar-day no-report">
                 <span class="day-number">7</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/08/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">8</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/09/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">9</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/10/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/10/index.html" class="calendar-day has-report">
                 <span class="day-number">10</span>
                 <span class="day-count">6 篇</span>
                 
@@ -460,27 +490,23 @@
                 <span class="day-number">11</span>
                 <span class="day-count">9 篇</span>
                 
-            </a><a href="2026/03/12/index.html" class="calendar-day has-report">
+            </a><div class="calendar-day no-report">
                 <span class="day-number">12</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/13/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/13/index.html" class="calendar-day has-report">
                 <span class="day-number">13</span>
                 <span class="day-count">3 篇</span>
                 
-            </a><a href="2026/03/14/index.html" class="calendar-day has-report">
+            </a><div class="calendar-day no-report">
                 <span class="day-number">14</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/15/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">15</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/16/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">16</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/17/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/17/index.html" class="calendar-day has-report">
                 <span class="day-number">17</span>
                 <span class="day-count">4 篇</span>
                 
@@ -496,55 +522,56 @@
                 <span class="day-number">20</span>
                 <span class="day-count">6 篇</span>
                 
-            </a><a href="2026/03/21/index.html" class="calendar-day has-report">
+            </a><div class="calendar-day no-report">
                 <span class="day-number">21</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/22/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">22</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/23/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><div class="calendar-day no-report">
                 <span class="day-number">23</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/24/index.html" class="calendar-day has-report">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/24/index.html" class="calendar-day has-report">
                 <span class="day-number">24</span>
                 <span class="day-count">6 篇</span>
                 
-            </a><a href="2026/03/25/index.html" class="calendar-day has-report">
+            </a><div class="calendar-day no-report">
                 <span class="day-number">25</span>
-                <span class="day-count">0 篇</span>
-                
-            </a><a href="2026/03/26/index.html" class="calendar-day has-report latest">
+                <span class="day-count">无报告</span>
+            </div><a href="2026/03/26/index.html" class="calendar-day has-report latest">
                 <span class="day-number">26</span>
                 <span class="day-count">4 篇</span>
                 <span class="day-latest-badge">最新</span>
             </a><div class="calendar-day no-report">
                 <span class="day-number">27</span>
+                <span class="day-count">无报告</span>
             </div><div class="calendar-day no-report">
                 <span class="day-number">28</span>
+                <span class="day-count">无报告</span>
             </div><div class="calendar-day no-report">
                 <span class="day-number">29</span>
+                <span class="day-count">无报告</span>
             </div><div class="calendar-day no-report">
                 <span class="day-number">30</span>
+                <span class="day-count">无报告</span>
             </div><div class="calendar-day no-report">
                 <span class="day-number">31</span>
+                <span class="day-count">无报告</span>
             </div>
         </div>
     </div>
     
     <div class="calendar-legend">
         <div class="legend-item">
-            <span class="legend-color" style="background: #1e40af;"></span>
+            <span class="legend-color latest"></span>
             <span>最新报告</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background: #3b82f6;"></span>
+            <span class="legend-color has-report"></span>
             <span>有报告</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background: #e5e7eb;"></span>
+            <span class="legend-color no-report"></span>
             <span>无报告</span>
         </div>
     </div>

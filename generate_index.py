@@ -157,8 +157,8 @@ def generate_calendar_html(calendar_data, year, month, prev_month_url=None, next
     for day in range(1, days_in_month + 1):
         day_str = str(day).zfill(2)
 
-        if day_str in month_data:
-            # 有报告的日期
+        if day_str in month_data and month_data[day_str]['count'] > 0:
+            # 有报告的日期（count > 0）
             day_data = month_data[day_str]
             count = day_data['count']
             path = day_data['path']
@@ -178,9 +178,10 @@ def generate_calendar_html(calendar_data, year, month, prev_month_url=None, next
                 {badge_html}
             </a>'''
         else:
-            # 无报告日期
+            # 无报告日期（包括 count == 0 或不在 month_data 中）
             days_html += f'''<div class="calendar-day no-report">
                 <span class="day-number">{day}</span>
+                <span class="day-count">无报告</span>
             </div>'''
 
     # 导航按钮
@@ -191,15 +192,15 @@ def generate_calendar_html(calendar_data, year, month, prev_month_url=None, next
     legend_html = '''
     <div class="calendar-legend">
         <div class="legend-item">
-            <span class="legend-color" style="background: #1e40af;"></span>
+            <span class="legend-color latest"></span>
             <span>最新报告</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background: #3b82f6;"></span>
+            <span class="legend-color has-report"></span>
             <span>有报告</span>
         </div>
         <div class="legend-item">
-            <span class="legend-color" style="background: #e5e7eb;"></span>
+            <span class="legend-color no-report"></span>
             <span>无报告</span>
         </div>
     </div>
@@ -548,33 +549,53 @@ def generate_index(reports, docs_dir='docs', current_year=None, current_month=No
         }}
 
         .calendar-day.no-report {{
-            background: var(--color-border-light);
-            border-color: var(--color-border);
-            color: var(--color-text-muted);
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border-color: #cbd5e1;
+            color: #94a3b8;
+            cursor: default;
+        }}
+
+        .calendar-day.no-report .day-count {{
+            font-size: 11px;
+            opacity: 0.7;
         }}
 
         .calendar-day.has-report {{
-            background: #3b82f6;
-            border-color: #2563eb;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: transparent;
             color: white;
             cursor: pointer;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
         }}
 
         .calendar-day.has-report:hover {{
-            background: #2563eb;
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
         }}
 
         .calendar-day.latest {{
-            background: #1e40af;
-            border-color: #1e3a8a;
-            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+            position: relative;
+            overflow: hidden;
+        }}
+
+        .calendar-day.latest::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
         }}
 
         .calendar-day.latest:hover {{
-            background: #1e3a8a;
-            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.4);
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.45);
         }}
 
         .day-number {{
@@ -620,6 +641,21 @@ def generate_index(reports, docs_dir='docs', current_year=None, current_month=No
             height: 16px;
             border-radius: 4px;
             border: 1px solid var(--color-border);
+        }}
+
+        .legend-color.latest {{
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            border-color: transparent;
+        }}
+
+        .legend-color.has-report {{
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-color: transparent;
+        }}
+
+        .legend-color.no-report {{
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border-color: #cbd5e1;
         }}
 
         /* Footer */
