@@ -225,62 +225,48 @@ def generate_calendar_html(calendar_data, year, month, prev_month_url=None, next
 
     return html
 
-def generate_index(reports, docs_dir='docs'):
-    """Generate index HTML page"""
+def generate_index(reports, docs_dir='docs', current_year=None, current_month=None):
+    """Generate index HTML page with calendar view"""
 
-    # Group reports by year
-    reports_by_year = {}
-    for report in reports:
-        year = report['year']
-        if year not in reports_by_year:
-            reports_by_year[year] = []
-        reports_by_year[year].append(report)
+    # Build calendar data
+    calendar_data = build_calendar_data(reports)
 
-    # Generate report cards HTML
-    reports_html = ''
-    for year in sorted(reports_by_year.keys(), reverse=True):
-        reports_html += f'<div class="year-section">\n'
-        reports_html += f'  <div class="year-header">\n'
-        reports_html += f'    <span class="year-label">{year}</span>\n'
-        reports_html += f'    <span class="year-count">{len(reports_by_year[year])} 期</span>\n'
-        reports_html += f'  </div>\n'
-        reports_html += f'  <div class="reports-list">\n'
+    # Determine which month to display (default to latest report's month or current month)
+    if reports:
+        latest_report = reports[0]
+        default_year = int(latest_report['year'])
+        default_month = int(latest_report['month'])
+    else:
+        now = datetime.now()
+        default_year = now.year
+        default_month = now.month
 
-        for report in reports_by_year[year]:
-            date_display = report['date_obj'].strftime('%b %d')
-            weekday = report['date_obj'].strftime('%A')
-            weekday_cn = {'Monday': '周一', 'Tuesday': '周二', 'Wednesday': '周三',
-                         'Thursday': '周四', 'Friday': '周五', 'Saturday': '周六', 'Sunday': '周日'}.get(weekday, weekday)
+    # Use provided values or defaults
+    display_year = current_year if current_year is not None else default_year
+    display_month = current_month if current_month is not None else default_month
 
-            paper_count = report['paper_count']
-            count_badge = f'<span class="count-badge">{paper_count} 篇论文</span>' if paper_count else ''
+    # Calculate previous/next month URLs
+    def get_month_url(year, month, offset):
+        """Get URL for month offset (prev/next)"""
+        from datetime import timedelta
+        target_date = datetime(year, month, 15) + timedelta(days=offset * 30)
+        # Adjust to first day of target month
+        target_year = target_date.year
+        target_month = target_date.month
+        return f"?year={target_year}&month={target_month}"
 
-            # Get actual date range from metadata
-            date_range = report.get('date_range', {})
-            if date_range.get('start_date') and date_range.get('end_date'):
-                date_range_text = f"{date_range['start_date']} — {date_range['end_date']}"
-            else:
-                date_range_text = f"{report['date']} — {(report['date_obj'] + timedelta(days=6)).strftime('%Y-%m-%d')}"
+    # Check if we have reports for prev/next month
+    prev_month_url = get_month_url(display_year, display_month, -1) if calendar_data else None
+    next_month_url = get_month_url(display_year, display_month, 1) if calendar_data else None
 
-            reports_html += f'''    <a href="{report['path']}" class="report-item">
-      <div class="report-date">
-        <span class="date-day">{report['day']}</span>
-        <span class="date-month">{report['date_obj'].strftime('%b')}</span>
-      </div>
-      <div class="report-info">
-        <div class="report-title">{date_display} · {weekday_cn}</div>
-        <div class="report-range">{date_range_text}</div>
-      </div>
-      <div class="report-meta">
-        {count_badge}
-        <span class="arrow">→</span>
-      </div>
-    </a>
-'''
+    # Generate calendar HTML
+    calendar_html = generate_calendar_html(
+        calendar_data, display_year, display_month,
+        prev_month_url=prev_month_url,
+        next_month_url=next_month_url
+    )
 
-        reports_html += '  </div>\n</div>\n'
-
-    # Generate latest report preview
+    # Generate latest report preview (keep this logic)
     latest_report = reports[0] if reports else None
     latest_html = ''
     if latest_report:
@@ -458,145 +444,182 @@ def generate_index(reports, docs_dir='docs'):
             background: #1e3a8a;
         }}
 
-        /* Archive */
-        .archive-header {{
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--color-border);
-        }}
-
-        .archive-title {{
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 700;
-        }}
-
-        .archive-count {{
-            font-size: 13px;
-            color: var(--color-text-muted);
-        }}
-
-        /* Year Section */
-        .year-section {{
+        /* Calendar Container */
+        .calendar-container {{
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
             margin-bottom: 24px;
         }}
 
-        .year-header {{
+        /* Calendar Header */
+        .calendar-header {{
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--color-border-light);
         }}
 
-        .year-label {{
+        .calendar-title {{
             font-family: var(--font-serif);
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 700;
+            color: var(--color-text);
         }}
 
-        .year-count {{
-            font-size: 12px;
-            color: var(--color-text-muted);
-            font-weight: 500;
+        .calendar-nav-btn {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.15s;
+            cursor: pointer;
         }}
 
-        /* Reports List */
-        .reports-list {{
+        .calendar-nav-btn:hover {{
+            background: var(--color-bg);
+            border-color: var(--color-text-muted);
+        }}
+
+        .calendar-nav-btn.disabled {{
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }}
+
+        /* Calendar Grid */
+        .calendar-grid {{
             display: flex;
             flex-direction: column;
-            gap: 6px;
         }}
 
-        .report-item {{
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 16px 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.15s;
+        /* Weekdays Row */
+        .calendar-weekdays {{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
         }}
 
-        .report-item:hover {{
-            border-color: #d1d5db;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        .calendar-weekday {{
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            padding: 8px;
         }}
 
-        .report-date {{
+        /* Days Grid */
+        .calendar-days {{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }}
+
+        .calendar-day {{
+            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-width: 56px;
-            padding: 8px;
-            background: var(--color-bg);
-            border-radius: 4px;
-            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.15s;
+            min-height: 80px;
         }}
 
-        .date-day {{
-            font-family: var(--font-serif);
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-text);
-            line-height: 1;
+        .calendar-day.empty {{
+            border: none;
+            background: transparent;
+            pointer-events: none;
         }}
 
-        .date-month {{
-            font-size: 11px;
-            font-weight: 600;
+        .calendar-day.no-report {{
+            background: var(--color-border-light);
+            border-color: var(--color-border);
             color: var(--color-text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 2px;
         }}
 
-        .report-info {{
-            flex: 1;
+        .calendar-day.has-report {{
+            background: #3b82f6;
+            border-color: #2563eb;
+            color: white;
+            cursor: pointer;
         }}
 
-        .report-title {{
-            font-size: 16px;
+        .calendar-day.has-report:hover {{
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }}
+
+        .calendar-day.latest {{
+            background: #1e40af;
+            border-color: #1e3a8a;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }}
+
+        .calendar-day.latest:hover {{
+            background: #1e3a8a;
+            box-shadow: 0 4px 16px rgba(30, 64, 175, 0.4);
+        }}
+
+        .day-number {{
+            font-size: 18px;
             font-weight: 600;
-            color: var(--color-text);
             margin-bottom: 4px;
         }}
 
-        .report-range {{
+        .day-count {{
             font-size: 12px;
-            color: var(--color-text-muted);
+            opacity: 0.9;
         }}
 
-        .report-meta {{
+        .day-latest-badge {{
+            font-size: 10px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+        }}
+
+        /* Calendar Legend */
+        .calendar-legend {{
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border-light);
+            justify-content: center;
+        }}
+
+        .legend-item {{
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
         }}
 
-        .count-badge {{
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--color-accent);
-            background: var(--color-accent-light);
-            padding: 4px 10px;
-            border-radius: 12px;
-        }}
-
-        .arrow {{
-            font-size: 18px;
-            color: var(--color-text-muted);
-            transition: transform 0.15s;
-        }}
-
-        .report-item:hover .arrow {{
-            transform: translateX(4px);
-            color: var(--color-accent);
+        .legend-color {{
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
         }}
 
         /* Footer */
@@ -628,13 +651,23 @@ def generate_index(reports, docs_dir='docs'):
         }}
 
         /* Responsive */
-        @media (max-width: 640px) {{
-            .header-content {{ padding: 32px 20px; }}
-            .header-title {{ font-size: 28px; }}
-            .main {{ padding: 24px 20px; }}
-            .latest-report {{ padding: 24px; }}
-            .report-item {{ padding: 14px 16px; }}
-            .report-date {{ min-width: 48px; }}
+        @media (max-width: 768px) {{
+            .header-content {{ padding: 24px 20px 20px; }}
+            .header-title {{ font-size: 24px; }}
+            .main {{ padding: 16px 16px 32px; }}
+            .latest-report {{ padding: 20px; }}
+            .calendar-container {{ padding: 16px; }}
+            .calendar-title {{ font-size: 20px; }}
+            .calendar-day {{ min-height: 60px; }}
+            .day-number {{ font-size: 14px; }}
+            .day-count {{ font-size: 10px; }}
+            .calendar-legend {{ flex-direction: column; gap: 10px; align-items: center; }}
+        }}
+
+        @media (max-width: 480px) {{
+            .calendar-day {{ min-height: 50px; }}
+            .day-number {{ font-size: 12px; }}
+            .day-count {{ display: none; }}
         }}
     </style>
 </head>
@@ -650,8 +683,8 @@ def generate_index(reports, docs_dir='docs'):
     <main class="main">
         {latest_html if latest_report else '<div class="empty-state"><h2>暂无报告</h2><p>报告将自动生成</p></div>'}
 
-        {'<div class="archive-header"><h2 class="archive-title">历史归档</h2><span class="archive-count">共 ' + str(len(reports)) + ' 期</span></div>' if reports else ''}
-        {reports_html if reports else ''}
+        {'<h2 style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-bottom: 16px;">历史归档</h2>' if reports else ''}
+        {calendar_html}
     </main>
 
     <footer class="footer">
@@ -664,12 +697,25 @@ def generate_index(reports, docs_dir='docs'):
     return html
 
 def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Generate index page for historical reports')
+    parser.add_argument('--year', type=int, help='Specify year (YYYY)')
+    parser.add_argument('--month', type=int, help='Specify month (MM)')
+
+    args = parser.parse_args()
+
     print("Generating index page for historical reports...")
 
     reports = scan_reports('docs')
     print(f"Found {len(reports)} historical reports")
 
-    html = generate_index(reports, 'docs')
+    html = generate_index(
+        reports,
+        'docs',
+        current_year=args.year,
+        current_month=args.month
+    )
 
     # Ensure docs directory exists
     os.makedirs('docs', exist_ok=True)
@@ -680,6 +726,8 @@ def main():
         f.write(html)
 
     print(f"Index page generated: {index_path}")
+    if args.year and args.month:
+        print(f"Calendar view: {args.year}年{args.month}月")
 
 if __name__ == '__main__':
     main()
