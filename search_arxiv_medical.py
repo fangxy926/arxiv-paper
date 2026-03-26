@@ -38,7 +38,7 @@ def generate_search_terms(client, topics, max_retries=2):
                 model=os.getenv('OPENAI_MODEL', 'gpt-4o-mini'),
                 messages=[{'role': 'user', 'content': prompt}],
                 temperature=0.3,
-                max_tokens=2048
+                max_tokens=16384
             )
 
             if not response.choices:
@@ -137,7 +137,7 @@ def llm_filter(client, title, abstract, max_retries=2):
                 model=os.getenv('OPENAI_MODEL', 'gpt-4o-mini'),
                 messages=[{'role': 'user', 'content': prompt}],
                 temperature=0.1,
-                max_tokens=8192
+                max_tokens=16384
             )
 
             if not response.choices:
