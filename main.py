@@ -100,7 +100,8 @@ def main():
     print(f"\n{'='*50}")
     print("Step: Cleanup temporary files")
     print(f"{'='*50}")
-    json_files = ['relative_papers.json', 'categorized_papers.json']
+    # 只清理中间临时文件，保留 papers_data.json 用于页面渲染
+    json_files = ['relative_papers.json']
     for json_file in json_files:
         file_path = os.path.join(output_dir, json_file)
         if os.path.exists(file_path):

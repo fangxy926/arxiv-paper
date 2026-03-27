@@ -9,14 +9,14 @@ from datetime import datetime
 from utils import load_json, save_json
 
 
-def categorize_papers(input_file: str = 'relative_papers.json', output_file: str = 'categorized_papers.json') -> dict:
+def categorize_papers(input_file: str = 'relative_papers.json', output_file: str = 'papers_data.json') -> dict:
     """
     Categorize papers based on their topics field.
-    Output keys directly correspond to the topics found in the input data.
+    Output structured data for client-side rendering.
 
     Args:
         input_file: Path to input JSON file (default: relative_papers.json)
-        output_file: Path to output JSON file (default: categorized_papers.json)
+        output_file: Path to output JSON file (default: papers_data.json)
 
     Returns:
         Dictionary with categorized papers and date range
@@ -27,7 +27,7 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
     date_range = input_data.get('date_range', {})
 
     # Dynamic categories based on actual topics
-    categorized = {}
+    papers_by_topic = {}
     paper_tracker = {}  # topic -> set of arxiv_ids
 
     for p in papers:
@@ -48,27 +48,33 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
             topic = topic.strip()
             if not topic:
                 continue
-            if topic not in categorized:
-                categorized[topic] = []
+            if topic not in papers_by_topic:
+                papers_by_topic[topic] = []
                 paper_tracker[topic] = set()
             if p['arxiv_id'] not in paper_tracker[topic]:
                 paper_tracker[topic].add(p['arxiv_id'])
-                categorized[topic].append(p)
+                papers_by_topic[topic].append(p)
 
-    # Build output - keys are the actual topic names
-    output_data = dict(categorized)
-    output_data['date_range'] = date_range
+    # Build output with new structure for client-side rendering
+    topics = list(papers_by_topic.keys())
+    output_data = {
+        'date_range': date_range,
+        'topics': topics,
+        'papers_by_topic': papers_by_topic,
+        'total_count': len(papers),
+        'generated_at': datetime.now().isoformat()
+    }
 
     # Save results
     save_json(output_file, output_data)
 
-    # Save metadata for index page (if in deploy mode)
+    # Save metadata for index page (if in output dir mode)
     output_dir = os.getenv('OUTPUT_DIR', '.')
     if output_dir != '.' and os.path.exists(output_dir):
         metadata = {
             'date': datetime.now().strftime('%Y-%m-%d'),
             'paper_count': len(papers),
-            'topics': list(categorized.keys()),
+            'topics': topics,
             'date_range': date_range
         }
         metadata_file = os.path.join(output_dir, 'metadata.json')
@@ -78,7 +84,7 @@ def categorize_papers(input_file: str = 'relative_papers.json', output_file: str
 
     # Print summary
     print(f"Categorization complete:")
-    for topic, topic_papers in categorized.items():
+    for topic, topic_papers in papers_by_topic.items():
         print(f"  {topic}: {len(topic_papers)} papers")
     print(f"Results saved to: {output_file}")
 
@@ -89,5 +95,5 @@ if __name__ == '__main__':
     output_dir = os.getenv('OUTPUT_DIR', '.')
     os.makedirs(output_dir, exist_ok=True)
     input_file = os.path.join(output_dir, 'relative_papers.json')
-    output_file = os.path.join(output_dir, 'categorized_papers.json')
+    output_file = os.path.join(output_dir, 'papers_data.json')
     categorize_papers(input_file, output_file)
