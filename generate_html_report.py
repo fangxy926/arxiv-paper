@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+Generate shared HTML report template that loads papers_data.json dynamically.
+This template is shared across all reports, with date specified via URL parameter.
+Usage: report.html?date=2026-03-27
+"""
 import os
 import sys
 import hashlib
@@ -6,29 +11,29 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OUTPUT_DIR = sys.argv[1] if len(sys.argv) > 1 else os.getenv("OUTPUT_DIR", ".")
+OUTPUT_DIR = sys.argv[1] if len(sys.argv) > 1 else os.getenv('OUTPUT_DIR', 'docs')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-TOPICS_RAW = os.getenv("TOPICS", "")
-TOPICS = [t.strip() for t in TOPICS_RAW.split(",") if t.strip()]
+TOPICS_RAW = os.getenv('TOPICS', '')
+TOPICS = [t.strip() for t in TOPICS_RAW.split(',') if t.strip()]
 
 TOPIC_COLORS = {
-    "医疗大模型": "#1e40af",
-    "医疗数据集": "#047857",
-    "医疗智能体": "#7c3aed",
-    "医学影像AI": "#0369a1",
-    "临床决策支持": "#be123c",
+    '医疗大模型': '#1e40af',
+    '医疗数据集': '#047857',
+    '医疗智能体': '#7c3aed',
+    '医学影像AI': '#0369a1',
+    '临床决策支持': '#be123c',
 }
 
 def get_topic_color(topic):
     if topic in TOPIC_COLORS:
         return TOPIC_COLORS[topic]
     hash_val = int(hashlib.md5(topic.encode()).hexdigest()[:8], 16)
-    colors = ["#1e40af", "#047857", "#7c3aed", "#0369a1", "#be123c", "#b45309", "#4338ca"]
+    colors = ['#1e40af', '#047857', '#7c3aed', '#0369a1', '#be123c', '#b45309', '#4338ca']
     return colors[hash_val % len(colors)]
 
 # Build topic colors JS
-js_colors = "const TOPIC_COLORS = {};\n"
+js_colors = 'const TOPIC_COLORS = {};\n'
 for topic in TOPICS:
     js_colors += f"TOPIC_COLORS['{topic}'] = '{get_topic_color(topic)}';\n"
 
@@ -66,67 +71,129 @@ body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg);
 .section-header { border-left: 4px solid var(--accent); padding: 12px; margin-bottom: 12px; background: #fff; border: 1px solid var(--border); border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }
 .section-title { font-weight: 700; font-size: 18px; }
 .section-count { margin-left: auto; color: var(--muted); }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: 14px; margin-bottom: 16px; }
+.back-link:hover { text-decoration: underline; }
+.report-date { font-size: 14px; color: var(--muted); margin-top: 4px; }
 """
 
-# JavaScript
+# JavaScript - now with URL parameter support
 js = """
 let data = null, filter = 'all';
+
+function getReportDate() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('date');
+}
+
+function getDataPath() {
+    const date = getReportDate();
+    if (!date) return './papers_data.json';
+    // Date format: 2026-03-27 -> 2026/03/27/papers_data.json
+    const parts = date.split('-');
+    if (parts.length !== 3) return './papers_data.json';
+    return parts.join('/') + '/papers_data.json';
+}
+
 async function loadData() {
-  try {
-    const r = await fetch('./papers_data.json');
-    data = await r.json();
-    render();
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-  } catch(e) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error').style.display = 'block';
-    document.getElementById('error').textContent = '加载失败: ' + e.message;
-  }
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+    const content = document.getElementById('content');
+    const dateDisplay = document.getElementById('report-date');
+
+    loading.style.display = 'block';
+    error.style.display = 'none';
+    content.style.display = 'none';
+
+    const reportDate = getReportDate();
+    if (reportDate && dateDisplay) {
+        dateDisplay.textContent = '报告日期: ' + reportDate;
+    }
+
+    try {
+        const dataPath = getDataPath();
+        const r = await fetch(dataPath);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        data = await r.json();
+        render();
+        loading.style.display = 'none';
+        content.style.display = 'block';
+    } catch(e) {
+        console.error('Load error:', e);
+        loading.style.display = 'none';
+        error.style.display = 'block';
+        error.textContent = '加载失败: ' + e.message;
+    }
 }
-function render() {
-  document.getElementById('header-total').textContent = data.total_count || 0;
-  const dr = data.date_range || {};
-  document.getElementById('header-range').textContent = dr.start_date ? dr.start_date + ' - ' + dr.end_date : '';
-  renderStats();
-  renderSections();
-}
-function renderStats() {
-  let html = "<div class='stat-item active' data-filter='all' onclick=\"setFilter('all')\"><span class='stat-dot' style='background:var(--accent)'></span><span>全部</span><span>" + (data.total_count || 0) + "</span></div>";
-  (data.topics || []).forEach(t => {
-    const n = (data.papers_by_topic[t] || []).length;
-    const c = TOPIC_COLORS[t] || '#1e40af';
-    html += "<div class='stat-item' data-filter='" + t + "' onclick=\"setFilter('" + t + "')\"><span class='stat-dot' style='background:" + c + "'></span><span>" + t + "</span><span>" + n + "</span></div>";
-  });
-  document.getElementById('stats-grid').innerHTML = html;
-}
-function renderSections() {
-  let html = '';
-  (data.topics || []).forEach(t => {
-    const papers = data.papers_by_topic[t] || [];
-    if (papers.length === 0) return;
-    const c = TOPIC_COLORS[t] || '#1e40af';
-    html += "<section data-topic='" + t + "'><div class='section-header' style='border-left-color:" + c + "'><span style='color:" + c + "'>◆</span><span class='section-title'>" + t + "</span><span class='section-count'>" + papers.length + " 篇</span></div><div>";
-    papers.forEach(p => {
-      html += "<article class='paper-card' data-cat='" + t + "' style='border-left-color:" + c + "'><div class='paper-title'><a href='https://arxiv.org/abs/" + (p.arxiv_id || '') + "' target='_blank'>" + (p.title || '无标题') + "</a></div><div class='paper-meta'>" + (p.published || '') + " | arXiv:" + (p.arxiv_id || '') + "</div><div class='paper-summary'>" + (p.llm_summary || '') + "</div><div>" + (p.llm_keywords ? p.llm_keywords.split(',').map(k => "<span class='keyword'>" + k.trim() + "</span>").join('') : '') + "</div><div style='margin-top:12px'><a href='" + (p.pdf_url || 'https://arxiv.org/pdf/' + p.arxiv_id) + "' class='btn btn-primary' target='_blank'>PDF</a><a href='https://arxiv.org/abs/" + p.arxiv_id + "' class='btn btn-secondary' target='_blank'>arXiv</a></div></article>";
+
+function formatAuthors(authors) {
+    if (!authors || authors.length === 0) return '<span class="author">未知作者</span>';
+    const list = authors.slice(0, 6).map(a => {
+        let n = typeof a === 'object' ? a.name : String(a);
+        const p = n.split(' ');
+        if (p.length > 1) n = p[p.length-1] + ' ' + p.slice(0,-1).map(x=>x[0]).join('');
+        return '<span class="author">' + n + '</span>';
     });
-    html += '</div></section>';
-  });
-  document.getElementById('sections').innerHTML = html;
+    if (authors.length > 6) list.push('<span class="author">等</span>');
+    return list.join(', ');
 }
+
+function formatKeywords(kw) {
+    if (!kw) return '';
+    const arr = typeof kw === 'string' ? kw.split(',').map(x=>x.trim()).filter(x=>x) : kw;
+    return arr.slice(0,8).map(k => '<span class="keyword">' + k + '</span>').join('');
+}
+
+function generateCard(p, topic) {
+    const id = p.arxiv_id || '';
+    const c = TOPIC_COLORS[topic] || '#1e40af';
+    return '<article class="paper-card" data-cat="' + topic + '" style="border-left-color:' + c + '"><div class="paper-header"><div class="paper-category" style="color:' + c + '">' + topic + ' · ' + (p.category || p.primary_category || 'cs.AI') + '</div><h3 class="paper-title"><a href="https://arxiv.org/abs/' + id + '" target="_blank">' + (p.title || '无标题') + '</a></h3></div><div class="paper-meta">📅 ' + (p.published || '未知日期') + ' | 🏷️ arXiv:' + id + '</div><div class="paper-body"><p class="paper-summary">' + (p.llm_summary || '') + '</p></div><div class="paper-footer"><div class="paper-authors">' + formatAuthors(p.authors) + '</div><div class="paper-keywords">' + formatKeywords(p.llm_keywords) + '</div></div><div class="paper-actions"><a href="' + (p.pdf_url || 'https://arxiv.org/pdf/' + id) + '" class="btn btn-primary" target="_blank">📄 PDF</a><a href="https://arxiv.org/abs/' + id + '" class="btn btn-secondary" target="_blank">🔗 arXiv</a></div></article>';
+}
+
+function renderStats() {
+    const el = document.getElementById('stats-grid');
+    let html = "<div class='stat-item active' data-filter='all' onclick=\"setFilter('all')\"><span class='stat-dot' style='background:var(--accent)'></span><span>全部</span><span>" + (data.total_count || 0) + "</span></div>";
+    (data.topics || []).forEach(t => {
+        const n = (data.papers_by_topic[t] || []).length;
+        const c = TOPIC_COLORS[t] || '#1e40af';
+        html += "<div class='stat-item' data-filter='" + t + "' onclick=\"setFilter('" + t + "')\"><span class='stat-dot' style='background:" + c + "'></span><span>" + t + "</span><span>" + n + "</span></div>";
+    });
+    el.innerHTML = html;
+}
+
+function renderSections() {
+    const el = document.getElementById('sections');
+    let html = '';
+    (data.topics || []).forEach(t => {
+        const papers = data.papers_by_topic[t] || [];
+        if (papers.length === 0) return;
+        const c = TOPIC_COLORS[t] || '#1e40af';
+        html += "<section data-topic='" + t + "'><div class='section-header' style='border-left-color:" + c + "'><span style='color:" + c + "'>◆</span><span class='section-title'>" + t + "</span><span class='section-count'>" + papers.length + " 篇论文</span></div><div>" + papers.map(p => generateCard(p, t)).join('') + "</div></section>";
+    });
+    el.innerHTML = html;
+}
+
+function render() {
+    document.getElementById('header-total').textContent = data.total_count || 0;
+    const dr = data.date_range || {};
+    document.getElementById('header-range').textContent = dr.start_date ? dr.start_date + ' - ' + dr.end_date : '';
+    renderStats();
+    renderSections();
+}
+
 function setFilter(f) {
-  filter = f;
-  document.querySelectorAll('.stat-item').forEach(el => el.classList.toggle('active', el.dataset.filter === f));
-  document.querySelectorAll('.paper-card').forEach(el => el.classList.toggle('hidden', f !== 'all' && el.dataset.cat !== f));
-  document.querySelectorAll('section').forEach(el => {
-    const visible = el.querySelectorAll('.paper-card:not(.hidden)').length;
-    el.classList.toggle('hidden', f !== 'all' && visible === 0);
-  });
+    filter = f;
+    document.querySelectorAll('.stat-item').forEach(el => el.classList.toggle('active', el.dataset.filter === f));
+    document.querySelectorAll('.paper-card').forEach(el => el.classList.toggle('hidden', f !== 'all' && el.dataset.cat !== f));
+    document.querySelectorAll('section').forEach(el => {
+        const visible = el.querySelectorAll('.paper-card:not(.hidden)').length;
+        el.classList.toggle('hidden', f !== 'all' && visible === 0);
+    });
 }
+
 loadData();
 """
 
-# Build HTML
+# Build HTML with back link
 html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -143,6 +210,7 @@ html = f"""<!DOCTYPE html>
       <div>
         <div class="header-title">医疗AI学术进展周报</div>
         <div class="header-subtitle">自动文献综述与前沿追踪</div>
+        <div class="report-date" id="report-date"></div>
       </div>
     </div>
     <div style="text-align:right">
@@ -153,6 +221,7 @@ html = f"""<!DOCTYPE html>
   </div>
 </header>
 <main class="main">
+  <a href="index.html" class="back-link">← 返回归档页</a>
   <div class="loading" id="loading">加载中...</div>
   <div class="error" id="error"></div>
   <div id="content" style="display:none">
@@ -170,7 +239,8 @@ html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-output = os.path.join(OUTPUT_DIR, "index.html")
-with open(output, "w", encoding="utf-8") as f:
+output = os.path.join(OUTPUT_DIR, 'report.html')
+with open(output, 'w', encoding='utf-8') as f:
     f.write(html)
-print("Generated:", output)
+print('Generated:', output)
+print('Usage: report.html?date=YYYY-MM-DD')

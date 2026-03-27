@@ -61,7 +61,8 @@ def scan_reports(docs_dir='docs'):
                     reports.append({
                         'date': date_str,
                         'date_obj': date_obj,
-                        'path': f'{year}/{month}/{full_dir_name}/index.html',
+                        'path': f'report.html?date={date_str}',  # Use shared template with date parameter
+                        'data_path': f'{year}/{month}/{full_dir_name}/papers_data.json',  # Keep data path for reference
                         'year': year,
                         'month': month,
                         'day': day,
