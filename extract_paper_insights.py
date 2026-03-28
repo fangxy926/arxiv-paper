@@ -25,8 +25,7 @@ def extract_insights(client, title, abstract, max_retries=2):
             response = client.chat.completions.create(
                 model=os.getenv('OPENAI_MODEL', 'gpt-4o-mini'),
                 messages=[{'role': 'user', 'content': prompt}],
-                temperature=0.3,
-                max_tokens=8192
+                temperature=0.3
             )
 
             if not response.choices:
