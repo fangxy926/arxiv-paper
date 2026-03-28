@@ -92,8 +92,9 @@ def main():
     if not run_step("Categorize papers", "categorize_papers.py", env):
         return
 
-    # Step 4: Generate HTML report
-    if not run_step("Generate HTML report", "generate_html_report.py", env):
+    # Step 4: Generate HTML report (shared template goes to docs root)
+    report_env = {'OUTPUT_DIR': 'docs'}
+    if not run_step("Generate HTML report", "generate_html_report.py", report_env):
         return
 
     # Step 5: Clean up temporary JSON files
