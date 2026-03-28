@@ -59,13 +59,13 @@ def main():
     suffix = 1
     while os.path.exists(output_dir):
         # Check if directory has existing report files
-        index_file = os.path.join(output_dir, 'index.html')
-        if os.path.exists(index_file):
+        papers_data_file = os.path.join(output_dir, 'papers_data.json')
+        if os.path.exists(papers_data_file):
             # Directory has a report, try next suffix
             output_dir = f"{base_output_dir}-{suffix}"
             suffix += 1
         else:
-            # Directory exists but empty or no index.html, use it
+            # Directory exists but empty or no papers_data.json, use it
             break
     os.makedirs(output_dir, exist_ok=True)
 
@@ -115,7 +115,7 @@ def main():
 
     print("\n" + "=" * 50)
     print("All steps completed successfully!")
-    print(f"Output: {output_dir}/index.html")
+    print(f"Output: {output_dir}/papers_data.json")
     print("Index: docs/index.html")
     print("=" * 50)
 

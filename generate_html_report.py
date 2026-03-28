@@ -34,8 +34,7 @@ def get_topic_color(topic):
 
 # Build topic colors JS
 js_colors = 'const TOPIC_COLORS = {};\n'
-for topic in TOPICS:
-    js_colors += f"TOPIC_COLORS['{topic}'] = '{get_topic_color(topic)}';\n"
+js_colors += ''.join(f"TOPIC_COLORS['{topic}'] = '{get_topic_color(topic)}';\n" for topic in TOPICS)
 
 # CSS styles
 css = """

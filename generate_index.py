@@ -38,7 +38,7 @@ def scan_reports(docs_dir='docs'):
                     continue
                 day = day_base
 
-                report_file = day_dir / 'index.html'
+                report_file = day_dir / 'papers_data.json'
                 if report_file.exists():
                     date_str = f"{year}-{month}-{day}"
                     try:
