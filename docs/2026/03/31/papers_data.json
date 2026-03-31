@@ -1,0 +1,188 @@
+{
+  "date_range": {
+    "start_date": "2026-03-30",
+    "end_date": "2026-03-30"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "EpiScreen: Early Epilepsy Detection from Electronic Health Records with Large Language Models",
+        "authors": [
+          "Shuang Zhou",
+          "Kai Yu",
+          "Zaifu Zhan",
+          "Huixue Zhou",
+          "Min Zeng",
+          "Feng Xie",
+          "Zhiyi Sha",
+          "Rui Zhang"
+        ],
+        "published": "2026-03-30",
+        "summary": "Epilepsy and psychogenic non-epileptic seizures often present with similar seizure-like manifestations but require fundamentally different management strategies. Misdiagnosis is common and can lead to prolonged diagnostic delays, unnecessary treatments, and substantial patient morbidity. Although prolonged video-electroencephalography is the diagnostic gold standard, its high cost and limited accessibility hinder timely diagnosis. Here, we developed a low-cost, effective approach, EpiScreen, for",
+        "pdf_url": "https://arxiv.org/pdf/2603.28698v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2603.28698v1",
+        "abstract": "Epilepsy and psychogenic non-epileptic seizures often present with similar seizure-like manifestations but require fundamentally different management strategies. Misdiagnosis is common and can lead to prolonged diagnostic delays, unnecessary treatments, and substantial patient morbidity. Although prolonged video-electroencephalography is the diagnostic gold standard, its high cost and limited accessibility hinder timely diagnosis. Here, we developed a low-cost, effective approach, EpiScreen, for early epilepsy detection by utilizing routinely collected clinical notes from electronic health records. Through fine-tuning large language models on labeled notes, EpiScreen achieved an AUC of up to 0.875 on the MIMIC-IV dataset and 0.980 on a private cohort of the University of Minnesota. In a clinician-AI collaboration setting, EpiScreen-assisted neurologists outperformed unaided experts by up to 10.9%. Overall, this study demonstrates that EpiScreen supports early epilepsy detection, facilitating timely and cost-effective screening that may reduce diagnostic delays and avoid unnecessary interventions, particularly in resource-limited regions.",
+        "llm_keywords": "癫痫检测, 大型语言模型, 电子健康记录, 临床决策支持, 早期筛查",
+        "llm_summary": "本研究开发了名为EpiScreen的系统，利用大型语言模型分析电子健康记录中的临床笔记，以实现癫痫的早期检测。在两个数据集上表现出高准确率，并能辅助神经科医生提升诊断性能，有助于减少诊断延误和资源浪费。",
+        "abstract_cn": "癫痫(Epilepsy)和心因性非癫痫性发作(psychogenic non-epileptic seizures)通常表现出相似的发作样表现，但需要根本不同的管理策略。误诊很常见，可能导致诊断延迟延长、不必要的治疗和严重的患者发病率。虽然长程视频脑电图(prolonged video-electroencephalography)是诊断的金标准，但其高成本和有限的可及性阻碍了及时诊断。在此，我们开发了一种低成本、有效的方法EpiScreen，通过利用电子健康记录(electronic health records)中常规收集的临床笔记进行早期癫痫检测。通过在标注笔记上微调大型语言模型(large language models)，EpiScreen在MIMIC-IV数据集上实现了高达0.875的AUC，在明尼苏达大学的一个私人队列中实现了0.980的AUC。在临床医生-AI协作环境中，EpiScreen辅助的神经科医生比未辅助的专家表现高出10.9%。总体而言，这项研究表明，EpiScreen支持早期癫痫检测，促进了及时且具有成本效益的筛查，可能减少诊断延迟并避免不必要的干预，特别是在资源有限的地区。"
+      },
+      {
+        "title": "Towards a Medical AI Scientist",
+        "authors": [
+          "Hongtao Wu",
+          "Boyun Zheng",
+          "Dingjie Song",
+          "Yu Jiang",
+          "Jianfeng Gao",
+          "Lei Xing",
+          "Lichao Sun",
+          "Yixuan Yuan"
+        ],
+        "published": "2026-03-30",
+        "summary": "Autonomous systems that generate scientific hypotheses, conduct experiments, and draft manuscripts have recently emerged as a promising paradigm for accelerating discovery. However, existing AI Scientists remain largely domain-agnostic, limiting their applicability to clinical medicine, where research is required to be grounded in medical evidence with specialized data modalities. In this work, we introduce Medical AI Scientist, the first autonomous research framework tailored to clinical autono",
+        "pdf_url": "https://arxiv.org/pdf/2603.28589v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.28589v1",
+        "abstract": "Autonomous systems that generate scientific hypotheses, conduct experiments, and draft manuscripts have recently emerged as a promising paradigm for accelerating discovery. However, existing AI Scientists remain largely domain-agnostic, limiting their applicability to clinical medicine, where research is required to be grounded in medical evidence with specialized data modalities. In this work, we introduce Medical AI Scientist, the first autonomous research framework tailored to clinical autonomous research. It enables clinically grounded ideation by transforming extensively surveyed literature into actionable evidence through clinician-engineer co-reasoning mechanism, which improves the traceability of generated research ideas. It further facilitates evidence-grounded manuscript drafting guided by structured medical compositional conventions and ethical policies. The framework operates under 3 research modes, namely paper-based reproduction, literature-inspired innovation, and task-driven exploration, each corresponding to a distinct level of automated scientific inquiry with progressively increasing autonomy. Comprehensive evaluations by both large language models and human experts demonstrate that the ideas generated by the Medical AI Scientist are of substantially higher quality than those produced by commercial LLMs across 171 cases, 19 clinical tasks, and 6 data modalities. Meanwhile, our system achieves strong alignment between the proposed method and its implementation, while also demonstrating significantly higher success rates in executable experiments. Double-blind evaluations by human experts and the Stanford Agentic Reviewer suggest that the generated manuscripts approach MICCAI-level quality, while consistently surpassing those from ISBI and BIBM. The proposed Medical AI Scientist highlights the potential of leveraging AI for autonomous scientific discovery in healthcare.",
+        "llm_keywords": "医学人工智能科学家, 自主研究框架, 临床证据, 文献启发创新, 可执行实验",
+        "llm_summary": "本文提出了首个面向临床的自主研究框架——医学AI科学家。它通过临床医生与工程师协同推理机制，将文献转化为可操作的证据，生成可追溯的研究想法，并遵循医学写作规范与伦理政策起草稿件。系统支持三种研究模式，评估表明其生成的研究想法质量显著高于商用大语言模型，且实验成功率高，所撰稿件质量接近顶级会议水平。",
+        "abstract_cn": "能够生成科学假设、进行实验和起草稿件的自主系统最近已成为加速科学发现的一种有前景的范式。然而，现有的人工智能科学家在很大程度上仍然是领域无关的，这限制了其在临床医学中的应用，因为临床研究需要以医学证据为基础，并涉及专业的数据模态。在这项工作中，我们介绍了医学人工智能科学家，这是首个为临床自主研究定制的自主研究框架。它通过临床医生-工程师协同推理机制，将广泛调研的文献转化为可操作的证据，从而实现基于临床证据的构思，并提高了所生成研究想法的可追溯性。它进一步促进了在结构化医学写作惯例和伦理政策指导下的、基于证据的稿件起草。该框架在三种研究模式下运行，即基于论文的复现、文献启发的创新和任务驱动的探索，每种模式对应不同层次的自动化科学探究，自主性逐步提高。大型语言模型和人类专家的综合评估表明，在171个案例、19项临床任务和6种数据模态中，医学人工智能科学家生成的想法质量显著高于商用大语言模型。同时，我们的系统在所提出的方法与其实现之间实现了高度一致，并且在可执行实验中表现出显著更高的成功率。人类专家和斯坦福代理评审员的双盲评估表明，生成的稿件质量接近MICCAI水平，同时 consistently 超越ISBI和BIBM的稿件。所提出的医学人工智能科学家凸显了利用人工智能在医疗保健领域进行自主科学发现的潜力。"
+      },
+      {
+        "title": "Detecting low left ventricular ejection fraction from ECG using an interpretable and scalable predictor-driven framework",
+        "authors": [
+          "Ya Zhou",
+          "Tianxiang Hao",
+          "Ziyi Cai",
+          "Haojie Zhu",
+          "Hejun He",
+          "Jia Liu",
+          "Xiaohan Fan",
+          "Jing Yuan"
+        ],
+        "published": "2026-03-30",
+        "summary": "Low left ventricular ejection fraction (LEF) frequently remains undetected until progression to symptomatic heart failure, underscoring the need for scalable screening strategies. Although artificial intelligence-enabled electrocardiography (AI-ECG) has shown promise, existing approaches rely solely on end-to-end black-box models with limited interpretability or on tabular systems dependent on commercial ECG measurement algorithms with suboptimal performance. We introduced ECG-based Predictor-Dr",
+        "pdf_url": "https://arxiv.org/pdf/2603.28532v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2603.28532v1",
+        "abstract": "Low left ventricular ejection fraction (LEF) frequently remains undetected until progression to symptomatic heart failure, underscoring the need for scalable screening strategies. Although artificial intelligence-enabled electrocardiography (AI-ECG) has shown promise, existing approaches rely solely on end-to-end black-box models with limited interpretability or on tabular systems dependent on commercial ECG measurement algorithms with suboptimal performance. We introduced ECG-based Predictor-Driven LEF (ECGPD-LEF), a structured framework that integrates foundation model-derived diagnostic probabilities with interpretable modeling for detecting LEF from ECG. Trained on the benchmark EchoNext dataset comprising 72,475 ECG-echocardiogram pairs and evaluated in predefined independent internal (n=5,442) and external (n=16,017) cohorts, our framework achieved robust discrimination for moderate LEF (internal AUROC 88.4%, F1 64.5%; external AUROC 86.8%, F1 53.6%), consistently outperforming the official end-to-end baseline provided with the benchmark across demographic and clinical subgroups. Interpretability analyses identified high-impact predictors, including normal ECG, incomplete left bundle branch block, and subendocardial injury in anterolateral leads, driving LEF risk estimation. Notably, these predictors independently enabled zero-shot-like inference without task-specific retraining (internal AUROC 75.3-81.0%; external AUROC 71.6-78.6%), indicating that ventricular dysfunction is intrinsically encoded within structured diagnostic probability representations. This framework reconciles predictive performance with mechanistic transparency, supporting scalable enhancement through additional predictors and seamless integration with existing AI-ECG systems.",
+        "llm_keywords": "左心室射血分数, 人工智能心电图, 可解释性模型, 预测驱动框架, 心脏功能障碍筛查",
+        "llm_summary": "本研究提出了一种基于心电图的可解释预测驱动框架ECGPD-LEF，用于检测低左心室射血分数。该框架整合了基础模型诊断概率与可解释建模，在内部和外部验证队列中表现出优于传统端到端黑盒模型的性能，并识别出关键心电图预测因子，实现了预测性能与机制透明度的统一。",
+        "abstract_cn": "低左心室射血分数（LEF）通常在进展为有症状的心力衰竭后才被检测到，这凸显了对可扩展筛查策略的需求。尽管人工智能心电图（AI-ECG）已显示出潜力，但现有方法要么完全依赖可解释性有限的端到端黑盒模型，要么依赖性能欠佳的基于商业心电图测量算法的表格系统。我们引入了基于心电图的预测驱动LEF检测框架（ECGPD-LEF），这是一个结构化框架，它将基础模型衍生的诊断概率与可解释建模相结合，用于从心电图检测LEF。该框架在包含72,475对心电图-超声心动图数据的基准EchoNext数据集上训练，并在预定义的独立内部（n=5,442）和外部（n=16,017）队列中评估，对于中度LEF实现了稳健的区分度（内部AUROC 88.4%，F1 64.5%；外部AUROC 86.8%，F1 53.6%），在人口统计学和临床亚组中始终优于基准提供的官方端到端基线模型。可解释性分析识别出高影响力的预测因子，包括正常心电图、不完全性左束支传导阻滞和前侧壁导联的心内膜下损伤，这些驱动了LEF风险估计。值得注意的是，这些预测因子能够独立实现类似零样本的推断，无需针对特定任务进行重新训练（内部AUROC 75.3-81.0%；外部AUROC 71.6-78.6%），表明心室功能障碍内在地编码在结构化的诊断概率表示中。该框架协调了预测性能与机制透明度，支持通过添加更多预测因子以及与现有AI-ECG系统的无缝集成来实现可扩展的增强。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Towards a Medical AI Scientist",
+        "authors": [
+          "Hongtao Wu",
+          "Boyun Zheng",
+          "Dingjie Song",
+          "Yu Jiang",
+          "Jianfeng Gao",
+          "Lei Xing",
+          "Lichao Sun",
+          "Yixuan Yuan"
+        ],
+        "published": "2026-03-30",
+        "summary": "Autonomous systems that generate scientific hypotheses, conduct experiments, and draft manuscripts have recently emerged as a promising paradigm for accelerating discovery. However, existing AI Scientists remain largely domain-agnostic, limiting their applicability to clinical medicine, where research is required to be grounded in medical evidence with specialized data modalities. In this work, we introduce Medical AI Scientist, the first autonomous research framework tailored to clinical autono",
+        "pdf_url": "https://arxiv.org/pdf/2603.28589v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.28589v1",
+        "abstract": "Autonomous systems that generate scientific hypotheses, conduct experiments, and draft manuscripts have recently emerged as a promising paradigm for accelerating discovery. However, existing AI Scientists remain largely domain-agnostic, limiting their applicability to clinical medicine, where research is required to be grounded in medical evidence with specialized data modalities. In this work, we introduce Medical AI Scientist, the first autonomous research framework tailored to clinical autonomous research. It enables clinically grounded ideation by transforming extensively surveyed literature into actionable evidence through clinician-engineer co-reasoning mechanism, which improves the traceability of generated research ideas. It further facilitates evidence-grounded manuscript drafting guided by structured medical compositional conventions and ethical policies. The framework operates under 3 research modes, namely paper-based reproduction, literature-inspired innovation, and task-driven exploration, each corresponding to a distinct level of automated scientific inquiry with progressively increasing autonomy. Comprehensive evaluations by both large language models and human experts demonstrate that the ideas generated by the Medical AI Scientist are of substantially higher quality than those produced by commercial LLMs across 171 cases, 19 clinical tasks, and 6 data modalities. Meanwhile, our system achieves strong alignment between the proposed method and its implementation, while also demonstrating significantly higher success rates in executable experiments. Double-blind evaluations by human experts and the Stanford Agentic Reviewer suggest that the generated manuscripts approach MICCAI-level quality, while consistently surpassing those from ISBI and BIBM. The proposed Medical AI Scientist highlights the potential of leveraging AI for autonomous scientific discovery in healthcare.",
+        "llm_keywords": "医学人工智能科学家, 自主研究框架, 临床证据, 文献启发创新, 可执行实验",
+        "llm_summary": "本文提出了首个面向临床的自主研究框架——医学AI科学家。它通过临床医生与工程师协同推理机制，将文献转化为可操作的证据，生成可追溯的研究想法，并遵循医学写作规范与伦理政策起草稿件。系统支持三种研究模式，评估表明其生成的研究想法质量显著高于商用大语言模型，且实验成功率高，所撰稿件质量接近顶级会议水平。",
+        "abstract_cn": "能够生成科学假设、进行实验和起草稿件的自主系统最近已成为加速科学发现的一种有前景的范式。然而，现有的人工智能科学家在很大程度上仍然是领域无关的，这限制了其在临床医学中的应用，因为临床研究需要以医学证据为基础，并涉及专业的数据模态。在这项工作中，我们介绍了医学人工智能科学家，这是首个为临床自主研究定制的自主研究框架。它通过临床医生-工程师协同推理机制，将广泛调研的文献转化为可操作的证据，从而实现基于临床证据的构思，并提高了所生成研究想法的可追溯性。它进一步促进了在结构化医学写作惯例和伦理政策指导下的、基于证据的稿件起草。该框架在三种研究模式下运行，即基于论文的复现、文献启发的创新和任务驱动的探索，每种模式对应不同层次的自动化科学探究，自主性逐步提高。大型语言模型和人类专家的综合评估表明，在171个案例、19项临床任务和6种数据模态中，医学人工智能科学家生成的想法质量显著高于商用大语言模型。同时，我们的系统在所提出的方法与其实现之间实现了高度一致，并且在可执行实验中表现出显著更高的成功率。人类专家和斯坦福代理评审员的双盲评估表明，生成的稿件质量接近MICCAI水平，同时 consistently 超越ISBI和BIBM的稿件。所提出的医学人工智能科学家凸显了利用人工智能在医疗保健领域进行自主科学发现的潜力。"
+      },
+      {
+        "title": "FeDMRA: Federated Incremental Learning with Dynamic Memory Replay Allocation",
+        "authors": [
+          "Tiantian Wang",
+          "Xiang Xiang",
+          "Simon S. Du"
+        ],
+        "published": "2026-03-30",
+        "summary": "In federated healthcare systems, Federated Class-Incremental Learning (FCIL) has emerged as a key paradigm, enabling continuous adaptive model learning among distributed clients while safeguarding data privacy. However, in practical applications, data across agent nodes within the distributed framework often exhibits non-independent and identically distributed (non-IID) characteristics, rendering traditional continual learning methods inapplicable. To address these challenges, this paper covers ",
+        "pdf_url": "https://arxiv.org/pdf/2603.28455v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗数据集",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.28455v1",
+        "abstract": "In federated healthcare systems, Federated Class-Incremental Learning (FCIL) has emerged as a key paradigm, enabling continuous adaptive model learning among distributed clients while safeguarding data privacy. However, in practical applications, data across agent nodes within the distributed framework often exhibits non-independent and identically distributed (non-IID) characteristics, rendering traditional continual learning methods inapplicable. To address these challenges, this paper covers more comprehensive incremental task scenarios and proposes a dynamic memory allocation strategy for exemplar storage based on the data replay mechanism. This strategy fully taps into the inherent potential of data heterogeneity, while taking into account the performance fairness of all participating clients, thereby establishing a balanced and adaptive solution to mitigate catastrophic forgetting. Unlike the fixed allocation of client exemplar memory, the proposed scheme emphasizes the rational allocation of limited storage resources among clients to improve model performance. Furthermore, extensive experiments are conducted on three medical image datasets, and the results demonstrate significant performance improvements compared to existing baseline models.",
+        "llm_keywords": "联邦增量学习, 动态记忆重放分配, 非独立同分布数据, 灾难性遗忘, 医疗图像",
+        "llm_summary": "本文针对联邦医疗系统中非独立同分布数据导致的灾难性遗忘问题，提出了一种动态记忆重放分配策略。该策略基于数据重放机制，根据客户端数据异质性动态分配存储资源，以提升模型性能并保证公平性。在三个医疗图像数据集上的实验表明，该方法显著优于现有基线模型。",
+        "abstract_cn": "在联邦医疗系统中，联邦类增量学习已成为一个关键范式，它使得分布式客户端能够在保护数据隐私的同时进行持续的自适应模型学习。然而，在实际应用中，分布式框架内各代理节点的数据通常表现出非独立同分布特性，使得传统的持续学习方法不再适用。为应对这些挑战，本文涵盖了更全面的增量任务场景，并提出了一种基于数据重放机制的动态记忆分配策略用于样本存储。该策略充分挖掘了数据异质性的内在潜力，同时兼顾了所有参与客户端的性能公平性，从而建立了一个平衡且自适应的解决方案以缓解灾难性遗忘。与客户端样本记忆的固定分配不同，所提方案强调在客户端间合理分配有限的存储资源以提高模型性能。此外，我们在三个医疗图像数据集上进行了大量实验，结果表明，与现有基线模型相比，性能有显著提升。"
+      },
+      {
+        "title": "Courtroom-Style Multi-Agent Debate with Progressive RAG and Role-Switching for Controversial Claim Verification",
+        "authors": [
+          "Masnun Nuha Chowdhury",
+          "Nusrat Jahan Beg",
+          "Umme Hunny Khan",
+          "Syed Rifat Raiyan",
+          "Md Kamrul Hasan",
+          "Hasan Mahmud"
+        ],
+        "published": "2026-03-30",
+        "summary": "Large language models (LLMs) remain unreliable for high-stakes claim verification due to hallucinations and shallow reasoning. While retrieval-augmented generation (RAG) and multi-agent debate (MAD) address this, they are limited by one-pass retrieval and unstructured debate dynamics. We propose a courtroom-style multi-agent framework, PROClaim, that reformulates verification as a structured, adversarial deliberation. Our approach integrates specialized roles (e.g., Plaintiff, Defense, Judge) wi",
+        "pdf_url": "https://arxiv.org/pdf/2603.28488v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.28488v1",
+        "abstract": "Large language models (LLMs) remain unreliable for high-stakes claim verification due to hallucinations and shallow reasoning. While retrieval-augmented generation (RAG) and multi-agent debate (MAD) address this, they are limited by one-pass retrieval and unstructured debate dynamics. We propose a courtroom-style multi-agent framework, PROClaim, that reformulates verification as a structured, adversarial deliberation. Our approach integrates specialized roles (e.g., Plaintiff, Defense, Judge) with Progressive RAG (P-RAG) to dynamically expand and refine the evidence pool during the debate. Furthermore, we employ evidence negotiation, self-reflection, and heterogeneous multi-judge aggregation to enforce calibration, robustness, and diversity. In zero-shot evaluations on the Check-COVID benchmark, PROClaim achieves 81.7% accuracy, outperforming standard multi-agent debate by 10.0 percentage points, with P-RAG driving the primary performance gains (+7.5 pp). We ultimately demonstrate that structural deliberation and model heterogeneity effectively mitigate systematic biases, providing a robust foundation for reliable claim verification. Our code and data are publicly available at https://github.com/mnc13/PROClaim.",
+        "llm_keywords": "检索增强生成, 多智能体辩论, 争议性声明验证, 渐进式RAG, 角色切换",
+        "llm_summary": "本文提出PROClaim框架，将争议性声明验证构建为法庭式的结构化多智能体辩论。该方法结合渐进式检索增强生成与角色切换，在辩论中动态扩展证据，并通过证据协商、自反思和异构法官聚合来提高校准性、鲁棒性和多样性。在零样本评估中，该框架显著优于标准多智能体辩论方法。",
+        "abstract_cn": "大型语言模型（LLMs）由于幻觉和浅层推理，在高风险声明验证中仍然不可靠。虽然检索增强生成（RAG）和多智能体辩论（MAD）解决了部分问题，但它们受到一次性检索和非结构化辩论动态的限制。我们提出了一种法庭风格的多智能体框架PROClaim，将验证重新构建为结构化的对抗性审议。我们的方法将专门角色（例如，原告、辩护方、法官）与渐进式RAG（P-RAG）相结合，以在辩论过程中动态扩展和精炼证据池。此外，我们采用证据协商、自反思和异构多法官聚合来增强校准性、鲁棒性和多样性。在Check-COVID基准测试的零样本评估中，PROClaim实现了81.7%的准确率，优于标准多智能体辩论10.0个百分点，其中P-RAG带来了主要的性能提升（+7.5 pp）。我们最终证明，结构化审议和模型异质性有效地减轻了系统性偏见，为可靠的声明验证提供了坚实的基础。我们的代码和数据公开在 https://github.com/mnc13/PROClaim。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "FeDMRA: Federated Incremental Learning with Dynamic Memory Replay Allocation",
+        "authors": [
+          "Tiantian Wang",
+          "Xiang Xiang",
+          "Simon S. Du"
+        ],
+        "published": "2026-03-30",
+        "summary": "In federated healthcare systems, Federated Class-Incremental Learning (FCIL) has emerged as a key paradigm, enabling continuous adaptive model learning among distributed clients while safeguarding data privacy. However, in practical applications, data across agent nodes within the distributed framework often exhibits non-independent and identically distributed (non-IID) characteristics, rendering traditional continual learning methods inapplicable. To address these challenges, this paper covers ",
+        "pdf_url": "https://arxiv.org/pdf/2603.28455v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗数据集",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.28455v1",
+        "abstract": "In federated healthcare systems, Federated Class-Incremental Learning (FCIL) has emerged as a key paradigm, enabling continuous adaptive model learning among distributed clients while safeguarding data privacy. However, in practical applications, data across agent nodes within the distributed framework often exhibits non-independent and identically distributed (non-IID) characteristics, rendering traditional continual learning methods inapplicable. To address these challenges, this paper covers more comprehensive incremental task scenarios and proposes a dynamic memory allocation strategy for exemplar storage based on the data replay mechanism. This strategy fully taps into the inherent potential of data heterogeneity, while taking into account the performance fairness of all participating clients, thereby establishing a balanced and adaptive solution to mitigate catastrophic forgetting. Unlike the fixed allocation of client exemplar memory, the proposed scheme emphasizes the rational allocation of limited storage resources among clients to improve model performance. Furthermore, extensive experiments are conducted on three medical image datasets, and the results demonstrate significant performance improvements compared to existing baseline models.",
+        "llm_keywords": "联邦增量学习, 动态记忆重放分配, 非独立同分布数据, 灾难性遗忘, 医疗图像",
+        "llm_summary": "本文针对联邦医疗系统中非独立同分布数据导致的灾难性遗忘问题，提出了一种动态记忆重放分配策略。该策略基于数据重放机制，根据客户端数据异质性动态分配存储资源，以提升模型性能并保证公平性。在三个医疗图像数据集上的实验表明，该方法显著优于现有基线模型。",
+        "abstract_cn": "在联邦医疗系统中，联邦类增量学习已成为一个关键范式，它使得分布式客户端能够在保护数据隐私的同时进行持续的自适应模型学习。然而，在实际应用中，分布式框架内各代理节点的数据通常表现出非独立同分布特性，使得传统的持续学习方法不再适用。为应对这些挑战，本文涵盖了更全面的增量任务场景，并提出了一种基于数据重放机制的动态记忆分配策略用于样本存储。该策略充分挖掘了数据异质性的内在潜力，同时兼顾了所有参与客户端的性能公平性，从而建立了一个平衡且自适应的解决方案以缓解灾难性遗忘。与客户端样本记忆的固定分配不同，所提方案强调在客户端间合理分配有限的存储资源以提高模型性能。此外，我们在三个医疗图像数据集上进行了大量实验，结果表明，与现有基线模型相比，性能有显著提升。"
+      }
+    ]
+  },
+  "total_count": 5,
+  "generated_at": "2026-03-31T22:37:01.003303"
+}
