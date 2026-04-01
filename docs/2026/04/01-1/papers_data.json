@@ -1,0 +1,360 @@
+{
+  "date_range": {
+    "start_date": "2026-03-31",
+    "end_date": "2026-03-31"
+  },
+  "topics": [
+    "医疗智能体",
+    "医疗大模型",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗智能体": [
+      {
+        "title": "The Triadic Cognitive Architecture: Bounding Autonomous Action via Spatio-Temporal and Epistemic Friction",
+        "authors": [
+          "Davide Di Gioia"
+        ],
+        "published": "2026-03-31",
+        "summary": "Current autonomous AI agents, driven primarily by Large Language Models (LLMs), operate in a state of cognitive weightlessness: they process information without an intrinsic sense of network topology, temporal pacing, or epistemic limits. Consequently, heuristic agentic loops (e.g., ReAct) can exhibit failure modes in interactive environments, including excessive tool use under congestion, prolonged deliberation under time decay, and brittle behavior under ambiguous evidence. In this paper, we p",
+        "pdf_url": "https://arxiv.org/pdf/2603.30031v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.30031v1",
+        "abstract": "Current autonomous AI agents, driven primarily by Large Language Models (LLMs), operate in a state of cognitive weightlessness: they process information without an intrinsic sense of network topology, temporal pacing, or epistemic limits. Consequently, heuristic agentic loops (e.g., ReAct) can exhibit failure modes in interactive environments, including excessive tool use under congestion, prolonged deliberation under time decay, and brittle behavior under ambiguous evidence. In this paper, we propose the Triadic Cognitive Architecture (TCA), a unified mathematical framework that grounds machine reasoning in continuous-time physics. By synthesizing nonlinear filtering theory, Riemannian routing geometry, and optimal control, we formally define the concept of Cognitive Friction. We map the agent's deliberation process to a coupled stochastic control problem where information acquisition is path-dependent and physically constrained. Rather than relying on arbitrary heuristic stop-tokens, the TCA uses an HJB-motivated stopping boundary and instantiates a rollout-based approximation of belief-dependent value-of-information with a net-utility halting condition. Through empirical validation in a simulated Emergency Medical Diagnostic Grid (EMDG), we demonstrate that while greedy baselines over-deliberate under latency and congestion costs, the triadic policy reduces time-to-action while improving patient viability without degrading diagnostic accuracy in this environment.",
+        "llm_keywords": "三元认知架构, 认知摩擦, 自主智能体, 随机控制, 信息获取",
+        "llm_summary": "本文针对当前基于大语言模型的自主AI智能体存在的认知缺陷，提出了三元认知架构（TCA）。该架构融合非线性滤波、黎曼几何和最优控制理论，将推理过程建模为受物理约束的耦合随机控制问题，并引入基于HJB的停止边界。在模拟医疗诊断环境中的实验表明，该策略能减少行动延迟并提升决策效果。",
+        "abstract_cn": "当前主要由大语言模型（LLMs）驱动的自主AI智能体，在一种认知失重状态下运行：它们处理信息时缺乏对网络拓扑、时间节奏或认知极限的内在感知。因此，启发式的智能体循环（例如ReAct）在交互环境中会表现出故障模式，包括拥塞下的过度工具使用、时间衰减下的冗长审议以及模糊证据下的脆弱行为。在本文中，我们提出了三元认知架构（Triadic Cognitive Architecture, TCA），这是一个将机器推理建立在连续时间物理学基础上的统一数学框架。通过综合非线性滤波理论（nonlinear filtering theory）、黎曼路由几何（Riemannian routing geometry）和最优控制（optimal control），我们正式定义了认知摩擦（Cognitive Friction）的概念。我们将智能体的审议过程映射到一个耦合的随机控制问题，其中信息获取是路径依赖且受物理约束的。TCA不依赖任意的启发式停止标记（stop-tokens），而是使用一个受HJB（Hamilton-Jacobi-Bellman）启发的停止边界，并实例化了一个基于推演的、依赖于信念的信息价值（value-of-information）近似方法，其具有净效用停止条件。通过在模拟的紧急医疗诊断网格（Emergency Medical Diagnostic Grid, EMDG）中进行实证验证，我们证明，虽然贪婪基线在延迟和拥塞成本下会过度审议，但三元策略在此环境中减少了行动时间，提高了患者生存能力，且未降低诊断准确性。"
+      },
+      {
+        "title": "From Patterns to Policy: A Scoping Review Based on Bibliometric Analysis (ScoRBA) of Intelligent and Secure Smart Hospital Ecosystems",
+        "authors": [
+          "Adi Wijaya",
+          "Budi Hermawan",
+          "Wiga Maulana Baihaqi",
+          "Catur Supriyanto"
+        ],
+        "published": "2026-03-31",
+        "summary": "This study examines the evolution of Intelligent and Secure Smart Hospital Ecosystems using a Scoping Review with Bibliometric Analysis (ScoRBA) to map research patterns, identify gaps, and derive policy implications. Analyzing 891 journal articles from Scopus (2006-2025) through co-occurrence analysis, network visualization, overlay analysis, and the Enhanced Strategic Diagram (ESD), the study applies the PAGER framework to link Patterns, Advances, Gaps, Research directions, and Evidence-based ",
+        "pdf_url": "https://arxiv.org/pdf/2603.30004v1",
+        "primary_category": "q-bio.NC",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.30004v1",
+        "abstract": "This study examines the evolution of Intelligent and Secure Smart Hospital Ecosystems using a Scoping Review with Bibliometric Analysis (ScoRBA) to map research patterns, identify gaps, and derive policy implications. Analyzing 891 journal articles from Scopus (2006-2025) through co-occurrence analysis, network visualization, overlay analysis, and the Enhanced Strategic Diagram (ESD), the study applies the PAGER framework to link Patterns, Advances, Gaps, Research directions, and Evidence-based policy implications. Findings reveal three interrelated clusters: AI-driven intelligent healthcare systems, decentralized privacy-preserving digital health ecosystems, and scalable cloud-edge infrastructures, showing a convergence toward integrated ecosystem architectures where intelligence, trust, and infrastructure reinforce each other. Despite progress in AI, blockchain, and cloud computing, gaps remain in interoperability, real-world implementation, governance, and cross-layer integration. Emerging themes such as explainable AI, federated learning, and privacy mechanisms highlight areas needing further research. Policy-relevant recommendations focus on coordinated governance, scalable infrastructure, and secure data ecosystems, particularly for developing country contexts. The study bridges bibliometric evidence with actionable policies, supporting informed decision-making in smart hospital development.",
+        "llm_keywords": "智能医院生态系统, 文献计量分析, 人工智能, 区块链, 数据隐私",
+        "llm_summary": "本研究采用范围综述与文献计量分析相结合的方法，系统梳理了2006至2025年间智能安全医院生态系统的研究演进。通过分析891篇文献，识别出人工智能医疗系统、去中心化隐私保护数字健康生态系统和可扩展云边基础设施三大核心集群，并揭示了其在互操作性、实际部署和治理方面存在的不足。研究最终将文献计量证据与可操作的政策建议相联系，为智慧医院发展提供决策支持。",
+        "abstract_cn": "本研究采用基于文献计量分析的范围综述方法，审视了智能与安全智慧医院生态系统的演进，旨在描绘研究模式、识别差距并推导政策启示。通过共现分析、网络可视化、叠加分析和增强战略图，对Scopus数据库中2006-2025年的891篇期刊文章进行分析，并应用PAGER框架将模式、进展、差距、研究方向及循证政策启示联系起来。研究发现揭示了三个相互关联的集群：人工智能驱动的智能医疗系统、去中心化的隐私保护数字健康生态系统以及可扩展的云边基础设施，显示出向集成生态系统架构的融合趋势，其中智能、信任和基础设施相互强化。尽管在人工智能、区块链和云计算方面取得了进展，但在互操作性、实际实施、治理和跨层集成方面仍存在差距。可解释人工智能、联邦学习和隐私机制等新兴主题突出了需要进一步研究的领域。与政策相关的建议侧重于协调治理、可扩展的基础设施和安全的数据生态系统，特别是在发展中国家背景下。本研究将文献计量证据与可操作的政策联系起来，为智慧医院发展中的明智决策提供支持。"
+      },
+      {
+        "title": "Latent-Y: A Lab-Validated Autonomous Agent for De Novo Drug Design",
+        "authors": [
+          "Latent Labs Team",
+          "Sebastian M. Schmon",
+          "Daniella Pretorius",
+          "Simon Mathis",
+          "Rebecca Bartke-Croughan",
+          "Aishaini Puvanendran",
+          "James Vuckovic",
+          "Henry Kenlay",
+          "Mária Vlachynská",
+          "Alex Bridgland",
+          "Ivan Grishin",
+          "Sven Over",
+          "David Li",
+          "Bridget Li",
+          "Jonathan Crabbé",
+          "Agrin Hilmkil",
+          "Alexander W. R. Nelson",
+          "David Yuan",
+          "Annette Obika",
+          "Simon A. A. Kohl"
+        ],
+        "published": "2026-03-31",
+        "summary": "Drug discovery relies on iterative expert workflows that are slow to parallelize and difficult to scale. Here we introduce Latent-Y, an AI agent that autonomously executes complete antibody design campaigns from text prompts, covering literature review, target analysis, epitope identification, candidate design, computational validation, and selection of lab-ready sequences. Latent-Y is integrated into the Latent Labs Platform, where it operates in the same environment as drug-discovery experts w",
+        "pdf_url": "https://arxiv.org/pdf/2603.29727v1",
+        "primary_category": "q-bio.BM",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.29727v1",
+        "abstract": "Drug discovery relies on iterative expert workflows that are slow to parallelize and difficult to scale. Here we introduce Latent-Y, an AI agent that autonomously executes complete antibody design campaigns from text prompts, covering literature review, target analysis, epitope identification, candidate design, computational validation, and selection of lab-ready sequences. Latent-Y is integrated into the Latent Labs Platform, where it operates in the same environment as drug-discovery experts with access to bioinformatics tools, biological databases, and scientific literature. The agent can run fully autonomously end-to-end, or collaboratively, where researchers review progress, provide feedback, and direct subsequent steps. Candidate antibodies are generated using Latent-X2, our frontier generative model for drug-like antibody design. We demonstrate the agent's capability across three distinct campaign types: epitope discovery guided by therapeutic specifications, cross-species binder design, and autonomous design from a scientific publication targeting human transferrin receptor for blood-brain barrier crossing. Across nine targets, Latent-Y produced lab-confirmed nanobody binders against six, achieving a 67% target-level success rate with binding affinities reaching the single-digit nanomolar range, without human filtering or intervention. In user studies, experts working with Latent-Y completed design campaigns 56 times faster than independent expert time estimates, compressing weeks of work into hours. Because Latent-X2 is a general-purpose atomic-level model for biologics design, the same agent architecture naturally extends to macrocyclic peptide and mini-binder design campaigns, broadening autonomous discovery across therapeutic modalities. Latent-Y is available to selected partners at https://platform.latentlabs.com.",
+        "llm_keywords": "人工智能药物设计, 自主智能体, 抗体生成模型, 从头药物设计, 计算验证",
+        "llm_summary": "本文介绍了Latent-Y，一个能够从文本提示开始自主执行完整抗体设计流程的AI智能体。它整合了文献调研、靶点分析、表位识别、候选设计、计算验证等环节，利用前沿生成模型Latent-X2设计抗体序列。在实验中，该智能体成功为多个靶点生成了经实验室确认的结合剂，显著提升了设计效率。",
+        "abstract_cn": "药物发现依赖于迭代的专家工作流程，这种流程并行化缓慢且难以扩展。在此，我们介绍Latent-Y，这是一个能够从文本提示开始自主执行完整抗体设计活动（涵盖文献综述、靶点分析、表位识别、候选设计、计算验证和实验室就绪序列选择）的AI智能体。Latent-Y被集成到Latent Labs平台中，在该平台中，它与药物发现专家在相同的环境中运行，并可以访问生物信息学工具、生物数据库和科学文献。该智能体可以端到端完全自主运行，也可以协作运行，即研究人员审查进度、提供反馈并指导后续步骤。候选抗体是使用我们的前沿生成模型Latent-X2（用于类药抗体设计）生成的。我们通过三种不同的活动类型展示了该智能体的能力：基于治疗规范的表位发现、跨物种结合剂设计，以及针对靶向人转铁蛋白受体以穿越血脑屏障的科学出版物进行的自主设计。在九个靶点中，Latent-Y为其中六个产生了经实验室确认的纳米抗体结合剂，实现了67%的靶点水平成功率，结合亲和力达到个位数纳摩尔范围，且无需人工筛选或干预。在用户研究中，与Latent-Y合作的专家完成设计活动的速度比独立专家时间估计快56倍，将数周的工作压缩到数小时内。由于Latent-X2是一个用于生物制剂设计的通用原子级模型，相同的智能体架构自然可以扩展到大环肽和微型结合剂设计活动中，从而拓宽了跨治疗模式的自主发现范围。Latent-Y可通过 https://platform.latentlabs.com 提供给选定的合作伙伴。"
+      },
+      {
+        "title": "Symphony for Medical Coding: A Next-Generation Agentic System for Scalable and Explainable Medical Coding",
+        "authors": [
+          "Joakim Edin",
+          "Andreas Motzfeldt",
+          "Simon Flachs",
+          "Lars Maaløe"
+        ],
+        "published": "2026-03-31",
+        "summary": "Medical coding translates free-text clinical documentation into standardized codes drawn from classification systems that contain tens of thousands of entries and are updated annually. It is central to billing, clinical research, and quality reporting, yet remains largely manual, slow, and error-prone. Existing automated approaches learn to predict a fixed set of codes from labeled data, thereby preventing adaptation to new codes or different coding systems without retraining on different data. ",
+        "pdf_url": "https://arxiv.org/pdf/2603.29709v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.29709v1",
+        "abstract": "Medical coding translates free-text clinical documentation into standardized codes drawn from classification systems that contain tens of thousands of entries and are updated annually. It is central to billing, clinical research, and quality reporting, yet remains largely manual, slow, and error-prone. Existing automated approaches learn to predict a fixed set of codes from labeled data, thereby preventing adaptation to new codes or different coding systems without retraining on different data. They also provide no explanation for their predictions, limiting trust in safety-critical settings. We introduce Symphony for Medical Coding, a system that approaches the task the way expert human coders do: by reasoning over the clinical narrative with direct access to the coding guidelines. This design allows Symphony to operate across any coding system and to provide span-level evidence linking each predicted code to the text that supports it. We evaluate on two public benchmarks and three real-world datasets spanning inpatient, outpatient, emergency, and subspecialty settings across the United States and the United Kingdom. Symphony achieves state-of-the-art results across all settings, establishing itself as a flexible, deployment-ready foundation for automated clinical coding.",
+        "llm_keywords": "医疗编码, 可解释人工智能, 智能体系统, 临床自然语言处理, 标准化编码",
+        "llm_summary": "本文介绍了Symphony for Medical Coding，一个模仿人类专家工作流程的新一代智能体系统。它通过直接参考编码指南对临床文本进行推理，实现了跨编码系统的通用性，并能提供代码预测的文本证据支持。在多个公开基准和真实数据集上的评估表明，该系统取得了最先进的性能，为自动化临床编码提供了一个灵活且可部署的解决方案。",
+        "abstract_cn": "医疗编码（Medical coding）将自由文本的临床记录转化为从包含数万条目且每年更新的分类系统中提取的标准代码。它对计费、临床研究和质量报告至关重要，但目前仍主要依赖人工，速度慢且易出错。现有的自动化方法从标注数据中学习预测固定的代码集，因此无法适应新代码或不同的编码系统，除非用不同的数据重新训练。它们也不提供预测的解释，限制了在安全关键环境中的可信度。我们介绍了Symphony for Medical Coding，该系统模仿人类专家编码员的工作方式：通过直接访问编码指南（coding guidelines）对临床叙述进行推理。这种设计使Symphony能够在任何编码系统上运行，并提供片段级证据（span-level evidence），将每个预测的代码链接到支持它的文本。我们在两个公共基准和三个真实世界数据集上进行了评估，这些数据集涵盖美国和美国各地的住院、门诊、急诊和亚专科环境。Symphony在所有环境中都取得了最先进的结果，为自动化临床编码建立了一个灵活、可部署的基础。"
+      }
+    ],
+    "医疗大模型": [
+      {
+        "title": "Quantifying Cross-Modal Interactions in Multimodal Glioma Survival Prediction via InterSHAP: Evidence for Additive Signal Integration",
+        "authors": [
+          "Iain Swift",
+          "JingHua Ye",
+          "Ruairi O'Reilly"
+        ],
+        "published": "2026-03-31",
+        "summary": "Multimodal deep learning for cancer prognosis is commonly assumed to benefit from synergistic cross-modal interactions, yet this assumption has not been directly tested in survival prediction settings. This work adapts InterSHAP, a Shapley interaction index-based metric, from classification to Cox proportional hazards models and applies it to quantify cross-modal interactions in glioma survival prediction. Using TCGA-GBM and TCGA-LGG data (n=575), we evaluate four fusion architectures combining ",
+        "pdf_url": "https://arxiv.org/pdf/2603.29977v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2603.29977v1",
+        "abstract": "Multimodal deep learning for cancer prognosis is commonly assumed to benefit from synergistic cross-modal interactions, yet this assumption has not been directly tested in survival prediction settings. This work adapts InterSHAP, a Shapley interaction index-based metric, from classification to Cox proportional hazards models and applies it to quantify cross-modal interactions in glioma survival prediction. Using TCGA-GBM and TCGA-LGG data (n=575), we evaluate four fusion architectures combining whole-slide image (WSI) and RNA-seq features. Our central finding is an inverse relationship between predictive performance and measured interaction: architectures achieving superior discrimination (C-index 0.64$\\to$0.82) exhibit equivalent or lower cross-modal interaction (4.8\\%$\\to$3.0\\%). Variance decomposition reveals stable additive contributions across all architectures (WSI${\\approx}$40\\%, RNA${\\approx}$55\\%, Interaction${\\approx}$4\\%), indicating that performance gains arise from complementary signal aggregation rather than learned synergy. These findings provide a practical model auditing tool for comparing fusion strategies, reframe the role of architectural complexity in multimodal fusion, and have implications for privacy-preserving federated deployment.",
+        "llm_keywords": "多模态深度学习, 生存预测, 跨模态交互, 胶质瘤, 沙普利交互指数",
+        "llm_summary": "本研究将基于沙普利交互指数的InterSHAP方法从分类任务扩展到Cox比例风险模型，用于量化多模态胶质瘤生存预测中的跨模态交互作用。通过对TCGA-GBM和TCGA-LGG数据的分析发现，预测性能与交互程度呈负相关，性能提升主要源于互补信号的加性聚合，而非协同学习。这为模型评估和融合策略提供了新工具。",
+        "abstract_cn": "用于癌症预后的多模态深度学习通常被认为受益于协同的跨模态交互，但这一假设尚未在生存预测环境中得到直接验证。本研究将InterSHAP（一种基于沙普利交互指数的度量方法）从分类任务调整至Cox比例风险模型，并应用其量化胶质瘤生存预测中的跨模态交互。使用TCGA-GBM和TCGA-LGG数据（n=575），我们评估了结合全切片图像（WSI）和RNA-seq特征的四种融合架构。我们的核心发现是预测性能与测得的交互作用呈反比关系：获得优异判别能力（C-index 0.64→0.82）的架构表现出同等或更低的跨模态交互（4.8%→3.0%）。方差分解显示所有架构中稳定的加性贡献（WSI≈40%， RNA≈55%， Interaction≈4%），表明性能提升源于互补信号的聚合而非习得的协同作用。这些发现为比较融合策略提供了实用的模型审计工具，重新阐释了架构复杂性在多模态融合中的作用，并对隐私保护的联邦部署具有启示意义。"
+      },
+      {
+        "title": "Scaling Video Pretraining for Surgical Foundation Models",
+        "authors": [
+          "Sicheng Lu",
+          "Zikai Xiao",
+          "Jianhui Wei",
+          "Danyu Sun",
+          "Qi Lu",
+          "Keli Hu",
+          "Yang Feng",
+          "Jian Wu",
+          "Zongxin Yang",
+          "Zuozhu Liu"
+        ],
+        "published": "2026-03-31",
+        "summary": "Surgical video understanding is essential for computer-assisted interventions, yet existing surgical foundation models remain constrained by limited data scale, procedural diversity, and inconsistent evaluation, often lacking a reproducible training pipeline. We propose SurgRec, a scalable and reproducible pretraining recipe for surgical video understanding, instantiated with two variants: SurgRec-MAE and SurgRec-JEPA. We curate a large multi-source corpus of 10,535 videos and 214.5M frames span",
+        "pdf_url": "https://arxiv.org/pdf/2603.29966v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29966v1",
+        "abstract": "Surgical video understanding is essential for computer-assisted interventions, yet existing surgical foundation models remain constrained by limited data scale, procedural diversity, and inconsistent evaluation, often lacking a reproducible training pipeline. We propose SurgRec, a scalable and reproducible pretraining recipe for surgical video understanding, instantiated with two variants: SurgRec-MAE and SurgRec-JEPA. We curate a large multi-source corpus of 10,535 videos and 214.5M frames spanning endoscopy, laparoscopy, cataract, and robotic surgery. Building on this corpus, we develop a unified pretraining pipeline with balanced sampling and standardize a reproducible benchmark across 16 downstream datasets and four clinical domains with consistent data splits. Across extensive comparisons against SSL baselines and vision-language models, SurgRec consistently achieves superior performance across downstream datasets. In contrast, VLMs prove unreliable for fine-grained temporal recognition, exhibiting both performance gaps and sensitivity to prompt phrasing. Our work provides a reproducible, scalable foundation for the community to build more general surgical video models. All code, models, and data will be publicly released.",
+        "llm_keywords": "手术视频理解, 外科基础模型, 可扩展预训练, 可复现性, 自监督学习",
+        "llm_summary": "本文提出SurgRec，一种可扩展、可复现的手术视频预训练方法，构建了包含超过1万视频的大型多源数据集，并建立了统一的预训练流程和标准化评估基准。实验表明，该方法在多个下游任务上优于现有自监督和视觉语言模型，为手术视频通用模型的发展提供了基础。",
+        "abstract_cn": "手术视频理解对于计算机辅助干预至关重要，然而现有的外科基础模型仍然受限于数据规模、手术多样性和评估标准不一致，通常缺乏可复现的训练流程。我们提出了SurgRec，一个用于手术视频理解的可扩展且可复现的预训练方案，具体实现了两个变体：SurgRec-MAE和SurgRec-JEPA。我们策划了一个包含10,535个视频和2.145亿帧的大型多源数据集，涵盖内窥镜(endoscopy)、腹腔镜(laparoscopy)、白内障(cataract)和机器人手术(robotic surgery)。基于此数据集，我们开发了一个具有平衡采样的统一预训练流程，并在16个下游数据集和四个临床领域上，使用一致的数据划分，标准化了一个可复现的基准测试。在与自监督学习(SSL)基线和视觉语言模型(VLMs)的大量比较中，SurgRec在下游数据集上始终表现出更优的性能。相比之下，视觉语言模型在细粒度的时间识别任务上被证明是不可靠的，表现出性能差距和对提示词措辞的敏感性。我们的工作为社区构建更通用的手术视频模型提供了一个可复现、可扩展的基础。所有代码、模型和数据都将公开发布。"
+      },
+      {
+        "title": "SurgTEMP: Temporal-Aware Surgical Video Question Answering with Text-guided Visual Memory for Laparoscopic Cholecystectomy",
+        "authors": [
+          "Shi Li",
+          "Vinkle Srivastav",
+          "Nicolas Chanel",
+          "Saurav Sharma",
+          "Nabani Banik",
+          "Lorenzo Arboit",
+          "Kun Yuan",
+          "Pietro Mascagni",
+          "Nicolas Padoy"
+        ],
+        "published": "2026-03-31",
+        "summary": "Surgical procedures are inherently complex and risky, requiring extensive expertise and constant focus to well navigate evolving intraoperative scenes. Computer-assisted systems such as surgical visual question answering (VQA) offer promises for education and intraoperative support. Current surgical VQA research largely focuses on static frame analysis, overlooking rich temporal semantics. Surgical video question answering is further challenged by low visual contrast, its highly knowledge-driven",
+        "pdf_url": "https://arxiv.org/pdf/2603.29962v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29962v1",
+        "abstract": "Surgical procedures are inherently complex and risky, requiring extensive expertise and constant focus to well navigate evolving intraoperative scenes. Computer-assisted systems such as surgical visual question answering (VQA) offer promises for education and intraoperative support. Current surgical VQA research largely focuses on static frame analysis, overlooking rich temporal semantics. Surgical video question answering is further challenged by low visual contrast, its highly knowledge-driven nature, diverse analytical needs spanning scattered temporal windows, and the hierarchy from basic perception to high-level intraoperative assessment. To address these challenges, we propose SurgTEMP, a multimodal LLM framework featuring (i) a query-guided token selection module that builds hierarchical visual memory (spatial and temporal memory banks) and (ii) a Surgical Competency Progression (SCP) training scheme. Together, these components enable effective modeling of variable-length surgical videos while preserving procedure-relevant cues and temporal coherence, and better support diverse downstream assessment tasks. To support model development, we introduce CholeVidQA-32K, a surgical video question answering dataset comprising 32K open-ended QA pairs and 3,855 video segments (approximately 128 h total) from laparoscopic cholecystectomy. The dataset is organized into a three-level hierarchy -- Perception, Assessment, and Reasoning -- spanning 11 tasks from instrument/action/anatomy perception to Critical View of Safety (CVS), intraoperative difficulty, skill proficiency, and adverse event assessment. In comprehensive evaluations against state-of-the-art open-source multimodal and video LLMs (fine-tuned and zero-shot), SurgTEMP achieves substantial performance improvements, advancing the state of video-based surgical VQA.",
+        "llm_keywords": "手术视频问答, 时序感知, 视觉记忆, 腹腔镜胆囊切除术, 多模态大语言模型",
+        "llm_summary": "本文提出SurgTEMP框架，通过查询引导的令牌选择模块构建层次化视觉记忆，并结合手术能力递进训练方案，以解决手术视频问答中时序语义缺失、视觉对比度低等挑战。同时发布了CholeVidQA-32K数据集，包含3.2万个问答对。实验表明，该模型在多项评估任务上性能显著优于现有方法。",
+        "abstract_cn": "手术过程本质上是复杂且高风险的，需要广泛的专业知识和持续的专注力来妥善应对不断演变的术中场景。手术视觉问答（VQA）等计算机辅助系统为教育和术中支持提供了前景。当前的手术VQA研究主要集中于静态帧分析，忽略了丰富的时序语义。手术视频问答还面临着视觉对比度低、高度知识驱动、分析需求跨越分散的时序窗口以及从基础感知到高级术中评估的层次性等挑战。为了应对这些挑战，我们提出了SurgTEMP，一个多模态LLM框架，其特点是（i）一个查询引导的令牌选择模块，用于构建层次化视觉记忆（空间和时间记忆库），以及（ii）一个手术能力递进（SCP）训练方案。这些组件共同实现了对可变长度手术视频的有效建模，同时保留了与手术相关的线索和时序连贯性，并更好地支持多样化的下游评估任务。为了支持模型开发，我们引入了CholeVidQA-32K，这是一个手术视频问答数据集，包含来自腹腔镜胆囊切除术（Laparoscopic Cholecystectomy）的32K个开放式问答对和3,855个视频片段（总计约128小时）。该数据集组织为三个层次——感知（Perception）、评估（Assessment）和推理（Reasoning）——涵盖从器械/动作/解剖结构感知到安全关键视野（Critical View of Safety, CVS）、术中难度、技能熟练度和不良事件评估等11项任务。在与最先进的开源多模态和视频LLM（微调和零样本）的综合评估中，SurgTEMP取得了显著的性能提升，推动了基于视频的手术VQA的发展。"
+      },
+      {
+        "title": "Less Is More? Selective Visual Attention to High-Importance Regions for Multimodal Radiology Summarization",
+        "authors": [
+          "Mst. Fahmida Sultana Naznin",
+          "Adnan Ibney Faruq",
+          "Mushfiqur Rahman",
+          "Niloy Kumar Mondal",
+          "Md. Mehedi Hasan Shawon",
+          "Md Rakibul Hasan"
+        ],
+        "published": "2026-03-31",
+        "summary": "Automated radiology report summarization aims to distill verbose findings into concise clinical impressions, but existing multimodal models often struggle with visual noise and fail to meaningfully improve over strong text-only baselines in the FINDINGS $\\to$ IMPRESSION transformation. We challenge two prevailing assumptions: (1) that more visual input is always better, and (2) that multimodal models add limited value when findings already contain rich image-derived detail. Through controlled ab",
+        "pdf_url": "https://arxiv.org/pdf/2603.29901v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2603.29901v1",
+        "abstract": "Automated radiology report summarization aims to distill verbose findings into concise clinical impressions, but existing multimodal models often struggle with visual noise and fail to meaningfully improve over strong text-only baselines in the FINDINGS $\\to$ IMPRESSION transformation. We challenge two prevailing assumptions: (1) that more visual input is always better, and (2) that multimodal models add limited value when findings already contain rich image-derived detail. Through controlled ablations on MIMIC-CXR benchmark, we show that selectively focusing on pathology-relevant visual patches rather than full images yields substantially better performance. We introduce ViTAS, Visual-Text Attention Summarizer, a multi-stage pipeline that combines ensemble-guided MedSAM2 lung segmentation, bidirectional cross-attention for multi-view fusion, Shapley-guided adaptive patch clustering, and hierarchical visual tokenization feeding a ViT. ViTAS achieves SOTA results with 29.25% BLEU-4 and 69.83% ROUGE-L, improved factual alignment in qualitative analysis, and the highest expert-rated human evaluation scores. Our findings demonstrate that less but more relevant visual input is not only sufficient but superior for multimodal radiology summarization.",
+        "llm_keywords": "放射学报告摘要, 多模态模型, 视觉注意力, 选择性视觉输入, 病理相关区域",
+        "llm_summary": "本文挑战了多模态放射学摘要中“视觉输入越多越好”和“当文本已含丰富图像细节时多模态模型价值有限”的假设。研究提出ViTAS模型，通过选择性关注病理相关视觉区域而非完整图像，在MIMIC-CXR基准上取得最优性能，证明了更少但更相关的视觉输入对摘要任务更有效。",
+        "abstract_cn": "自动化放射学报告摘要旨在将冗长的检查发现(FINDINGS)提炼为简洁的临床印象(IMPRESSION)，但现有的多模态模型常受视觉噪声干扰，且在FINDINGS到IMPRESSION的转换中未能比强大的纯文本基线模型有显著提升。我们挑战了两个普遍假设：(1)视觉输入越多越好，(2)当发现(FINDINGS)已包含丰富的图像衍生细节时，多模态模型增加的价值有限。通过在MIMIC-CXR基准上进行受控消融实验，我们表明，选择性关注与病理相关的视觉图像块(patches)而非完整图像，能显著提升性能。我们介绍了ViTAS(Visual-Text Attention Summarizer)，这是一个多阶段流程，结合了集成引导的MedSAM2肺部分割、用于多视图融合的双向交叉注意力(bidirectional cross-attention)、Shapley引导的自适应图像块聚类(adaptive patch clustering)，以及馈入视觉Transformer(ViT)的分层视觉标记化(hierarchical visual tokenization)。ViTAS取得了最先进(SOTA)的结果，BLEU-4为29.25%，ROUGE-L为69.83%，定性分析中事实对齐性(factual alignment)得到改善，并获得了专家评分最高的人类评估分数。我们的发现表明，更少但更相关的视觉输入对于多模态放射学摘要不仅足够，而且更优。"
+      },
+      {
+        "title": "Beyond AI advice -- independent aggregation boosts human-AI accuracy",
+        "authors": [
+          "Julian Berger",
+          "Pantelis P. Analytis",
+          "Ville Satopää",
+          "Ralf H. J. M. Kurvers"
+        ],
+        "published": "2026-03-31",
+        "summary": "Artificial intelligence (AI) is broadly deployed as an advisor to human decision-makers: AI recommends a decision and a human accepts or rejects the advice. This approach, however, has several limitations: People frequently ignore accurate advice and rely too much on inaccurate advice, and their decision-making skills may deteriorate over time. Here, we compare the AI-as-advisor approach to the hybrid confirmation tree (HCT), an alternative strategy that preserves the independence of human and A",
+        "pdf_url": "https://arxiv.org/pdf/2603.29866v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29866v1",
+        "abstract": "Artificial intelligence (AI) is broadly deployed as an advisor to human decision-makers: AI recommends a decision and a human accepts or rejects the advice. This approach, however, has several limitations: People frequently ignore accurate advice and rely too much on inaccurate advice, and their decision-making skills may deteriorate over time. Here, we compare the AI-as-advisor approach to the hybrid confirmation tree (HCT), an alternative strategy that preserves the independence of human and AI judgments. The HCT elicits a human judgment and an AI judgment independently of each other. If they agree, that decision is accepted. If not, a second human breaks the tie. For the comparison, we used 10 datasets from various domains, including medical diagnostics and misinformation discernment, and a subset of four datasets in which AI also explained its decision. The HCT outperformed the AI-as-advisor approach in all datasets. The HCT also performed better in almost all cases in which AI offered an explanation of its judgment. Using signal detection theory to interpret these results, we find that the HCT outperforms the AI-as-advisor approach because people cannot discriminate well enough between correct and incorrect AI advice. Overall, the HCT is a robust, accurate, and transparent alternative to the AI-as-advisor approach, offering a simple mechanism to tap into the wisdom of hybrid crowds.",
+        "llm_keywords": "人机协作, 混合确认树, 人工智能建议, 独立聚合, 决策准确性",
+        "llm_summary": "本文提出了一种名为混合确认树（HCT）的新人机协作决策方法。与传统的人工智能作为顾问的模式不同，HCT独立收集人类和AI的判断，仅在两者意见不一致时引入第二个人类进行裁决。实验表明，该方法在多个领域的数据集上均优于传统的AI顾问模式，主要原因是人类难以有效区分AI建议的正确与否。HCT提供了一种更准确、稳健且透明的决策替代方案。",
+        "abstract_cn": "人工智能（AI）被广泛部署为人类决策者的顾问：AI推荐一个决策，人类接受或拒绝该建议。然而，这种方法有几个局限性：人们经常忽略准确的建议，过于依赖不准确的建议，并且他们的决策技能可能会随着时间的推移而退化。在这里，我们将AI作为顾问的方法与混合确认树（Hybrid Confirmation Tree, HCT）进行了比较，后者是一种保留人类和AI判断独立性的替代策略。HCT独立地获取人类判断和AI判断。如果它们一致，则接受该决策。如果不一致，则由第二个人类来打破平局。为了进行比较，我们使用了来自不同领域（包括医疗诊断和错误信息识别）的10个数据集，以及一个包含四个数据集的子集，其中AI也解释了其决策。HCT在所有数据集上都优于AI作为顾问的方法。在AI为其判断提供解释的几乎所有情况下，HCT也表现更好。使用信号检测理论来解释这些结果，我们发现HCT之所以优于AI作为顾问的方法，是因为人们无法很好地区分正确和错误的AI建议。总体而言，HCT是AI作为顾问方法的一个稳健、准确且透明的替代方案，提供了一个简单的机制来利用混合群体的智慧。"
+      },
+      {
+        "title": "Multimodal Machine Learning for Early Prediction of Metastasis in a Swedish Multi-Cancer Cohort",
+        "authors": [
+          "Franco Rugolon",
+          "Korbinian Randl",
+          "Braslav Jovanovic",
+          "Ioanna Miliou",
+          "Panagiotis Papapetrou"
+        ],
+        "published": "2026-03-31",
+        "summary": "Multimodal Machine Learning offers a holistic view of a patient's status, integrating structured and unstructured data from electronic health records (EHR). We propose a framework to predict metastasis risk one month prior to diagnosis, using six months of clinical history from EHR data. Data from four cancer cohorts collected at Karolinska University Hospital (Stockholm, Sweden) were analyzed: breast (n = 743), colon (n = 387), lung (n = 870), and prostate (n = 1890). The dataset included demog",
+        "pdf_url": "https://arxiv.org/pdf/2603.29793v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2603.29793v1",
+        "abstract": "Multimodal Machine Learning offers a holistic view of a patient's status, integrating structured and unstructured data from electronic health records (EHR). We propose a framework to predict metastasis risk one month prior to diagnosis, using six months of clinical history from EHR data. Data from four cancer cohorts collected at Karolinska University Hospital (Stockholm, Sweden) were analyzed: breast (n = 743), colon (n = 387), lung (n = 870), and prostate (n = 1890). The dataset included demographics, comorbidities, laboratory results, medications, and clinical text. We compared traditional and deep learning classifiers across single modalities and multimodal combinations, using various fusion strategies and a Transparent Reporting of a multivariable prediction model for Individual Prognosis Or Diagnosis (TRIPOD) 2a design, with an 80-20 development-validation split to ensure a rigorous, repeatable evaluation. Performance was evaluated using AUROC, AUPRC, F1 score, sensitivity, and specificity. We then employed a multimodal adaptation of SHAP to analyze the classifiers' reasoning. Intermediate fusion achieved the highest F1 scores on breast (0.845), colon (0.786), and prostate cancer (0.845), demonstrating strong predictive performance. For lung cancer, the intermediate fusion achieved an F1 score of 0.819, while the text-only model achieved the highest, with an F1 score of 0.829. Deep learning classifiers consistently outperformed traditional models. Colon cancer, the smallest cohort, had the lowest performance, highlighting the importance of sufficient training data. SHAP analysis showed that the relative importance of modalities varied across cancer types. Fusion strategies offer distinct strengths and weaknesses. Intermediate fusion consistently delivered the best results, but strategy choices should align with data characteristics and organizational needs.",
+        "llm_keywords": "多模态机器学习, 癌症转移预测, 电子健康记录, 融合策略, SHAP可解释性分析",
+        "llm_summary": "本研究提出一个多模态机器学习框架，利用诊断前六个月的电子健康记录数据，预测四种癌症患者在确诊前一个月的转移风险。研究比较了不同模态和融合策略，发现中间融合策略在多数癌症类型中表现最佳，深度学习模型优于传统模型，并利用SHAP分析了模型决策依据。",
+        "abstract_cn": "多模态机器学习（Multimodal Machine Learning）通过整合电子健康记录（EHR）中的结构化和非结构化数据，为患者状态提供整体视图。我们提出了一个框架，利用EHR数据中六个月的临床历史，在诊断前一个月预测转移风险。分析了来自卡罗林斯卡大学医院（瑞典斯德哥尔摩）收集的四个癌症队列数据：乳腺癌（n = 743）、结肠癌（n = 387）、肺癌（n = 870）和前列腺癌（n = 1890）。数据集包括人口统计学、合并症、实验室结果、药物和临床文本。我们比较了单模态和多模态组合下的传统和深度学习分类器，使用了多种融合策略和个体预后或诊断多变量预测模型的透明报告（TRIPOD）2a设计，采用80-20的开发-验证分割以确保严格、可重复的评估。使用AUROC、AUPRC、F1分数、敏感性和特异性评估性能。然后，我们采用了SHAP的多模态适应来分析分类器的推理。中间融合（Intermediate fusion）在乳腺癌（0.845）、结肠癌（0.786）和前列腺癌（0.845）上获得了最高的F1分数，显示出强大的预测性能。对于肺癌，中间融合的F1分数为0.819，而纯文本模型获得了最高的0.829。深度学习分类器始终优于传统模型。样本量最小的结肠癌队列性能最低，突显了足够训练数据的重要性。SHAP分析显示，不同模态的相对重要性因癌症类型而异。融合策略各有优缺点。中间融合始终能提供最佳结果，但策略选择应与数据特征和组织需求保持一致。"
+      },
+      {
+        "title": "Symphony for Medical Coding: A Next-Generation Agentic System for Scalable and Explainable Medical Coding",
+        "authors": [
+          "Joakim Edin",
+          "Andreas Motzfeldt",
+          "Simon Flachs",
+          "Lars Maaløe"
+        ],
+        "published": "2026-03-31",
+        "summary": "Medical coding translates free-text clinical documentation into standardized codes drawn from classification systems that contain tens of thousands of entries and are updated annually. It is central to billing, clinical research, and quality reporting, yet remains largely manual, slow, and error-prone. Existing automated approaches learn to predict a fixed set of codes from labeled data, thereby preventing adaptation to new codes or different coding systems without retraining on different data. ",
+        "pdf_url": "https://arxiv.org/pdf/2603.29709v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2603.29709v1",
+        "abstract": "Medical coding translates free-text clinical documentation into standardized codes drawn from classification systems that contain tens of thousands of entries and are updated annually. It is central to billing, clinical research, and quality reporting, yet remains largely manual, slow, and error-prone. Existing automated approaches learn to predict a fixed set of codes from labeled data, thereby preventing adaptation to new codes or different coding systems without retraining on different data. They also provide no explanation for their predictions, limiting trust in safety-critical settings. We introduce Symphony for Medical Coding, a system that approaches the task the way expert human coders do: by reasoning over the clinical narrative with direct access to the coding guidelines. This design allows Symphony to operate across any coding system and to provide span-level evidence linking each predicted code to the text that supports it. We evaluate on two public benchmarks and three real-world datasets spanning inpatient, outpatient, emergency, and subspecialty settings across the United States and the United Kingdom. Symphony achieves state-of-the-art results across all settings, establishing itself as a flexible, deployment-ready foundation for automated clinical coding.",
+        "llm_keywords": "医疗编码, 可解释人工智能, 智能体系统, 临床自然语言处理, 标准化编码",
+        "llm_summary": "本文介绍了Symphony for Medical Coding，一个模仿人类专家工作流程的新一代智能体系统。它通过直接参考编码指南对临床文本进行推理，实现了跨编码系统的通用性，并能提供代码预测的文本证据支持。在多个公开基准和真实数据集上的评估表明，该系统取得了最先进的性能，为自动化临床编码提供了一个灵活且可部署的解决方案。",
+        "abstract_cn": "医疗编码（Medical coding）将自由文本的临床记录转化为从包含数万条目且每年更新的分类系统中提取的标准代码。它对计费、临床研究和质量报告至关重要，但目前仍主要依赖人工，速度慢且易出错。现有的自动化方法从标注数据中学习预测固定的代码集，因此无法适应新代码或不同的编码系统，除非用不同的数据重新训练。它们也不提供预测的解释，限制了在安全关键环境中的可信度。我们介绍了Symphony for Medical Coding，该系统模仿人类专家编码员的工作方式：通过直接访问编码指南（coding guidelines）对临床叙述进行推理。这种设计使Symphony能够在任何编码系统上运行，并提供片段级证据（span-level evidence），将每个预测的代码链接到支持它的文本。我们在两个公共基准和三个真实世界数据集上进行了评估，这些数据集涵盖美国和美国各地的住院、门诊、急诊和亚专科环境。Symphony在所有环境中都取得了最先进的结果，为自动化临床编码建立了一个灵活、可部署的基础。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Scaling Video Pretraining for Surgical Foundation Models",
+        "authors": [
+          "Sicheng Lu",
+          "Zikai Xiao",
+          "Jianhui Wei",
+          "Danyu Sun",
+          "Qi Lu",
+          "Keli Hu",
+          "Yang Feng",
+          "Jian Wu",
+          "Zongxin Yang",
+          "Zuozhu Liu"
+        ],
+        "published": "2026-03-31",
+        "summary": "Surgical video understanding is essential for computer-assisted interventions, yet existing surgical foundation models remain constrained by limited data scale, procedural diversity, and inconsistent evaluation, often lacking a reproducible training pipeline. We propose SurgRec, a scalable and reproducible pretraining recipe for surgical video understanding, instantiated with two variants: SurgRec-MAE and SurgRec-JEPA. We curate a large multi-source corpus of 10,535 videos and 214.5M frames span",
+        "pdf_url": "https://arxiv.org/pdf/2603.29966v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29966v1",
+        "abstract": "Surgical video understanding is essential for computer-assisted interventions, yet existing surgical foundation models remain constrained by limited data scale, procedural diversity, and inconsistent evaluation, often lacking a reproducible training pipeline. We propose SurgRec, a scalable and reproducible pretraining recipe for surgical video understanding, instantiated with two variants: SurgRec-MAE and SurgRec-JEPA. We curate a large multi-source corpus of 10,535 videos and 214.5M frames spanning endoscopy, laparoscopy, cataract, and robotic surgery. Building on this corpus, we develop a unified pretraining pipeline with balanced sampling and standardize a reproducible benchmark across 16 downstream datasets and four clinical domains with consistent data splits. Across extensive comparisons against SSL baselines and vision-language models, SurgRec consistently achieves superior performance across downstream datasets. In contrast, VLMs prove unreliable for fine-grained temporal recognition, exhibiting both performance gaps and sensitivity to prompt phrasing. Our work provides a reproducible, scalable foundation for the community to build more general surgical video models. All code, models, and data will be publicly released.",
+        "llm_keywords": "手术视频理解, 外科基础模型, 可扩展预训练, 可复现性, 自监督学习",
+        "llm_summary": "本文提出SurgRec，一种可扩展、可复现的手术视频预训练方法，构建了包含超过1万视频的大型多源数据集，并建立了统一的预训练流程和标准化评估基准。实验表明，该方法在多个下游任务上优于现有自监督和视觉语言模型，为手术视频通用模型的发展提供了基础。",
+        "abstract_cn": "手术视频理解对于计算机辅助干预至关重要，然而现有的外科基础模型仍然受限于数据规模、手术多样性和评估标准不一致，通常缺乏可复现的训练流程。我们提出了SurgRec，一个用于手术视频理解的可扩展且可复现的预训练方案，具体实现了两个变体：SurgRec-MAE和SurgRec-JEPA。我们策划了一个包含10,535个视频和2.145亿帧的大型多源数据集，涵盖内窥镜(endoscopy)、腹腔镜(laparoscopy)、白内障(cataract)和机器人手术(robotic surgery)。基于此数据集，我们开发了一个具有平衡采样的统一预训练流程，并在16个下游数据集和四个临床领域上，使用一致的数据划分，标准化了一个可复现的基准测试。在与自监督学习(SSL)基线和视觉语言模型(VLMs)的大量比较中，SurgRec在下游数据集上始终表现出更优的性能。相比之下，视觉语言模型在细粒度的时间识别任务上被证明是不可靠的，表现出性能差距和对提示词措辞的敏感性。我们的工作为社区构建更通用的手术视频模型提供了一个可复现、可扩展的基础。所有代码、模型和数据都将公开发布。"
+      },
+      {
+        "title": "SurgTEMP: Temporal-Aware Surgical Video Question Answering with Text-guided Visual Memory for Laparoscopic Cholecystectomy",
+        "authors": [
+          "Shi Li",
+          "Vinkle Srivastav",
+          "Nicolas Chanel",
+          "Saurav Sharma",
+          "Nabani Banik",
+          "Lorenzo Arboit",
+          "Kun Yuan",
+          "Pietro Mascagni",
+          "Nicolas Padoy"
+        ],
+        "published": "2026-03-31",
+        "summary": "Surgical procedures are inherently complex and risky, requiring extensive expertise and constant focus to well navigate evolving intraoperative scenes. Computer-assisted systems such as surgical visual question answering (VQA) offer promises for education and intraoperative support. Current surgical VQA research largely focuses on static frame analysis, overlooking rich temporal semantics. Surgical video question answering is further challenged by low visual contrast, its highly knowledge-driven",
+        "pdf_url": "https://arxiv.org/pdf/2603.29962v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29962v1",
+        "abstract": "Surgical procedures are inherently complex and risky, requiring extensive expertise and constant focus to well navigate evolving intraoperative scenes. Computer-assisted systems such as surgical visual question answering (VQA) offer promises for education and intraoperative support. Current surgical VQA research largely focuses on static frame analysis, overlooking rich temporal semantics. Surgical video question answering is further challenged by low visual contrast, its highly knowledge-driven nature, diverse analytical needs spanning scattered temporal windows, and the hierarchy from basic perception to high-level intraoperative assessment. To address these challenges, we propose SurgTEMP, a multimodal LLM framework featuring (i) a query-guided token selection module that builds hierarchical visual memory (spatial and temporal memory banks) and (ii) a Surgical Competency Progression (SCP) training scheme. Together, these components enable effective modeling of variable-length surgical videos while preserving procedure-relevant cues and temporal coherence, and better support diverse downstream assessment tasks. To support model development, we introduce CholeVidQA-32K, a surgical video question answering dataset comprising 32K open-ended QA pairs and 3,855 video segments (approximately 128 h total) from laparoscopic cholecystectomy. The dataset is organized into a three-level hierarchy -- Perception, Assessment, and Reasoning -- spanning 11 tasks from instrument/action/anatomy perception to Critical View of Safety (CVS), intraoperative difficulty, skill proficiency, and adverse event assessment. In comprehensive evaluations against state-of-the-art open-source multimodal and video LLMs (fine-tuned and zero-shot), SurgTEMP achieves substantial performance improvements, advancing the state of video-based surgical VQA.",
+        "llm_keywords": "手术视频问答, 时序感知, 视觉记忆, 腹腔镜胆囊切除术, 多模态大语言模型",
+        "llm_summary": "本文提出SurgTEMP框架，通过查询引导的令牌选择模块构建层次化视觉记忆，并结合手术能力递进训练方案，以解决手术视频问答中时序语义缺失、视觉对比度低等挑战。同时发布了CholeVidQA-32K数据集，包含3.2万个问答对。实验表明，该模型在多项评估任务上性能显著优于现有方法。",
+        "abstract_cn": "手术过程本质上是复杂且高风险的，需要广泛的专业知识和持续的专注力来妥善应对不断演变的术中场景。手术视觉问答（VQA）等计算机辅助系统为教育和术中支持提供了前景。当前的手术VQA研究主要集中于静态帧分析，忽略了丰富的时序语义。手术视频问答还面临着视觉对比度低、高度知识驱动、分析需求跨越分散的时序窗口以及从基础感知到高级术中评估的层次性等挑战。为了应对这些挑战，我们提出了SurgTEMP，一个多模态LLM框架，其特点是（i）一个查询引导的令牌选择模块，用于构建层次化视觉记忆（空间和时间记忆库），以及（ii）一个手术能力递进（SCP）训练方案。这些组件共同实现了对可变长度手术视频的有效建模，同时保留了与手术相关的线索和时序连贯性，并更好地支持多样化的下游评估任务。为了支持模型开发，我们引入了CholeVidQA-32K，这是一个手术视频问答数据集，包含来自腹腔镜胆囊切除术（Laparoscopic Cholecystectomy）的32K个开放式问答对和3,855个视频片段（总计约128小时）。该数据集组织为三个层次——感知（Perception）、评估（Assessment）和推理（Reasoning）——涵盖从器械/动作/解剖结构感知到安全关键视野（Critical View of Safety, CVS）、术中难度、技能熟练度和不良事件评估等11项任务。在与最先进的开源多模态和视频LLM（微调和零样本）的综合评估中，SurgTEMP取得了显著的性能提升，推动了基于视频的手术VQA的发展。"
+      },
+      {
+        "title": "Beyond AI advice -- independent aggregation boosts human-AI accuracy",
+        "authors": [
+          "Julian Berger",
+          "Pantelis P. Analytis",
+          "Ville Satopää",
+          "Ralf H. J. M. Kurvers"
+        ],
+        "published": "2026-03-31",
+        "summary": "Artificial intelligence (AI) is broadly deployed as an advisor to human decision-makers: AI recommends a decision and a human accepts or rejects the advice. This approach, however, has several limitations: People frequently ignore accurate advice and rely too much on inaccurate advice, and their decision-making skills may deteriorate over time. Here, we compare the AI-as-advisor approach to the hybrid confirmation tree (HCT), an alternative strategy that preserves the independence of human and A",
+        "pdf_url": "https://arxiv.org/pdf/2603.29866v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2603.29866v1",
+        "abstract": "Artificial intelligence (AI) is broadly deployed as an advisor to human decision-makers: AI recommends a decision and a human accepts or rejects the advice. This approach, however, has several limitations: People frequently ignore accurate advice and rely too much on inaccurate advice, and their decision-making skills may deteriorate over time. Here, we compare the AI-as-advisor approach to the hybrid confirmation tree (HCT), an alternative strategy that preserves the independence of human and AI judgments. The HCT elicits a human judgment and an AI judgment independently of each other. If they agree, that decision is accepted. If not, a second human breaks the tie. For the comparison, we used 10 datasets from various domains, including medical diagnostics and misinformation discernment, and a subset of four datasets in which AI also explained its decision. The HCT outperformed the AI-as-advisor approach in all datasets. The HCT also performed better in almost all cases in which AI offered an explanation of its judgment. Using signal detection theory to interpret these results, we find that the HCT outperforms the AI-as-advisor approach because people cannot discriminate well enough between correct and incorrect AI advice. Overall, the HCT is a robust, accurate, and transparent alternative to the AI-as-advisor approach, offering a simple mechanism to tap into the wisdom of hybrid crowds.",
+        "llm_keywords": "人机协作, 混合确认树, 人工智能建议, 独立聚合, 决策准确性",
+        "llm_summary": "本文提出了一种名为混合确认树（HCT）的新人机协作决策方法。与传统的人工智能作为顾问的模式不同，HCT独立收集人类和AI的判断，仅在两者意见不一致时引入第二个人类进行裁决。实验表明，该方法在多个领域的数据集上均优于传统的AI顾问模式，主要原因是人类难以有效区分AI建议的正确与否。HCT提供了一种更准确、稳健且透明的决策替代方案。",
+        "abstract_cn": "人工智能（AI）被广泛部署为人类决策者的顾问：AI推荐一个决策，人类接受或拒绝该建议。然而，这种方法有几个局限性：人们经常忽略准确的建议，过于依赖不准确的建议，并且他们的决策技能可能会随着时间的推移而退化。在这里，我们将AI作为顾问的方法与混合确认树（Hybrid Confirmation Tree, HCT）进行了比较，后者是一种保留人类和AI判断独立性的替代策略。HCT独立地获取人类判断和AI判断。如果它们一致，则接受该决策。如果不一致，则由第二个人类来打破平局。为了进行比较，我们使用了来自不同领域（包括医疗诊断和错误信息识别）的10个数据集，以及一个包含四个数据集的子集，其中AI也解释了其决策。HCT在所有数据集上都优于AI作为顾问的方法。在AI为其判断提供解释的几乎所有情况下，HCT也表现更好。使用信号检测理论来解释这些结果，我们发现HCT之所以优于AI作为顾问的方法，是因为人们无法很好地区分正确和错误的AI建议。总体而言，HCT是AI作为顾问方法的一个稳健、准确且透明的替代方案，提供了一个简单的机制来利用混合群体的智慧。"
+      }
+    ]
+  },
+  "total_count": 10,
+  "generated_at": "2026-04-01T22:40:26.774629"
+}
