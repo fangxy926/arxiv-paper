@@ -156,7 +156,7 @@ function renderStats() {
     (data.topics || []).forEach(t => {
         const n = (data.papers_by_topic[t] || []).length;
         const c = TOPIC_COLORS[t] || '#1e40af';
-        html += "<div class='stat-item' data-filter="" + t + ""><span class='stat-dot' style='background:" + c + "'></span><span>" + t + "</span><span>" + n + "</span></div>";
+        html += '<div class="stat-item" data-filter="' + t + '"><span class="stat-dot" style="background:' + c + '"></span><span>' + t + '</span><span>' + n + '</span></div>';
     });
     el.innerHTML = html;
     // Bind click events
