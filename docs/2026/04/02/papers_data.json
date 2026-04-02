@@ -1,0 +1,117 @@
+{
+  "date_range": {
+    "start_date": "2026-04-01",
+    "end_date": "2026-04-01"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "AdaLoRA-QAT: Adaptive Low-Rank and Quantization-Aware Segmentation",
+        "authors": [
+          "Prantik Deb",
+          "Srimanth Dhondy",
+          "N. Ramakrishna",
+          "Anu Kapoor",
+          "Raju S. Bapi",
+          "Tapabrata Chakraborti"
+        ],
+        "published": "2026-04-01",
+        "summary": "Chest X-ray (CXR) segmentation is an important step in computer-aided diagnosis, yet deploying large foundation models in clinical settings remains challenging due to computational constraints. We propose AdaLoRA-QAT, a two-stage fine-tuning framework that combines adaptive low-rank encoder adaptation with full quantization-aware training. Adaptive rank allocation improves parameter efficiency, while selective mixed-precision INT8 quantization preserves structural fidelity crucial for clinical r",
+        "pdf_url": "https://arxiv.org/pdf/2604.01167v1",
+        "primary_category": "eess.IV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.01167v1",
+        "abstract": "Chest X-ray (CXR) segmentation is an important step in computer-aided diagnosis, yet deploying large foundation models in clinical settings remains challenging due to computational constraints. We propose AdaLoRA-QAT, a two-stage fine-tuning framework that combines adaptive low-rank encoder adaptation with full quantization-aware training. Adaptive rank allocation improves parameter efficiency, while selective mixed-precision INT8 quantization preserves structural fidelity crucial for clinical reliability. Evaluated across large-scale CXR datasets, AdaLoRA-QAT achieves 95.6% Dice, matching full-precision SAM decoder fine-tuning while reducing trainable parameters by 16.6\\times and yielding 2.24\\times model compression. A Wilcoxon signed-rank test confirms that quantization does not significantly degrade segmentation accuracy. These results demonstrate that AdaLoRA-QAT effectively balances accuracy, efficiency, and structural trust-worthiness, enabling compact and deployable foundation models for medical image segmentation. Code and pretrained models are available at: https://prantik-pdeb.github.io/adaloraqat.github.io/",
+        "llm_keywords": "自适应低秩适应, 量化感知训练, 医学图像分割, 模型压缩, 胸部X光",
+        "llm_summary": "本文提出AdaLoRA-QAT框架，通过自适应低秩编码器适配和全量化感知训练两阶段微调，在保持胸部X光分割精度的同时，大幅减少可训练参数并压缩模型，实现了精度、效率和临床可信度的平衡。",
+        "abstract_cn": "胸部X光（CXR）分割是计算机辅助诊断中的重要步骤，但由于计算限制，在临床环境中部署大型基础模型仍然具有挑战性。我们提出了AdaLoRA-QAT，一个结合了自适应低秩编码器适配（adaptive low-rank encoder adaptation）与全量化感知训练（full quantization-aware training）的两阶段微调框架。自适应秩分配（adaptive rank allocation）提高了参数效率，而选择性混合精度INT8量化（selective mixed-precision INT8 quantization）保留了对于临床可靠性至关重要的结构保真度。在大型CXR数据集上的评估表明，AdaLoRA-QAT达到了95.6%的Dice系数，与全精度SAM解码器微调结果相当，同时将可训练参数减少了16.6倍，并实现了2.24倍的模型压缩。Wilcoxon符号秩检验证实量化不会显著降低分割精度。这些结果表明，AdaLoRA-QAT有效地平衡了准确性、效率和结构可信度，为医学图像分割实现了紧凑且可部署的基础模型。代码和预训练模型可在以下网址获取：https://prantik-pdeb.github.io/adaloraqat.github.io/"
+      },
+      {
+        "title": "CARE: Privacy-Compliant Agentic Reasoning with Evidence Discordance",
+        "authors": [
+          "Haochen Liu",
+          "Weien Li",
+          "Rui Song",
+          "Zeyu Li",
+          "Chun Jason Xue",
+          "Xiao-Yang Liu",
+          "Sam Nallaperuma",
+          "Xue Liu",
+          "Ye Yuan"
+        ],
+        "published": "2026-04-01",
+        "summary": "Large language model (LLM) systems are increasingly used to support high-stakes decision-making, but they typically perform worse when the available evidence is internally inconsistent. Such a scenario exists in real-world healthcare settings, with patient-reported symptoms contradicting medical signs. To study this problem, we introduce MIMIC-DOS, a dataset for short-horizon organ dysfunction worsening prediction in the intensive care unit (ICU) setting. We derive this dataset from the widely r",
+        "pdf_url": "https://arxiv.org/pdf/2604.01113v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.01113v1",
+        "abstract": "Large language model (LLM) systems are increasingly used to support high-stakes decision-making, but they typically perform worse when the available evidence is internally inconsistent. Such a scenario exists in real-world healthcare settings, with patient-reported symptoms contradicting medical signs. To study this problem, we introduce MIMIC-DOS, a dataset for short-horizon organ dysfunction worsening prediction in the intensive care unit (ICU) setting. We derive this dataset from the widely recognized MIMIC-IV, a publicly available electronic health record dataset, and construct it exclusively from cases in which discordance between signs and symptoms exists. This setting poses a substantial challenge for existing LLM-based approaches, with single-pass LLMs and agentic pipelines often struggling to reconcile such conflicting signals. To address this problem, we propose CARE: a multi-stage privacy-compliant agentic reasoning framework in which a remote LLM provides guidance by generating structured categories and transitions without accessing sensitive patient data, while a local LLM uses these categories and transitions to support evidence acquisition and final decision-making. Empirically, CARE achieves stronger performance across all key metrics compared to multiple baseline settings, showing that CARE can more robustly handle conflicting clinical evidence while preserving privacy.",
+        "llm_keywords": "隐私合规智能体推理, 证据不一致, 大型语言模型, 重症监护室, 电子健康记录",
+        "llm_summary": "本文针对医疗决策中患者症状与体征不一致的挑战，提出了隐私合规的智能体推理框架CARE。该框架利用远程LLM生成结构化指导，本地LLM处理敏感数据以进行证据获取和决策，在MIMIC-DOS数据集上验证了其优于基线方法的性能。",
+        "abstract_cn": "大型语言模型（LLM）系统越来越多地用于支持高风险决策，但当可用证据内部不一致时，其性能通常会下降。这种场景存在于现实世界的医疗保健环境中，患者报告的症状与医学体征相矛盾。为了研究这个问题，我们引入了MIMIC-DOS，这是一个用于重症监护室（ICU）环境中短期器官功能障碍恶化预测的数据集。我们从广泛认可的公开电子健康记录数据集MIMIC-IV中衍生出该数据集，并专门从体征和症状存在不一致的病例中构建。这种设置对现有的基于LLM的方法构成了重大挑战，单次推理的LLM和智能体流程通常难以调和此类冲突信号。为了解决这个问题，我们提出了CARE：一个多阶段的隐私合规智能体推理框架，其中远程LLM通过生成结构化类别和转换来提供指导，而无需访问敏感的患者数据，同时本地LLM使用这些类别和转换来支持证据获取和最终决策。经验表明，与多个基线设置相比，CARE在所有关键指标上都实现了更强的性能，表明CARE可以更稳健地处理冲突的临床证据，同时保护隐私。"
+      },
+      {
+        "title": "Foundation Model-guided Iteratively Prompting and Pseudo-Labeling for Partially Labeled Medical Image Segmentation",
+        "authors": [
+          "Qiaochu Zhao",
+          "Wei Wei",
+          "David Horowitz",
+          "Richard Bakst",
+          "Yading Yuan"
+        ],
+        "published": "2026-04-01",
+        "summary": "Automated medical image segmentation has achieved remarkable progress with fully labeled data. However, site-specific clinical priorities and the high cost of manual annotation often yield scans with only a subset of organs labeled, leading to the partially labeled problem that degrades performance. To address this issue, we propose IPnP, an Iteratively Prompting and Pseudo-labeling framework, for partially labeled medical image segmentation. IPnP iteratively generates and refines pseudo-labels ",
+        "pdf_url": "https://arxiv.org/pdf/2604.01038v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.01038v1",
+        "abstract": "Automated medical image segmentation has achieved remarkable progress with fully labeled data. However, site-specific clinical priorities and the high cost of manual annotation often yield scans with only a subset of organs labeled, leading to the partially labeled problem that degrades performance. To address this issue, we propose IPnP, an Iteratively Prompting and Pseudo-labeling framework, for partially labeled medical image segmentation. IPnP iteratively generates and refines pseudo-labels for unlabeled organs through collaboration between a trainable segmentation network (specialist) and a frozen foundation model (generalist), progressively recovering full-organ supervision. On the public dataset AMOS with the simulated partial-label setting, IPnP consistently improves segmentation performance over prior methods and approaches the performance of the fully labeled reference. We further evaluate on a private, partially labeled dataset of 210 head-and-neck cancer patients and demonstrate our effectiveness in real-world clinical settings.",
+        "llm_keywords": "医学图像分割, 部分标注, 基础模型, 迭代提示, 伪标签",
+        "llm_summary": "本文提出IPnP框架，通过可训练分割网络与冻结基础模型的协作，迭代生成并优化未标注器官的伪标签，以解决部分标注医学图像分割性能下降的问题。在公开和私有数据集上的实验表明，该方法有效提升了分割性能，并接近全标注参考水平。",
+        "abstract_cn": "自动化医学图像分割在拥有全标注数据的情况下取得了显著进展。然而，特定站点的临床优先级和手动标注的高成本常常导致扫描图像仅标注了器官的子集，从而产生了部分标注问题并降低了性能。为解决此问题，我们提出了IPnP，一个用于部分标注医学图像分割的迭代提示与伪标签框架。IPnP通过可训练的分割网络（专家）和冻结的基础模型（通才）之间的协作，迭代地为未标注器官生成并优化伪标签，逐步恢复全器官监督。在采用模拟部分标注设置的公开数据集AMOS上，IPnP持续改进了分割性能，超越了先前方法，并接近了全标注参考的性能。我们进一步在一个包含210名头颈癌患者的私有部分标注数据集上进行了评估，证明了我们在真实世界临床环境中的有效性。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "CARE: Privacy-Compliant Agentic Reasoning with Evidence Discordance",
+        "authors": [
+          "Haochen Liu",
+          "Weien Li",
+          "Rui Song",
+          "Zeyu Li",
+          "Chun Jason Xue",
+          "Xiao-Yang Liu",
+          "Sam Nallaperuma",
+          "Xue Liu",
+          "Ye Yuan"
+        ],
+        "published": "2026-04-01",
+        "summary": "Large language model (LLM) systems are increasingly used to support high-stakes decision-making, but they typically perform worse when the available evidence is internally inconsistent. Such a scenario exists in real-world healthcare settings, with patient-reported symptoms contradicting medical signs. To study this problem, we introduce MIMIC-DOS, a dataset for short-horizon organ dysfunction worsening prediction in the intensive care unit (ICU) setting. We derive this dataset from the widely r",
+        "pdf_url": "https://arxiv.org/pdf/2604.01113v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.01113v1",
+        "abstract": "Large language model (LLM) systems are increasingly used to support high-stakes decision-making, but they typically perform worse when the available evidence is internally inconsistent. Such a scenario exists in real-world healthcare settings, with patient-reported symptoms contradicting medical signs. To study this problem, we introduce MIMIC-DOS, a dataset for short-horizon organ dysfunction worsening prediction in the intensive care unit (ICU) setting. We derive this dataset from the widely recognized MIMIC-IV, a publicly available electronic health record dataset, and construct it exclusively from cases in which discordance between signs and symptoms exists. This setting poses a substantial challenge for existing LLM-based approaches, with single-pass LLMs and agentic pipelines often struggling to reconcile such conflicting signals. To address this problem, we propose CARE: a multi-stage privacy-compliant agentic reasoning framework in which a remote LLM provides guidance by generating structured categories and transitions without accessing sensitive patient data, while a local LLM uses these categories and transitions to support evidence acquisition and final decision-making. Empirically, CARE achieves stronger performance across all key metrics compared to multiple baseline settings, showing that CARE can more robustly handle conflicting clinical evidence while preserving privacy.",
+        "llm_keywords": "隐私合规智能体推理, 证据不一致, 大型语言模型, 重症监护室, 电子健康记录",
+        "llm_summary": "本文针对医疗决策中患者症状与体征不一致的挑战，提出了隐私合规的智能体推理框架CARE。该框架利用远程LLM生成结构化指导，本地LLM处理敏感数据以进行证据获取和决策，在MIMIC-DOS数据集上验证了其优于基线方法的性能。",
+        "abstract_cn": "大型语言模型（LLM）系统越来越多地用于支持高风险决策，但当可用证据内部不一致时，其性能通常会下降。这种场景存在于现实世界的医疗保健环境中，患者报告的症状与医学体征相矛盾。为了研究这个问题，我们引入了MIMIC-DOS，这是一个用于重症监护室（ICU）环境中短期器官功能障碍恶化预测的数据集。我们从广泛认可的公开电子健康记录数据集MIMIC-IV中衍生出该数据集，并专门从体征和症状存在不一致的病例中构建。这种设置对现有的基于LLM的方法构成了重大挑战，单次推理的LLM和智能体流程通常难以调和此类冲突信号。为了解决这个问题，我们提出了CARE：一个多阶段的隐私合规智能体推理框架，其中远程LLM通过生成结构化类别和转换来提供指导，而无需访问敏感的患者数据，同时本地LLM使用这些类别和转换来支持证据获取和最终决策。经验表明，与多个基线设置相比，CARE在所有关键指标上都实现了更强的性能，表明CARE可以更稳健地处理冲突的临床证据，同时保护隐私。"
+      }
+    ]
+  },
+  "total_count": 3,
+  "generated_at": "2026-04-02T22:33:11.622755"
+}
