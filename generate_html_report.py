@@ -64,12 +64,13 @@ body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg);
 .paper-title a:hover { color: var(--accent); text-decoration: underline; }
 .paper-meta { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
 .paper-summary { font-size: 15px; color: #4b5563; margin-bottom: 12px; }
-.keyword { display: inline-block; font-size: 11px; color: var(--accent); background: var(--accent-light); padding: 2px 8px; border-radius: 3px; margin-right: 4px; }
+.keyword { display: inline-block; font-size: 11px; color: var(--accent); background: var(--accent-light); padding: 2px 8px; border-radius: 3px; margin-right: 4px; margin-bottom: 6px; }
 .btn { display: inline-block; padding: 6px 12px; font-size: 13px; border-radius: 4px; text-decoration: none; margin-right: 8px; }
+.paper-actions { margin-top: 12px; }
 .btn-primary { background: var(--accent); color: white; }
 .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text); }
 .hidden { display: none !important; }
-.section-header { border-left: 4px solid var(--accent); padding: 12px; margin-bottom: 12px; background: #fff; border: 1px solid var(--border); border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }
+.section-header { border-left: 4px solid var(--accent); padding: 12px; margin-top: 24px; margin-bottom: 12px; background: #fff; border: 1px solid var(--border); border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }
 .section-title { font-weight: 700; font-size: 18px; }
 .section-count { margin-left: auto; color: var(--muted); }
 .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: 14px; margin-bottom: 16px; }
