@@ -174,7 +174,7 @@ function renderSections() {
         const papers = data.papers_by_topic[t] || [];
         if (papers.length === 0) return;
         const c = TOPIC_COLORS[t] || '#1e40af';
-        html += "<section data-topic='" + t + "'><div class='section-header' style='border-left-color:" + c + "'><span style='color:" + c + "'>◆</span><span class='section-title'>" + t + "</span><span class='section-count'>" + papers.length + " 篇论文</span></div><div>" + papers.map(p => generateCard(p, t)).join('') + "</div></section>";
+        html += "<section data-topic='" + t + "'><div class='section-header' style='border-left-color:" + c + "'><span style='color:" + c + "'>◆</span><span class='section-title'>" + t + "</span><span class='section-count'>" + papers.length + " 篇论文</span></div><div class='papers-grid'>" + papers.map(p => generateCard(p, t)).join('') + "</div></section>";
     });
     el.innerHTML = html;
 }
