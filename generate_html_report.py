@@ -56,7 +56,9 @@ body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg);
 .stat-item:hover { background: #f3f4f6; }
 .stat-item.active { background: var(--accent-light); }
 .stat-dot { width: 10px; height: 10px; border-radius: 50%; }
-.paper-card { background: var(--surface); border: 1px solid var(--border); border-left-width: 3px; border-radius: 0 6px 6px 0; padding: 16px; margin-bottom: 12px; }
+.papers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 767px) { .papers-grid { grid-template-columns: 1fr; } }
+.paper-card { background: var(--surface); border: 1px solid var(--border); border-left-width: 3px; border-radius: 0 6px 6px 0; padding: 16px; }
 .paper-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
 .paper-title a { color: inherit; text-decoration: none; }
 .paper-title a:hover { color: var(--accent); text-decoration: underline; }
