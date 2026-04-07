@@ -1,0 +1,135 @@
+{
+  "date_range": {
+    "start_date": "2026-04-06",
+    "end_date": "2026-04-06"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Learning, Potential, and Retention: An Approach for Evaluating Adaptive AI-Enabled Medical Devices",
+        "authors": [
+          "Alexis Burgon",
+          "Berkman Sahiner",
+          "Nicholas A Petrick",
+          "Gene Pennello",
+          "Ravi K Samala"
+        ],
+        "published": "2026-04-06",
+        "summary": "This work addresses challenges in evaluating adaptive artificial intelligence (AI) models for medical devices, where iterative updates to both models and evaluation datasets complicate performance assessment. We introduce a novel approach with three complementary measurements: learning (model improvement on current data), potential (dataset-driven performance shifts), and retention (knowledge preservation across modification steps), to disentangle performance changes caused by model adaptations ",
+        "pdf_url": "https://arxiv.org/pdf/2604.04878v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.04878v1",
+        "abstract": "This work addresses challenges in evaluating adaptive artificial intelligence (AI) models for medical devices, where iterative updates to both models and evaluation datasets complicate performance assessment. We introduce a novel approach with three complementary measurements: learning (model improvement on current data), potential (dataset-driven performance shifts), and retention (knowledge preservation across modification steps), to disentangle performance changes caused by model adaptations versus dynamic environments. Case studies using simulated population shifts demonstrate the approach's utility: gradual transitions enable stable learning and retention, while rapid shifts reveal trade-offs between plasticity and stability. These measurements provide practical insights for regulatory science, enabling rigorous assessment of the safety and effectiveness of adaptive AI systems over sequential modifications.",
+        "llm_keywords": "自适应人工智能, 医疗设备评估, 模型性能, 监管科学, 动态环境",
+        "llm_summary": "本文提出了一种评估自适应AI医疗设备的新方法，通过“学习、潜力、保留”三个互补指标，区分模型自身改进与动态环境变化对性能的影响。案例研究表明，该方法能揭示模型可塑性与稳定性之间的权衡，为监管科学提供实用见解。",
+        "abstract_cn": "这项工作解决了评估医疗设备自适应人工智能（AI）模型所面临的挑战，其中模型和评估数据集的迭代更新使性能评估复杂化。我们引入了一种具有三个互补测量的新方法：学习（模型在当前数据上的改进）、潜力（数据集驱动的性能变化）和保留（在修改步骤间的知识保存），以区分由模型适应与动态环境引起的性能变化。使用模拟人群变化的案例研究证明了该方法的实用性：渐进式转变能实现稳定的学习和保留，而快速转变则揭示了可塑性与稳定性之间的权衡。这些测量为监管科学提供了实用见解，使得能够对自适应AI系统在连续修改过程中的安全性和有效性进行严格评估。"
+      },
+      {
+        "title": "Do No Harm: Exposing Hidden Vulnerabilities of LLMs via Persona-based Client Simulation Attack in Psychological Counseling",
+        "authors": [
+          "Qingyang Xu",
+          "Yaling Shen",
+          "Stephanie Fong",
+          "Zimu Wang",
+          "Yiwen Jiang",
+          "Xiangyu Zhao",
+          "Jiahe Liu",
+          "Zhongxing Xu",
+          "Vincent Lee",
+          "Zongyuan Ge"
+        ],
+        "published": "2026-04-06",
+        "summary": "The increasing use of large language models (LLMs) in mental healthcare raises safety concerns in high-stakes therapeutic interactions. A key challenge is distinguishing therapeutic empathy from maladaptive validation, where supportive responses may inadvertently reinforce harmful beliefs or behaviors in multi-turn conversations. This risk is largely overlooked by existing red-teaming frameworks, which focus mainly on generic harms or optimization-based attacks. To address this gap, we introduce",
+        "pdf_url": "https://arxiv.org/pdf/2604.04842v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.04842v1",
+        "abstract": "The increasing use of large language models (LLMs) in mental healthcare raises safety concerns in high-stakes therapeutic interactions. A key challenge is distinguishing therapeutic empathy from maladaptive validation, where supportive responses may inadvertently reinforce harmful beliefs or behaviors in multi-turn conversations. This risk is largely overlooked by existing red-teaming frameworks, which focus mainly on generic harms or optimization-based attacks. To address this gap, we introduce Personality-based Client Simulation Attack (PCSA), the first red-teaming framework that simulates clients in psychological counseling through coherent, persona-driven client dialogues to expose vulnerabilities in psychological safety alignment. Experiments on seven general and mental health-specialized LLMs show that PCSA substantially outperforms four competitive baselines. Perplexity analysis and human inspection further indicate that PCSA generates more natural and realistic dialogues. Our results reveal that current LLMs remain vulnerable to domain-specific adversarial tactics, providing unauthorized medical advice, reinforcing delusions, and implicitly encouraging risky actions.",
+        "llm_keywords": "大语言模型, 心理安全对齐, 红队测试, 心理咨询, 对抗性攻击",
+        "llm_summary": "本文提出了基于人格的客户模拟攻击框架，通过模拟连贯的、基于人格的客户对话，暴露大语言模型在心理咨询场景中的心理安全对齐漏洞。实验表明该框架优于现有基线，揭示了当前模型仍易提供未经授权的医疗建议、强化妄想并隐含鼓励危险行为。",
+        "abstract_cn": "大语言模型在心理健康护理中的日益普及，引发了高风险治疗互动中的安全担忧。一个关键挑战是区分治疗共情与适应不良的确认，即支持性回应可能在多轮对话中无意间强化有害信念或行为。现有红队测试框架主要关注通用危害或基于优化的攻击，很大程度上忽视了此风险。为弥补这一空白，我们引入了基于人格的客户模拟攻击，这是首个通过连贯的、人格驱动的客户对话来模拟心理咨询中的客户，以暴露心理安全对齐漏洞的红队测试框架。在七个通用及心理健康专用大语言模型上的实验表明，PCSA显著优于四个竞争基线。困惑度分析和人工检查进一步表明，PCSA生成了更自然和真实的对话。我们的研究结果表明，当前的大语言模型仍然容易受到特定领域对抗策略的攻击，提供未经授权的医疗建议、强化妄想并隐含鼓励危险行为。"
+      },
+      {
+        "title": "Exploring Expert Perspectives on Wearable-Triggered LLM Conversational Support for Daily Stress Management",
+        "authors": [
+          "Poorvesh Dongre",
+          "Sameer Neupane",
+          "Priyanka Jadhav",
+          "Nikitha Donekal Chandrashekar",
+          "Christian Webb",
+          "Denis Gračanin"
+        ],
+        "published": "2026-04-06",
+        "summary": "Wearable devices increasingly support stress detection, while LLMs enable conversational mental health support. However, designing systems that meaningfully connect wearable-triggered stress events with generative dialogue remains underexplored, particularly from a design perspective. We present EmBot, a functional mobile application that combines wearable-triggered stress detection with LLM-based conversational support for daily stress management. We used EmBot as a design probe in semi-structu",
+        "pdf_url": "https://arxiv.org/pdf/2604.04915v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.04915v1",
+        "abstract": "Wearable devices increasingly support stress detection, while LLMs enable conversational mental health support. However, designing systems that meaningfully connect wearable-triggered stress events with generative dialogue remains underexplored, particularly from a design perspective. We present EmBot, a functional mobile application that combines wearable-triggered stress detection with LLM-based conversational support for daily stress management. We used EmBot as a design probe in semi-structured interviews with 15 mental health experts to examine their perspectives and surface early design tensions and considerations that arise from wearable-triggered conversational support, informing the future design of such systems for daily stress management and mental health support.",
+        "llm_keywords": "可穿戴设备, 大语言模型, 压力管理, 对话支持, 设计探索",
+        "llm_summary": "本研究介绍了EmBot应用，它结合可穿戴设备压力检测与LLM对话支持，并通过专家访谈探讨了此类系统的设计考量，为未来心理健康支持系统设计提供参考。",
+        "abstract_cn": "可穿戴设备（Wearable devices）日益支持压力检测，而大语言模型（LLMs）则能提供对话式心理健康支持。然而，如何设计出将有意义的可穿戴设备触发（wearable-triggered）的压力事件与生成式对话（generative dialogue）连接起来的系统，目前仍未得到充分探索，尤其是从设计视角。我们提出了EmBot，这是一个功能性的移动应用程序，它结合了可穿戴设备触发的压力检测和基于LLM的对话支持，用于日常压力管理。我们将EmBot作为设计探针（design probe），对15位心理健康专家进行了半结构化访谈，以审视他们的观点，并揭示由可穿戴设备触发的对话支持所引发的早期设计张力（design tensions）和考量，为未来此类用于日常压力管理和心理健康支持的系统设计提供参考。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Selecting Decision-Relevant Concepts in Reinforcement Learning",
+        "authors": [
+          "Naveen Raman",
+          "Stephanie Milani",
+          "Fei Fang"
+        ],
+        "published": "2026-04-06",
+        "summary": "Training interpretable concept-based policies requires practitioners to manually select which human-understandable concepts an agent should reason with when making sequential decisions. This selection demands domain expertise, is time-consuming and costly, scales poorly with the number of candidates, and provides no performance guarantees. To overcome this limitation, we propose the first algorithms for principled automatic concept selection in sequential decision-making. Our key insight is that",
+        "pdf_url": "https://arxiv.org/pdf/2604.04808v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.04808v1",
+        "abstract": "Training interpretable concept-based policies requires practitioners to manually select which human-understandable concepts an agent should reason with when making sequential decisions. This selection demands domain expertise, is time-consuming and costly, scales poorly with the number of candidates, and provides no performance guarantees. To overcome this limitation, we propose the first algorithms for principled automatic concept selection in sequential decision-making. Our key insight is that concept selection can be viewed through the lens of state abstraction: intuitively, a concept is decision-relevant if removing it would cause the agent to confuse states that require different actions. As a result, agents should rely on decision-relevant concepts; states with the same concept representation should share the same optimal action, which preserves the optimal decision structure of the original state space. This perspective leads to the Decision-Relevant Selection (DRS) algorithm, which selects a subset of concepts from a candidate set, along with performance bounds relating the selected concepts to the performance of the resulting policy. Empirically, DRS automatically recovers manually curated concept sets while matching or exceeding their performance, and improves the effectiveness of test-time concept interventions across reinforcement learning benchmarks and real-world healthcare environments.",
+        "llm_keywords": "强化学习, 概念选择, 状态抽象, 可解释策略, 决策相关",
+        "llm_summary": "本文提出了首个用于序列决策中自动选择决策相关概念的算法DRS。该算法将概念选择视为状态抽象问题，通过保留最优决策结构来选取概念子集，并提供性能保证。实验表明，DRS能自动恢复人工筛选的概念集，并在强化学习基准和真实医疗环境中提升策略性能与干预效果。",
+        "abstract_cn": "训练基于概念的可解释策略需要从业者手动选择智能体在序列决策时应使用哪些人类可理解的概念。这种选择需要领域专业知识，耗时且成本高，随候选概念数量增加难以扩展，且无法提供性能保证。为克服此限制，我们提出了首个用于序列决策中原则性自动概念选择的算法。我们的核心见解是，概念选择可以通过状态抽象的视角来看待：直观上，如果一个概念的移除会导致智能体混淆需要不同动作的状态，那么它就是决策相关的。因此，智能体应依赖决策相关的概念；具有相同概念表示的状态应共享相同的最优动作，从而保留原始状态空间的最优决策结构。这一视角催生了决策相关选择算法，该算法从候选集中选择一个概念子集，并提供将所选概念与最终策略性能相关联的性能界限。实证表明，DRS能自动恢复人工筛选的概念集，同时匹配或超越其性能，并在强化学习基准和真实世界医疗环境中提高了测试时概念干预的有效性。"
+      },
+      {
+        "title": "Exploring Expert Perspectives on Wearable-Triggered LLM Conversational Support for Daily Stress Management",
+        "authors": [
+          "Poorvesh Dongre",
+          "Sameer Neupane",
+          "Priyanka Jadhav",
+          "Nikitha Donekal Chandrashekar",
+          "Christian Webb",
+          "Denis Gračanin"
+        ],
+        "published": "2026-04-06",
+        "summary": "Wearable devices increasingly support stress detection, while LLMs enable conversational mental health support. However, designing systems that meaningfully connect wearable-triggered stress events with generative dialogue remains underexplored, particularly from a design perspective. We present EmBot, a functional mobile application that combines wearable-triggered stress detection with LLM-based conversational support for daily stress management. We used EmBot as a design probe in semi-structu",
+        "pdf_url": "https://arxiv.org/pdf/2604.04915v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.04915v1",
+        "abstract": "Wearable devices increasingly support stress detection, while LLMs enable conversational mental health support. However, designing systems that meaningfully connect wearable-triggered stress events with generative dialogue remains underexplored, particularly from a design perspective. We present EmBot, a functional mobile application that combines wearable-triggered stress detection with LLM-based conversational support for daily stress management. We used EmBot as a design probe in semi-structured interviews with 15 mental health experts to examine their perspectives and surface early design tensions and considerations that arise from wearable-triggered conversational support, informing the future design of such systems for daily stress management and mental health support.",
+        "llm_keywords": "可穿戴设备, 大语言模型, 压力管理, 对话支持, 设计探索",
+        "llm_summary": "本研究介绍了EmBot应用，它结合可穿戴设备压力检测与LLM对话支持，并通过专家访谈探讨了此类系统的设计考量，为未来心理健康支持系统设计提供参考。",
+        "abstract_cn": "可穿戴设备（Wearable devices）日益支持压力检测，而大语言模型（LLMs）则能提供对话式心理健康支持。然而，如何设计出将有意义的可穿戴设备触发（wearable-triggered）的压力事件与生成式对话（generative dialogue）连接起来的系统，目前仍未得到充分探索，尤其是从设计视角。我们提出了EmBot，这是一个功能性的移动应用程序，它结合了可穿戴设备触发的压力检测和基于LLM的对话支持，用于日常压力管理。我们将EmBot作为设计探针（design probe），对15位心理健康专家进行了半结构化访谈，以审视他们的观点，并揭示由可穿戴设备触发的对话支持所引发的早期设计张力（design tensions）和考量，为未来此类用于日常压力管理和心理健康支持的系统设计提供参考。"
+      }
+    ]
+  },
+  "total_count": 4,
+  "generated_at": "2026-04-07T22:40:26.935135"
+}
