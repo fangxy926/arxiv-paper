@@ -1,0 +1,62 @@
+{
+  "date_range": {
+    "start_date": "2026-04-02",
+    "end_date": "2026-04-02"
+  },
+  "topics": [
+    "医疗大模型"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Blinded Radiologist and LLM-Based Evaluation of LLM-Generated Japanese Translations of Chest CT Reports: Comparative Study",
+        "authors": [
+          "Yosuke Yamagishi",
+          "Atsushi Takamatsu",
+          "Yasunori Hamaguchi",
+          "Tomohiro Kikuchi",
+          "Shouhei Hanaoka",
+          "Takeharu Yoshikawa",
+          "Osamu Abe"
+        ],
+        "published": "2026-04-02",
+        "summary": "Background: Accurate translation of radiology reports is important for multilingual research, clinical communication, and radiology education, but the validity of LLM-based evaluation remains unclear. Objective: To evaluate the educational suitability of LLM-generated Japanese translations of chest CT reports and compare radiologist assessments with LLM-as-a-judge evaluations. Methods: We analyzed 150 chest CT reports from the CT-RATE-JPN validation set. For each English report, a human-edited J",
+        "pdf_url": "https://arxiv.org/pdf/2604.02207v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.02207v1",
+        "abstract": "Background: Accurate translation of radiology reports is important for multilingual research, clinical communication, and radiology education, but the validity of LLM-based evaluation remains unclear. Objective: To evaluate the educational suitability of LLM-generated Japanese translations of chest CT reports and compare radiologist assessments with LLM-as-a-judge evaluations. Methods: We analyzed 150 chest CT reports from the CT-RATE-JPN validation set. For each English report, a human-edited Japanese translation was compared with an LLM-generated translation by DeepSeek-V3.2. A board-certified radiologist and a radiology resident independently performed blinded pairwise evaluations across 4 criteria: terminology accuracy, readability, overall quality, and radiologist-style authenticity. In parallel, 3 LLM judges (DeepSeek-V3.2, Mistral Large 3, and GPT-5) evaluated the same pairs. Agreement was assessed using QWK and percentage agreement. Results: Agreement between radiologists and LLM judges was near zero (QWK=-0.04 to 0.15). Agreement between the 2 radiologists was also poor (QWK=0.01 to 0.06). Radiologist 1 rated terminology as equivalent in 59% of cases and favored the LLM translation for readability (51%) and overall quality (51%). Radiologist 2 rated readability as equivalent in 75% of cases and favored the human-edited translation for overall quality (40% vs 21%). All 3 LLM judges strongly favored the LLM translation across all criteria (70%-99%) and rated it as more radiologist-like in >93% of cases. Conclusions: LLM-generated translations were often judged natural and fluent, but the 2 radiologists differed substantially. LLM-as-a-judge showed strong preference for LLM output and negligible agreement with radiologists. For educational use of translated radiology reports, automated LLM-based evaluation alone is insufficient; expert radiologist review remains important.",
+        "llm_keywords": "大型语言模型, 放射学报告翻译, 人机评估对比, 胸部CT, 教育适用性",
+        "llm_summary": "本研究比较了放射科医生与LLM对LLM生成的胸部CT报告日文翻译的评估。结果显示，放射科医生之间及其与LLM评估者之间的一致性均很差。LLM评估者强烈偏好LLM生成的翻译，而放射科医生意见不一。研究表明，仅依赖LLM自动评估不足以确保翻译的教育适用性，专家评审仍然至关重要。",
+        "abstract_cn": "背景：放射学报告的准确翻译对于多语言研究、临床沟通和放射学教育非常重要，但基于LLM评估的有效性尚不清楚。目的：评估LLM生成的胸部CT报告日文翻译的教育适用性，并比较放射科医生评估与LLM-as-a-judge评估。方法：我们分析了来自CT-RATE-JPN验证集的150份胸部CT报告。对于每份英文报告，将人工编辑的日文翻译与DeepSeek-V3.2生成的LLM翻译进行比较。一名委员会认证的放射科医生和一名放射科住院医师独立对4个标准进行盲法配对评估：术语准确性、可读性、整体质量和放射科医生风格真实性。同时，3个LLM评估者（DeepSeek-V3.2、Mistral Large 3和GPT-5）评估了相同的配对。使用QWK和百分比一致性评估一致性。结果：放射科医生与LLM评估者之间的一致性接近于零（QWK=-0.04至0.15）。两位放射科医生之间的一致性也很差（QWK=0.01至0.06）。放射科医生1认为59%的案例术语等同，并在可读性（51%）和整体质量（51%）上更倾向于LLM翻译。放射科医生2认为75%的案例可读性等同，并在整体质量上更倾向于人工编辑的翻译（40%对21%）。所有3个LLM评估者在所有标准上都强烈倾向于LLM翻译（70%-99%），并在>93%的案例中认为其更像放射科医生风格。结论：LLM生成的翻译常被判断为自然流畅，但两位放射科医生差异很大。LLM-as-a-judge显示出对LLM输出的强烈偏好，且与放射科医生的一致性可忽略不计。对于翻译放射学报告的教育用途，仅靠基于LLM的自动评估是不够的；专家放射科医生的审查仍然很重要。"
+      },
+      {
+        "title": "CXR-LT 2026 Challenge: Projection-Aware Multi-Label and Zero-Shot Chest X-Ray Classification",
+        "authors": [
+          "Juno Cho",
+          "Dohui Kim",
+          "Mingeon Kim",
+          "Hyunseo Jang",
+          "Chang Sun Lee",
+          "Jong Chul Ye"
+        ],
+        "published": "2026-04-02",
+        "summary": "This challenge tackles multi-label classification for known chest X-ray (CXR) lesions and zero-shot classification for unseen ones. To handle diverse CXR projections, we integrate projection-specific models via a classification network into a unified framework. For zero-shot classification (Task 2), we extend CheXzero with a novel dual-branch architecture that combines contrastive learning, Asymmetric Loss (ASL), and LLM-generated descriptive prompts. This effectively mitigates severe long-tail ",
+        "pdf_url": "https://arxiv.org/pdf/2604.02185v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.02185v1",
+        "abstract": "This challenge tackles multi-label classification for known chest X-ray (CXR) lesions and zero-shot classification for unseen ones. To handle diverse CXR projections, we integrate projection-specific models via a classification network into a unified framework. For zero-shot classification (Task 2), we extend CheXzero with a novel dual-branch architecture that combines contrastive learning, Asymmetric Loss (ASL), and LLM-generated descriptive prompts. This effectively mitigates severe long-tail imbalances and maximizes zero-shot generalization. Additionally, strong data and test-time augmentations (TTA) ensure robustness across both tasks.",
+        "llm_keywords": "胸部X光多标签分类, 零样本分类, 长尾分布, 对比学习, 测试时增强",
+        "llm_summary": "该挑战赛旨在解决胸部X光已知病灶的多标签分类和未知病灶的零样本分类问题。通过整合针对不同投照位的模型，并采用结合对比学习与非对称损失的双分支架构，有效缓解了数据的长尾不平衡问题，提升了零样本泛化能力。同时，数据增强与测试时增强技术确保了模型的鲁棒性。",
+        "abstract_cn": "该挑战赛旨在解决已知胸部X光（CXR）病灶的多标签分类和未知病灶的零样本分类问题。为处理多样的CXR投照位，我们通过一个分类网络将针对特定投照位的模型整合到一个统一框架中。对于零样本分类（任务2），我们扩展了CheXzero，采用一种新颖的双分支架构，该架构结合了对比学习、非对称损失（ASL）以及由大语言模型（LLM）生成的描述性提示。这有效缓解了严重的长尾不平衡问题，并最大化零样本泛化能力。此外，强大的数据和测试时增强（TTA）确保了两个任务的鲁棒性。"
+      }
+    ]
+  },
+  "total_count": 2,
+  "generated_at": "2026-04-03T22:34:41.713403"
+}
