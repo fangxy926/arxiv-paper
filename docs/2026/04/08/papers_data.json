@@ -1,0 +1,346 @@
+{
+  "date_range": {
+    "start_date": "2026-04-07",
+    "end_date": "2026-04-07"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Exclusive Unlearning",
+        "authors": [
+          "Mutsumi Sasaki",
+          "Kouta Nakayama",
+          "Yusuke Miyao",
+          "Yohei Oseki",
+          "Masaru Isonuma"
+        ],
+        "published": "2026-04-07",
+        "summary": "When introducing Large Language Models (LLMs) into industrial applications, such as healthcare and education, the risk of generating harmful content becomes a significant challenge. While existing machine unlearning methods can erase specific harmful knowledge and expressions, diverse harmful content makes comprehensive removal difficult. In this study, instead of individually listing targets for forgetting, we propose Exclusive Unlearning (EU), which aims for broad harm removal by extensively f",
+        "pdf_url": "https://arxiv.org/pdf/2604.06154v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.06154v1",
+        "abstract": "When introducing Large Language Models (LLMs) into industrial applications, such as healthcare and education, the risk of generating harmful content becomes a significant challenge. While existing machine unlearning methods can erase specific harmful knowledge and expressions, diverse harmful content makes comprehensive removal difficult. In this study, instead of individually listing targets for forgetting, we propose Exclusive Unlearning (EU), which aims for broad harm removal by extensively forgetting everything except for the knowledge and expressions we wish to retain. We demonstrate that through Exclusive Unlearning, it is possible to obtain a model that ensures safety against a wide range of inputs, including jailbreaks, while maintaining the ability to respond to diverse instructions related to specific domains such as medicine and mathematics.",
+        "llm_keywords": "大语言模型, 机器遗忘, 安全对齐, 有害内容移除, 领域知识保留",
+        "llm_summary": "本文提出了一种名为“独占性遗忘”的新方法，旨在通过广泛遗忘除希望保留的特定领域知识外的所有内容，来广泛移除大语言模型中的有害输出，从而在确保模型安全性的同时维持其在特定领域的响应能力。",
+        "abstract_cn": "当将大语言模型（LLMs）引入工业应用（如医疗保健和教育）时，生成有害内容的风险成为一个重大挑战。虽然现有的机器遗忘（machine unlearning）方法可以擦除特定的有害知识和表达，但多样化的有害内容使得全面移除变得困难。在本研究中，我们没有单独列出需要遗忘的目标，而是提出了独占性遗忘（Exclusive Unlearning, EU），旨在通过广泛遗忘我们希望保留的知识和表达之外的所有内容，来实现广泛的有害内容移除。我们证明，通过独占性遗忘，可以获得一个模型，该模型能确保对包括越狱（jailbreaks）在内的广泛输入的安全性，同时保持对特定领域（如医学和数学）相关多样化指令的响应能力。"
+      },
+      {
+        "title": "Generating Synthetic Doctor-Patient Conversations for Long-form Audio Summarization",
+        "authors": [
+          "Yanis Labrak",
+          "David Grünert",
+          "Séverin Baroudi",
+          "Jiyun Chun",
+          "Pawel Cyrta",
+          "Sergio Burdisso",
+          "Ahmed Hassoon",
+          "David Liu",
+          "Adam Rothschild",
+          "Reed Van Deusen",
+          "Petr Motlicek",
+          "Andrew Perrault",
+          "Ricard Marxer",
+          "Thomas Schaaf"
+        ],
+        "published": "2026-04-07",
+        "summary": "Long-context audio reasoning is underserved in both training data and evaluation. Existing benchmarks target short-context tasks, and the open-ended generation tasks most relevant to long-context reasoning pose well-known challenges for automatic evaluation. We propose a synthetic data generation pipeline designed to serve both as a training resource and as a controlled evaluation environment, and instantiate it for first-visit doctor-patient conversations with SOAP note generation as the task. ",
+        "pdf_url": "https://arxiv.org/pdf/2604.06138v1",
+        "primary_category": "cs.SD",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.06138v1",
+        "abstract": "Long-context audio reasoning is underserved in both training data and evaluation. Existing benchmarks target short-context tasks, and the open-ended generation tasks most relevant to long-context reasoning pose well-known challenges for automatic evaluation. We propose a synthetic data generation pipeline designed to serve both as a training resource and as a controlled evaluation environment, and instantiate it for first-visit doctor-patient conversations with SOAP note generation as the task. The pipeline has three stages, persona-driven dialogue generation, multi-speaker audio synthesis with overlap/pause modeling, room acoustics, and sound events, and LLM-based reference SOAP note production, built entirely on open-weight models. We release 8,800 synthetic conversations with 1.3k hours of corresponding audio and reference notes. Evaluating current open-weight systems, we find that cascaded approaches still substantially outperform end-to-end models.",
+        "llm_keywords": "长音频推理, 合成数据生成, 医患对话, SOAP记录, 开放权重模型",
+        "llm_summary": "本文针对长音频推理任务缺乏训练数据和评估基准的问题，提出一个合成数据生成流程，用于创建仿真的初诊医患对话音频及对应的SOAP记录，以支持模型训练和受控评估。该流程基于开放权重模型构建，并发布了大规模合成数据集。评估发现，级联方法仍显著优于端到端模型。",
+        "abstract_cn": "长上下文音频推理在训练数据和评估方面都未得到充分服务。现有基准针对短上下文任务，而与长上下文推理最相关的开放式生成任务对自动评估提出了众所周知的挑战。我们提出了一个合成数据生成流程，旨在同时作为训练资源和受控评估环境，并将其实例化为初诊医患对话，以生成SOAP记录作为任务。该流程包含三个阶段：角色驱动的对话生成、带重叠/停顿建模、房间声学和声音事件的多说话人音频合成，以及基于LLM的参考SOAP记录生成，完全建立在开放权重模型上。我们发布了8,800个合成对话，包含1.3k小时的对应音频和参考记录。通过评估当前的开放权重系统，我们发现级联方法仍然显著优于端到端模型。"
+      },
+      {
+        "title": "Extending ZACH-ViT to Robust Medical Imaging: Corruption and Adversarial Stress Testing in Low-Data Regimes",
+        "authors": [
+          "Athanasios Angelakis",
+          "Marta Gomez-Barrero"
+        ],
+        "published": "2026-04-07",
+        "summary": "The recently introduced ZACH-ViT (Zero-token Adaptive Compact Hierarchical Vision Transformer) formalized a compact permutation-invariant Vision Transformer for medical imaging and argued that architectural alignment with spatial structure can matter more than universal benchmark dominance. Its design was motivated by the observation that positional embeddings and a dedicated class token encode fixed spatial assumptions that may be suboptimal when spatial organization is weakly informative, loca",
+        "pdf_url": "https://arxiv.org/pdf/2604.06099v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.06099v1",
+        "abstract": "The recently introduced ZACH-ViT (Zero-token Adaptive Compact Hierarchical Vision Transformer) formalized a compact permutation-invariant Vision Transformer for medical imaging and argued that architectural alignment with spatial structure can matter more than universal benchmark dominance. Its design was motivated by the observation that positional embeddings and a dedicated class token encode fixed spatial assumptions that may be suboptimal when spatial organization is weakly informative, locally distributed, or variable across biomedical images. The foundational study established a regime-dependent clean performance profile across MedMNIST, but did not examine robustness in detail. In this work, we present the first robustness-focused extension of ZACH-ViT by evaluating its behavior under common image corruptions and adversarial perturbations in the same low-data setting. We compare ZACH-ViT with three scratch-trained compact baselines, ABMIL, Minimal-ViT, and TransMIL, on seven MedMNIST datasets using 50 samples per class, fixed hyperparameters, and five random seeds. Across the benchmark, ZACH-ViT achieves the best overall mean rank on clean data (1.57) and under common corruptions (1.57), indicating a favorable balance between baseline predictive performance and robustness to realistic image degradation. Under adversarial stress, all models deteriorate substantially; nevertheless, ZACH-ViT remains competitive, ranking first under FGSM (2.00) and second under PGD (2.29), where ABMIL performs best overall. These results extend the original ZACH-ViT narrative: the advantages of compact permutation-invariant transformers are not limited to clean evaluation, but can persist under realistic perturbation stress in low-data medical imaging, while adversarial robustness remains an open challenge for all evaluated models.",
+        "llm_keywords": "ZACH-ViT, 医学影像, 鲁棒性, 低数据, 对抗攻击",
+        "llm_summary": "本研究首次对ZACH-ViT模型在低数据医学影像中的鲁棒性进行了扩展评估。实验表明，在干净数据和常见图像损坏下，ZACH-ViT取得了最佳平均排名，展现了良好的性能与鲁棒性平衡。在对抗性攻击下，所有模型性能均大幅下降，但ZACH-ViT仍具竞争力，不过对抗鲁棒性对所有模型仍是开放挑战。",
+        "abstract_cn": "最近提出的ZACH-ViT (Zero-token Adaptive Compact Hierarchical Vision Transformer) 为医学影像定义了一种紧凑的、排列不变性的Vision Transformer，并认为与空间结构的架构对齐可能比通用基准测试的统治力更重要。其设计动机源于观察到位置嵌入和专用的类别token编码了固定的空间假设，当空间组织信息量弱、局部分布或在生物医学图像中可变时，这些假设可能是次优的。基础研究在MedMNIST上建立了依赖于特定数据环境的干净性能表现，但未详细检验其鲁棒性。在这项工作中，我们通过在相同的低数据设置下评估ZACH-ViT在常见图像损坏和对抗性扰动下的行为，提出了首个专注于鲁棒性的ZACH-ViT扩展。我们在七个MedMNIST数据集上，使用每类50个样本、固定超参数和五个随机种子，将ZACH-ViT与三个从头训练的紧凑基线模型（ABMIL、Minimal-ViT和TransMIL）进行比较。在整个基准测试中，ZACH-ViT在干净数据（1.57）和常见损坏下（1.57）取得了最佳总体平均排名，表明其在基线预测性能和对现实图像退化的鲁棒性之间取得了有利的平衡。在对抗性压力下，所有模型性能都大幅下降；尽管如此，ZACH-ViT仍保持竞争力，在FGSM攻击下排名第一（2.00），在PGD攻击下排名第二（2.29），而ABMIL在对抗攻击下总体表现最佳。这些结果扩展了原始的ZACH-ViT论述：紧凑的排列不变性Transformer的优势不仅限于干净数据的评估，在低数据医学成像的现实扰动压力下也能持续存在，而对抗鲁棒性对所有评估模型来说仍然是一个开放的挑战。"
+      },
+      {
+        "title": "Toward Aristotelian Medical Representations: Backpropagation-Free Layer-wise Analysis for Interpretable Generalized Metric Learning on MedMNIST",
+        "authors": [
+          "Michael Karnes",
+          "Alper Yilmaz"
+        ],
+        "published": "2026-04-07",
+        "summary": "While deep learning has achieved remarkable success in medical imaging, the \"black-box\" nature of backpropagation-based models remains a significant barrier to clinical adoption. To bridge this gap, we propose Aristotelian Rapid Object Modeling (A-ROM), a framework built upon the Platonic Representation Hypothesis (PRH). This hypothesis posits that models trained on vast, diverse datasets converge toward a universal and objective representation of reality. By leveraging the generalizable metric ",
+        "pdf_url": "https://arxiv.org/pdf/2604.06017v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.06017v1",
+        "abstract": "While deep learning has achieved remarkable success in medical imaging, the \"black-box\" nature of backpropagation-based models remains a significant barrier to clinical adoption. To bridge this gap, we propose Aristotelian Rapid Object Modeling (A-ROM), a framework built upon the Platonic Representation Hypothesis (PRH). This hypothesis posits that models trained on vast, diverse datasets converge toward a universal and objective representation of reality. By leveraging the generalizable metric space of pretrained Vision Transformers (ViTs), A-ROM enables the rapid modeling of novel medical concepts without the computational burden or opacity of further gradient-based fine-tuning. We replace traditional, opaque decision layers with a human-readable concept dictionary and a k-Nearest Neighbors (kNN) classifier to ensure the model's logic remains interpretable. Experiments on the MedMNIST v2 suite demonstrate that A-ROM delivers performance competitive with standard benchmarks while providing a simple and scalable, \"few-shot\" solution that meets the rigorous transparency demands of modern clinical environments.",
+        "llm_keywords": "可解释人工智能, 度量学习, 医学图像分析, 无反向传播学习, 少样本学习",
+        "llm_summary": "本文针对深度学习在医学影像中的“黑箱”问题，提出基于柏拉图表示假说的亚里士多德快速对象建模框架。该框架利用预训练视觉变换器的度量空间，无需梯度微调即可快速建模新医学概念，并通过可读概念字典和k近邻分类器确保模型逻辑可解释。在MedMNIST数据集上的实验表明，该方法在保持性能的同时，提供了透明且可扩展的少样本解决方案。",
+        "abstract_cn": "尽管深度学习在医学影像领域取得了显著成功，但基于反向传播的模型的“黑箱”特性仍然是其临床采纳的主要障碍。为弥合这一差距，我们提出了亚里士多德快速对象建模（A-ROM），这是一个建立在柏拉图表示假说（PRH）之上的框架。该假说认为，在庞大而多样的数据集上训练的模型会收敛于一个通用且客观的现实表示。通过利用预训练视觉变换器（ViTs）的可泛化度量空间，A-ROM能够快速建模新的医学概念，而无需承担进一步基于梯度的微调所带来的计算负担或不透明性。我们用人类可读的概念字典和k近邻（kNN）分类器取代了传统不透明的决策层，以确保模型的逻辑保持可解释性。在MedMNIST v2套件上的实验表明，A-ROM提供了与标准基准相竞争的性能，同时提供了一个简单、可扩展的“少样本”解决方案，满足了现代临床环境对透明度的严格要求。"
+      },
+      {
+        "title": "Epistemic Blinding: An Inference-Time Protocol for Auditing Prior Contamination in LLM-Assisted Analysis",
+        "authors": [
+          "Michael Cuccarese"
+        ],
+        "published": "2026-04-07",
+        "summary": "This paper presents epistemic blinding in the context of an agentic system that uses large language models to reason across multiple biological datasets for drug target prioritization. During development, it became apparent that LLM outputs silently blend data-driven inference with memorized priors about named entities - and the blend is invisible: there is no way to determine, from a single output, how much came from the data on the page and how much came from the model's training memory. Epist",
+        "pdf_url": "https://arxiv.org/pdf/2604.06013v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.06013v1",
+        "abstract": "This paper presents epistemic blinding in the context of an agentic system that uses large language models to reason across multiple biological datasets for drug target prioritization. During development, it became apparent that LLM outputs silently blend data-driven inference with memorized priors about named entities - and the blend is invisible: there is no way to determine, from a single output, how much came from the data on the page and how much came from the model's training memory. Epistemic blinding is a simple inference-time protocol that replaces entity identifiers with anonymous codes before prompting, then compares outputs against an unblinded control. The protocol does not make LLM reasoning deterministic, but it restores one critical axis of auditability: measuring how much of an output came from the supplied data versus the model's parametric knowledge. The complete target identification system is described - including LLM-guided evolutionary optimization of scoring functions and blinded agentic reasoning for target rationalization - with demonstration that both stages operate without access to entity identity. In oncology drug target prioritization across four cancer types, blinding changes 16% of top-20 predictions while preserving identical recovery of validated targets. The contamination problem is shown to generalize beyond biology: in S&P 500 equity screening, brand-recognition bias reshapes 30-40% of top-20 rankings across five random seeds. To lower the barrier to adoption, the protocol is released as an open-source tool and as a Claude Code skill that enables one-command epistemic blinding within agentic workflows. The claim is not that blinded analysis produces better results, but that without blinding, there is no way to know to what degree the agent is adhering to the analytical process the researcher designed.",
+        "llm_keywords": "认知遮蔽, 先验污染, 大语言模型, 审计协议, 代理系统",
+        "llm_summary": "本文提出了一种名为“认知遮蔽”的推理时协议，用于审计大语言模型在辅助分析时，其输出在多大程度上依赖于输入数据而非模型记忆中的先验知识。该方法通过将实体标识符匿名化后输入模型，并与未遮蔽的对照组输出进行比较，从而量化先验污染的程度。在药物靶点优先排序等任务中，该方法有效揭示了模型潜在的偏见，并提供了开源工具以促进应用。",
+        "abstract_cn": "本文在利用大语言模型（LLM）对多个生物数据集进行推理以优先考虑药物靶点的代理系统（agentic system）背景下，提出了认知遮蔽（epistemic blinding）。在开发过程中发现，LLM的输出会悄无声息地将数据驱动的推理与关于命名实体（named entities）的记忆先验（memorized priors）混合在一起——这种混合是不可见的：无法从单一输出中判断，有多少内容来自页面上的数据，又有多少来自模型的训练记忆。认知遮蔽是一种简单的推理时（inference-time）协议，它在提示（prompting）前将实体标识符替换为匿名代码，然后将输出与未遮蔽的对照组进行比较。该协议并不能使LLM推理变得确定，但它恢复了一个关键的审计维度：衡量输出中有多少来自所提供的数据，又有多少来自模型的参数化知识（parametric knowledge）。本文描述了完整的靶点识别系统——包括LLM引导的评分函数进化优化（evolutionary optimization）以及用于靶点合理化（rationalization）的遮蔽代理推理——并证明两个阶段均在没有访问实体身份的情况下运行。在针对四种癌症类型的肿瘤学药物靶点优先排序中，遮蔽改变了16%的前20名预测，同时保持了已验证靶点的完全一致复现。研究表明，污染（contamination）问题可推广到生物学之外：在标准普尔500指数（S&P 500）股票筛选中，品牌认知偏见（brand-recognition bias）在五个随机种子（random seeds）下重塑了30-40%的前20名排名。为了降低采用门槛，该协议已作为开源工具和Claude Code技能发布，使得在代理工作流中通过一条命令即可实现认知遮蔽。本文的主张并非遮蔽分析能产生更好的结果，而是没有遮蔽，就无法知道代理在多大程度上遵循了研究人员设计的分析过程。"
+      },
+      {
+        "title": "Leveraging Image Editing Foundation Models for Data-Efficient CT Metal Artifact Reduction",
+        "authors": [
+          "Ahmet Rasim Emirdagi",
+          "Süleyman Aslan",
+          "Mısra Yavuz",
+          "Görkay Aydemir",
+          "Yunus Bilge Kurt",
+          "Nasrin Rahimi",
+          "Burak Can Biner",
+          "M. Akın Yılmaz"
+        ],
+        "published": "2026-04-07",
+        "summary": "Metal artifacts from high-attenuation implants severely degrade CT image quality, obscuring critical anatomical structures and posing a challenge for standard deep learning methods that require extensive paired training data. We propose a paradigm shift: reframing artifact reduction as an in-context reasoning task by adapting a general-purpose vision-language diffusion foundation model via parameter-efficient Low-Rank Adaptation (LoRA). By leveraging rich visual priors, our approach achieves eff",
+        "pdf_url": "https://arxiv.org/pdf/2604.05934v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.05934v1",
+        "abstract": "Metal artifacts from high-attenuation implants severely degrade CT image quality, obscuring critical anatomical structures and posing a challenge for standard deep learning methods that require extensive paired training data. We propose a paradigm shift: reframing artifact reduction as an in-context reasoning task by adapting a general-purpose vision-language diffusion foundation model via parameter-efficient Low-Rank Adaptation (LoRA). By leveraging rich visual priors, our approach achieves effective artifact suppression with only 16 to 128 paired training examples reducing data requirements by two orders of magnitude. Crucially, we demonstrate that domain adaptation is essential for hallucination mitigation; without it, foundation models interpret streak artifacts as erroneous natural objects (e.g., waffles or petri dishes). To ground the restoration, we propose a multi-reference conditioning strategy where clean anatomical exemplars from unrelated subjects are provided alongside the corrupted input, enabling the model to exploit category-specific context to infer uncorrupted anatomy. Extensive evaluation on the AAPM CT-MAR benchmark demonstrates that our method achieves state-of-the-art performance on perceptual and radiological-feature metrics . This work establishes that foundation models, when appropriately adapted, offer a scalable alternative for interpretable, data-efficient medical image reconstruction. Code is available at https://github.com/ahmetemirdagi/CT-EditMAR.",
+        "llm_keywords": "CT金属伪影消除, 数据高效学习, 基础模型适应, 低秩适应, 多参考条件",
+        "llm_summary": "本文提出一种数据高效的CT金属伪影消除新范式，通过低秩适应技术微调通用视觉-语言扩散基础模型，将其转化为上下文推理任务。该方法仅需16-128个配对训练样本，并引入多参考条件策略以利用干净解剖样本引导修复，在AAPM基准测试中取得了先进的性能。",
+        "abstract_cn": "高衰减植入物产生的金属伪影严重降低了CT图像质量，掩盖了关键解剖结构，并对需要大量配对训练数据的标准深度学习方法构成了挑战。我们提出了一种范式转变：通过参数高效的Low-Rank Adaptation (LoRA) 来调整通用的视觉-语言扩散基础模型，将伪影消除重新构建为一个上下文推理任务。通过利用丰富的视觉先验，我们的方法仅需16到128个配对训练样本即可实现有效的伪影抑制，将数据需求降低了两个数量级。关键的是，我们证明了领域适应对于减轻幻觉至关重要；没有它，基础模型会将条纹伪影误解为错误的自然物体（例如，华夫饼或培养皿）。为了使修复过程有据可依，我们提出了一种多参考条件策略，在提供损坏输入的同时，提供来自无关对象的干净解剖范例，使模型能够利用特定类别的上下文来推断未损坏的解剖结构。在AAPM CT-MAR基准上的广泛评估表明，我们的方法在感知和放射学特征指标上达到了最先进的性能。这项工作表明，经过适当调整的基础模型，为可解释的、数据高效的医学图像重建提供了一个可扩展的替代方案。代码可在 https://github.com/ahmetemirdagi/CT-EditMAR 获取。"
+      },
+      {
+        "title": "A Multi-Stage Validation Framework for Trustworthy Large-scale Clinical Information Extraction using Large Language Models",
+        "authors": [
+          "Maria Mahbub",
+          "Gregory M. Dams",
+          "Josh Arnold",
+          "Caitlin Rizy",
+          "Sudarshan Srinivasan",
+          "Elliot M. Fielstein",
+          "Minu A. Aghevli",
+          "Kamonica L. Craig",
+          "Elizabeth M. Oliva",
+          "Joseph Erdos",
+          "Jodie Trafton",
+          "Ioana Danciu"
+        ],
+        "published": "2026-04-07",
+        "summary": "Large language models (LLMs) show promise for extracting clinically meaningful information from unstructured health records, yet their translation into real-world settings is constrained by the lack of scalable and trustworthy validation approaches. Conventional evaluation methods rely heavily on annotation-intensive reference standards or incomplete structured data, limiting feasibility at population scale. We propose a multi-stage validation framework for LLM-based clinical information extract",
+        "pdf_url": "https://arxiv.org/pdf/2604.06028v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.06028v1",
+        "abstract": "Large language models (LLMs) show promise for extracting clinically meaningful information from unstructured health records, yet their translation into real-world settings is constrained by the lack of scalable and trustworthy validation approaches. Conventional evaluation methods rely heavily on annotation-intensive reference standards or incomplete structured data, limiting feasibility at population scale. We propose a multi-stage validation framework for LLM-based clinical information extraction that enables rigorous assessment under weak supervision. The framework integrates prompt calibration, rule-based plausibility filtering, semantic grounding assessment, targeted confirmatory evaluation using an independent higher-capacity judge LLM, selective expert review, and external predictive validity analysis to quantify uncertainty and characterize error modes without exhaustive manual annotation. We applied this framework to extraction of substance use disorder (SUD) diagnoses across 11 substance categories from 919,783 clinical notes. Rule-based filtering and semantic grounding removed 14.59% of LLM-positive extractions that were unsupported, irrelevant, or structurally implausible. For high-uncertainty cases, the judge LLM's assessments showed substantial agreement with subject matter expert review (Gwet's AC1=0.80). Using judge-evaluated outputs as references, the primary LLM achieved an F1 score of 0.80 under relaxed matching criteria. LLM-extracted SUD diagnoses also predicted subsequent engagement in SUD specialty care more accurately than structured-data baselines (AUC=0.80). These findings demonstrate that scalable, trustworthy deployment of LLM-based clinical information extraction is feasible without annotation-intensive evaluation.",
+        "llm_keywords": "大型语言模型, 临床信息抽取, 多阶段验证框架, 可信人工智能, 弱监督评估",
+        "llm_summary": "本文提出了一种用于基于大型语言模型的临床信息抽取的多阶段验证框架。该框架通过提示校准、规则过滤、语义评估、独立大模型评判、专家审查和外部预测效度分析，在弱监督下实现可信评估。应用于近百万份临床笔记的物质使用障碍诊断抽取，结果表明该方法可行且优于传统结构化数据基线，为大规模可信部署提供了可行路径。",
+        "abstract_cn": "大型语言模型（LLMs）在从非结构化健康记录中提取具有临床意义的信息方面展现出潜力，但其在现实世界中的应用因缺乏可扩展且可信的验证方法而受到限制。传统的评估方法严重依赖标注密集的参考标准或不完整的结构化数据，限制了在人群规模上的可行性。我们提出了一个用于基于LLM的临床信息抽取的多阶段验证框架，该框架能够在弱监督下实现严格评估。该框架集成了提示校准、基于规则的合理性过滤、语义基础评估、使用独立的高能力评判LLM进行针对性确认性评估、选择性专家审查以及外部预测效度分析，以量化不确定性并描述错误模式，而无需详尽的人工标注。我们将此框架应用于从919,783份临床笔记中提取11种物质类别的物质使用障碍（SUD）诊断。基于规则的过滤和语义基础评估移除了14.59%的LLM阳性提取结果，这些结果缺乏支持、不相关或在结构上不合理。对于高不确定性案例，评判LLM的评估结果与主题专家审查显示出高度一致性（Gwet's AC1=0.80）。使用评判评估的输出作为参考，主要LLM在宽松匹配标准下达到了0.80的F1分数。LLM提取的SUD诊断在预测后续参与SUD专科护理方面也比结构化数据基线更准确（AUC=0.80）。这些发现表明，无需标注密集的评估，即可实现基于LLM的临床信息抽取的可扩展、可信部署。"
+      },
+      {
+        "title": "Designing Around Stigma: Human-Centered LLMs for Menstrual Health",
+        "authors": [
+          "Amna Shahnawaz",
+          "Ayesha Shafique",
+          "Ding Wang",
+          "Maryam Mustafa"
+        ],
+        "published": "2026-04-07",
+        "summary": "Menstrual health education (MHE) in Pakistan is constrained by cultural taboos and inadequate formal curricula, leaving women with few trusted resources to lean on. In response to these challenges, we introduce a WhatsApp-based chatbot powered by a large language model (LLM) and Retrieval Augmented Generation (RAG), co-designed with Pakistani college women. Workshops (N=30) revealed key design requirements -- support for Roman Urdu, use of subsidized platforms, and an expert -- curated knowledge",
+        "pdf_url": "https://arxiv.org/pdf/2604.06008v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.06008v1",
+        "abstract": "Menstrual health education (MHE) in Pakistan is constrained by cultural taboos and inadequate formal curricula, leaving women with few trusted resources to lean on. In response to these challenges, we introduce a WhatsApp-based chatbot powered by a large language model (LLM) and Retrieval Augmented Generation (RAG), co-designed with Pakistani college women. Workshops (N=30) revealed key design requirements -- support for Roman Urdu, use of subsidized platforms, and an expert -- curated knowledge base. We then deployed the chatbot with 13 participants for two weeks (403 messages and interviews). Women used it to challenge cultural taboos, legitimize health concerns often dismissed as normal, and build reproductive health knowledge through iterative questioning. Yet, interactions also exposed tensions: reliance on cultural explanatory models, questions of trust and validation, and gendered persona of the chatbot itself. We contribute empirical insights, a stigma-aware design framework for culturally sensitive conversational AI, and a methodological lens foregrounding expert validation in intimate health domains.",
+        "llm_keywords": "月经健康, 文化禁忌, 聊天机器人, 以人为本的设计, 检索增强生成",
+        "llm_summary": "本研究针对巴基斯坦月经健康教育面临的禁忌与资源匮乏问题，与当地女大学生共同设计了一款基于WhatsApp、采用大语言模型和检索增强生成技术的聊天机器人。研究发现该工具能帮助女性挑战文化禁忌、确认健康问题并增长知识，但也揭示了其对文化解释模型的依赖、信任问题及性别化人格等矛盾。研究贡献了实证见解、一个顾及污名的设计框架以及强调专家验证的方法视角。",
+        "abstract_cn": "巴基斯坦的月经健康教育（Menstrual health education, MHE）受到文化禁忌和正规课程不足的限制，导致女性缺乏可信赖的资源可以依靠。为应对这些挑战，我们与巴基斯坦女大学生共同设计了一款基于WhatsApp、由大语言模型（Large Language Model, LLM）和检索增强生成（Retrieval Augmented Generation, RAG）技术驱动的聊天机器人。研讨会（N=30）揭示了关键的设计要求——支持罗马乌尔都语、使用补贴平台以及一个由专家策划的知识库。随后，我们向13名参与者部署该聊天机器人两周（403条消息和访谈）。女性利用它来挑战文化禁忌，将常被视为正常而被忽视的健康问题合法化，并通过迭代提问来建立生殖健康知识。然而，互动也暴露了一些矛盾：对文化解释模型的依赖、信任与验证问题，以及聊天机器人本身的性别化人格。我们贡献了实证见解、一个用于文化敏感对话式AI的顾及污名（stigma-aware）的设计框架，以及一个在私密健康领域强调专家验证的方法论视角。"
+      },
+      {
+        "title": "Modeling Patient Care Trajectories with Transformer Hawkes Processes",
+        "authors": [
+          "Saumya Pandey",
+          "Varun Chandola"
+        ],
+        "published": "2026-04-07",
+        "summary": "Patient healthcare utilization consists of irregularly time-stamped events, such as outpatient visits, inpatient admissions, and emergency encounters, forming individualized care trajectories. Modeling these trajectories is crucial for understanding utilization patterns and predicting future care needs, but is challenging due to temporal irregularity and severe class imbalance. In this work, we build on the Transformer Hawkes Process framework to model patient trajectories in continuous time. By",
+        "pdf_url": "https://arxiv.org/pdf/2604.05844v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.05844v1",
+        "abstract": "Patient healthcare utilization consists of irregularly time-stamped events, such as outpatient visits, inpatient admissions, and emergency encounters, forming individualized care trajectories. Modeling these trajectories is crucial for understanding utilization patterns and predicting future care needs, but is challenging due to temporal irregularity and severe class imbalance. In this work, we build on the Transformer Hawkes Process framework to model patient trajectories in continuous time. By combining Transformer-based history encoding with Hawkes process dynamics, the model captures event dependencies and jointly predicts event type and time-to-event. To address extreme imbalance, we introduce an imbalance-aware training strategy using inverse square-root class weighting. This improves sensitivity to rare but clinically important events without altering the data distribution. Experiments on real-world data demonstrate improved performance and provide clinically meaningful insights for identifying high-risk patient populations.",
+        "llm_keywords": "Transformer Hawkes过程, 患者护理轨迹, 类别不平衡, 事件预测, 连续时间建模",
+        "llm_summary": "本文提出基于Transformer Hawkes过程的模型，用于建模患者连续时间内的不规则医疗事件轨迹。通过结合Transformer编码与霍克斯过程动态，模型能捕捉事件依赖关系并联合预测事件类型与发生时间。针对极端类别不平衡问题，引入逆平方根类别权重训练策略，在不改变数据分布的情况下提升对罕见但重要临床事件的敏感性。真实数据实验表明模型性能提升，并为识别高风险患者群体提供了有临床意义的见解。",
+        "abstract_cn": "患者医疗利用(Patient healthcare utilization)由不规则时间戳事件组成，例如门诊就诊(outpatient visits)、住院(inpatient admissions)和急诊(emergency encounters)，形成了个体化的护理轨迹(care trajectories)。对这些轨迹进行建模对于理解利用模式和预测未来护理需求至关重要，但由于时间不规则性和严重的类别不平衡(class imbalance)而具有挑战性。在这项工作中，我们基于Transformer Hawkes过程(Transformer Hawkes Process)框架，在连续时间(continuous time)内对患者轨迹进行建模。通过将基于Transformer的历史编码(history encoding)与霍克斯过程(Hawkes process)动态相结合，该模型捕捉事件依赖关系并联合预测事件类型(event type)和事件发生时间(time-to-event)。为了解决极端不平衡问题，我们引入了一种使用逆平方根类别权重(inverse square-root class weighting)的不平衡感知训练策略(imbalance-aware training strategy)。这在不改变数据分布的情况下，提高了对罕见但临床上重要事件的敏感性(sensitivity)。在真实世界数据上的实验证明了性能的提升，并为识别高风险患者群体(high-risk patient populations)提供了具有临床意义的见解(clinically meaningful insights)。"
+      },
+      {
+        "title": "Measuring What Matters!! Assessing Therapeutic Principles in Mental-Health Conversation",
+        "authors": [
+          "Abdullah Mazhar",
+          "Het Riteshkumar Shah",
+          "Aseem Srivastava",
+          "Smriti Joshi",
+          "Md Shad Akhtar"
+        ],
+        "published": "2026-04-07",
+        "summary": "The increasing use of large language models in mental health applications calls for principled evaluation frameworks that assess alignment with psychotherapeutic best practices beyond surface-level fluency. While recent systems exhibit conversational competence, they lack structured mechanisms to evaluate adherence to core therapeutic principles. In this paper, we study the problem of evaluating AI-generated therapist-like responses for clinically grounded appropriateness and effectiveness. We a",
+        "pdf_url": "https://arxiv.org/pdf/2604.05795v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.05795v1",
+        "abstract": "The increasing use of large language models in mental health applications calls for principled evaluation frameworks that assess alignment with psychotherapeutic best practices beyond surface-level fluency. While recent systems exhibit conversational competence, they lack structured mechanisms to evaluate adherence to core therapeutic principles. In this paper, we study the problem of evaluating AI-generated therapist-like responses for clinically grounded appropriateness and effectiveness. We assess each therapists utterance along six therapeutic principles: non-judgmental acceptance, warmth, respect for autonomy, active listening, reflective understanding, and situational appropriateness using a fine-grained ordinal scale. We introduce FAITH-M, a benchmark annotated with expert-assigned ordinal ratings, and propose CARE, a multi-stage evaluation framework that integrates intra-dialogue context, contrastive exemplar retrieval, and knowledge-distilled chain-of-thought reasoning. Experiments show that CARE achieves an F-1 score of 63.34 versus the strong baseline Qwen3 F-1 score of 38.56 which is a 64.26 improvement, which also serves as its backbone, indicating that gains arise from structured reasoning and contextual modeling rather than backbone capacity alone. Expert assessment and external dataset evaluations further demonstrate robustness under domain shift, while highlighting challenges in modelling implicit clinical nuance. Overall, CARE provides a clinically grounded framework for evaluating therapeutic fidelity in AI mental health systems.",
+        "llm_keywords": "心理健康对话, 治疗原则评估, 大语言模型, 临床适用性, 结构化推理",
+        "llm_summary": "本文针对AI在心理健康应用中缺乏对核心治疗原则的评估机制，提出了FAITH-M基准和CARE评估框架。CARE通过整合对话上下文、对比示例检索和知识蒸馏的思维链推理，显著提升了评估性能，为AI心理健康系统的治疗保真度提供了临床基础评估方法。",
+        "abstract_cn": "大语言模型(Large Language Models)在心理健康应用中的日益普及，要求建立超越表面流畅性的原则性评估框架，以评估其与心理治疗最佳实践的契合度。尽管现有系统展现出对话能力，但缺乏评估其对核心治疗原则遵循度的结构化机制。本文研究了评估AI生成的治疗师式回应在临床基础上的适当性(appropriateness)和有效性(effectiveness)的问题。我们使用细粒度序数量表(ordinal scale)，沿六个治疗原则评估每个治疗师的发言：非评判性接纳(non-judgmental acceptance)、温暖(warmth)、尊重自主权(respect for autonomy)、积极倾听(active listening)、反思性理解(reflective understanding)和情境适当性(situational appropriateness)。我们引入了FAITH-M基准，该基准带有专家分配的序数评分，并提出了CARE评估框架，该框架整合了对话内上下文(intra-dialogue context)、对比示例检索(contrastive exemplar retrieval)和知识蒸馏的思维链推理(knowledge-distilled chain-of-thought reasoning)。实验表明，CARE的F1分数达到63.34，而作为其主干(backbone)的强基线Qwen3的F1分数为38.56，提升了64.26%，这表明性能提升源于结构化推理和上下文建模，而非仅靠主干模型能力。专家评估和外部数据集评估进一步证明了其在领域转移(domain shift)下的鲁棒性，同时突显了建模隐含临床细微差别(implicit clinical nuance)方面的挑战。总体而言，CARE为评估AI心理健康系统的治疗保真度(therapeutic fidelity)提供了一个基于临床的框架。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Generating Synthetic Doctor-Patient Conversations for Long-form Audio Summarization",
+        "authors": [
+          "Yanis Labrak",
+          "David Grünert",
+          "Séverin Baroudi",
+          "Jiyun Chun",
+          "Pawel Cyrta",
+          "Sergio Burdisso",
+          "Ahmed Hassoon",
+          "David Liu",
+          "Adam Rothschild",
+          "Reed Van Deusen",
+          "Petr Motlicek",
+          "Andrew Perrault",
+          "Ricard Marxer",
+          "Thomas Schaaf"
+        ],
+        "published": "2026-04-07",
+        "summary": "Long-context audio reasoning is underserved in both training data and evaluation. Existing benchmarks target short-context tasks, and the open-ended generation tasks most relevant to long-context reasoning pose well-known challenges for automatic evaluation. We propose a synthetic data generation pipeline designed to serve both as a training resource and as a controlled evaluation environment, and instantiate it for first-visit doctor-patient conversations with SOAP note generation as the task. ",
+        "pdf_url": "https://arxiv.org/pdf/2604.06138v1",
+        "primary_category": "cs.SD",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.06138v1",
+        "abstract": "Long-context audio reasoning is underserved in both training data and evaluation. Existing benchmarks target short-context tasks, and the open-ended generation tasks most relevant to long-context reasoning pose well-known challenges for automatic evaluation. We propose a synthetic data generation pipeline designed to serve both as a training resource and as a controlled evaluation environment, and instantiate it for first-visit doctor-patient conversations with SOAP note generation as the task. The pipeline has three stages, persona-driven dialogue generation, multi-speaker audio synthesis with overlap/pause modeling, room acoustics, and sound events, and LLM-based reference SOAP note production, built entirely on open-weight models. We release 8,800 synthetic conversations with 1.3k hours of corresponding audio and reference notes. Evaluating current open-weight systems, we find that cascaded approaches still substantially outperform end-to-end models.",
+        "llm_keywords": "长音频推理, 合成数据生成, 医患对话, SOAP记录, 开放权重模型",
+        "llm_summary": "本文针对长音频推理任务缺乏训练数据和评估基准的问题，提出一个合成数据生成流程，用于创建仿真的初诊医患对话音频及对应的SOAP记录，以支持模型训练和受控评估。该流程基于开放权重模型构建，并发布了大规模合成数据集。评估发现，级联方法仍显著优于端到端模型。",
+        "abstract_cn": "长上下文音频推理在训练数据和评估方面都未得到充分服务。现有基准针对短上下文任务，而与长上下文推理最相关的开放式生成任务对自动评估提出了众所周知的挑战。我们提出了一个合成数据生成流程，旨在同时作为训练资源和受控评估环境，并将其实例化为初诊医患对话，以生成SOAP记录作为任务。该流程包含三个阶段：角色驱动的对话生成、带重叠/停顿建模、房间声学和声音事件的多说话人音频合成，以及基于LLM的参考SOAP记录生成，完全建立在开放权重模型上。我们发布了8,800个合成对话，包含1.3k小时的对应音频和参考记录。通过评估当前的开放权重系统，我们发现级联方法仍然显著优于端到端模型。"
+      },
+      {
+        "title": "Measuring What Matters!! Assessing Therapeutic Principles in Mental-Health Conversation",
+        "authors": [
+          "Abdullah Mazhar",
+          "Het Riteshkumar Shah",
+          "Aseem Srivastava",
+          "Smriti Joshi",
+          "Md Shad Akhtar"
+        ],
+        "published": "2026-04-07",
+        "summary": "The increasing use of large language models in mental health applications calls for principled evaluation frameworks that assess alignment with psychotherapeutic best practices beyond surface-level fluency. While recent systems exhibit conversational competence, they lack structured mechanisms to evaluate adherence to core therapeutic principles. In this paper, we study the problem of evaluating AI-generated therapist-like responses for clinically grounded appropriateness and effectiveness. We a",
+        "pdf_url": "https://arxiv.org/pdf/2604.05795v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.05795v1",
+        "abstract": "The increasing use of large language models in mental health applications calls for principled evaluation frameworks that assess alignment with psychotherapeutic best practices beyond surface-level fluency. While recent systems exhibit conversational competence, they lack structured mechanisms to evaluate adherence to core therapeutic principles. In this paper, we study the problem of evaluating AI-generated therapist-like responses for clinically grounded appropriateness and effectiveness. We assess each therapists utterance along six therapeutic principles: non-judgmental acceptance, warmth, respect for autonomy, active listening, reflective understanding, and situational appropriateness using a fine-grained ordinal scale. We introduce FAITH-M, a benchmark annotated with expert-assigned ordinal ratings, and propose CARE, a multi-stage evaluation framework that integrates intra-dialogue context, contrastive exemplar retrieval, and knowledge-distilled chain-of-thought reasoning. Experiments show that CARE achieves an F-1 score of 63.34 versus the strong baseline Qwen3 F-1 score of 38.56 which is a 64.26 improvement, which also serves as its backbone, indicating that gains arise from structured reasoning and contextual modeling rather than backbone capacity alone. Expert assessment and external dataset evaluations further demonstrate robustness under domain shift, while highlighting challenges in modelling implicit clinical nuance. Overall, CARE provides a clinically grounded framework for evaluating therapeutic fidelity in AI mental health systems.",
+        "llm_keywords": "心理健康对话, 治疗原则评估, 大语言模型, 临床适用性, 结构化推理",
+        "llm_summary": "本文针对AI在心理健康应用中缺乏对核心治疗原则的评估机制，提出了FAITH-M基准和CARE评估框架。CARE通过整合对话上下文、对比示例检索和知识蒸馏的思维链推理，显著提升了评估性能，为AI心理健康系统的治疗保真度提供了临床基础评估方法。",
+        "abstract_cn": "大语言模型(Large Language Models)在心理健康应用中的日益普及，要求建立超越表面流畅性的原则性评估框架，以评估其与心理治疗最佳实践的契合度。尽管现有系统展现出对话能力，但缺乏评估其对核心治疗原则遵循度的结构化机制。本文研究了评估AI生成的治疗师式回应在临床基础上的适当性(appropriateness)和有效性(effectiveness)的问题。我们使用细粒度序数量表(ordinal scale)，沿六个治疗原则评估每个治疗师的发言：非评判性接纳(non-judgmental acceptance)、温暖(warmth)、尊重自主权(respect for autonomy)、积极倾听(active listening)、反思性理解(reflective understanding)和情境适当性(situational appropriateness)。我们引入了FAITH-M基准，该基准带有专家分配的序数评分，并提出了CARE评估框架，该框架整合了对话内上下文(intra-dialogue context)、对比示例检索(contrastive exemplar retrieval)和知识蒸馏的思维链推理(knowledge-distilled chain-of-thought reasoning)。实验表明，CARE的F1分数达到63.34，而作为其主干(backbone)的强基线Qwen3的F1分数为38.56，提升了64.26%，这表明性能提升源于结构化推理和上下文建模，而非仅靠主干模型能力。专家评估和外部数据集评估进一步证明了其在领域转移(domain shift)下的鲁棒性，同时突显了建模隐含临床细微差别(implicit clinical nuance)方面的挑战。总体而言，CARE为评估AI心理健康系统的治疗保真度(therapeutic fidelity)提供了一个基于临床的框架。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Epistemic Blinding: An Inference-Time Protocol for Auditing Prior Contamination in LLM-Assisted Analysis",
+        "authors": [
+          "Michael Cuccarese"
+        ],
+        "published": "2026-04-07",
+        "summary": "This paper presents epistemic blinding in the context of an agentic system that uses large language models to reason across multiple biological datasets for drug target prioritization. During development, it became apparent that LLM outputs silently blend data-driven inference with memorized priors about named entities - and the blend is invisible: there is no way to determine, from a single output, how much came from the data on the page and how much came from the model's training memory. Epist",
+        "pdf_url": "https://arxiv.org/pdf/2604.06013v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.06013v1",
+        "abstract": "This paper presents epistemic blinding in the context of an agentic system that uses large language models to reason across multiple biological datasets for drug target prioritization. During development, it became apparent that LLM outputs silently blend data-driven inference with memorized priors about named entities - and the blend is invisible: there is no way to determine, from a single output, how much came from the data on the page and how much came from the model's training memory. Epistemic blinding is a simple inference-time protocol that replaces entity identifiers with anonymous codes before prompting, then compares outputs against an unblinded control. The protocol does not make LLM reasoning deterministic, but it restores one critical axis of auditability: measuring how much of an output came from the supplied data versus the model's parametric knowledge. The complete target identification system is described - including LLM-guided evolutionary optimization of scoring functions and blinded agentic reasoning for target rationalization - with demonstration that both stages operate without access to entity identity. In oncology drug target prioritization across four cancer types, blinding changes 16% of top-20 predictions while preserving identical recovery of validated targets. The contamination problem is shown to generalize beyond biology: in S&P 500 equity screening, brand-recognition bias reshapes 30-40% of top-20 rankings across five random seeds. To lower the barrier to adoption, the protocol is released as an open-source tool and as a Claude Code skill that enables one-command epistemic blinding within agentic workflows. The claim is not that blinded analysis produces better results, but that without blinding, there is no way to know to what degree the agent is adhering to the analytical process the researcher designed.",
+        "llm_keywords": "认知遮蔽, 先验污染, 大语言模型, 审计协议, 代理系统",
+        "llm_summary": "本文提出了一种名为“认知遮蔽”的推理时协议，用于审计大语言模型在辅助分析时，其输出在多大程度上依赖于输入数据而非模型记忆中的先验知识。该方法通过将实体标识符匿名化后输入模型，并与未遮蔽的对照组输出进行比较，从而量化先验污染的程度。在药物靶点优先排序等任务中，该方法有效揭示了模型潜在的偏见，并提供了开源工具以促进应用。",
+        "abstract_cn": "本文在利用大语言模型（LLM）对多个生物数据集进行推理以优先考虑药物靶点的代理系统（agentic system）背景下，提出了认知遮蔽（epistemic blinding）。在开发过程中发现，LLM的输出会悄无声息地将数据驱动的推理与关于命名实体（named entities）的记忆先验（memorized priors）混合在一起——这种混合是不可见的：无法从单一输出中判断，有多少内容来自页面上的数据，又有多少来自模型的训练记忆。认知遮蔽是一种简单的推理时（inference-time）协议，它在提示（prompting）前将实体标识符替换为匿名代码，然后将输出与未遮蔽的对照组进行比较。该协议并不能使LLM推理变得确定，但它恢复了一个关键的审计维度：衡量输出中有多少来自所提供的数据，又有多少来自模型的参数化知识（parametric knowledge）。本文描述了完整的靶点识别系统——包括LLM引导的评分函数进化优化（evolutionary optimization）以及用于靶点合理化（rationalization）的遮蔽代理推理——并证明两个阶段均在没有访问实体身份的情况下运行。在针对四种癌症类型的肿瘤学药物靶点优先排序中，遮蔽改变了16%的前20名预测，同时保持了已验证靶点的完全一致复现。研究表明，污染（contamination）问题可推广到生物学之外：在标准普尔500指数（S&P 500）股票筛选中，品牌认知偏见（brand-recognition bias）在五个随机种子（random seeds）下重塑了30-40%的前20名排名。为了降低采用门槛，该协议已作为开源工具和Claude Code技能发布，使得在代理工作流中通过一条命令即可实现认知遮蔽。本文的主张并非遮蔽分析能产生更好的结果，而是没有遮蔽，就无法知道代理在多大程度上遵循了研究人员设计的分析过程。"
+      },
+      {
+        "title": "Designing Around Stigma: Human-Centered LLMs for Menstrual Health",
+        "authors": [
+          "Amna Shahnawaz",
+          "Ayesha Shafique",
+          "Ding Wang",
+          "Maryam Mustafa"
+        ],
+        "published": "2026-04-07",
+        "summary": "Menstrual health education (MHE) in Pakistan is constrained by cultural taboos and inadequate formal curricula, leaving women with few trusted resources to lean on. In response to these challenges, we introduce a WhatsApp-based chatbot powered by a large language model (LLM) and Retrieval Augmented Generation (RAG), co-designed with Pakistani college women. Workshops (N=30) revealed key design requirements -- support for Roman Urdu, use of subsidized platforms, and an expert -- curated knowledge",
+        "pdf_url": "https://arxiv.org/pdf/2604.06008v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.06008v1",
+        "abstract": "Menstrual health education (MHE) in Pakistan is constrained by cultural taboos and inadequate formal curricula, leaving women with few trusted resources to lean on. In response to these challenges, we introduce a WhatsApp-based chatbot powered by a large language model (LLM) and Retrieval Augmented Generation (RAG), co-designed with Pakistani college women. Workshops (N=30) revealed key design requirements -- support for Roman Urdu, use of subsidized platforms, and an expert -- curated knowledge base. We then deployed the chatbot with 13 participants for two weeks (403 messages and interviews). Women used it to challenge cultural taboos, legitimize health concerns often dismissed as normal, and build reproductive health knowledge through iterative questioning. Yet, interactions also exposed tensions: reliance on cultural explanatory models, questions of trust and validation, and gendered persona of the chatbot itself. We contribute empirical insights, a stigma-aware design framework for culturally sensitive conversational AI, and a methodological lens foregrounding expert validation in intimate health domains.",
+        "llm_keywords": "月经健康, 文化禁忌, 聊天机器人, 以人为本的设计, 检索增强生成",
+        "llm_summary": "本研究针对巴基斯坦月经健康教育面临的禁忌与资源匮乏问题，与当地女大学生共同设计了一款基于WhatsApp、采用大语言模型和检索增强生成技术的聊天机器人。研究发现该工具能帮助女性挑战文化禁忌、确认健康问题并增长知识，但也揭示了其对文化解释模型的依赖、信任问题及性别化人格等矛盾。研究贡献了实证见解、一个顾及污名的设计框架以及强调专家验证的方法视角。",
+        "abstract_cn": "巴基斯坦的月经健康教育（Menstrual health education, MHE）受到文化禁忌和正规课程不足的限制，导致女性缺乏可信赖的资源可以依靠。为应对这些挑战，我们与巴基斯坦女大学生共同设计了一款基于WhatsApp、由大语言模型（Large Language Model, LLM）和检索增强生成（Retrieval Augmented Generation, RAG）技术驱动的聊天机器人。研讨会（N=30）揭示了关键的设计要求——支持罗马乌尔都语、使用补贴平台以及一个由专家策划的知识库。随后，我们向13名参与者部署该聊天机器人两周（403条消息和访谈）。女性利用它来挑战文化禁忌，将常被视为正常而被忽视的健康问题合法化，并通过迭代提问来建立生殖健康知识。然而，互动也暴露了一些矛盾：对文化解释模型的依赖、信任与验证问题，以及聊天机器人本身的性别化人格。我们贡献了实证见解、一个用于文化敏感对话式AI的顾及污名（stigma-aware）的设计框架，以及一个在私密健康领域强调专家验证的方法论视角。"
+      }
+    ]
+  },
+  "total_count": 10,
+  "generated_at": "2026-04-08T22:41:07.152113"
+}
