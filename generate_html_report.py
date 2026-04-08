@@ -70,7 +70,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg);
 .btn-primary { background: var(--accent); color: white; }
 .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text); }
 .hidden { display: none !important; }
-.section-header { border-left: 4px solid var(--accent); padding: 12px; margin-top: 24px; margin-bottom: 12px; background: #fff; border: 1px solid var(--border); border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }
+.section-header { border: 1px solid var(--border); border-left-width: 4px; border-left-color: var(--accent); padding: 12px; margin-top: 24px; margin-bottom: 12px; background: #fff; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }
 .section-title { font-weight: 700; font-size: 18px; }
 .section-count { margin-left: auto; color: var(--muted); }
 .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); text-decoration: none; font-size: 14px; margin-bottom: 16px; }
