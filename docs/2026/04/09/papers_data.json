@@ -1,0 +1,254 @@
+{
+  "date_range": {
+    "start_date": "2026-04-08",
+    "end_date": "2026-04-08"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Distilling Photon-Counting CT into Routine Chest CT through Clinically Validated Degradation Modeling",
+        "authors": [
+          "Junqi Liu",
+          "Xinze Zhou",
+          "Wenxuan Li",
+          "Scott Ye",
+          "Arkadiusz Sitek",
+          "Xiaofeng Yang",
+          "Yucheng Tang",
+          "Daguang Xu",
+          "Kai Ding",
+          "Kang Wang",
+          "Yang Yang",
+          "Alan L. Yuille",
+          "Zongwei Zhou"
+        ],
+        "published": "2026-04-08",
+        "summary": "Photon-counting CT (PCCT) provides superior image quality with higher spatial resolution and lower noise compared to conventional energy-integrating CT (EICT), but its limited clinical availability restricts large-scale research and clinical deployment. To bridge this gap, we propose SUMI, a simulated degradation-to-enhancement method that learns to reverse realistic acquisition artifacts in low-quality EICT by leveraging high-quality PCCT as reference. Our central insight is to explicitly model",
+        "pdf_url": "https://arxiv.org/pdf/2604.07329v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.07329v1",
+        "abstract": "Photon-counting CT (PCCT) provides superior image quality with higher spatial resolution and lower noise compared to conventional energy-integrating CT (EICT), but its limited clinical availability restricts large-scale research and clinical deployment. To bridge this gap, we propose SUMI, a simulated degradation-to-enhancement method that learns to reverse realistic acquisition artifacts in low-quality EICT by leveraging high-quality PCCT as reference. Our central insight is to explicitly model realistic acquisition degradations, transforming PCCT into clinically plausible lower-quality counterparts and learning to invert this process. The simulated degradations were validated for clinical realism by board-certified radiologists, enabling faithful supervision without requiring paired acquisitions at scale. As outcomes of this technical contribution, we: (1) train a latent diffusion model on 1,046 PCCTs, using an autoencoder first pre-trained on both these PCCTs and 405,379 EICTs from 145 hospitals to extract general CT latent features that we release for reuse in other generative medical imaging tasks; (2) construct a large-scale dataset of over 17,316 publicly available EICTs enhanced to PCCT-like quality, with radiologist-validated voxel-wise annotations of airway trees, arteries, veins, lungs, and lobes; and (3) demonstrate substantial improvements: across external data, SUMI outperforms state-of-the-art image translation methods by 15% in SSIM and 20% in PSNR, improves radiologist-rated clinical utility in reader studies, and enhances downstream top-ranking lesion detection performance, increasing sensitivity by up to 15% and F1 score by up to 10%. Our results suggest that emerging imaging advances can be systematically distilled into routine EICT using limited high-quality scans as reference.",
+        "llm_keywords": "光子计数CT, 图像增强, 退化模拟, 潜在扩散模型, 临床验证",
+        "llm_summary": "本文提出SUMI方法，通过模拟并逆转真实采集退化过程，将高质量光子计数CT（PCCT）的知识迁移到常规能量积分CT（EICT）中，从而提升后者图像质量。该方法利用大规模数据训练模型，显著提升了图像指标、临床效用及下游病灶检测性能，为将先进成像技术推广至常规设备提供了可行路径。",
+        "abstract_cn": "光子计数CT（PCCT）相比传统的能量积分CT（EICT）能提供具有更高空间分辨率和更低噪声的优越图像质量，但其有限的临床可用性限制了大规模研究和临床部署。为弥合这一差距，我们提出了SUMI，一种模拟退化到增强的方法，该方法通过利用高质量PCCT作为参考，学习逆转低质量EICT中的真实采集伪影。我们的核心见解是显式地模拟真实的采集退化，将PCCT转化为临床可信的低质量对应图像，并学习逆转此过程。模拟的退化过程由委员会认证的放射科医生验证了临床真实性，从而实现了无需大规模配对采集的可靠监督。作为此项技术贡献的成果，我们：（1）在1,046例PCCT上训练了一个潜在扩散模型，首先使用在这些PCCT和来自145家医院的405,379例EICT上预训练的自动编码器来提取通用的CT潜在特征，我们将其发布以供其他生成式医学成像任务重用；（2）构建了一个包含超过17,316例公开可用EICT的大规模数据集，这些数据被增强至类似PCCT的质量，并附有放射科医生验证的气道树、动脉、静脉、肺和肺叶的体素级标注；（3）展示了实质性改进：在外部数据上，SUMI在SSIM上优于最先进的图像翻译方法15%，在PSNR上优于20%，在读者研究中提高了放射科医生评定的临床效用，并增强了下游顶级病灶检测性能，将灵敏度提高了高达15%，F1分数提高了高达10%。我们的结果表明，可以利用有限的高质量扫描作为参考，系统地将新兴的成像进展提炼到常规EICT中。"
+      },
+      {
+        "title": "Region-Graph Optimal Transport Routing for Mixture-of-Experts Whole-Slide Image Classification",
+        "authors": [
+          "Xin Tian",
+          "Jiuliu Lu",
+          "Ephraim Tsalik",
+          "Bart Wanders",
+          "Colleen Knoth",
+          "Julian Knight"
+        ],
+        "published": "2026-04-08",
+        "summary": "Multiple Instance Learning (MIL) is the dominant framework for gigapixel whole-slide image (WSI) classification in computational pathology. However, current MIL aggregators route all instances through a shared pathway, constraining their capacity to specialise across the pathological heterogeneity inherent in each slide. Mixture-of-Experts (MoE) methods offer a natural remedy by partitioning instances across specialised expert subnetworks; yet unconstrained softmax routing may yield highly imbal",
+        "pdf_url": "https://arxiv.org/pdf/2604.07298v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.07298v1",
+        "abstract": "Multiple Instance Learning (MIL) is the dominant framework for gigapixel whole-slide image (WSI) classification in computational pathology. However, current MIL aggregators route all instances through a shared pathway, constraining their capacity to specialise across the pathological heterogeneity inherent in each slide. Mixture-of-Experts (MoE) methods offer a natural remedy by partitioning instances across specialised expert subnetworks; yet unconstrained softmax routing may yield highly imbalanced utilisation, where one or a few experts absorb most routing mass, collapsing the mixture back to a near-single-pathway solution. To address these limitations, we propose ROAM (Region-graph OptimAl-transport Mixture-of-experts), a spatially aware MoE-MIL aggregator that routes region tokens to expert poolers via capacity-constrained entropic optimal transport, promoting balanced expert utilisation by construction. ROAM operates on spatial region tokens, obtained by compressing dense patch bags into spatially binned units that align routing with local tissue neighbourhoods and introduces two key mechanisms: (i) region-to-expert assignment formulated as entropic optimal transport (Sinkhorn) with explicit per slide capacity marginals, enforcing balanced expert utilisation without auxiliary load-balancing losses; and (ii) graph-regularised Sinkhorn iterations that diffuse routing assignments over the spatial region graph, encouraging neighbouring regions to coherently route to the same experts. Evaluated on four WSI benchmarks with frozen foundation-model patch embeddings, ROAM achieves performance competitive against strong MIL and MoE baselines, and on NSCLC generalisation (TCGA-CPTAC) reaches external AUC 0.845 +- 0.019.",
+        "llm_keywords": "多示例学习, 混合专家模型, 最优传输, 全切片图像分类, 计算病理学",
+        "llm_summary": "本文提出ROAM方法，一种用于全切片图像分类的空间感知混合专家多示例学习聚合器。它通过容量约束的熵最优传输将区域令牌分配给专家池，确保专家均衡利用，并引入图正则化使相邻区域路由一致。在四个基准测试中表现优异。",
+        "abstract_cn": "多示例学习（Multiple Instance Learning, MIL）是计算病理学中千兆像素全切片图像（whole-slide image, WSI）分类的主导框架。然而，当前的MIL聚合器将所有实例通过共享路径路由，限制了其在每个切片固有的病理异质性中进行专业化的能力。混合专家（Mixture-of-Experts, MoE）方法通过将实例划分到专门的专家子网络提供了一种自然的补救措施；然而，无约束的softmax路由可能导致高度不平衡的利用，即一个或少数专家吸收了大部分路由权重，使混合模型退化为近乎单一路径的解决方案。为了解决这些限制，我们提出了ROAM（Region-graph OptimAl-transport Mixture-of-experts），一种空间感知的MoE-MIL聚合器，它通过容量约束的熵最优传输（entropic optimal transport）将区域令牌路由到专家池，从结构上促进专家的均衡利用。ROAM在空间区域令牌上操作，通过将密集的补丁包压缩为空间分箱单元获得，使路由与局部组织邻域对齐，并引入了两个关键机制：（i）将区域到专家的分配公式化为具有明确每切片容量边际的熵最优传输（Sinkhorn），无需辅助的负载平衡损失即可强制实现专家均衡利用；（ii）图正则化的Sinkhorn迭代，在空间区域图上扩散路由分配，鼓励相邻区域一致地路由到相同的专家。在使用冻结的基础模型补丁嵌入的四个WSI基准测试中，ROAM实现了与强大的MIL和MoE基线相竞争的性能，并且在NSCLC泛化（TCGA-CPTAC）上达到了外部AUC 0.845 ± 0.019。"
+      },
+      {
+        "title": "A Systematic Study of Retrieval Pipeline Design for Retrieval-Augmented Medical Question Answering",
+        "authors": [
+          "Nusrat Sultana",
+          "Abdullah Muhammad Moosa",
+          "Kazi Afzalur Rahman",
+          "Sajal Chandra Banik"
+        ],
+        "published": "2026-04-08",
+        "summary": "Large language models (LLMs) have demonstrated strong capabilities in medical question answering; however, purely parametric models often suffer from knowledge gaps and limited factual grounding. Retrieval-augmented generation (RAG) addresses this limitation by integrating external knowledge retrieval into the reasoning process. Despite increasing interest in RAG-based medical systems, the impact of individual retrieval components on performance remains insufficiently understood. This study pres",
+        "pdf_url": "https://arxiv.org/pdf/2604.07274v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.07274v1",
+        "abstract": "Large language models (LLMs) have demonstrated strong capabilities in medical question answering; however, purely parametric models often suffer from knowledge gaps and limited factual grounding. Retrieval-augmented generation (RAG) addresses this limitation by integrating external knowledge retrieval into the reasoning process. Despite increasing interest in RAG-based medical systems, the impact of individual retrieval components on performance remains insufficiently understood. This study presents a systematic evaluation of retrieval-augmented medical question answering using the MedQA USMLE benchmark and a structured textbook-based knowledge corpus. We analyze the interaction between language models, embedding models, retrieval strategies, query reformulation, and cross-encoder reranking within a unified experimental framework comprising forty configurations. Results show that retrieval augmentation significantly improves zero-shot medical question answering performance. The best-performing configuration was dense retrieval with query reformulation and reranking achieved 60.49% accuracy. Domain-specialized language models were also found to better utilize retrieved medical evidence than general-purpose models. The analysis further reveals a clear tradeoff between retrieval effectiveness and computational cost, with simpler dense retrieval configurations providing strong performance while maintaining higher throughput. All experiments were conducted on a single consumer-grade GPU, demonstrating that systematic evaluation of retrieval-augmented medical QA systems can be performed under modest computational resources.",
+        "llm_keywords": "检索增强生成, 医学问答, 检索策略, 查询重构, 交叉编码器重排序",
+        "llm_summary": "本研究系统评估了检索增强生成在医学问答中的应用，分析了语言模型、检索策略等组件对性能的影响。实验表明，检索增强能显著提升零样本医学问答准确率，最佳配置达到60.49%的准确率，并揭示了检索效果与计算成本之间的权衡。",
+        "abstract_cn": "大型语言模型（LLMs）在医学问答中展现出强大能力，但纯参数化模型常受知识鸿沟和事实基础有限的困扰。检索增强生成（RAG）通过将外部知识检索整合到推理过程中来解决这一局限。尽管基于RAG的医学系统日益受到关注，但各检索组件对性能的影响仍未得到充分理解。本研究使用MedQA USMLE基准和基于教科书的（textbook-based）结构化知识库，对检索增强医学问答进行了系统评估。我们在一个包含四十种配置的统一实验框架内，分析了语言模型、嵌入模型、检索策略、查询重构（query reformulation）和交叉编码器重排序（cross-encoder reranking）之间的相互作用。结果表明，检索增强显著提高了零样本医学问答性能。表现最佳的配置是结合了查询重构和重排序的稠密检索（dense retrieval），准确率达到60.49%。研究还发现，领域专用语言模型比通用模型能更好地利用检索到的医学证据。分析进一步揭示了检索效果与计算成本之间存在明显的权衡，更简单的稠密检索配置在保持高吞吐量的同时提供了强劲的性能。所有实验均在单个消费级GPU上完成，证明了在适度的计算资源下即可对检索增强医学QA系统进行系统评估。"
+      },
+      {
+        "title": "Joint Optimization of Reasoning and Dual-Memory for Self-Learning Diagnostic Agent",
+        "authors": [
+          "Bingxuan Li",
+          "Simo Du",
+          "Yue Guo"
+        ],
+        "published": "2026-04-08",
+        "summary": "Clinical expertise improves not only by acquiring medical knowledge, but by accumulating experience that yields reusable diagnostic patterns. Recent LLMs-based diagnostic agents have shown promising progress in clinical reasoning for decision support. However, most approaches treat cases independently, limiting experience reuse and continual adaptation. We propose SEA, a self-learning diagnostic agent with cognitively inspired dual-memory module. We design a reinforcement training framework tail",
+        "pdf_url": "https://arxiv.org/pdf/2604.07269v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.07269v1",
+        "abstract": "Clinical expertise improves not only by acquiring medical knowledge, but by accumulating experience that yields reusable diagnostic patterns. Recent LLMs-based diagnostic agents have shown promising progress in clinical reasoning for decision support. However, most approaches treat cases independently, limiting experience reuse and continual adaptation. We propose SEA, a self-learning diagnostic agent with cognitively inspired dual-memory module. We design a reinforcement training framework tailored to our designed agent for joint optimization of reasoning and memory management. We evaluate SEA in two complementary settings. On standard evaluation with MedCaseReasoning dataset, SEA achieves 92.46% accuracy, outperforming the strongest baseline by +19.6%, demonstrating the benefit of jointly optimizing reasoning and memory. On the long-horizon with ER-Reason dataset, SEA attains the best final accuracy (0.7214) and the largest improvement (+0.35 Acc@100), while baseline methods show limited or unstable gains. Expert evaluation further indicates that rules consolidated from SEA show strong clinical correctness, usefulness and trust, suggesting that the induced rules in dual-memory module are reliable and practically meaningful. Overall, SEA improves both diagnostic reasoning ability and continual learning by effectively transforming experience into reusable knowledge.",
+        "llm_keywords": "自学习诊断智能体, 双记忆模块, 联合优化, 临床推理, 强化学习框架",
+        "llm_summary": "本文提出SEA自学习诊断智能体，其采用受认知启发的双记忆模块，通过强化学习框架联合优化推理与记忆管理。实验表明，SEA在标准与长程评估中均显著优于基线，能将经验有效转化为可靠且实用的可复用知识，提升诊断推理与持续学习能力。",
+        "abstract_cn": "临床专业能力的提升不仅依赖于获取医学知识，还通过积累能产生可复用诊断模式的经验。近期基于大语言模型（LLMs）的诊断智能体在临床推理（clinical reasoning）以提供决策支持方面展现出有前景的进展。然而，大多数方法将病例独立处理，限制了经验复用和持续适应（continual adaptation）。我们提出了SEA，一种具有认知启发双记忆模块（dual-memory module）的自学习诊断智能体。我们设计了一个强化训练（reinforcement training）框架，专为我们设计的智能体定制，以实现推理与记忆管理的联合优化（joint optimization）。我们在两个互补的设置中评估SEA。在基于MedCaseReasoning数据集的标准评估中，SEA达到了92.46%的准确率，比最强基线高出+19.6%，证明了联合优化推理与记忆的益处。在基于ER-Reason数据集的长程（long-horizon）评估中，SEA获得了最佳最终准确率（0.7214）和最大的提升（+0.35 Acc@100），而基线方法显示出有限或不稳定的增益。专家评估进一步表明，从SEA中巩固的规则（rules）展现出很强的临床正确性、有用性和可信度，这表明双记忆模块中归纳的规则是可靠且具有实际意义的。总体而言，SEA通过有效地将经验转化为可复用知识，提升了诊断推理能力和持续学习（continual learning）能力。"
+      },
+      {
+        "title": "USCNet: Transformer-Based Multimodal Fusion with Segmentation Guidance for Urolithiasis Classification",
+        "authors": [
+          "Changmiao Wang",
+          "Songqi Zhang",
+          "Yongquan Zhang",
+          "Yifei Wang",
+          "Liya Liu",
+          "Nannan Li",
+          "Xingzhi Li",
+          "Jiexin Pan",
+          "Yi Jiang",
+          "Xiang Wan",
+          "Hai Wang",
+          "Ahmed Elazab"
+        ],
+        "published": "2026-04-08",
+        "summary": "Kidney stone disease ranks among the most prevalent conditions in urology, and understanding the composition of these stones is essential for creating personalized treatment plans and preventing recurrence. Current methods for analyzing kidney stones depend on postoperative specimens, which prevents rapid classification before surgery. To overcome this limitation, we introduce a new approach called the Urinary Stone Segmentation and Classification Network (USCNet). This innovative method allows ",
+        "pdf_url": "https://arxiv.org/pdf/2604.07141v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.07141v1",
+        "abstract": "Kidney stone disease ranks among the most prevalent conditions in urology, and understanding the composition of these stones is essential for creating personalized treatment plans and preventing recurrence. Current methods for analyzing kidney stones depend on postoperative specimens, which prevents rapid classification before surgery. To overcome this limitation, we introduce a new approach called the Urinary Stone Segmentation and Classification Network (USCNet). This innovative method allows for precise preoperative classification of kidney stones by integrating Computed Tomography (CT) images with clinical data from Electronic Health Records (EHR). USCNet employs a Transformer-based multimodal fusion framework with CT-EHR attention and segmentation-guided attention modules for accurate classification. Moreover, a dynamic loss function is introduced to effectively balance the dual objectives of segmentation and classification. Experiments on an in-house kidney stone dataset show that USCNet demonstrates outstanding performance across all evaluation metrics, with its classification efficacy significantly surpassing existing mainstream methods. This study presents a promising solution for the precise preoperative classification of kidney stones, offering substantial clinical benefits. The source code has been made publicly available: https://github.com/ZhangSongqi0506/KidneyStone.",
+        "llm_keywords": "肾结石分类, 多模态融合, Transformer, 分割引导, 术前诊断",
+        "llm_summary": "本文提出了一种名为USCNet的新型网络，用于肾结石的术前精确分类。该方法创新性地融合CT图像与电子健康记录临床数据，采用基于Transformer的多模态融合框架，并引入分割引导注意力模块和动态损失函数。实验表明，USCNet在各项评估指标上均表现优异，分类效果显著超越现有主流方法，为肾结石的术前精准分类提供了有前景的解决方案。",
+        "abstract_cn": "肾结石疾病是泌尿外科最常见的疾病之一，了解结石成分对于制定个性化治疗方案和预防复发至关重要。目前分析肾结石的方法依赖于术后标本，这阻碍了术前的快速分类。为了克服这一限制，我们引入了一种称为尿路结石分割与分类网络（USCNet）的新方法。这种创新方法通过整合计算机断层扫描（CT）图像和来自电子健康记录（EHR）的临床数据，实现了肾结石的精确术前分类。USCNet采用基于Transformer的多模态融合框架，包含CT-EHR注意力和分割引导注意力模块，以实现精确分类。此外，还引入了动态损失函数，以有效平衡分割和分类的双重目标。在内部肾结石数据集上的实验表明，USCNet在所有评估指标上都表现出色，其分类效果显著超过了现有的主流方法。这项研究为肾结石的精确术前分类提供了一个有前景的解决方案，具有重要的临床效益。源代码已公开：https://github.com/ZhangSongqi0506/KidneyStone。"
+      },
+      {
+        "title": "A Utility-preserving De-identification Pipeline for Cross-hospital Radiology Data Sharing",
+        "authors": [
+          "Chenhao Liu",
+          "Zelin Wen",
+          "Yan Tong",
+          "Junjie Zhu",
+          "Xinyu Tian",
+          "Yuchi Liu",
+          "Ashu Gupta",
+          "Syed M. S. Islam",
+          "Tom Gedeon",
+          "Yue Yao"
+        ],
+        "published": "2026-04-08",
+        "summary": "Large-scale radiology data are critical for developing robust medical AI systems. However, sharing such data across hospitals remains heavily constrained by privacy concerns. Existing de-identification research in radiology mainly focus on removing identifiable information to enable compliant data release. Yet whether de-identified radiology data can still preserve sufficient utility for large-scale vision-language model training and cross-hospital transfer remains underexplored. In this paper, ",
+        "pdf_url": "https://arxiv.org/pdf/2604.07128v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.07128v1",
+        "abstract": "Large-scale radiology data are critical for developing robust medical AI systems. However, sharing such data across hospitals remains heavily constrained by privacy concerns. Existing de-identification research in radiology mainly focus on removing identifiable information to enable compliant data release. Yet whether de-identified radiology data can still preserve sufficient utility for large-scale vision-language model training and cross-hospital transfer remains underexplored. In this paper, we introduce a utility-preserving de-identification pipeline (UPDP) for cross-hospital radiology data sharing. Specifically, we compile a blacklist of privacy-sensitive terms and a whitelist of pathology-related terms. For radiology images, we use a generative filtering mechanism that synthesis a privacy-filtered and pathology-reserved counterparts of the original images. These synthetic image counterparts, together with ID-filtered reports, can then be securely shared across hospitals for downstream model development and evaluation. Experiments on public chest X-ray benchmarks demonstrate that our method effectively removes privacy-sensitive information while preserving diagnostically relevant pathology cues. Models trained on the de-identified data maintain competitive diagnostic accuracy compared with those trained on the original data, while exhibiting a marked decline in identity-related accuracy, confirming effective privacy protection. In the cross-hospital setting, we further show that de-identified data can be combined with local data to yield better performance.",
+        "llm_keywords": "放射学数据共享, 去标识化, 效用保持, 跨医院, 视觉语言模型",
+        "llm_summary": "本文提出一种效用保持的去标识化流程，用于跨医院放射学数据共享。该方法通过生成式过滤机制合成保留病理信息、过滤隐私的图像，并结合文本过滤报告，在保护隐私的同时维持数据对模型训练的效用。实验表明，该方法能有效移除隐私信息并保留诊断价值。",
+        "abstract_cn": "大规模放射学数据对于开发稳健的医疗AI系统至关重要。然而，跨医院共享此类数据仍因隐私问题受到严重限制。现有的放射学去标识化研究主要集中于移除可识别信息以实现合规数据发布。然而，去标识化后的放射学数据是否仍能为大规模视觉语言模型训练和跨医院迁移保留足够的效用，仍未得到充分探索。在本文中，我们引入了一种用于跨医院放射学数据共享的效用保持去标识化流程。具体来说，我们编制了一个隐私敏感术语黑名单和一个病理相关术语白名单。对于放射学图像，我们使用一种生成式过滤机制，合成原始图像的隐私过滤且病理保留的对应版本。这些合成图像对应版本，连同ID过滤后的报告，随后可以安全地在医院间共享，用于下游模型开发和评估。在公共胸部X光基准测试上的实验表明，我们的方法有效移除了隐私敏感信息，同时保留了诊断相关的病理线索。在去标识化数据上训练的模型，与在原始数据上训练的模型相比，保持了有竞争力的诊断准确性，同时在身份相关准确性上表现出显著下降，证实了有效的隐私保护。在跨医院设置中，我们进一步表明，去标识化数据可以与本地数据结合以获得更好的性能。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Distilling Photon-Counting CT into Routine Chest CT through Clinically Validated Degradation Modeling",
+        "authors": [
+          "Junqi Liu",
+          "Xinze Zhou",
+          "Wenxuan Li",
+          "Scott Ye",
+          "Arkadiusz Sitek",
+          "Xiaofeng Yang",
+          "Yucheng Tang",
+          "Daguang Xu",
+          "Kai Ding",
+          "Kang Wang",
+          "Yang Yang",
+          "Alan L. Yuille",
+          "Zongwei Zhou"
+        ],
+        "published": "2026-04-08",
+        "summary": "Photon-counting CT (PCCT) provides superior image quality with higher spatial resolution and lower noise compared to conventional energy-integrating CT (EICT), but its limited clinical availability restricts large-scale research and clinical deployment. To bridge this gap, we propose SUMI, a simulated degradation-to-enhancement method that learns to reverse realistic acquisition artifacts in low-quality EICT by leveraging high-quality PCCT as reference. Our central insight is to explicitly model",
+        "pdf_url": "https://arxiv.org/pdf/2604.07329v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.07329v1",
+        "abstract": "Photon-counting CT (PCCT) provides superior image quality with higher spatial resolution and lower noise compared to conventional energy-integrating CT (EICT), but its limited clinical availability restricts large-scale research and clinical deployment. To bridge this gap, we propose SUMI, a simulated degradation-to-enhancement method that learns to reverse realistic acquisition artifacts in low-quality EICT by leveraging high-quality PCCT as reference. Our central insight is to explicitly model realistic acquisition degradations, transforming PCCT into clinically plausible lower-quality counterparts and learning to invert this process. The simulated degradations were validated for clinical realism by board-certified radiologists, enabling faithful supervision without requiring paired acquisitions at scale. As outcomes of this technical contribution, we: (1) train a latent diffusion model on 1,046 PCCTs, using an autoencoder first pre-trained on both these PCCTs and 405,379 EICTs from 145 hospitals to extract general CT latent features that we release for reuse in other generative medical imaging tasks; (2) construct a large-scale dataset of over 17,316 publicly available EICTs enhanced to PCCT-like quality, with radiologist-validated voxel-wise annotations of airway trees, arteries, veins, lungs, and lobes; and (3) demonstrate substantial improvements: across external data, SUMI outperforms state-of-the-art image translation methods by 15% in SSIM and 20% in PSNR, improves radiologist-rated clinical utility in reader studies, and enhances downstream top-ranking lesion detection performance, increasing sensitivity by up to 15% and F1 score by up to 10%. Our results suggest that emerging imaging advances can be systematically distilled into routine EICT using limited high-quality scans as reference.",
+        "llm_keywords": "光子计数CT, 图像增强, 退化模拟, 潜在扩散模型, 临床验证",
+        "llm_summary": "本文提出SUMI方法，通过模拟并逆转真实采集退化过程，将高质量光子计数CT（PCCT）的知识迁移到常规能量积分CT（EICT）中，从而提升后者图像质量。该方法利用大规模数据训练模型，显著提升了图像指标、临床效用及下游病灶检测性能，为将先进成像技术推广至常规设备提供了可行路径。",
+        "abstract_cn": "光子计数CT（PCCT）相比传统的能量积分CT（EICT）能提供具有更高空间分辨率和更低噪声的优越图像质量，但其有限的临床可用性限制了大规模研究和临床部署。为弥合这一差距，我们提出了SUMI，一种模拟退化到增强的方法，该方法通过利用高质量PCCT作为参考，学习逆转低质量EICT中的真实采集伪影。我们的核心见解是显式地模拟真实的采集退化，将PCCT转化为临床可信的低质量对应图像，并学习逆转此过程。模拟的退化过程由委员会认证的放射科医生验证了临床真实性，从而实现了无需大规模配对采集的可靠监督。作为此项技术贡献的成果，我们：（1）在1,046例PCCT上训练了一个潜在扩散模型，首先使用在这些PCCT和来自145家医院的405,379例EICT上预训练的自动编码器来提取通用的CT潜在特征，我们将其发布以供其他生成式医学成像任务重用；（2）构建了一个包含超过17,316例公开可用EICT的大规模数据集，这些数据被增强至类似PCCT的质量，并附有放射科医生验证的气道树、动脉、静脉、肺和肺叶的体素级标注；（3）展示了实质性改进：在外部数据上，SUMI在SSIM上优于最先进的图像翻译方法15%，在PSNR上优于20%，在读者研究中提高了放射科医生评定的临床效用，并增强了下游顶级病灶检测性能，将灵敏度提高了高达15%，F1分数提高了高达10%。我们的结果表明，可以利用有限的高质量扫描作为参考，系统地将新兴的成像进展提炼到常规EICT中。"
+      },
+      {
+        "title": "A Utility-preserving De-identification Pipeline for Cross-hospital Radiology Data Sharing",
+        "authors": [
+          "Chenhao Liu",
+          "Zelin Wen",
+          "Yan Tong",
+          "Junjie Zhu",
+          "Xinyu Tian",
+          "Yuchi Liu",
+          "Ashu Gupta",
+          "Syed M. S. Islam",
+          "Tom Gedeon",
+          "Yue Yao"
+        ],
+        "published": "2026-04-08",
+        "summary": "Large-scale radiology data are critical for developing robust medical AI systems. However, sharing such data across hospitals remains heavily constrained by privacy concerns. Existing de-identification research in radiology mainly focus on removing identifiable information to enable compliant data release. Yet whether de-identified radiology data can still preserve sufficient utility for large-scale vision-language model training and cross-hospital transfer remains underexplored. In this paper, ",
+        "pdf_url": "https://arxiv.org/pdf/2604.07128v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.07128v1",
+        "abstract": "Large-scale radiology data are critical for developing robust medical AI systems. However, sharing such data across hospitals remains heavily constrained by privacy concerns. Existing de-identification research in radiology mainly focus on removing identifiable information to enable compliant data release. Yet whether de-identified radiology data can still preserve sufficient utility for large-scale vision-language model training and cross-hospital transfer remains underexplored. In this paper, we introduce a utility-preserving de-identification pipeline (UPDP) for cross-hospital radiology data sharing. Specifically, we compile a blacklist of privacy-sensitive terms and a whitelist of pathology-related terms. For radiology images, we use a generative filtering mechanism that synthesis a privacy-filtered and pathology-reserved counterparts of the original images. These synthetic image counterparts, together with ID-filtered reports, can then be securely shared across hospitals for downstream model development and evaluation. Experiments on public chest X-ray benchmarks demonstrate that our method effectively removes privacy-sensitive information while preserving diagnostically relevant pathology cues. Models trained on the de-identified data maintain competitive diagnostic accuracy compared with those trained on the original data, while exhibiting a marked decline in identity-related accuracy, confirming effective privacy protection. In the cross-hospital setting, we further show that de-identified data can be combined with local data to yield better performance.",
+        "llm_keywords": "放射学数据共享, 去标识化, 效用保持, 跨医院, 视觉语言模型",
+        "llm_summary": "本文提出一种效用保持的去标识化流程，用于跨医院放射学数据共享。该方法通过生成式过滤机制合成保留病理信息、过滤隐私的图像，并结合文本过滤报告，在保护隐私的同时维持数据对模型训练的效用。实验表明，该方法能有效移除隐私信息并保留诊断价值。",
+        "abstract_cn": "大规模放射学数据对于开发稳健的医疗AI系统至关重要。然而，跨医院共享此类数据仍因隐私问题受到严重限制。现有的放射学去标识化研究主要集中于移除可识别信息以实现合规数据发布。然而，去标识化后的放射学数据是否仍能为大规模视觉语言模型训练和跨医院迁移保留足够的效用，仍未得到充分探索。在本文中，我们引入了一种用于跨医院放射学数据共享的效用保持去标识化流程。具体来说，我们编制了一个隐私敏感术语黑名单和一个病理相关术语白名单。对于放射学图像，我们使用一种生成式过滤机制，合成原始图像的隐私过滤且病理保留的对应版本。这些合成图像对应版本，连同ID过滤后的报告，随后可以安全地在医院间共享，用于下游模型开发和评估。在公共胸部X光基准测试上的实验表明，我们的方法有效移除了隐私敏感信息，同时保留了诊断相关的病理线索。在去标识化数据上训练的模型，与在原始数据上训练的模型相比，保持了有竞争力的诊断准确性，同时在身份相关准确性上表现出显著下降，证实了有效的隐私保护。在跨医院设置中，我们进一步表明，去标识化数据可以与本地数据结合以获得更好的性能。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Joint Optimization of Reasoning and Dual-Memory for Self-Learning Diagnostic Agent",
+        "authors": [
+          "Bingxuan Li",
+          "Simo Du",
+          "Yue Guo"
+        ],
+        "published": "2026-04-08",
+        "summary": "Clinical expertise improves not only by acquiring medical knowledge, but by accumulating experience that yields reusable diagnostic patterns. Recent LLMs-based diagnostic agents have shown promising progress in clinical reasoning for decision support. However, most approaches treat cases independently, limiting experience reuse and continual adaptation. We propose SEA, a self-learning diagnostic agent with cognitively inspired dual-memory module. We design a reinforcement training framework tail",
+        "pdf_url": "https://arxiv.org/pdf/2604.07269v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.07269v1",
+        "abstract": "Clinical expertise improves not only by acquiring medical knowledge, but by accumulating experience that yields reusable diagnostic patterns. Recent LLMs-based diagnostic agents have shown promising progress in clinical reasoning for decision support. However, most approaches treat cases independently, limiting experience reuse and continual adaptation. We propose SEA, a self-learning diagnostic agent with cognitively inspired dual-memory module. We design a reinforcement training framework tailored to our designed agent for joint optimization of reasoning and memory management. We evaluate SEA in two complementary settings. On standard evaluation with MedCaseReasoning dataset, SEA achieves 92.46% accuracy, outperforming the strongest baseline by +19.6%, demonstrating the benefit of jointly optimizing reasoning and memory. On the long-horizon with ER-Reason dataset, SEA attains the best final accuracy (0.7214) and the largest improvement (+0.35 Acc@100), while baseline methods show limited or unstable gains. Expert evaluation further indicates that rules consolidated from SEA show strong clinical correctness, usefulness and trust, suggesting that the induced rules in dual-memory module are reliable and practically meaningful. Overall, SEA improves both diagnostic reasoning ability and continual learning by effectively transforming experience into reusable knowledge.",
+        "llm_keywords": "自学习诊断智能体, 双记忆模块, 联合优化, 临床推理, 强化学习框架",
+        "llm_summary": "本文提出SEA自学习诊断智能体，其采用受认知启发的双记忆模块，通过强化学习框架联合优化推理与记忆管理。实验表明，SEA在标准与长程评估中均显著优于基线，能将经验有效转化为可靠且实用的可复用知识，提升诊断推理与持续学习能力。",
+        "abstract_cn": "临床专业能力的提升不仅依赖于获取医学知识，还通过积累能产生可复用诊断模式的经验。近期基于大语言模型（LLMs）的诊断智能体在临床推理（clinical reasoning）以提供决策支持方面展现出有前景的进展。然而，大多数方法将病例独立处理，限制了经验复用和持续适应（continual adaptation）。我们提出了SEA，一种具有认知启发双记忆模块（dual-memory module）的自学习诊断智能体。我们设计了一个强化训练（reinforcement training）框架，专为我们设计的智能体定制，以实现推理与记忆管理的联合优化（joint optimization）。我们在两个互补的设置中评估SEA。在基于MedCaseReasoning数据集的标准评估中，SEA达到了92.46%的准确率，比最强基线高出+19.6%，证明了联合优化推理与记忆的益处。在基于ER-Reason数据集的长程（long-horizon）评估中，SEA获得了最佳最终准确率（0.7214）和最大的提升（+0.35 Acc@100），而基线方法显示出有限或不稳定的增益。专家评估进一步表明，从SEA中巩固的规则（rules）展现出很强的临床正确性、有用性和可信度，这表明双记忆模块中归纳的规则是可靠且具有实际意义的。总体而言，SEA通过有效地将经验转化为可复用知识，提升了诊断推理能力和持续学习（continual learning）能力。"
+      }
+    ]
+  },
+  "total_count": 6,
+  "generated_at": "2026-04-09T22:44:51.291738"
+}
