@@ -1,0 +1,235 @@
+{
+  "date_range": {
+    "start_date": "2026-04-14",
+    "end_date": "2026-04-14"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Representation geometry shapes task performance in vision-language modeling for CT enterography",
+        "authors": [
+          "Cristian Minoccheri",
+          "Emily Wittrup",
+          "Kayvan Najarian",
+          "Ryan Stidham"
+        ],
+        "published": "2026-04-14",
+        "summary": "Computed tomography (CT) enterography is a primary imaging modality for assessing inflammatory bowel disease (IBD), yet the representational choices that best support automated analysis of this modality are unknown. We present the first study of vision-language transfer learning on abdominal CT enterography and identify two main findings. First, mean pooling of slice embeddings gives better categorical disease assessment (59.2\\% three-class accuracy), whereas attention pooling gives better cross",
+        "pdf_url": "https://arxiv.org/pdf/2604.13021v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.13021v1",
+        "abstract": "Computed tomography (CT) enterography is a primary imaging modality for assessing inflammatory bowel disease (IBD), yet the representational choices that best support automated analysis of this modality are unknown. We present the first study of vision-language transfer learning on abdominal CT enterography and identify two main findings. First, mean pooling of slice embeddings gives better categorical disease assessment (59.2\\% three-class accuracy), whereas attention pooling gives better cross-modal retrieval (0.235 text-to-image MRR). This pattern holds across all LoRA configurations tested and suggests that the two aggregators emphasize different properties of the learned representation. Second, per-slice tissue contrast matters more than broader spatial coverage: multi-window RGB encoding, which maps complementary Hounsfield Unit windows to RGB channels, outperforms all strategies that increase spatial coverage through multiplanar sampling, and in this setting adding coronal and sagittal views reduces classification performance. For report generation, fine-tuning without retrieval context yields within-1 severity accuracy at the prevalence-matched chance level (70.4\\% vs.\\ 71\\% random), suggesting little learned ordering beyond the class distribution. Retrieval-augmented generation (RAG) improves this across all configurations, scoring 7--14 percentage points above the chance baseline and improving ordinal MAE from 0.98 to 0.80--0.89. A three-teacher pseudolabel framework enables all comparisons without expert annotations. Together, these findings provide the first baselines for this underexplored modality and offer practical guidance for building vision-language systems for volumetric medical imaging.",
+        "llm_keywords": "CT小肠造影, 视觉语言模型, 表征几何, 检索增强生成, 多教师伪标签",
+        "llm_summary": "本研究首次在腹部CT小肠造影上探索视觉语言迁移学习。研究发现，切片嵌入的平均池化更适合疾病分类，而注意力池化更利于跨模态检索；多窗RGB编码（映射HU值到RGB通道）比增加空间覆盖的采样策略更有效。检索增强生成显著提升了报告生成的性能。研究为这一领域建立了首个基线并提供了实用指导。",
+        "abstract_cn": "计算机断层扫描（CT）小肠造影是评估炎症性肠病（IBD）的主要成像方式，但最适合该模态自动分析的表征选择尚不清楚。我们首次在腹部CT小肠造影上进行了视觉语言迁移学习研究，并确定了两个主要发现。首先，切片嵌入的平均池化（mean pooling）能提供更好的疾病分类评估（59.2%的三类准确率），而注意力池化（attention pooling）能提供更好的跨模态检索（0.235的文本到图像平均倒数排名MRR）。这种模式在所有测试的LoRA配置中都成立，表明两种聚合器强调了学习表征的不同属性。其次，单切片组织对比度比更广的空间覆盖更重要：多窗RGB编码（multi-window RGB encoding，将互补的亨氏单位Hounsfield Unit窗口映射到RGB通道）优于所有通过多平面采样增加空间覆盖的策略，并且在此设置下添加冠状面和矢状面视图会降低分类性能。对于报告生成，在没有检索上下文的情况下进行微调，其严重程度误差在1级以内的准确率处于与患病率匹配的随机水平（70.4% vs. 71%随机），表明除了类别分布外几乎没有学到顺序信息。检索增强生成（Retrieval-Augmented Generation, RAG）在所有配置中都改善了这一点，得分比随机基线高7-14个百分点，并将序数平均绝对误差（ordinal MAE）从0.98改善到0.80-0.89。一个三教师伪标签（three-teacher pseudolabel）框架使得所有比较无需专家标注。总之，这些发现为这一探索不足的模态提供了首个基线，并为构建用于容积医学成像的视觉语言系统提供了实用指导。"
+      },
+      {
+        "title": "Causal Diffusion Models for Counterfactual Outcome Distributions in Longitudinal Data",
+        "authors": [
+          "Farbod Alinezhad",
+          "Jianfei Cao",
+          "Gary J. Young",
+          "Brady Post"
+        ],
+        "published": "2026-04-14",
+        "summary": "Predicting counterfactual outcomes in longitudinal data, where sequential treatment decisions heavily depend on evolving patient states, is critical yet notoriously challenging due to complex time-dependent confounding and inadequate uncertainty quantification in existing methods. We introduce the Causal Diffusion Model (CDM), the first denoising diffusion probabilistic approach explicitly designed to generate full probabilistic distributions of counterfactual outcomes under sequential intervent",
+        "pdf_url": "https://arxiv.org/pdf/2604.12992v1",
+        "primary_category": "stat.ML",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.12992v1",
+        "abstract": "Predicting counterfactual outcomes in longitudinal data, where sequential treatment decisions heavily depend on evolving patient states, is critical yet notoriously challenging due to complex time-dependent confounding and inadequate uncertainty quantification in existing methods. We introduce the Causal Diffusion Model (CDM), the first denoising diffusion probabilistic approach explicitly designed to generate full probabilistic distributions of counterfactual outcomes under sequential interventions. CDM employs a novel residual denoising architecture with relational self-attention, capturing intricate temporal dependencies and multimodal outcome trajectories without requiring explicit adjustments (e.g., inverse-probability weighting or adversarial balancing) for confounding. In rigorous evaluation on a pharmacokinetic-pharmacodynamic tumor-growth simulator widely adopted in prior work, CDM consistently outperforms state-of-the-art longitudinal causal inference methods, achieving a 15-30% relative improvement in distributional accuracy (1-Wasserstein distance) while maintaining competitive or superior point-estimate accuracy (RMSE) under high-confounding regimes. By unifying uncertainty quantification and robust counterfactual prediction in complex, sequentially confounded settings, without tailored deconfounding, CDM offers a flexible, high-impact tool for decision support in medicine, policy evaluation, and other longitudinal domains.",
+        "llm_keywords": "因果扩散模型, 反事实结果预测, 纵向数据, 时间依赖性混杂, 不确定性量化",
+        "llm_summary": "本文提出了首个用于纵向数据反事实结果概率分布预测的因果扩散模型（CDM）。该模型采用残差去噪架构和关系自注意力机制，无需显式去混杂调整，即可捕获复杂时间依赖性和多模态结果轨迹。在肿瘤生长模拟器上的评估表明，CDM在分布准确性上显著优于现有方法，为医学和政策评估等领域提供了强大的决策支持工具。",
+        "abstract_cn": "在纵向数据中预测反事实结果至关重要，但由于复杂的时间依赖性混杂（time-dependent confounding）和现有方法中不确定性量化（uncertainty quantification）不足，这极具挑战。我们提出了因果扩散模型（Causal Diffusion Model, CDM），这是首个明确设计用于在序列干预（sequential interventions）下生成反事实结果完整概率分布的降噪扩散概率（denoising diffusion probabilistic）方法。CDM采用了一种新颖的残差去噪（residual denoising）架构与关系自注意力（relational self-attention），能够捕获复杂的时间依赖性和多模态结果轨迹，而无需针对混杂进行显式调整（例如逆概率加权（inverse-probability weighting）或对抗平衡（adversarial balancing））。在先前工作中广泛采用的药代动力学-药效学（pharmacokinetic-pharmacodynamic）肿瘤生长模拟器上进行严格评估，CDM始终优于最先进的纵向因果推断方法，在分布准确性（1-Wasserstein距离）上实现了15-30%的相对提升，同时在高混杂情况下保持有竞争力或更优的点估计准确性（RMSE）。通过在不进行针对性去混杂的情况下，在复杂的、序列混杂的设置中统一不确定性量化和稳健的反事实预测，CDM为医学、政策评估和其他纵向领域的决策支持提供了一个灵活且具有高影响力的工具。"
+      },
+      {
+        "title": "Probabilistic Feature Imputation and Uncertainty-Aware Multimodal Federated Aggregation",
+        "authors": [
+          "Nafis Fuad Shahid",
+          "Maroof Ahmed",
+          "Md Akib Haider",
+          "Saidur Rahman Sagor",
+          "Aashnan Rahman",
+          "Md Azam Hossain"
+        ],
+        "published": "2026-04-14",
+        "summary": "Multimodal federated learning enables privacy-preserving collaborative model training across healthcare institutions. However, a fundamental challenge arises from modality heterogeneity: many clinical sites possess only a subset of modalities due to resource constraints or workflow variations. Existing approaches address this through feature imputation networks that synthesize missing modality representations, yet these methods produce point estimates without reliability measures, forcing downst",
+        "pdf_url": "https://arxiv.org/pdf/2604.12970v1",
+        "primary_category": "eess.IV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.12970v1",
+        "abstract": "Multimodal federated learning enables privacy-preserving collaborative model training across healthcare institutions. However, a fundamental challenge arises from modality heterogeneity: many clinical sites possess only a subset of modalities due to resource constraints or workflow variations. Existing approaches address this through feature imputation networks that synthesize missing modality representations, yet these methods produce point estimates without reliability measures, forcing downstream classifiers to treat all imputed features as equally trustworthy. In safety-critical medical applications, this limitation poses significant risks. We propose the Probabilistic Feature Imputation Network (P-FIN), which outputs calibrated uncertainty estimates alongside imputed features. This uncertainty is leveraged at two levels: (1) locally, through sigmoid gating that attenuates unreliable feature dimensions before classification, and (2) globally, through Fed-UQ-Avg, an aggregation strategy that prioritizes updates from clients with reliable imputation. Experiments on federated chest X-ray classification using CheXpert, NIH Open-I, and PadChest demonstrate consistent improvements over deterministic baselines, with +5.36% AUC gain in the most challenging configuration.",
+        "llm_keywords": "多模态联邦学习, 特征插补, 不确定性量化, 医疗影像分类, 联邦聚合",
+        "llm_summary": "本文针对多模态联邦学习中模态缺失问题，提出了一种概率特征插补网络（P-FIN），能同时输出插补特征和校准的不确定性估计。该方法在本地通过门控机制抑制不可靠特征，在全局通过加权聚合策略优先选择可靠的客户端更新，在胸部X光分类任务上显著提升了性能。",
+        "abstract_cn": "多模态联邦学习（Multimodal federated learning）使得跨医疗机构的隐私保护协作模型训练成为可能。然而，一个根本性的挑战来自模态异质性（modality heterogeneity）：由于资源限制或工作流程差异，许多临床站点仅拥有部分模态。现有方法通过特征插补网络（feature imputation networks）来合成缺失的模态表示，但这些方法产生的是点估计（point estimates），缺乏可靠性度量，迫使下游分类器将所有插补特征视为同等可信。在安全关键的医疗应用中，这一限制带来了重大风险。我们提出了概率特征插补网络（Probabilistic Feature Imputation Network, P-FIN），它在输出插补特征的同时，还输出校准的不确定性估计（calibrated uncertainty estimates）。这种不确定性在两个层面被利用：(1) 在本地，通过Sigmoid门控（sigmoid gating）在分类前衰减不可靠的特征维度；(2) 在全局，通过Fed-UQ-Avg（一种聚合策略）优先考虑来自具有可靠插补的客户端的更新。在利用CheXpert、NIH Open-I和PadChest数据集进行的联邦胸部X光分类（federated chest X-ray classification）实验中，该方法相比确定性基线（deterministic baselines）取得了持续改进，在最具挑战性的配置下获得了+5.36%的AUC增益。"
+      },
+      {
+        "title": "QuarkMedSearch: A Long-Horizon Deep Search Agent for Exploring Medical Intelligence",
+        "authors": [
+          "Zhichao Lin",
+          "Zhichao Liang",
+          "Gaoqiang Liu",
+          "Meng Xu",
+          "Baoyu Xiang",
+          "Jian Xu",
+          "Guanjun Jiang"
+        ],
+        "published": "2026-04-14",
+        "summary": "As agentic foundation models continue to evolve, how to further improve their performance in vertical domains has become an important challenge. To this end, building upon Tongyi DeepResearch, a powerful agentic foundation model, we focus on the Chinese medical deep search scenario and propose QuarkMedSearch, systematically exploring a full-pipeline approach spanning medical multi-hop data construction, training strategies, and evaluation benchmarks to further push and assess its performance upp",
+        "pdf_url": "https://arxiv.org/pdf/2604.12867v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.12867v1",
+        "abstract": "As agentic foundation models continue to evolve, how to further improve their performance in vertical domains has become an important challenge. To this end, building upon Tongyi DeepResearch, a powerful agentic foundation model, we focus on the Chinese medical deep search scenario and propose QuarkMedSearch, systematically exploring a full-pipeline approach spanning medical multi-hop data construction, training strategies, and evaluation benchmarks to further push and assess its performance upper bound in vertical domains. Specifically, for data synthesis, to address the scarcity of deep search training data in the medical domain, we combine a large-scale medical knowledge graph with real-time online exploration to construct long-horizon medical deep search training data; for post-training, we adopt a two-stage SFT and RL training strategy that progressively enhances the model's planning, tool invocation, and reflection capabilities required for deep search, while maintaining search efficiency; for evaluation, we collaborate with medical experts to construct the QuarkMedSearch Benchmark through rigorous manual verification. Experimental results demonstrate that QuarkMedSearch achieves state-of-the-art performance among open-source models of comparable scale on the QuarkMedSearch Benchmark, while also maintaining strong competitiveness on general benchmarks.",
+        "llm_keywords": "智能体基础模型, 医学深度搜索, 长程规划, 训练策略, 评估基准",
+        "llm_summary": "本文提出QuarkMedSearch，一个面向中文医学深度搜索场景的智能体。通过构建医学多跳训练数据、采用两阶段微调与强化学习训练策略，并建立专家验证的评估基准，提升了模型在垂直领域的深度搜索能力，在特定基准上达到同规模开源模型的领先水平。",
+        "abstract_cn": "随着智能体基础模型（agentic foundation models）的持续发展，如何进一步提升其在垂直领域的性能已成为一个重要挑战。为此，基于强大的智能体基础模型Tongyi DeepResearch，我们聚焦于中文医学深度搜索（deep search）场景，提出了QuarkMedSearch，系统地探索了涵盖医学多跳（multi-hop）数据构建、训练策略和评估基准的全流程方法，以进一步推动和评估其在垂直领域的性能上限。具体而言，在数据合成方面，为解决医学领域深度搜索训练数据的稀缺性，我们结合大规模医学知识图谱（knowledge graph）与实时在线探索来构建长程（long-horizon）医学深度搜索训练数据；在后训练（post-training）方面，我们采用两阶段的SFT（监督微调）和RL（强化学习）训练策略，逐步增强模型进行深度搜索所需的规划、工具调用和反思（reflection）能力，同时保持搜索效率；在评估方面，我们与医学专家合作，通过严格的人工验证构建了QuarkMedSearch Benchmark（基准）。实验结果表明，QuarkMedSearch在QuarkMedSearch Benchmark上达到了同规模开源模型中的最先进（state-of-the-art）性能，同时在通用基准上也保持了强大的竞争力。"
+      },
+      {
+        "title": "Scaling In-Context Segmentation with Hierarchical Supervision",
+        "authors": [
+          "T. Camaret Ndir",
+          "Marco Reisert",
+          "Robin T. Schirrmeister"
+        ],
+        "published": "2026-04-14",
+        "summary": "In-context learning (ICL) enables medical image segmentation models to adapt to new anatomical structures from limited examples, reducing the clinical annotation burden. However, standard ICL methods typically rely on dense, global cross-attention, which scales poorly with image resolution. While recent approaches have introduced localized attention mechanisms, they often lack explicit supervision on the selection process, leading to redundant computation in non-informative regions. We propose P",
+        "pdf_url": "https://arxiv.org/pdf/2604.12752v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.12752v1",
+        "abstract": "In-context learning (ICL) enables medical image segmentation models to adapt to new anatomical structures from limited examples, reducing the clinical annotation burden. However, standard ICL methods typically rely on dense, global cross-attention, which scales poorly with image resolution. While recent approaches have introduced localized attention mechanisms, they often lack explicit supervision on the selection process, leading to redundant computation in non-informative regions. We propose PatchICL, a hierarchical framework that combines selective image patching with multi-level supervision. Our approach learns to actively identify and attend only to the most informative anatomical regions. Compared to UniverSeg, a strong global-attention baseline, PatchICL achieves competitive in-domain CT segmentation accuracy while reducing compute by 44\\% at $512\\times512$ resolution. On 35 out-of-domain datasets spanning diverse imaging modalities, PatchICL outperforms the baseline on 6 of 13 modality categories, with particular strength on modalities dominated by localized pathology such as OCT and dermoscopy. Training and evaluation code are available at https://github.com/tidiane-camaret/ic_segmentation",
+        "llm_keywords": "上下文学习, 医学图像分割, 分层监督, 选择性图像分块, 计算效率",
+        "llm_summary": "本文提出PatchICL，一种结合选择性图像分块与分层监督的上下文学习框架，用于医学图像分割。该方法能主动识别并关注最具信息量的解剖区域，在保持分割精度的同时显著降低计算成本，并在多种成像模态上展现出优势。",
+        "abstract_cn": "上下文学习（In-context learning, ICL）使医学图像分割模型能够从有限示例中适应新的解剖结构，从而减轻临床标注负担。然而，标准的ICL方法通常依赖于密集的全局交叉注意力（global cross-attention），其计算复杂度随图像分辨率增加而急剧上升。尽管近期方法引入了局部注意力机制，但它们通常缺乏对选择过程的显式监督，导致在非信息区域进行冗余计算。我们提出了PatchICL，一个结合了选择性图像分块（selective image patching）与多级监督（multi-level supervision）的分层框架。我们的方法学习主动识别并仅关注最具信息量的解剖区域。与强全局注意力基线模型UniverSeg相比，PatchICL在512×512分辨率下实现了具有竞争力的域内CT分割精度，同时将计算量减少了44%。在涵盖多种成像模态的35个域外数据集上，PatchICL在13个模态类别中的6个上优于基线，尤其在以局部病理为主的模态（如OCT和皮肤镜检查）上表现出色。训练和评估代码可在 https://github.com/tidiane-camaret/ic_segmentation 获取。"
+      },
+      {
+        "title": "InsightFlow: LLM-Driven Synthesis of Patient Narratives for Mental Health into Causal Models",
+        "authors": [
+          "Shreya Gupta",
+          "Prottay Kumar Adhikary",
+          "Bhavyaa Dave",
+          "Salam Michael Singh",
+          "Aniket Deroy",
+          "Tanmoy Chakraborty"
+        ],
+        "published": "2026-04-14",
+        "summary": "Clinical case formulation organizes patient symptoms and psychosocial factors into causal models, often using the 5P framework. However, constructing such graphs from therapy transcripts is time consuming and varies across clinicians. We present InsightFlow, an LLM based approach that automatically generates 5P aligned causal graphs from patient-therapist dialogues. Using 46 psychotherapy intake transcripts annotated by clinical experts, we evaluate LLM generated graphs against human formulation",
+        "pdf_url": "https://arxiv.org/pdf/2604.12721v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.12721v1",
+        "abstract": "Clinical case formulation organizes patient symptoms and psychosocial factors into causal models, often using the 5P framework. However, constructing such graphs from therapy transcripts is time consuming and varies across clinicians. We present InsightFlow, an LLM based approach that automatically generates 5P aligned causal graphs from patient-therapist dialogues. Using 46 psychotherapy intake transcripts annotated by clinical experts, we evaluate LLM generated graphs against human formulations using structural (NetSimile), semantic (embedding similarity), and expert rated clinical criteria. The generated graphs show structural similarity comparable to inter annotator agreement and high semantic alignment with human graphs. Expert evaluations rate the outputs as moderately complete, consistent, and clinically useful. While LLM graphs tend to form more interconnected structures compared to the chain like patterns of human graphs, overall complexity and content coverage are similar. These results suggest that LLMs can produce clinically meaningful case formulation graphs within the natural variability of expert practice. InsightFlow highlights the potential of automated causal modeling to augment clinical workflows, with future work needed to improve temporal reasoning and reduce redundancy.",
+        "llm_keywords": "大型语言模型, 因果模型, 心理健康, 临床案例概念化, 自动化工作流",
+        "llm_summary": "本文提出InsightFlow，一种基于大型语言模型的方法，能够从医患对话中自动生成符合5P框架的因果图。通过与专家标注的对比评估，结果表明模型生成的图在结构、语义和临床实用性上与人工构建的图具有可比性，展现了自动化因果建模辅助临床工作流的潜力。",
+        "abstract_cn": "临床案例概念化(clinical case formulation)将患者症状和心理社会因素组织成因果模型，通常使用5P框架(5P framework)。然而，从治疗记录(therapy transcripts)构建此类图谱耗时且因临床医生而异。我们提出了InsightFlow，一种基于大型语言模型(LLM)的方法，可从患者-治疗师对话中自动生成符合5P框架的因果图。利用临床专家标注的46份心理治疗初始访谈记录，我们通过结构(NetSimile)、语义(嵌入相似度)和专家评定的临床标准，将LLM生成的图与人工概念化结果进行比较。生成的图显示出与标注者间一致性相当的结构相似性，以及与人工图的高度语义对齐。专家评估认为输出结果在完整性、一致性和临床实用性方面达到中等水平。虽然与人工图的链式模式相比，LLM生成的图倾向于形成更多互连结构，但整体复杂性和内容覆盖度相似。这些结果表明，LLM可以在专家实践的自然变异性范围内，生成具有临床意义的案例概念化图。InsightFlow凸显了自动化因果建模增强临床工作流的潜力，未来的工作需要改进时间推理(temporal reasoning)并减少冗余。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Agentic Discovery with Active Hypothesis Exploration for Visual Recognition",
+        "authors": [
+          "Jaywon Koo",
+          "Jefferson Hernandez",
+          "Ruozhen He",
+          "Hanjie Chen",
+          "Chen Wei",
+          "Vicente Ordonez"
+        ],
+        "published": "2026-04-14",
+        "summary": "We introduce HypoExplore, an agentic framework that formulates neural architecture discovery for visual recognition as a hypothesis-driven scientific inquiry. Given a human-specified high-level research direction, HypoExplore ideates, implements, evaluates, and improves neural architectures through evolutionary branching. New hypotheses are created using a large language model by selecting a parent hypothesis to build upon, guided by a dual strategy that balances exploiting validated principles ",
+        "pdf_url": "https://arxiv.org/pdf/2604.12999v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.12999v1",
+        "abstract": "We introduce HypoExplore, an agentic framework that formulates neural architecture discovery for visual recognition as a hypothesis-driven scientific inquiry. Given a human-specified high-level research direction, HypoExplore ideates, implements, evaluates, and improves neural architectures through evolutionary branching. New hypotheses are created using a large language model by selecting a parent hypothesis to build upon, guided by a dual strategy that balances exploiting validated principles with resolving uncertain ones. Our proposed framework maintains a Trajectory Tree that records the lineage of all proposed architectures, and a Hypothesis Memory Bank that actively tracks confidence scores acquired through experimental evidence. After each experiment, multiple feedback agents analyze the results from different perspectives and consolidate their findings into hypothesis confidence updates. Our framework is tested on discovering lightweight vision architectures on CIFAR-10, with the best achieving 94.11% accuracy evolved from a root node baseline that starts at 18.91%, and generalizes to CIFAR-100 and Tiny-ImageNet. We further demonstrate applicability to a specialized domain by conducting independent architecture discovery runs on MedMNIST, which yield a state-of-the-art performance. We show that hypothesis confidence scores grow increasingly predictive as evidence accumulates, and that the learned principles transfer across independent evolutionary lineages, suggesting that HypoExplore not only discovers stronger architectures, but can help build a genuine understanding of the design space.",
+        "llm_keywords": "智能体框架, 假设驱动探索, 神经架构搜索, 视觉识别, 演化学习",
+        "llm_summary": "本文提出HypoExplore框架，将视觉识别的神经架构发现建模为假设驱动的科学探索。该框架利用大语言模型生成新假设，通过演化分支和实验反馈不断优化架构。在CIFAR-10等数据集上取得了显著性能提升，并展示了在医学图像领域的迁移能力，表明其能深入理解设计空间。",
+        "abstract_cn": "我们提出了HypoExplore，这是一个智能体（agentic）框架，它将视觉识别（visual recognition）的神经架构发现（neural architecture discovery）构建为假设驱动的科学探究。给定一个人指定的高层次研究方向，HypoExplore通过演化分支（evolutionary branching）构思、实现、评估和改进神经架构。新假设由大语言模型（large language model）创建，通过选择父假设进行构建，并遵循一种双重策略（dual strategy）的指导，该策略平衡了对已验证原理的利用（exploiting）与对不确定原理的解决（resolving）。我们提出的框架维护了一个记录所有提出架构谱系的轨迹树（Trajectory Tree），以及一个通过实验证据主动跟踪置信度分数的假设记忆库（Hypothesis Memory Bank）。每次实验后，多个反馈代理（feedback agents）从不同角度分析结果，并将其发现整合到假设置信度更新中。我们的框架在CIFAR-10上发现轻量级视觉架构（lightweight vision architectures）进行了测试，最佳架构从根节点基线（root node baseline）的18.91%准确率演化至94.11%，并推广到CIFAR-100和Tiny-ImageNet。我们通过在MedMNIST上进行独立的架构发现运行，进一步证明了其在专业领域的适用性，并获得了最先进的性能（state-of-the-art performance）。我们表明，随着证据的积累，假设置信度分数变得越来越具有预测性，并且学习到的原理可以在独立的演化谱系（evolutionary lineages）间迁移，这表明HypoExplore不仅发现了更强的架构，而且有助于建立对设计空间（design space）的真正理解。"
+      },
+      {
+        "title": "QuarkMedSearch: A Long-Horizon Deep Search Agent for Exploring Medical Intelligence",
+        "authors": [
+          "Zhichao Lin",
+          "Zhichao Liang",
+          "Gaoqiang Liu",
+          "Meng Xu",
+          "Baoyu Xiang",
+          "Jian Xu",
+          "Guanjun Jiang"
+        ],
+        "published": "2026-04-14",
+        "summary": "As agentic foundation models continue to evolve, how to further improve their performance in vertical domains has become an important challenge. To this end, building upon Tongyi DeepResearch, a powerful agentic foundation model, we focus on the Chinese medical deep search scenario and propose QuarkMedSearch, systematically exploring a full-pipeline approach spanning medical multi-hop data construction, training strategies, and evaluation benchmarks to further push and assess its performance upp",
+        "pdf_url": "https://arxiv.org/pdf/2604.12867v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.12867v1",
+        "abstract": "As agentic foundation models continue to evolve, how to further improve their performance in vertical domains has become an important challenge. To this end, building upon Tongyi DeepResearch, a powerful agentic foundation model, we focus on the Chinese medical deep search scenario and propose QuarkMedSearch, systematically exploring a full-pipeline approach spanning medical multi-hop data construction, training strategies, and evaluation benchmarks to further push and assess its performance upper bound in vertical domains. Specifically, for data synthesis, to address the scarcity of deep search training data in the medical domain, we combine a large-scale medical knowledge graph with real-time online exploration to construct long-horizon medical deep search training data; for post-training, we adopt a two-stage SFT and RL training strategy that progressively enhances the model's planning, tool invocation, and reflection capabilities required for deep search, while maintaining search efficiency; for evaluation, we collaborate with medical experts to construct the QuarkMedSearch Benchmark through rigorous manual verification. Experimental results demonstrate that QuarkMedSearch achieves state-of-the-art performance among open-source models of comparable scale on the QuarkMedSearch Benchmark, while also maintaining strong competitiveness on general benchmarks.",
+        "llm_keywords": "智能体基础模型, 医学深度搜索, 长程规划, 训练策略, 评估基准",
+        "llm_summary": "本文提出QuarkMedSearch，一个面向中文医学深度搜索场景的智能体。通过构建医学多跳训练数据、采用两阶段微调与强化学习训练策略，并建立专家验证的评估基准，提升了模型在垂直领域的深度搜索能力，在特定基准上达到同规模开源模型的领先水平。",
+        "abstract_cn": "随着智能体基础模型（agentic foundation models）的持续发展，如何进一步提升其在垂直领域的性能已成为一个重要挑战。为此，基于强大的智能体基础模型Tongyi DeepResearch，我们聚焦于中文医学深度搜索（deep search）场景，提出了QuarkMedSearch，系统地探索了涵盖医学多跳（multi-hop）数据构建、训练策略和评估基准的全流程方法，以进一步推动和评估其在垂直领域的性能上限。具体而言，在数据合成方面，为解决医学领域深度搜索训练数据的稀缺性，我们结合大规模医学知识图谱（knowledge graph）与实时在线探索来构建长程（long-horizon）医学深度搜索训练数据；在后训练（post-training）方面，我们采用两阶段的SFT（监督微调）和RL（强化学习）训练策略，逐步增强模型进行深度搜索所需的规划、工具调用和反思（reflection）能力，同时保持搜索效率；在评估方面，我们与医学专家合作，通过严格的人工验证构建了QuarkMedSearch Benchmark（基准）。实验结果表明，QuarkMedSearch在QuarkMedSearch Benchmark上达到了同规模开源模型中的最先进（state-of-the-art）性能，同时在通用基准上也保持了强大的竞争力。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "DoseRAD2026 Challenge dataset: AI accelerated photon and proton dose calculation for radiotherapy",
+        "authors": [
+          "Fan Xiao",
+          "Nikolaos Delopoulos",
+          "Niklas Wahl",
+          "Lennart Volz",
+          "Lina Bucher",
+          "Matteo Maspero",
+          "Miguel Palacios",
+          "Muheng Li",
+          "Samir Schulz",
+          "Viktor Rogowski",
+          "Ye Zhang",
+          "Zoltan Perko",
+          "Christopher Kurz",
+          "George Dedes",
+          "Guillaume Landry",
+          "Adrian Thummerer"
+        ],
+        "published": "2026-04-14",
+        "summary": "Purpose: Accurate dose calculation is essential in radiotherapy for precise tumor irradiation while sparing healthy tissue. With the growing adoption of MRI-guided and real-time adaptive radiotherapy, fast and accurate dose calculation on CT and MRI is increasingly needed. The DoseRAD2026 dataset and challenge provide a public benchmark of paired CT and MRI data with beam-level photon and proton Monte Carlo dose distributions for developing and evaluating advanced dose calculation methods. Acqui",
+        "pdf_url": "https://arxiv.org/pdf/2604.12778v1",
+        "primary_category": "physics.med-ph",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.12778v1",
+        "abstract": "Purpose: Accurate dose calculation is essential in radiotherapy for precise tumor irradiation while sparing healthy tissue. With the growing adoption of MRI-guided and real-time adaptive radiotherapy, fast and accurate dose calculation on CT and MRI is increasingly needed. The DoseRAD2026 dataset and challenge provide a public benchmark of paired CT and MRI data with beam-level photon and proton Monte Carlo dose distributions for developing and evaluating advanced dose calculation methods. Acquisition and validation methods: The dataset comprises paired CT and MRI from 115 patients (75 training, 40 testing) treated on an MRI-linac for thoracic or abdominal lesions, derived from the SynthRAD2025 dataset. Pre-processing included deformable image registration, air-cavity correction, and resampling. Ground-truth photon (6 MV) and proton dose distributions were computed using open-source Monte Carlo algorithms, yielding 40,500 photon beams and 81,000 proton beamlets. Data format and usage notes: Data are organized into photon and proton subsets with paired CT-MRI images, beam-level dose distributions, and JSON beam configuration files. Files are provided in compressed MetaImage (.mha) format. The dataset is released under CC BY-NC 4.0, with training data available from April 2026 and the test set withheld until March 2030. Potential applications: The dataset supports benchmarking of fast dose calculation methods, including beam-level dose estimation for photon and proton therapy, MRI-based dose calculation in MRI-guided workflows, and real-time adaptive radiotherapy.",
+        "llm_keywords": "放射治疗剂量计算, 蒙特卡洛模拟, 光子与质子治疗, MRI引导放疗, 自适应放疗",
+        "llm_summary": "DoseRAD2026数据集为放疗剂量计算提供了公开基准，包含115名患者的配对CT与MRI图像，以及基于蒙特卡洛方法计算的光子和质子束级剂量分布。该数据集旨在支持快速、准确的剂量计算方法开发与评估，尤其适用于MRI引导和实时自适应放疗场景。",
+        "abstract_cn": "目的：在放射治疗中，精确的剂量计算对于精准照射肿瘤并保护健康组织至关重要。随着MRI引导和实时自适应放疗的日益普及，越来越需要在CT和MRI上进行快速且准确的剂量计算。DoseRAD2026数据集和挑战赛提供了一个公开基准，包含配对的CT和MRI数据以及束级的光子和质子蒙特卡洛剂量分布，用于开发和评估先进的剂量计算方法。采集与验证方法：该数据集包含来自115名患者（75例训练，40例测试）的配对CT和MRI，这些患者因胸部或腹部病变在MRI-linac上接受治疗，数据源自SynthRAD2025数据集。预处理包括可变形图像配准、空腔校正和重采样。使用开源蒙特卡洛算法计算了真实的光子（6 MV）和质子剂量分布，生成了40,500个光子束和81,000个质子束流。数据格式与使用说明：数据按光子和质子子集组织，包含配对的CT-MRI图像、束级剂量分布以及JSON束流配置文件。文件以压缩的MetaImage (.mha)格式提供。该数据集在CC BY-NC 4.0许可下发布，训练数据自2026年4月起可用，测试集保留至2030年3月。潜在应用：该数据集支持快速剂量计算方法的基准测试，包括光子和质子治疗的束级剂量估计、MRI引导工作流程中基于MRI的剂量计算以及实时自适应放疗。"
+      }
+    ]
+  },
+  "total_count": 8,
+  "generated_at": "2026-04-15T22:44:13.910321"
+}
