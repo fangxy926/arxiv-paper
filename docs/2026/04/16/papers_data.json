@@ -1,0 +1,62 @@
+{
+  "date_range": {
+    "start_date": "2026-04-15",
+    "end_date": "2026-04-15"
+  },
+  "topics": [
+    "医疗智能体",
+    "医疗大模型"
+  ],
+  "papers_by_topic": {
+    "医疗智能体": [
+      {
+        "title": "Acts of Configuration: Rethinking Provenance, Temporality and Legitimacy in Post-Mortem Agents",
+        "authors": [
+          "Kellie Yu Hui Sim",
+          "Pin Sym Foong",
+          "Darryl Lim",
+          "John-Henry Lim",
+          "Kenny Tsu Wei Choo"
+        ],
+        "published": "2026-04-15",
+        "summary": "Work on persona-persistent post-mortem agents typically frames design around a life/death binary. This framing neglects a consequential yet under-theorised condition: when individuals remain alive but have impaired decisional capacity. Drawing on a multi-phase workshop in which participants trained and reflected on an AI agent for Advance Care Planning, we examined how people reason about agentic delegation post-capacity loss. Initially, participants favoured bounded agents grounded in first-par",
+        "pdf_url": "https://arxiv.org/pdf/2604.13996v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.13996v1",
+        "abstract": "Work on persona-persistent post-mortem agents typically frames design around a life/death binary. This framing neglects a consequential yet under-theorised condition: when individuals remain alive but have impaired decisional capacity. Drawing on a multi-phase workshop in which participants trained and reflected on an AI agent for Advance Care Planning, we examined how people reason about agentic delegation post-capacity loss. Initially, participants favoured bounded agents grounded in first-party authorship and representational fidelity over autonomous or evolving stand-ins. However, temporality introduced novel ideas like adjacent use driven by persona persistence over functional expansion: agents should evolve while users retain capacity, remain static once capacity is lost, but somehow inform adjacent post-mortem uses. We discuss the implications of these findings and propose that the configuration of agents for post-capacity use reshapes our understanding of provenance, temporality, and legitimacy for post-mortem agents.",
+        "llm_keywords": "死后代理, 决策能力丧失, 时间性, 来源, 合法性",
+        "llm_summary": "本文挑战了死后代理设计中生/死的二元框架，关注个体在世但决策能力受损的情况。通过工作坊研究，发现人们最初偏好基于本人创作和表征保真度的有限代理，而非自主或演化的替身。但时间性引入了新观念，如代理应在用户有能力时演化，失去能力后保持静态，并影响相邻的死后用途。这重塑了我们对死后代理的来源、时间性和合法性的理解。",
+        "abstract_cn": "关于人格持久性死后代理（post-mortem agents）的研究通常围绕生/死二元论来构建设计框架。这种框架忽略了一个重要但理论化不足的条件：当个体仍然在世但决策能力（decisional capacity）受损时。基于一个多阶段工作坊（workshop），参与者训练并反思了一个用于预先护理计划（Advance Care Planning）的AI代理，我们研究了人们如何推理能力丧失后的代理委托（agentic delegation）。最初，参与者倾向于基于第一方作者身份（first-party authorship）和表征保真度（representational fidelity）的有界代理（bounded agents），而非自主或演化的替身。然而，时间性（temporality）引入了新的观念，例如由人格持久性（persona persistence）而非功能扩展驱动的相邻使用（adjacent use）：代理应在用户保有决策能力时演化，一旦能力丧失则保持静态，但应以某种方式影响相邻的死后用途。我们讨论了这些发现的启示，并提出为能力丧失后使用而进行的代理配置（configuration），重塑了我们对死后代理的来源（provenance）、时间性（temporality）和合法性（legitimacy）的理解。"
+      }
+    ],
+    "医疗大模型": [
+      {
+        "title": "MApLe: Multi-instance Alignment of Diagnostic Reports and Large Medical Images",
+        "authors": [
+          "Felicia Bader",
+          "Philipp Seeböck",
+          "Anastasia Bartashova",
+          "Ulrike Attenberger",
+          "Georg Langs"
+        ],
+        "published": "2026-04-15",
+        "summary": "In diagnostic reports, experts encode complex imaging data into clinically actionable information. They describe subtle pathological findings that are meaningful in their anatomical context. Reports follow relatively consistent structures, expressing diagnostic information with few words that are often associated with tiny but consequential image observations. Standard vision language models struggle to identify the associations between these informative text components and small locations in th",
+        "pdf_url": "https://arxiv.org/pdf/2604.13970v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.13970v1",
+        "abstract": "In diagnostic reports, experts encode complex imaging data into clinically actionable information. They describe subtle pathological findings that are meaningful in their anatomical context. Reports follow relatively consistent structures, expressing diagnostic information with few words that are often associated with tiny but consequential image observations. Standard vision language models struggle to identify the associations between these informative text components and small locations in the images. Here, we propose \"MApLe\", a multi-task, multi-instance vision language alignment approach that overcomes these limitations. It disentangles the concepts of anatomical region and diagnostic finding, and links local image information to sentences in a patch-wise approach. Our method consists of a text embedding trained to capture anatomical and diagnostic concepts in sentences, a patch-wise image encoder conditioned on anatomical structures, and a multi-instance alignment of these representations. We demonstrate that MApLe can successfully align different image regions and multiple diagnostic findings in free-text reports. We show that our model improves the alignment performance compared to state-of-the-art baseline models when evaluated on several downstream tasks. The code is available at https://github.com/cirmuw/MApLe.",
+        "llm_keywords": "医学影像, 诊断报告, 多实例对齐, 视觉语言模型, 解剖区域",
+        "llm_summary": "本文提出MApLe方法，通过多任务、多实例视觉语言对齐，解决标准模型难以关联诊断报告文本与医学影像微小区域的问题。该方法分离解剖区域与诊断发现概念，并建立图像块与句子的关联，在多个下游任务中表现优于现有基线模型。",
+        "abstract_cn": "在诊断报告中，专家将复杂的影像数据编码为具有临床指导意义的信息。他们描述在解剖学背景中有意义的细微病理发现。报告遵循相对一致的结构，用少量词语表达诊断信息，这些词语通常与微小但关键的图像观察结果相关。标准的视觉语言模型难以识别这些信息丰富的文本成分与图像中微小位置之间的关联。在此，我们提出“MApLe”，一种多任务、多实例的视觉语言对齐方法，以克服这些限制。它解耦了解剖区域和诊断发现的概念，并以分块（patch-wise）的方式将局部图像信息与句子关联起来。我们的方法包括一个经过训练以捕捉句子中解剖和诊断概念的文本嵌入器、一个基于解剖结构进行条件编码的分块图像编码器，以及对这些表示进行多实例对齐。我们证明MApLe能够成功对齐自由文本报告中的不同图像区域和多个诊断发现。我们展示了在多个下游任务评估中，与最先进的基线模型相比，我们的模型提高了对齐性能。代码可在 https://github.com/cirmuw/MApLe 获取。"
+      }
+    ]
+  },
+  "total_count": 2,
+  "generated_at": "2026-04-16T22:40:54.883155"
+}
