@@ -1,0 +1,234 @@
+{
+  "date_range": {
+    "start_date": "2026-04-16",
+    "end_date": "2026-04-16"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "RadAgent: A tool-using AI agent for stepwise interpretation of chest computed tomography",
+        "authors": [
+          "Mélanie Roschewitz",
+          "Kenneth Styppa",
+          "Yitian Tao",
+          "Jiwoong Sohn",
+          "Jean-Benoit Delbrouck",
+          "Benjamin Gundersen",
+          "Nicolas Deperrois",
+          "Christian Bluethgen",
+          "Julia Vogt",
+          "Bjoern Menze",
+          "Farhad Nooralahzadeh",
+          "Michael Krauthammer",
+          "Michael Moor"
+        ],
+        "published": "2026-04-16",
+        "summary": "Vision-language models (VLM) have markedly advanced AI-driven interpretation and reporting of complex medical imaging, such as computed tomography (CT). Yet, existing methods largely relegate clinicians to passive observers of final outputs, offering no interpretable reasoning trace for them to inspect, validate, or refine. To address this, we introduce RadAgent, a tool-using AI agent that generates CT reports through a stepwise and interpretable process. Each resulting report is accompanied by ",
+        "pdf_url": "https://arxiv.org/pdf/2604.15231v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.15231v1",
+        "abstract": "Vision-language models (VLM) have markedly advanced AI-driven interpretation and reporting of complex medical imaging, such as computed tomography (CT). Yet, existing methods largely relegate clinicians to passive observers of final outputs, offering no interpretable reasoning trace for them to inspect, validate, or refine. To address this, we introduce RadAgent, a tool-using AI agent that generates CT reports through a stepwise and interpretable process. Each resulting report is accompanied by a fully inspectable trace of intermediate decisions and tool interactions, allowing clinicians to examine how the reported findings are derived. In our experiments, we observe that RadAgent improves Chest CT report generation over its 3D VLM counterpart, CT-Chat, across three dimensions. Clinical accuracy improves by 6.0 points (36.4% relative) in macro-F1 and 5.4 points (19.6% relative) in micro-F1. Robustness under adversarial conditions improves by 24.7 points (41.9% relative). Furthermore, RadAgent achieves 37.0% in faithfulness, a new capability entirely absent in its 3D VLM counterpart. By structuring the interpretation of chest CT as an explicit, tool-augmented and iterative reasoning trace, RadAgent brings us closer toward transparent and reliable AI for radiology.",
+        "llm_keywords": "人工智能代理, 胸部CT解读, 可解释性, 工具使用, 放射学报告",
+        "llm_summary": "本文介绍了RadAgent，一种使用工具的人工智能代理，用于胸部CT的逐步、可解释的解读和报告生成。它通过提供可检查的中间决策和工具交互痕迹，使临床医生能够验证和优化结果。实验表明，RadAgent在临床准确性、对抗条件下的鲁棒性以及忠实度方面均优于其前代模型，推动了放射学AI的透明化和可靠性。",
+        "abstract_cn": "视觉语言模型（VLM）显著推动了人工智能（AI）在复杂医学影像（如计算机断层扫描（CT））解读和报告方面的进展。然而，现有方法在很大程度上将临床医生置于最终输出的被动观察者位置，没有提供可解释的推理痕迹供他们检查、验证或优化。为了解决这个问题，我们引入了RadAgent，一个使用工具的人工智能代理，它通过逐步且可解释的过程生成CT报告。每份生成的报告都附带一个完全可检查的中间决策和工具交互痕迹，允许临床医生检查报告中的发现是如何得出的。在我们的实验中，我们观察到RadAgent在三个维度上改进了胸部CT报告生成，优于其三维视觉语言模型（3D VLM）对应物CT-Chat。临床准确性在宏观F1分数上提高了6.0分（相对提升36.4%），在微观F1分数上提高了5.4分（相对提升19.6%）。在对抗条件下的鲁棒性提高了24.7分（相对提升41.9%）。此外，RadAgent在忠实度（faithfulness）方面达到了37.0%，这是其3D VLM对应物完全不具备的新能力。通过将胸部CT的解读构建为一个明确的、工具增强的迭代推理痕迹，RadAgent使我们更接近透明和可靠的放射学AI。"
+      },
+      {
+        "title": "MADE: A Living Benchmark for Multi-Label Text Classification with Uncertainty Quantification of Medical Device Adverse Events",
+        "authors": [
+          "Raunak Agarwal",
+          "Markus Wenzel",
+          "Simon Baur",
+          "Jonas Zimmer",
+          "George Harvey",
+          "Jackie Ma"
+        ],
+        "published": "2026-04-16",
+        "summary": "Machine learning in high-stakes domains such as healthcare requires not only strong predictive performance but also reliable uncertainty quantification (UQ) to support human oversight. Multi-label text classification (MLTC) is a central task in this domain, yet remains challenging due to label imbalances, dependencies, and combinatorial complexity. Existing MLTC benchmarks are increasingly saturated and may be affected by training data contamination, making it difficult to distinguish genuine re",
+        "pdf_url": "https://arxiv.org/pdf/2604.15203v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.15203v1",
+        "abstract": "Machine learning in high-stakes domains such as healthcare requires not only strong predictive performance but also reliable uncertainty quantification (UQ) to support human oversight. Multi-label text classification (MLTC) is a central task in this domain, yet remains challenging due to label imbalances, dependencies, and combinatorial complexity. Existing MLTC benchmarks are increasingly saturated and may be affected by training data contamination, making it difficult to distinguish genuine reasoning capabilities from memorization. We introduce MADE, a living MLTC benchmark derived from {m}edical device {ad}verse {e}vent reports and continuously updated with newly published reports to prevent contamination. MADE features a long-tailed distribution of hierarchical labels and enables reproducible evaluation with strict temporal splits. We establish baselines across more than 20 encoder- and decoder-only models under fine-tuning and few-shot settings (instruction-tuned/reasoning variants, local/API-accessible). We systematically assess entropy-/consistency-based and self-verbalized UQ methods. Results show clear trade-offs: smaller discriminatively fine-tuned decoders achieve the strongest head-to-tail accuracy while maintaining competitive UQ; generative fine-tuning delivers the most reliable UQ; large reasoning models improve performance on rare labels yet exhibit surprisingly weak UQ; and self-verbalized confidence is not a reliable proxy for uncertainty. Our work is publicly available at https://hhi.fraunhofer.de/aml-demonstrator/made-benchmark.",
+        "llm_keywords": "多标签文本分类, 不确定性量化, 医疗设备不良事件, 基准测试, 机器学习",
+        "llm_summary": "本文介绍了MADE，一个用于医疗设备不良事件报告的多标签文本分类动态基准。该基准具有层次化标签长尾分布和严格时间划分，可防止数据污染。研究评估了20多个模型在微调和少样本设置下的性能及多种不确定性量化方法，揭示了不同方法在准确性与不确定性可靠性之间的权衡。",
+        "abstract_cn": "在医疗等高风险领域应用机器学习，不仅需要强大的预测性能，还需要可靠的不确定性量化（UQ）以支持人类监督。多标签文本分类（MLTC）是该领域的核心任务，但由于标签不平衡、依赖性和组合复杂性，仍然具有挑战性。现有的MLTC基准日益饱和，并可能受到训练数据污染的影响，使得难以区分真正的推理能力与记忆能力。我们引入了MADE，这是一个源自医疗设备不良事件报告的动态MLTC基准，并通过持续更新新发布的报告来防止污染。MADE具有层次化标签的长尾分布特征，并支持通过严格的时间划分进行可重复评估。我们在微调和少样本设置（指令调优/推理变体、本地/API可访问）下，为超过20个编码器和仅解码器模型建立了基线。我们系统地评估了基于熵/一致性的以及自我言语化的UQ方法。结果显示明显的权衡：较小的判别式微调解码器在保持有竞争力的UQ的同时，实现了最强的从头到尾的准确性；生成式微调提供了最可靠的UQ；大型推理模型提高了稀有标签的性能，却表现出令人惊讶的弱UQ；而自我言语化的置信度并非不确定性的可靠代理。我们的工作可在 https://hfi.fraunhofer.de/aml-demonstrator/made-benchmark 公开获取。"
+      },
+      {
+        "title": "Blinded Multi-Rater Comparative Evaluation of a Large Language Model and Clinician-Authored Responses in CGM-Informed Diabetes Counseling",
+        "authors": [
+          "Zhijun Guo",
+          "Alvina Lai",
+          "Emmanouil Korakas",
+          "Aristeidis Vagenas",
+          "Irshad Ahamed",
+          "Christo Albor",
+          "Hengrui Zhang",
+          "Justin Healy",
+          "Kezhi Li"
+        ],
+        "published": "2026-04-16",
+        "summary": "Continuous glucose monitoring (CGM) is central to diabetes care, but explaining CGM patterns clearly and empathetically remains time-intensive. Evidence for retrieval-grounded large language model (LLM) systems in CGM-informed counseling remains limited. To evaluate whether a retrieval-grounded LLM-based conversational agent (CA) could support patient understanding of CGM data and preparation for routine diabetes consultations. We developed a retrieval-grounded LLM-based CA for CGM interpretatio",
+        "pdf_url": "https://arxiv.org/pdf/2604.15124v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.15124v1",
+        "abstract": "Continuous glucose monitoring (CGM) is central to diabetes care, but explaining CGM patterns clearly and empathetically remains time-intensive. Evidence for retrieval-grounded large language model (LLM) systems in CGM-informed counseling remains limited. To evaluate whether a retrieval-grounded LLM-based conversational agent (CA) could support patient understanding of CGM data and preparation for routine diabetes consultations. We developed a retrieval-grounded LLM-based CA for CGM interpretation and diabetes counseling support. The system generated plain-language responses while avoiding individualized therapeutic advice. Twelve CGM-informed cases were constructed from publicly available datasets. Between Oct 2025 and Feb 2026, 6 senior UK diabetes clinicians each reviewed 2 assigned cases and answered 24 questions. In a blinded multi-rater evaluation, each CA-generated and clinician-authored response was independently rated by 3 clinicians on 6 quality dimensions. Safety flags and perceived source labels were also recorded. Primary analyses used linear mixed-effects models. A total of 288 unique responses (144 CA and 144 clinician) generated 864 ratings. The CA received higher quality scores than clinician responses (mean 4.37 vs 3.58), with an estimated mean difference of 0.782 points (95% CI 0.692-0.872; P<.001). The largest differences were for empathy (1.062, 95% CI 0.948-1.177) and actionability (0.992, 95% CI 0.877-1.106). Safety flag distributions were similar, with major concerns rare in both groups (3/432, 0.7% each). Retrieval-grounded LLM systems may have value as adjunct tools for CGM review, patient education, and preconsultation preparation. However, these findings do not support autonomous therapeutic decision-making or unsupervised real-world use.",
+        "llm_keywords": "连续血糖监测, 大型语言模型, 糖尿病咨询, 盲法评估, 临床决策支持",
+        "llm_summary": "本研究通过盲法多评估者比较，发现基于检索增强的大型语言模型对话系统在连续血糖监测数据解读咨询中，其生成回复在质量、共情性和可操作性上均显著优于临床医生撰写的回复，且安全性相当。结果表明该系统可作为患者教育和诊前准备的有用辅助工具，但不支持其自主治疗决策或无监督的临床使用。",
+        "abstract_cn": "连续血糖监测（Continuous glucose monitoring, CGM）是糖尿病护理的核心，但清晰且富有同理心地解释CGM模式仍然耗时。基于检索增强的大型语言模型（large language model, LLM）系统在CGM知情咨询中的证据仍然有限。为了评估基于检索增强的LLM对话代理（conversational agent, CA）是否能够支持患者理解CGM数据并为常规糖尿病咨询做准备，我们开发了一个用于CGM解读和糖尿病咨询支持的、基于检索增强的LLM对话代理。该系统生成通俗易懂的回应，同时避免提供个体化治疗建议。我们从公开数据集中构建了12个CGM知情案例。在2025年10月至2026年2月期间，6名英国资深糖尿病临床医生每人审查了2个指定案例并回答了24个问题。在一项盲法多评估者评估中，每个CA生成的和临床医生撰写的回应均由3名临床医生在6个质量维度上独立评分。同时记录了安全标记和感知来源标签。主要分析使用线性混合效应模型。总共288个独特回应（144个CA生成，144个临床医生撰写）产生了864个评分。CA获得的质量评分高于临床医生回应（平均4.37分 vs 3.58分），估计平均差为0.782分（95% CI 0.692-0.872；P<.001）。差异最大的是共情性（1.062，95% CI 0.948-1.177）和可操作性（0.992，95% CI 0.877-1.106）。安全标记分布相似，两组中主要担忧均罕见（各3/432，0.7%）。基于检索增强的LLM系统可能作为CGM回顾、患者教育和诊前准备的辅助工具具有价值。然而，这些发现并不支持其用于自主治疗决策或无监督的真实世界使用。"
+      },
+      {
+        "title": "Beyond Independent Frames: Latent Attention Masked Autoencoders for Multi-View Echocardiography",
+        "authors": [
+          "Simon Böhi",
+          "Irene Cannistraci",
+          "Sergio Muñoz Gonzalez",
+          "Moritz Vandenhirtz",
+          "Sonia Laguna",
+          "Samuel Ruiperez-Campillo",
+          "Max Krähenmann",
+          "Andrea Agostini",
+          "Ece Ozkan",
+          "Thomas M. Sutter",
+          "Julia E. Vogt"
+        ],
+        "published": "2026-04-16",
+        "summary": "Echocardiography is a widely used modality for cardiac assessment due to its non-invasive and cost-effective nature, but the sparse and heterogeneous spatiotemporal views of the heart pose distinct challenges. Existing masked autoencoder (MAE) approaches typically process images or short clips independently, failing to capture the inherent multi-view structure required for coherent cardiac representation. We introduce Latent Attention Masked Autoencoder (LAMAE), a foundation model architecture t",
+        "pdf_url": "https://arxiv.org/pdf/2604.15096v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.15096v1",
+        "abstract": "Echocardiography is a widely used modality for cardiac assessment due to its non-invasive and cost-effective nature, but the sparse and heterogeneous spatiotemporal views of the heart pose distinct challenges. Existing masked autoencoder (MAE) approaches typically process images or short clips independently, failing to capture the inherent multi-view structure required for coherent cardiac representation. We introduce Latent Attention Masked Autoencoder (LAMAE), a foundation model architecture tailored to the multi-view nature of medical imaging. LAMAE augments the standard MAE with a latent attention module that enables information exchange across frames and views directly in latent space. This allows the model to aggregate variable-length sequences and distinct views, reconstructing a holistic representation of cardiac function from partial observations. We pretrain LAMAE on MIMIC-IV-ECHO, a large-scale, uncurated dataset reflecting real-world clinical variability. To the best of our knowledge, we present the first results for predicting ICD-10 codes from MIMIC-IV-ECHO videos. Furthermore, we empirically demonstrate that representations learned from adult data transfer effectively to pediatric cohorts despite substantial anatomical differences. These results provide evidence that incorporating structural priors, such as multi-view attention, yields significantly more robust and transferable representations.",
+        "llm_keywords": "潜在注意力掩码自编码器, 多视图超声心动图, 心脏功能表示, 跨视图信息交换, 医学影像基础模型",
+        "llm_summary": "本文提出了一种针对多视图医学影像的潜在注意力掩码自编码器（LAMAE）基础模型。该模型通过潜在注意力模块在隐空间实现跨帧和跨视图的信息交换，能够从部分观测中重建心脏功能的整体表示。在MIMIC-IV-ECHO数据集上的预训练表明，其学习到的表征能有效预测ICD-10编码，并能从成人数据迁移到儿科队列，证明了多视图注意力先验能带来更鲁棒和可迁移的表征。",
+        "abstract_cn": "超声心动图（Echocardiography）因其无创和成本效益高而被广泛用于心脏评估，但心脏稀疏且异质的时空视图带来了独特的挑战。现有的掩码自编码器（MAE）方法通常独立处理图像或短视频片段，无法捕捉连贯心脏表征所需的内在多视图结构。我们引入了潜在注意力掩码自编码器（Latent Attention Masked Autoencoder, LAMAE），这是一种专为医学影像多视图特性定制的基础模型架构。LAMAE通过一个潜在注意力模块增强了标准MAE，该模块允许在潜在空间（latent space）中直接跨帧和跨视图交换信息。这使得模型能够聚合可变长度序列和不同视图，从部分观测中重建心脏功能的整体表示。我们在MIMIC-IV-ECHO（一个反映真实世界临床变异的大规模、未经整理的数据集）上对LAMAE进行了预训练。据我们所知，我们首次展示了从MIMIC-IV-ECHO视频预测ICD-10代码的结果。此外，我们通过实验证明，尽管存在显著的解剖学差异，从成人数据学习到的表征能有效地迁移到儿科队列。这些结果证明，融入结构性先验（如多视图注意力）能产生显著更鲁棒和可迁移的表征。"
+      },
+      {
+        "title": "Hybrid Decision Making via Conformal VLM-generated Guidance",
+        "authors": [
+          "Debodeep Banerjee",
+          "Burcu Sayin",
+          "Stefano Teso",
+          "Andrea Passerini"
+        ],
+        "published": "2026-04-16",
+        "summary": "Building on recent advances in AI, hybrid decision making (HDM) holds the promise of improving human decision quality and reducing cognitive load. We work in the context of learning to guide (LtG), a recently proposed HDM framework in which the human is always responsible for the final decision: rather than suggesting decisions, in LtG the AI supplies (textual) guidance useful for facilitating decision making. One limiting factor of existing approaches is that their guidance compounds informatio",
+        "pdf_url": "https://arxiv.org/pdf/2604.14980v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.14980v1",
+        "abstract": "Building on recent advances in AI, hybrid decision making (HDM) holds the promise of improving human decision quality and reducing cognitive load. We work in the context of learning to guide (LtG), a recently proposed HDM framework in which the human is always responsible for the final decision: rather than suggesting decisions, in LtG the AI supplies (textual) guidance useful for facilitating decision making. One limiting factor of existing approaches is that their guidance compounds information about all possible outcomes, and as a result it can be difficult to digest. We address this issue by introducing ConfGuide, a novel LtG approach that generates more succinct and targeted guidance. To this end, it employs conformal risk control to select a set of outcomes, ensuring a cap on the false negative rate. We demonstrate our approach on a real-world multi-label medical diagnosis task. Our empirical evaluation highlights the promise of ConfGuide.",
+        "llm_keywords": "混合决策, 学习引导, 共形风险控制, 多标签医疗诊断, 人工智能辅助",
+        "llm_summary": "本文提出ConfGuide方法，通过共形风险控制生成简洁、有针对性的文本指导，以辅助人类决策。该方法在保证假阴性率上限的前提下，筛选结果集，并在真实世界的多标签医疗诊断任务中验证了其有效性。",
+        "abstract_cn": "基于人工智能的最新进展，混合决策（HDM）有望提高人类决策质量并减轻认知负荷。我们在学习引导（LtG）这一近期提出的HDM框架下展开工作，在该框架中，人类始终负责最终决策：LtG中的AI不是建议决策，而是提供有助于促进决策的（文本）指导。现有方法的一个限制因素是，其指导信息包含了所有可能结果的信息，因此可能难以消化。我们通过引入ConfGuide来解决这个问题，这是一种新颖的LtG方法，能生成更简洁、更有针对性的指导。为此，它采用共形风险控制（conformal risk control）来选择一个结果集，确保假阴性率（false negative rate）得到控制。我们在一个真实世界的多标签医疗诊断（multi-label medical diagnosis）任务上展示了我们的方法。我们的实证评估凸显了ConfGuide的前景。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "RadAgent: A tool-using AI agent for stepwise interpretation of chest computed tomography",
+        "authors": [
+          "Mélanie Roschewitz",
+          "Kenneth Styppa",
+          "Yitian Tao",
+          "Jiwoong Sohn",
+          "Jean-Benoit Delbrouck",
+          "Benjamin Gundersen",
+          "Nicolas Deperrois",
+          "Christian Bluethgen",
+          "Julia Vogt",
+          "Bjoern Menze",
+          "Farhad Nooralahzadeh",
+          "Michael Krauthammer",
+          "Michael Moor"
+        ],
+        "published": "2026-04-16",
+        "summary": "Vision-language models (VLM) have markedly advanced AI-driven interpretation and reporting of complex medical imaging, such as computed tomography (CT). Yet, existing methods largely relegate clinicians to passive observers of final outputs, offering no interpretable reasoning trace for them to inspect, validate, or refine. To address this, we introduce RadAgent, a tool-using AI agent that generates CT reports through a stepwise and interpretable process. Each resulting report is accompanied by ",
+        "pdf_url": "https://arxiv.org/pdf/2604.15231v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.15231v1",
+        "abstract": "Vision-language models (VLM) have markedly advanced AI-driven interpretation and reporting of complex medical imaging, such as computed tomography (CT). Yet, existing methods largely relegate clinicians to passive observers of final outputs, offering no interpretable reasoning trace for them to inspect, validate, or refine. To address this, we introduce RadAgent, a tool-using AI agent that generates CT reports through a stepwise and interpretable process. Each resulting report is accompanied by a fully inspectable trace of intermediate decisions and tool interactions, allowing clinicians to examine how the reported findings are derived. In our experiments, we observe that RadAgent improves Chest CT report generation over its 3D VLM counterpart, CT-Chat, across three dimensions. Clinical accuracy improves by 6.0 points (36.4% relative) in macro-F1 and 5.4 points (19.6% relative) in micro-F1. Robustness under adversarial conditions improves by 24.7 points (41.9% relative). Furthermore, RadAgent achieves 37.0% in faithfulness, a new capability entirely absent in its 3D VLM counterpart. By structuring the interpretation of chest CT as an explicit, tool-augmented and iterative reasoning trace, RadAgent brings us closer toward transparent and reliable AI for radiology.",
+        "llm_keywords": "人工智能代理, 胸部CT解读, 可解释性, 工具使用, 放射学报告",
+        "llm_summary": "本文介绍了RadAgent，一种使用工具的人工智能代理，用于胸部CT的逐步、可解释的解读和报告生成。它通过提供可检查的中间决策和工具交互痕迹，使临床医生能够验证和优化结果。实验表明，RadAgent在临床准确性、对抗条件下的鲁棒性以及忠实度方面均优于其前代模型，推动了放射学AI的透明化和可靠性。",
+        "abstract_cn": "视觉语言模型（VLM）显著推动了人工智能（AI）在复杂医学影像（如计算机断层扫描（CT））解读和报告方面的进展。然而，现有方法在很大程度上将临床医生置于最终输出的被动观察者位置，没有提供可解释的推理痕迹供他们检查、验证或优化。为了解决这个问题，我们引入了RadAgent，一个使用工具的人工智能代理，它通过逐步且可解释的过程生成CT报告。每份生成的报告都附带一个完全可检查的中间决策和工具交互痕迹，允许临床医生检查报告中的发现是如何得出的。在我们的实验中，我们观察到RadAgent在三个维度上改进了胸部CT报告生成，优于其三维视觉语言模型（3D VLM）对应物CT-Chat。临床准确性在宏观F1分数上提高了6.0分（相对提升36.4%），在微观F1分数上提高了5.4分（相对提升19.6%）。在对抗条件下的鲁棒性提高了24.7分（相对提升41.9%）。此外，RadAgent在忠实度（faithfulness）方面达到了37.0%，这是其3D VLM对应物完全不具备的新能力。通过将胸部CT的解读构建为一个明确的、工具增强的迭代推理痕迹，RadAgent使我们更接近透明和可靠的放射学AI。"
+      },
+      {
+        "title": "Blinded Multi-Rater Comparative Evaluation of a Large Language Model and Clinician-Authored Responses in CGM-Informed Diabetes Counseling",
+        "authors": [
+          "Zhijun Guo",
+          "Alvina Lai",
+          "Emmanouil Korakas",
+          "Aristeidis Vagenas",
+          "Irshad Ahamed",
+          "Christo Albor",
+          "Hengrui Zhang",
+          "Justin Healy",
+          "Kezhi Li"
+        ],
+        "published": "2026-04-16",
+        "summary": "Continuous glucose monitoring (CGM) is central to diabetes care, but explaining CGM patterns clearly and empathetically remains time-intensive. Evidence for retrieval-grounded large language model (LLM) systems in CGM-informed counseling remains limited. To evaluate whether a retrieval-grounded LLM-based conversational agent (CA) could support patient understanding of CGM data and preparation for routine diabetes consultations. We developed a retrieval-grounded LLM-based CA for CGM interpretatio",
+        "pdf_url": "https://arxiv.org/pdf/2604.15124v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.15124v1",
+        "abstract": "Continuous glucose monitoring (CGM) is central to diabetes care, but explaining CGM patterns clearly and empathetically remains time-intensive. Evidence for retrieval-grounded large language model (LLM) systems in CGM-informed counseling remains limited. To evaluate whether a retrieval-grounded LLM-based conversational agent (CA) could support patient understanding of CGM data and preparation for routine diabetes consultations. We developed a retrieval-grounded LLM-based CA for CGM interpretation and diabetes counseling support. The system generated plain-language responses while avoiding individualized therapeutic advice. Twelve CGM-informed cases were constructed from publicly available datasets. Between Oct 2025 and Feb 2026, 6 senior UK diabetes clinicians each reviewed 2 assigned cases and answered 24 questions. In a blinded multi-rater evaluation, each CA-generated and clinician-authored response was independently rated by 3 clinicians on 6 quality dimensions. Safety flags and perceived source labels were also recorded. Primary analyses used linear mixed-effects models. A total of 288 unique responses (144 CA and 144 clinician) generated 864 ratings. The CA received higher quality scores than clinician responses (mean 4.37 vs 3.58), with an estimated mean difference of 0.782 points (95% CI 0.692-0.872; P<.001). The largest differences were for empathy (1.062, 95% CI 0.948-1.177) and actionability (0.992, 95% CI 0.877-1.106). Safety flag distributions were similar, with major concerns rare in both groups (3/432, 0.7% each). Retrieval-grounded LLM systems may have value as adjunct tools for CGM review, patient education, and preconsultation preparation. However, these findings do not support autonomous therapeutic decision-making or unsupervised real-world use.",
+        "llm_keywords": "连续血糖监测, 大型语言模型, 糖尿病咨询, 盲法评估, 临床决策支持",
+        "llm_summary": "本研究通过盲法多评估者比较，发现基于检索增强的大型语言模型对话系统在连续血糖监测数据解读咨询中，其生成回复在质量、共情性和可操作性上均显著优于临床医生撰写的回复，且安全性相当。结果表明该系统可作为患者教育和诊前准备的有用辅助工具，但不支持其自主治疗决策或无监督的临床使用。",
+        "abstract_cn": "连续血糖监测（Continuous glucose monitoring, CGM）是糖尿病护理的核心，但清晰且富有同理心地解释CGM模式仍然耗时。基于检索增强的大型语言模型（large language model, LLM）系统在CGM知情咨询中的证据仍然有限。为了评估基于检索增强的LLM对话代理（conversational agent, CA）是否能够支持患者理解CGM数据并为常规糖尿病咨询做准备，我们开发了一个用于CGM解读和糖尿病咨询支持的、基于检索增强的LLM对话代理。该系统生成通俗易懂的回应，同时避免提供个体化治疗建议。我们从公开数据集中构建了12个CGM知情案例。在2025年10月至2026年2月期间，6名英国资深糖尿病临床医生每人审查了2个指定案例并回答了24个问题。在一项盲法多评估者评估中，每个CA生成的和临床医生撰写的回应均由3名临床医生在6个质量维度上独立评分。同时记录了安全标记和感知来源标签。主要分析使用线性混合效应模型。总共288个独特回应（144个CA生成，144个临床医生撰写）产生了864个评分。CA获得的质量评分高于临床医生回应（平均4.37分 vs 3.58分），估计平均差为0.782分（95% CI 0.692-0.872；P<.001）。差异最大的是共情性（1.062，95% CI 0.948-1.177）和可操作性（0.992，95% CI 0.877-1.106）。安全标记分布相似，两组中主要担忧均罕见（各3/432，0.7%）。基于检索增强的LLM系统可能作为CGM回顾、患者教育和诊前准备的辅助工具具有价值。然而，这些发现并不支持其用于自主治疗决策或无监督的真实世界使用。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "MADE: A Living Benchmark for Multi-Label Text Classification with Uncertainty Quantification of Medical Device Adverse Events",
+        "authors": [
+          "Raunak Agarwal",
+          "Markus Wenzel",
+          "Simon Baur",
+          "Jonas Zimmer",
+          "George Harvey",
+          "Jackie Ma"
+        ],
+        "published": "2026-04-16",
+        "summary": "Machine learning in high-stakes domains such as healthcare requires not only strong predictive performance but also reliable uncertainty quantification (UQ) to support human oversight. Multi-label text classification (MLTC) is a central task in this domain, yet remains challenging due to label imbalances, dependencies, and combinatorial complexity. Existing MLTC benchmarks are increasingly saturated and may be affected by training data contamination, making it difficult to distinguish genuine re",
+        "pdf_url": "https://arxiv.org/pdf/2604.15203v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.15203v1",
+        "abstract": "Machine learning in high-stakes domains such as healthcare requires not only strong predictive performance but also reliable uncertainty quantification (UQ) to support human oversight. Multi-label text classification (MLTC) is a central task in this domain, yet remains challenging due to label imbalances, dependencies, and combinatorial complexity. Existing MLTC benchmarks are increasingly saturated and may be affected by training data contamination, making it difficult to distinguish genuine reasoning capabilities from memorization. We introduce MADE, a living MLTC benchmark derived from {m}edical device {ad}verse {e}vent reports and continuously updated with newly published reports to prevent contamination. MADE features a long-tailed distribution of hierarchical labels and enables reproducible evaluation with strict temporal splits. We establish baselines across more than 20 encoder- and decoder-only models under fine-tuning and few-shot settings (instruction-tuned/reasoning variants, local/API-accessible). We systematically assess entropy-/consistency-based and self-verbalized UQ methods. Results show clear trade-offs: smaller discriminatively fine-tuned decoders achieve the strongest head-to-tail accuracy while maintaining competitive UQ; generative fine-tuning delivers the most reliable UQ; large reasoning models improve performance on rare labels yet exhibit surprisingly weak UQ; and self-verbalized confidence is not a reliable proxy for uncertainty. Our work is publicly available at https://hhi.fraunhofer.de/aml-demonstrator/made-benchmark.",
+        "llm_keywords": "多标签文本分类, 不确定性量化, 医疗设备不良事件, 基准测试, 机器学习",
+        "llm_summary": "本文介绍了MADE，一个用于医疗设备不良事件报告的多标签文本分类动态基准。该基准具有层次化标签长尾分布和严格时间划分，可防止数据污染。研究评估了20多个模型在微调和少样本设置下的性能及多种不确定性量化方法，揭示了不同方法在准确性与不确定性可靠性之间的权衡。",
+        "abstract_cn": "在医疗等高风险领域应用机器学习，不仅需要强大的预测性能，还需要可靠的不确定性量化（UQ）以支持人类监督。多标签文本分类（MLTC）是该领域的核心任务，但由于标签不平衡、依赖性和组合复杂性，仍然具有挑战性。现有的MLTC基准日益饱和，并可能受到训练数据污染的影响，使得难以区分真正的推理能力与记忆能力。我们引入了MADE，这是一个源自医疗设备不良事件报告的动态MLTC基准，并通过持续更新新发布的报告来防止污染。MADE具有层次化标签的长尾分布特征，并支持通过严格的时间划分进行可重复评估。我们在微调和少样本设置（指令调优/推理变体、本地/API可访问）下，为超过20个编码器和仅解码器模型建立了基线。我们系统地评估了基于熵/一致性的以及自我言语化的UQ方法。结果显示明显的权衡：较小的判别式微调解码器在保持有竞争力的UQ的同时，实现了最强的从头到尾的准确性；生成式微调提供了最可靠的UQ；大型推理模型提高了稀有标签的性能，却表现出令人惊讶的弱UQ；而自我言语化的置信度并非不确定性的可靠代理。我们的工作可在 https://hfi.fraunhofer.de/aml-demonstrator/made-benchmark 公开获取。"
+      }
+    ]
+  },
+  "total_count": 5,
+  "generated_at": "2026-04-17T22:41:06.818717"
+}
