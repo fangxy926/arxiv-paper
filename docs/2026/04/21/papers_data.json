@@ -1,0 +1,205 @@
+{
+  "date_range": {
+    "start_date": "2026-04-20",
+    "end_date": "2026-04-20"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "A multimodal and temporal foundation model for virtual patient representations at healthcare system scale",
+        "authors": [
+          "Andrew Zhang",
+          "Tong Ding",
+          "Sophia J. Wagner",
+          "Caiwei Tian",
+          "Ming Y. Lu",
+          "Rowland Pettit",
+          "Joshua E. Lewis",
+          "Alexandre Misrahi",
+          "Dandan Mo",
+          "Long Phi Le",
+          "Faisal Mahmood"
+        ],
+        "published": "2026-04-20",
+        "summary": "Modern medicine generates vast multimodal data across siloed systems, yet no existing model integrates the full breadth and temporal depth of the clinical record into a unified patient representation. We introduce Apollo, a multimodal temporal foundation model trained and evaluated on over three decades of longitudinal hospital records from a major US hospital system, composed of 25 billion records from 7.2 million patients, representing 28 distinct medical modalities and 12 major medical specia",
+        "pdf_url": "https://arxiv.org/pdf/2604.18570v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.18570v1",
+        "abstract": "Modern medicine generates vast multimodal data across siloed systems, yet no existing model integrates the full breadth and temporal depth of the clinical record into a unified patient representation. We introduce Apollo, a multimodal temporal foundation model trained and evaluated on over three decades of longitudinal hospital records from a major US hospital system, composed of 25 billion records from 7.2 million patients, representing 28 distinct medical modalities and 12 major medical specialties. Apollo learns a unified representation space integrating over 100 thousand unique medical events in our clinical vocabulary as well as images and clinical text. This \"atlas of medical concepts\" forms a computational substrate for modeling entire patient care journeys comprised of sequences of structured and unstructured events, which are compressed by Apollo into virtual patient representations. To assess the potential of these whole-patient representations, we created 322 prognosis and retrieval tasks from a held-out test set of 1.4 million patients. We demonstrate the generalized clinical forecasting potential of Apollo embeddings, including predicting new disease onset risk up to five years in advance (95 tasks), disease progression (78 tasks), treatment response (59 tasks), risk of treatment-related adverse events (17 tasks), and hospital operations endpoints (12 tasks). Using feature attribution techniques, we show that model predictions align with clinically-interpretable multimodal biomarkers. We evaluate semantic similarity search on 61 retrieval tasks, and moreover demonstrate the potential of Apollo as a multimodal medical search engine using text and image queries. Together, these modeling capabilities establish the foundation for computable medicine, where the full context of patient care becomes accessible to computational reasoning.",
+        "llm_keywords": "多模态基础模型, 虚拟患者表征, 临床预测, 医疗检索, 可计算医学",
+        "llm_summary": "本文介绍了Apollo，一个基于超过30年纵向医院记录训练的多模态时序基础模型。它整合了结构化与非结构化医疗数据，学习统一的医学概念表示空间，用于生成虚拟患者表征。研究在322项预测和检索任务上验证了该模型在疾病风险预测、进展评估、治疗反应及医疗检索等方面的广泛潜力，为可计算医学奠定了基础。",
+        "abstract_cn": "现代医学在孤立的系统中产生了海量多模态数据，然而现有模型均未能将临床记录的全部广度和时间深度整合到一个统一的患者表征中。我们介绍了Apollo，这是一个多模态时序基础模型，基于美国一个主要医院系统超过三十年的纵向医院记录进行训练和评估，该数据集包含来自720万患者的250亿条记录，涵盖28种不同的医疗模态和12个主要医学专科。Apollo学习了一个统一的表示空间，整合了我们临床词汇表中超过10万个独特的医疗事件以及图像和临床文本。这个“医学概念图谱”构成了一个计算基底，用于建模由结构化和非结构化事件序列组成的整个患者护理旅程，这些旅程被Apollo压缩成虚拟患者表征。为了评估这些全患者表征的潜力，我们从140万患者的留出测试集中创建了322项预后和检索任务。我们展示了Apollo嵌入的广义临床预测潜力，包括预测长达五年的新疾病发病风险（95项任务）、疾病进展（78项任务）、治疗反应（59项任务）、治疗相关不良事件风险（17项任务）以及医院运营终点（12项任务）。利用特征归因技术，我们展示了模型预测与临床可解释的多模态生物标志物相一致。我们在61项检索任务上评估了语义相似性搜索，并进一步展示了Apollo作为使用文本和图像查询的多模态医学搜索引擎的潜力。总之，这些建模能力为可计算医学奠定了基础，使得患者护理的完整背景能够被计算推理所访问。"
+      },
+      {
+        "title": "ProtoCLIP: Prototype-Aligned Latent Refinement for Robust Zero-Shot Chest X-Ray Classification",
+        "authors": [
+          "Florian Kittler",
+          "Sheethal Bhat",
+          "Andreas Maier"
+        ],
+        "published": "2026-04-20",
+        "summary": "Zero-shot vision-language models (VLMs) have shown promise for chest radiograph classification, but their performance is often limited by confounding label co-occurrence, long-tail class imbalance, and transfer instability under domain shift. We propose ProtoCLIP, a refinement strategy for CLIP-style VLMs that improves zero-shot discrimination through targeted data curation and distilled anchor alignment. Specifically, we construct pathology-focused training subsets with curated negative samples",
+        "pdf_url": "https://arxiv.org/pdf/2604.18444v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.18444v1",
+        "abstract": "Zero-shot vision-language models (VLMs) have shown promise for chest radiograph classification, but their performance is often limited by confounding label co-occurrence, long-tail class imbalance, and transfer instability under domain shift. We propose ProtoCLIP, a refinement strategy for CLIP-style VLMs that improves zero-shot discrimination through targeted data curation and distilled anchor alignment. Specifically, we construct pathology-focused training subsets with curated negative samples to reduce co-occurrence bias. We also introduce a representation-preserving distillation objective to stabilize adaptation while maintaining semantic structure and improving discrimination of clinically relevant co-occurring pathologies. Evaluated on an unseen dataset VinDr-CXR, ProtoCLIP improves AUC by 2-10 percentage points over a strong CLIP-based baseline across multiple findings. For pneumothorax specifically, ProtoCLIP achieves a state-of-the-art AUC of 0.94. These results demonstrate that anchor-guided refinement, coupled with curated supervision and controlled adaptation, can mitigate common zero-shot transfer failures in medical VLMs without requiring large-scale retraining.",
+        "llm_keywords": "零样本学习, 视觉语言模型, 胸部X光分类, 原型对齐, 领域适应",
+        "llm_summary": "本文提出ProtoCLIP方法，通过构建病理聚焦的训练子集和引入表示保持蒸馏目标，优化CLIP模型在零样本胸部X光分类中的性能，有效缓解标签共现偏差和领域转移不稳定性，在VinDr-CXR数据集上取得显著效果提升。",
+        "abstract_cn": "零样本视觉语言模型（VLMs）在胸部X光分类中显示出潜力，但其性能常受限于混淆的标签共现（label co-occurrence）、长尾类别不平衡以及领域转移（domain shift）下的不稳定迁移。我们提出ProtoCLIP，一种针对CLIP风格VLMs的优化策略，通过有针对性的数据整理（targeted data curation）和蒸馏锚点对齐（distilled anchor alignment）来改进零样本判别能力。具体而言，我们构建了以病理为中心的训练子集，并整理负样本以减少共现偏差。我们还引入了一种表示保持蒸馏目标（representation-preserving distillation objective），以在保持语义结构的同时稳定适应过程，并改进对临床相关共现病理的判别。在未见数据集VinDr-CXR上的评估表明，ProtoCLIP在多种发现（findings）上将AUC比基于CLIP的强基线提高了2-10个百分点。特别是对于气胸（pneumothorax），ProtoCLIP达到了0.94的最新AUC。这些结果表明，锚点引导的优化（anchor-guided refinement）结合精心设计的监督（curated supervision）和受控适应（controlled adaptation），可以在不需要大规模重新训练的情况下，缓解医学VLMs中常见的零样本迁移失败问题。"
+      },
+      {
+        "title": "MedProbeBench: Systematic Benchmarking at Deep Evidence Integration for Expert-level Medical Guideline",
+        "authors": [
+          "Jiyao Liu",
+          "Jianghan Shen",
+          "Sida Song",
+          "Tianbin Li",
+          "Xiaojia Liu",
+          "Rongbin Li",
+          "Ziyan Huang",
+          "Jiashi Lin",
+          "Junzhi Ning",
+          "Changkai Ji",
+          "Siqi Luo",
+          "Wenjie Li",
+          "Chenglong Ma",
+          "Ming Hu",
+          "Jing Xiong",
+          "Jin Ye",
+          "Bin Fu",
+          "Ningsheng Xu",
+          "Yirong Chen",
+          "Lei Jin",
+          "Hong Chen",
+          "Junjun He"
+        ],
+        "published": "2026-04-20",
+        "summary": "Recent advances in deep research systems enable large language models to retrieve, synthesize, and reason over large-scale external knowledge. In medicine, developing clinical guidelines critically depends on such deep evidence integration. However, existing benchmarks fail to evaluate this capability in realistic workflows requiring multi-step evidence integration and expert-level judgment. To address this gap, we introduce MedProbeBench, the first benchmark leveraging high-quality clinical gui",
+        "pdf_url": "https://arxiv.org/pdf/2604.18418v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.18418v1",
+        "abstract": "Recent advances in deep research systems enable large language models to retrieve, synthesize, and reason over large-scale external knowledge. In medicine, developing clinical guidelines critically depends on such deep evidence integration. However, existing benchmarks fail to evaluate this capability in realistic workflows requiring multi-step evidence integration and expert-level judgment. To address this gap, we introduce MedProbeBench, the first benchmark leveraging high-quality clinical guidelines as expert-level references. Medical guidelines, with their rigorous standards in neutrality and verifiability, represent the pinnacle of medical expertise and pose substantial challenges for deep research agents. For evaluation, we propose MedProbe-Eval, a comprehensive evaluation framework featuring: (1) Holistic Rubrics with 1,200+ task-adaptive rubric criteria for comprehensive quality assessment, and (2) Fine-grained Evidence Verification for rigorous validation of evidence precision, grounded in 5,130+ atomic claims. Evaluation of 17 LLMs and deep research agents reveals critical gaps in evidence integration and guideline generation, underscoring the substantial distance between current capabilities and expert-level clinical guideline development. Project: https://github.com/uni-medical/MedProbeBench",
+        "llm_keywords": "医学指南, 深度证据整合, 基准测试, 大语言模型, 专家级评估",
+        "llm_summary": "本文介绍了MedProbeBench，首个利用高质量临床指南作为专家级参考的基准测试，旨在评估大语言模型在需要多步骤证据整合和专家级判断的现实医学工作流程中的能力。通过提出的MedProbe-Eval评估框架对17个模型进行评估，揭示了当前能力与专家级临床指南开发之间的巨大差距。",
+        "abstract_cn": "深度学习系统的近期进展使得大语言模型能够检索、综合和推理大规模外部知识。在医学领域，制定临床指南(clinical guidelines)关键依赖于这种深度证据整合(deep evidence integration)。然而，现有基准测试无法评估其在需要多步骤证据整合和专家级判断的现实工作流程中的能力。为弥补这一差距，我们引入了MedProbeBench，这是首个利用高质量临床指南作为专家级参考的基准测试。医学指南凭借其中立性和可验证性的严格标准，代表了医学专业知识的顶峰，并对深度研究智能体(deep research agents)构成了重大挑战。为进行评估，我们提出了MedProbe-Eval，一个全面的评估框架，其特点是：(1) 包含1200多个任务自适应评分标准(rubric criteria)的整体评分标准，用于全面质量评估；以及(2) 基于5130多个原子声明(atomic claims)的细粒度证据验证，用于严格验证证据精确性。对17个大语言模型和深度研究智能体的评估揭示了在证据整合和指南生成方面的关键差距，强调了当前能力与专家级临床指南开发之间的巨大距离。项目地址：https://github.com/uni-medical/MedProbeBench"
+      },
+      {
+        "title": "Toward Zero-Egress Psychiatric AI: On-Device LLM Deployment for Privacy-Preserving Mental Health Decision Support",
+        "authors": [
+          "Eranga Bandara",
+          "Asanga Gunaratna",
+          "Ross Gore",
+          "Anita H. Clayton",
+          "Christopher K. Rhea",
+          "Sachini Rajapakse",
+          "Isurunima Kularathna",
+          "Sachin Shetty",
+          "Ravi Mukkamala",
+          "Xueping Liang",
+          "Preston Samuel",
+          "Atmaram Yarlagadda"
+        ],
+        "published": "2026-04-20",
+        "summary": "Privacy represents one of the most critical yet underaddressed barriers to AI adoption in mental healthcare -- particularly in high-sensitivity operational environments such as military, correctional, and remote healthcare settings, where the risk of patient data exposure can deter help-seeking behavior entirely. Existing AI-enabled psychiatric decision support systems predominantly rely on cloud-based inference pipelines, requiring sensitive patient data to leave the device and traverse externa",
+        "pdf_url": "https://arxiv.org/pdf/2604.18302v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.18302v1",
+        "abstract": "Privacy represents one of the most critical yet underaddressed barriers to AI adoption in mental healthcare -- particularly in high-sensitivity operational environments such as military, correctional, and remote healthcare settings, where the risk of patient data exposure can deter help-seeking behavior entirely. Existing AI-enabled psychiatric decision support systems predominantly rely on cloud-based inference pipelines, requiring sensitive patient data to leave the device and traverse external servers, creating unacceptable privacy and security risks in these contexts. In this paper, we propose a zero-egress, on-device AI platform for privacy-preserving psychiatric decision support, deployed as a cross-platform mobile application. The proposed system extends our prior work on fine-tuned LLM consortiums for psychiatric diagnosis standardization by fundamentally re-architecting the inference pipeline for fully local execution -- ensuring that no patient data is transmitted to, processed by, or stored on any external server at any stage. The platform integrates a consortium of three lightweight, fine-tuned, and quantized open-source LLMs -- Gemma, Phi-3.5-mini, and Qwen2 -- selected for their compact architectures and proven efficiency on resource-constrained mobile hardware. An on-device orchestration layer coordinates ensemble inference and consensus-based diagnostic reasoning, producing DSM-5-aligned assessments for conditions. The platform is designed to assist clinicians with differential diagnosis and evidence-linked symptom mapping, as well as to support patient-facing self-screening with appropriate clinical safeguards. Initial evaluation demonstrates that the proposed zero-egress deployment achieves diagnostic accuracy comparable to its server-side predecessor while sustaining real-time inference latency on commodity mobile hardware.",
+        "llm_keywords": "零出口AI, 本地部署, 隐私保护, 精神健康决策支持, 移动端大语言模型",
+        "llm_summary": "本文提出一种零出口、本地部署的AI平台，用于隐私保护的精神健康决策支持。该平台将三个轻量化、微调并量化的开源大语言模型集成到移动应用中，实现完全本地推理，确保患者数据不离开设备。系统通过集成协调层进行共识诊断推理，生成符合DSM-5标准的评估，在保持与服务器端版本相当诊断准确性的同时，在商用移动硬件上实现实时推理。",
+        "abstract_cn": "隐私是AI在精神医疗领域应用中最关键却未充分解决的障碍之一——尤其是在军事、惩教和远程医疗等高敏感性操作环境中，患者数据暴露的风险可能完全阻碍求助行为。现有的AI赋能精神科决策支持系统主要依赖基于云的推理管道，需要敏感患者数据离开设备并经过外部服务器，在这些环境中造成了不可接受的隐私和安全风险。在本文中，我们提出了一种零出口（zero-egress）、设备本地（on-device）的AI平台，用于隐私保护的精神科决策支持，部署为一个跨平台移动应用程序。该系统通过从根本上重新架构推理管道以实现完全本地执行，扩展了我们先前在用于精神科诊断标准化的微调LLM联盟方面的工作——确保患者数据在任何阶段都不会被传输到、由任何外部服务器处理或存储。该平台集成了一个由三个轻量化、微调并量化的开源LLM组成的联盟——Gemma、Phi-3.5-mini和Qwen2——选择它们是因为其紧凑的架构和在资源受限的移动硬件上经过验证的效率。一个设备本地协调层（orchestration layer）协调集成推理和基于共识的诊断推理，生成符合DSM-5标准的条件评估。该平台旨在协助临床医生进行鉴别诊断和证据关联的症状映射，并在适当的临床保障措施下支持面向患者的自我筛查。初步评估表明，所提出的零出口部署在商用移动硬件上实现了与其服务器端前身相当的诊断准确性，同时维持了实时推理延迟。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "IDOBE: Infectious Disease Outbreak forecasting Benchmark Ecosystem",
+        "authors": [
+          "Aniruddha Adiga",
+          "Jingyuan Chou",
+          "Anshul Chiranth",
+          "Bryan Lewis",
+          "Ana I. Bento",
+          "Shaun Truelove",
+          "Geoffrey Fox",
+          "Madhav Marathe",
+          "Harry Hochheiser",
+          "Srini Venkatramanan"
+        ],
+        "published": "2026-04-20",
+        "summary": "Epidemic forecasting has become an integral part of real-time infectious disease outbreak response. While collaborative ensembles composed of statistical and machine learning models have become the norm for real-time forecasting, standardized benchmark datasets for evaluating such methods are lacking. Further, there is limited understanding on performance of these methods for novel outbreaks with limited historical data. In this paper, we propose IDOBE, a curated collection of epidemiological ti",
+        "pdf_url": "https://arxiv.org/pdf/2604.18521v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.18521v1",
+        "abstract": "Epidemic forecasting has become an integral part of real-time infectious disease outbreak response. While collaborative ensembles composed of statistical and machine learning models have become the norm for real-time forecasting, standardized benchmark datasets for evaluating such methods are lacking. Further, there is limited understanding on performance of these methods for novel outbreaks with limited historical data. In this paper, we propose IDOBE, a curated collection of epidemiological time series focused on outbreak forecasting. IDOBE compiles from multiple data repositories spanning over a century of surveillance and across U.S. states and global locations. We perform derivative-based segmentation to generate over 10,000 outbreaks covering multiple outcomes such as cases and hospitalizations for 13 diseases. We consider a variety of information-theoretic and distributional measures to quantify the epidemiological diversity of the dataset. Finally, we perform multi-horizon short-term forecasting (1- to 4-week-ahead) through the progression of the outbreak using 11 baseline models and report on their performance. In addition to standard metrics such as NMSE and MAPE for point forecasts, we include probabilistic scoring rules such as Normalized Weighted Interval Score (NWIS) to quantify the performance. We find that MLP-based methods have the most robust performance, with statistical methods having a slight edge during the pre-peak phase. IDOBE dataset along with baselines are released publicly on https://github.com/NSSAC/IDOBE to enable standardized, reproducible benchmarking of outbreak forecasting methods.",
+        "llm_keywords": "传染病预测, 基准数据集, 疫情爆发, 机器学习模型, 预测评估",
+        "llm_summary": "本文提出了IDOBE，一个用于传染病爆发预测的标准化基准数据集生态系统。它整合了跨越一个多世纪的流行病学时间序列数据，生成了超过1万次疫情爆发记录。研究通过11个基线模型进行了多时间范围的短期预测性能评估，发现基于MLP的方法表现最稳健。该数据集和基准模型已公开，旨在促进预测方法的标准化和可复现性评测。",
+        "abstract_cn": "疫情预测已成为实时传染病爆发应对的重要组成部分。虽然由统计和机器学习模型组成的协作集成已成为实时预测的常态，但用于评估此类方法的标准化基准数据集仍然缺乏。此外，对于历史数据有限的新型疫情，这些方法的性能理解也有限。在本文中，我们提出了IDOBE，一个专注于疫情预测的精选流行病学时间序列集合。IDOBE从跨越一个多世纪、覆盖美国各州和全球地点的多个数据仓库中编译数据。我们执行基于导数的分割，生成了超过10,000次疫情爆发，涵盖了13种疾病的病例和住院情况等多种结果。我们考虑了多种信息论和分布度量来量化数据集的流行病学多样性。最后，我们使用11个基线模型，在疫情发展过程中进行了多时间范围的短期预测（提前1至4周），并报告了它们的性能。除了点预测的标准指标（如NMSE和MAPE）外，我们还纳入了概率评分规则，如归一化加权区间分数（NWIS）来量化性能。我们发现基于MLP的方法具有最稳健的性能，而统计方法在疫情峰值前阶段略有优势。IDOBE数据集及基线模型已在https://github.com/NSSAC/IDOBE上公开发布，以实现疫情预测方法的标准化、可复现的基准测试。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "MedProbeBench: Systematic Benchmarking at Deep Evidence Integration for Expert-level Medical Guideline",
+        "authors": [
+          "Jiyao Liu",
+          "Jianghan Shen",
+          "Sida Song",
+          "Tianbin Li",
+          "Xiaojia Liu",
+          "Rongbin Li",
+          "Ziyan Huang",
+          "Jiashi Lin",
+          "Junzhi Ning",
+          "Changkai Ji",
+          "Siqi Luo",
+          "Wenjie Li",
+          "Chenglong Ma",
+          "Ming Hu",
+          "Jing Xiong",
+          "Jin Ye",
+          "Bin Fu",
+          "Ningsheng Xu",
+          "Yirong Chen",
+          "Lei Jin",
+          "Hong Chen",
+          "Junjun He"
+        ],
+        "published": "2026-04-20",
+        "summary": "Recent advances in deep research systems enable large language models to retrieve, synthesize, and reason over large-scale external knowledge. In medicine, developing clinical guidelines critically depends on such deep evidence integration. However, existing benchmarks fail to evaluate this capability in realistic workflows requiring multi-step evidence integration and expert-level judgment. To address this gap, we introduce MedProbeBench, the first benchmark leveraging high-quality clinical gui",
+        "pdf_url": "https://arxiv.org/pdf/2604.18418v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.18418v1",
+        "abstract": "Recent advances in deep research systems enable large language models to retrieve, synthesize, and reason over large-scale external knowledge. In medicine, developing clinical guidelines critically depends on such deep evidence integration. However, existing benchmarks fail to evaluate this capability in realistic workflows requiring multi-step evidence integration and expert-level judgment. To address this gap, we introduce MedProbeBench, the first benchmark leveraging high-quality clinical guidelines as expert-level references. Medical guidelines, with their rigorous standards in neutrality and verifiability, represent the pinnacle of medical expertise and pose substantial challenges for deep research agents. For evaluation, we propose MedProbe-Eval, a comprehensive evaluation framework featuring: (1) Holistic Rubrics with 1,200+ task-adaptive rubric criteria for comprehensive quality assessment, and (2) Fine-grained Evidence Verification for rigorous validation of evidence precision, grounded in 5,130+ atomic claims. Evaluation of 17 LLMs and deep research agents reveals critical gaps in evidence integration and guideline generation, underscoring the substantial distance between current capabilities and expert-level clinical guideline development. Project: https://github.com/uni-medical/MedProbeBench",
+        "llm_keywords": "医学指南, 深度证据整合, 基准测试, 大语言模型, 专家级评估",
+        "llm_summary": "本文介绍了MedProbeBench，首个利用高质量临床指南作为专家级参考的基准测试，旨在评估大语言模型在需要多步骤证据整合和专家级判断的现实医学工作流程中的能力。通过提出的MedProbe-Eval评估框架对17个模型进行评估，揭示了当前能力与专家级临床指南开发之间的巨大差距。",
+        "abstract_cn": "深度学习系统的近期进展使得大语言模型能够检索、综合和推理大规模外部知识。在医学领域，制定临床指南(clinical guidelines)关键依赖于这种深度证据整合(deep evidence integration)。然而，现有基准测试无法评估其在需要多步骤证据整合和专家级判断的现实工作流程中的能力。为弥补这一差距，我们引入了MedProbeBench，这是首个利用高质量临床指南作为专家级参考的基准测试。医学指南凭借其中立性和可验证性的严格标准，代表了医学专业知识的顶峰，并对深度研究智能体(deep research agents)构成了重大挑战。为进行评估，我们提出了MedProbe-Eval，一个全面的评估框架，其特点是：(1) 包含1200多个任务自适应评分标准(rubric criteria)的整体评分标准，用于全面质量评估；以及(2) 基于5130多个原子声明(atomic claims)的细粒度证据验证，用于严格验证证据精确性。对17个大语言模型和深度研究智能体的评估揭示了在证据整合和指南生成方面的关键差距，强调了当前能力与专家级临床指南开发之间的巨大距离。项目地址：https://github.com/uni-medical/MedProbeBench"
+      }
+    ]
+  },
+  "total_count": 5,
+  "generated_at": "2026-04-21T22:40:58.007789"
+}
