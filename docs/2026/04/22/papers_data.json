@@ -1,0 +1,109 @@
+{
+  "date_range": {
+    "start_date": "2026-04-21",
+    "end_date": "2026-04-21"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Generative Drifting for Conditional Medical Image Generation",
+        "authors": [
+          "Zirong Li",
+          "Siyuan Mei",
+          "Weiwen Wu",
+          "Andreas Maier",
+          "Lina Gölz",
+          "Yan Xia"
+        ],
+        "published": "2026-04-21",
+        "summary": "Conditional medical image generation plays an important role in many clinically relevant imaging tasks. However, existing methods still face a fundamental challenge in balancing inference efficiency, patient-specific fidelity, and distribution-level plausibility, particularly in high-dimensional 3D medical imaging. In this work, we propose GDM, a generative drifting framework that reformulates deterministic medical image prediction as a multi-objective learning problem to jointly promote distrib",
+        "pdf_url": "https://arxiv.org/pdf/2604.19736v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.19736v1",
+        "abstract": "Conditional medical image generation plays an important role in many clinically relevant imaging tasks. However, existing methods still face a fundamental challenge in balancing inference efficiency, patient-specific fidelity, and distribution-level plausibility, particularly in high-dimensional 3D medical imaging. In this work, we propose GDM, a generative drifting framework that reformulates deterministic medical image prediction as a multi-objective learning problem to jointly promote distribution-level plausibility and patient-specific fidelity while retaining one-step inference. GDM extends drifting to 3D medical imaging through an attractive-repulsive drift that minimizes the discrepancy between the generator pushforward and the target distribution. To enable stable drifting-based learning in 3D volumetric data, GDM constructs a multi-level feature bank from a medical foundation encoder to support reliable affinity estimation and drifting field computation across complementary global, local, and spatial representations. In addition, a gradient coordination strategy in the shared output space improves optimization balance under competing distribution-level and fidelity-oriented objectives. We evaluate the proposed framework on two representative tasks, MRI-to-CT synthesis and sparse-view CT reconstruction. Experimental results show that GDM consistently outperforms a wide range of baselines, including GAN-based, flow-matching-based, and SDE-based generative models, as well as supervised regression methods, while improving the balance among anatomical fidelity, quantitative reliability, perceptual realism, and inference efficiency. These findings suggest that GDM provides a practical and effective framework for conditional 3D medical image generation.",
+        "llm_keywords": "条件医学图像生成, 生成漂移, 三维医学影像, 多目标学习, 保真度与合理性平衡",
+        "llm_summary": "本文提出GDM生成漂移框架，将确定性医学图像预测重构为多目标学习问题，以同时提升分布级合理性和患者特异性保真度，并保持一步推理效率。该框架通过吸引-排斥漂移最小化生成器前推与目标分布间的差异，利用医学基础编码器构建多级特征库支持稳定学习，在MRI-CT合成等任务中表现优于多种基线方法。",
+        "abstract_cn": "条件医学图像生成(conditional medical image generation)在许多临床相关成像任务中扮演重要角色。然而，现有方法在平衡推理效率(inference efficiency)、患者特异性保真度(patient-specific fidelity)和分布级合理性(distribution-level plausibility)方面仍面临根本挑战，尤其是在高维三维医学成像(3D medical imaging)中。本工作中，我们提出GDM，一个生成漂移框架(generative drifting framework)，将确定性医学图像预测重构为多目标学习问题(multi-objective learning problem)，以联合提升分布级合理性和患者特异性保真度，同时保持一步推理(one-step inference)。GDM通过吸引-排斥漂移(attractive-repulsive drift)将漂移扩展到三维医学成像，最小化生成器前推(generator pushforward)与目标分布(target distribution)之间的差异。为了在三维体数据(3D volumetric data)中实现稳定的基于漂移的学习，GDM从医学基础编码器(medical foundation encoder)构建多级特征库(multi-level feature bank)，以支持跨互补的全局、局部和空间表示进行可靠的亲和力估计(affinity estimation)和漂移场计算(drifting field computation)。此外，共享输出空间(shared output space)中的梯度协调策略(gradient coordination strategy)改善了在竞争性分布级和保真度导向目标下的优化平衡。我们在两个代表性任务上评估所提出的框架：MRI到CT合成(MRI-to-CT synthesis)和稀疏视图CT重建(sparse-view CT reconstruction)。实验结果表明，GDM consistently outperforms a wide range of baselines, including GAN-based, flow-matching-based, and SDE-based generative models, as well as supervised regression methods, while improving the balance among anatomical fidelity, quantitative reliability, perceptual realism, and inference efficiency. These findings suggest that GDM provides a practical and effective framework for conditional 3D medical image generation."
+      },
+      {
+        "title": "Cross-Model Consistency of AI-Generated Exercise Prescriptions: A Repeated Generation Study Across Three Large Language Models",
+        "authors": [
+          "Kihyuk Lee"
+        ],
+        "published": "2026-04-21",
+        "summary": "This study compared repeated generation consistency of exercise prescription outputs across three large language models (LLMs), specifically GPT-4.1, Claude Sonnet 4.6, and Gemini 2.5 Flash, under temperature=0 conditions. Each model generated prescriptions for six clinical scenarios 20 times, yielding 360 total outputs analyzed across four dimensions: semantic similarity, output reproducibility, FITT classification, and safety expression. Mean semantic similarity was highest for GPT-4.1 (0.955)",
+        "pdf_url": "https://arxiv.org/pdf/2604.19598v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.19598v1",
+        "abstract": "This study compared repeated generation consistency of exercise prescription outputs across three large language models (LLMs), specifically GPT-4.1, Claude Sonnet 4.6, and Gemini 2.5 Flash, under temperature=0 conditions. Each model generated prescriptions for six clinical scenarios 20 times, yielding 360 total outputs analyzed across four dimensions: semantic similarity, output reproducibility, FITT classification, and safety expression. Mean semantic similarity was highest for GPT-4.1 (0.955), followed by Gemini 2.5 Flash (0.950) and Claude Sonnet 4.6 (0.903), with significant inter-model differences confirmed (H = 458.41, p < .001). Critically, these scores reflected fundamentally different generative behaviors: GPT-4.1 produced entirely unique outputs (100%) with stable semantic content, while Gemini 2.5 Flash showed pronounced output repetition (27.5% unique outputs), indicating that its high similarity score derived from text duplication rather than consistent reasoning. Identical decoding settings thus yielded fundamentally different consistency profiles, a distinction that single-output evaluations cannot capture. Safety expression reached ceiling levels across all models, confirming its limited utility as a differentiating metric. These results indicate that model selection constitutes a clinical rather than merely technical decision, and that output behavior under repeated generation conditions should be treated as a core criterion for reliable deployment of LLM-based exercise prescription systems.",
+        "llm_keywords": "大型语言模型, 运动处方, 生成一致性, 语义相似性, 临床决策",
+        "llm_summary": "本研究在温度参数为0的条件下，比较了GPT-4.1、Claude Sonnet 4.6和Gemini 2.5 Flash三种大型语言模型重复生成运动处方的一致性。结果表明，GPT-4.1语义相似性最高且输出完全独特，而Gemini 2.5 Flash则存在明显的文本重复。研究强调，模型选择是临床决策，重复生成条件下的输出行为应作为评估LLM系统可靠部署的核心标准。",
+        "abstract_cn": "本研究比较了在温度(temperature)=0条件下，三种大型语言模型(LLMs)——具体为GPT-4.1、Claude Sonnet 4.6和Gemini 2.5 Flash——重复生成运动处方(outputs)的一致性。每个模型为六个临床场景(scenarios)各生成20次处方，共产生360个输出，并从四个维度进行分析：语义相似性(semantic similarity)、输出可重复性(output reproducibility)、FITT分类(FITT classification)和安全表达(safety expression)。GPT-4.1的平均语义相似性最高(0.955)，其次是Gemini 2.5 Flash (0.950)和Claude Sonnet 4.6 (0.903)，模型间差异显著(H = 458.41, p < .001)。关键的是，这些分数反映了根本不同的生成行为：GPT-4.1产生了完全独特的输出(100%)且语义内容稳定，而Gemini 2.5 Flash表现出明显的输出重复(27.5%独特输出)，表明其高相似性分数源于文本复制而非一致的推理。因此，相同的解码设置(decoding settings)产生了根本不同的一致性特征(consistency profiles)，这是单次输出评估无法捕捉的区别。所有模型的安全表达均达到天花板水平，证实其作为区分指标的效用有限。这些结果表明，模型选择构成了一项临床而非仅仅是技术的决策，并且重复生成条件下的输出行为应被视为可靠部署基于LLM的运动处方系统的核心标准。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Adaptive MSD-Splitting: Enhancing C4.5 and Random Forests for Skewed Continuous Attributes",
+        "authors": [
+          "Jake Lee"
+        ],
+        "published": "2026-04-21",
+        "summary": "The discretization of continuous numerical attributes remains a persistent computational bottleneck in the induction of decision trees, particularly as dataset dimensions scale. Building upon the recently proposed MSD-Splitting technique -- which bins continuous data using the empirical mean and standard deviation to dramatically improve the efficiency and accuracy of the C4.5 algorithm -- we introduce Adaptive MSD-Splitting (AMSD). While standard MSD-Splitting is highly effective for approximat",
+        "pdf_url": "https://arxiv.org/pdf/2604.19722v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.19722v1",
+        "abstract": "The discretization of continuous numerical attributes remains a persistent computational bottleneck in the induction of decision trees, particularly as dataset dimensions scale. Building upon the recently proposed MSD-Splitting technique -- which bins continuous data using the empirical mean and standard deviation to dramatically improve the efficiency and accuracy of the C4.5 algorithm -- we introduce Adaptive MSD-Splitting (AMSD). While standard MSD-Splitting is highly effective for approximately symmetric distributions, its rigid adherence to fixed one-standard-deviation cutoffs can lead to catastrophic information loss in highly skewed data, a common artifact in real-world biomedical and financial datasets. AMSD addresses this by dynamically adjusting the standard deviation multiplier based on feature skewness, narrowing intervals in dense regions to preserve discriminative resolution. Furthermore, we integrate AMSD into ensemble methods, specifically presenting the Random Forest-AMSD (RF-AMSD) framework. Empirical evaluations on the Census Income, Heart Disease, Breast Cancer, and Forest Covertype datasets demonstrate that AMSD yields a 2-4% accuracy improvement over standard MSD-Splitting, while maintaining near-identical O(N) time complexity reductions compared to the O(N log N) exhaustive search. Our Random Forest extension achieves state-of-the-art accuracy at a fraction of standard computational costs, confirming the viability of adaptive statistical binning in large-scale ensemble learning architectures.",
+        "llm_keywords": "自适应离散化, 决策树, 随机森林, 连续属性, 偏态分布",
+        "llm_summary": "本文提出自适应MSD-Splitting方法，通过根据特征偏度动态调整标准差乘数，改进了C4.5和随机森林算法对偏态连续属性的处理能力，在保持高效计算的同时提升了分类精度。",
+        "abstract_cn": "连续数值属性的离散化仍然是决策树归纳中一个持续的计算瓶颈，尤其是在数据集维度扩展时。基于最近提出的MSD-Splitting技术——该技术使用经验均值（mean）和标准差（standard deviation）对连续数据进行分箱（binning），以显著提高C4.5算法的效率和准确性——我们引入了自适应MSD-Splitting（AMSD）。虽然标准MSD-Splitting对于近似对称分布非常有效，但其对固定一倍标准差（one-standard-deviation）分割点的严格遵循，在高度偏态（skewed）数据中可能导致灾难性的信息损失，这在现实世界的生物医学和金融数据集中很常见。AMSD通过基于特征偏度（skewness）动态调整标准差乘数来解决此问题，在密集区域缩小间隔以保留判别分辨率。此外，我们将AMSD集成到集成方法中，特别是提出了随机森林-AMSD（RF-AMSD）框架。在Census Income、Heart Disease、Breast Cancer和Forest Covertype数据集上的实证评估表明，与标准MSD-Splitting相比，AMSD带来了2-4%的准确率提升，同时与O(N log N)的穷举搜索相比，保持了近乎相同的O(N)时间复杂度降低。我们的随机森林扩展以标准计算成本的一小部分实现了最先进的准确率，证实了自适应统计分箱（adaptive statistical binning）在大规模集成学习架构中的可行性。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "AblateCell: A Reproduce-then-Ablate Agent for Virtual Cell Repositories",
+        "authors": [
+          "Xue Xia",
+          "Chengkai Yao",
+          "Mingyu Tsoi",
+          "Xinjie Mao",
+          "Wenxuan Huang",
+          "Jiaqi Wei",
+          "Hao Wu",
+          "Cheng Tan",
+          "Lang Yu",
+          "Yuejin Yang",
+          "Siqi Sun",
+          "Zhangyang Gao"
+        ],
+        "published": "2026-04-21",
+        "summary": "Systematic ablations are essential to attribute performance gains in AI Virtual Cells, yet they are rarely performed because biological repositories are under-standardized and tightly coupled to domain-specific data and formats. While recent coding agents can translate ideas into implementations, they typically stop at producing code and lack a verifier that can reproduce strong baselines and rigorously test which components truly matter. We introduce AblateCell, a reproduce-then-ablate agent fo",
+        "pdf_url": "https://arxiv.org/pdf/2604.19606v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.19606v1",
+        "abstract": "Systematic ablations are essential to attribute performance gains in AI Virtual Cells, yet they are rarely performed because biological repositories are under-standardized and tightly coupled to domain-specific data and formats. While recent coding agents can translate ideas into implementations, they typically stop at producing code and lack a verifier that can reproduce strong baselines and rigorously test which components truly matter. We introduce AblateCell, a reproduce-then-ablate agent for virtual cell repositories that closes this verification gap. AblateCell first reproduces reported baselines end-to-end by auto-configuring environments, resolving dependency and data issues, and rerunning official evaluations while emitting verifiable artifacts. It then conducts closed-loop ablation by generating a graph of isolated repository mutations and adaptively selecting experiments under a reward that trades off performance impact and execution cost. Evaluated on three single-cell perturbation prediction repositories (CPA, GEARS, BioLORD), AblateCell achieves 88.9% (+29.9% to human expert) end-to-end workflow success and 93.3% (+53.3% to heuristic) accuracy in recovering ground-truth critical components. These results enable scalable, repository-grounded verification and attribution directly on biological codebases.",
+        "llm_keywords": "虚拟细胞, 可复现性, 消融实验, 自动化代理, 生物信息学",
+        "llm_summary": "本文介绍了AblateCell，一种用于虚拟细胞代码库的“先复现后消融”智能体。它通过自动配置环境、解决依赖和数据问题，首先端到端复现已报告的基线结果，然后以闭环方式进行消融实验，识别关键组件。在三个单细胞扰动预测代码库上的评估表明，其工作流成功率和关键组件识别准确率均显著优于人类专家和启发式方法，实现了可扩展的、基于代码库的验证与归因。",
+        "abstract_cn": "系统性消融（Systematic ablations）对于归因AI虚拟细胞（AI Virtual Cells）的性能提升至关重要，但由于生物存储库（biological repositories）标准化不足且与特定领域的数据和格式紧密耦合，很少进行。虽然最近的编码代理（coding agents）可以将想法转化为实现，但它们通常止步于生成代码，缺乏能够复现强大基线（reproduce strong baselines）并严格测试哪些组件真正重要的验证器（verifier）。我们介绍了AblateCell，一种用于虚拟细胞存储库的“先复现后消融”（reproduce-then-ablate）代理，它弥补了这一验证缺口。AblateCell首先通过自动配置环境、解决依赖和数据问题、重新运行官方评估并生成可验证的工件（verifiable artifacts），端到端地复现已报告的基线。然后，它通过生成隔离的存储库突变图（graph of isolated repository mutations）并在权衡性能影响和执行成本的奖励下自适应地选择实验，进行闭环消融（closed-loop ablation）。在三个单细胞扰动预测存储库（CPA, GEARS, BioLORD）上的评估表明，AblateCell实现了88.9%（比人类专家高+29.9%）的端到端工作流成功率，并在恢复真实关键组件（ground-truth critical components）方面达到93.3%（比启发式方法高+53.3%）的准确率。这些结果使得直接在生物代码库上进行可扩展的、基于存储库的验证和归因成为可能。"
+      }
+    ]
+  },
+  "total_count": 4,
+  "generated_at": "2026-04-22T22:50:40.570691"
+}
