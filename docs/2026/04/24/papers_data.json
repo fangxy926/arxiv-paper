@@ -1,0 +1,41 @@
+{
+  "date_range": {
+    "start_date": "2026-04-23",
+    "end_date": "2026-04-23"
+  },
+  "topics": [
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗数据集": [
+      {
+        "title": "Divide-then-Diagnose: Weaving Clinician-Inspired Contexts for Ultra-Long Capsule Endoscopy Videos",
+        "authors": [
+          "Bowen Liu",
+          "Li Yang",
+          "Shanshan Song",
+          "Mingyu Tang",
+          "Zhifang Gao",
+          "Qifeng Chen",
+          "Yangqiu Song",
+          "Huimin Chen",
+          "Xiaomeng Li"
+        ],
+        "published": "2026-04-23",
+        "summary": "Capsule endoscopy (CE) enables non-invasive gastrointestinal screening, but current CE research remains largely limited to frame-level classification and detection, leaving video-level analysis underexplored. To bridge this gap, we introduce and formally define a new task, diagnosis-driven CE video summarization, which requires extracting key evidence frames that covers clinically meaningful findings and making accurate diagnoses from those evidence frames. This setting is challenging because di",
+        "pdf_url": "https://arxiv.org/pdf/2604.21814v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.21814v1",
+        "abstract": "Capsule endoscopy (CE) enables non-invasive gastrointestinal screening, but current CE research remains largely limited to frame-level classification and detection, leaving video-level analysis underexplored. To bridge this gap, we introduce and formally define a new task, diagnosis-driven CE video summarization, which requires extracting key evidence frames that covers clinically meaningful findings and making accurate diagnoses from those evidence frames. This setting is challenging because diagnostically relevant events are extremely sparse and can be overwhelmed by tens of thousands of redundant normal frames, while individual observations are often ambiguous due to motion blur, debris, specular highlights, and rapid viewpoint changes. To facilitate research in this direction, we introduce VideoCAP, the first CE dataset with diagnosis-driven annotations derived from real clinical reports. VideoCAP comprises 240 full-length videos and provides realistic supervision for both key evidence frame extraction and diagnosis. To address this task, we further propose DiCE, a clinician-inspired framework that mirrors the standard CE reading workflow. DiCE first performs efficient candidate screening over the raw video, then uses a Context Weaver to organize candidates into coherent diagnostic contexts that preserve distinct lesion events, and an Evidence Converger to aggregate multi-frame evidence within each context into robust clip-level judgments. Experiments show that DiCE consistently outperforms state-of-the-art methods, producing concise and clinically reliable diagnostic summaries. These results highlight diagnosis-driven contextual reasoning as a promising paradigm for ultra-long CE video summarization.",
+        "llm_keywords": "胶囊内镜, 视频摘要, 诊断驱动, 上下文推理, 关键帧提取",
+        "llm_summary": "本文提出诊断驱动的胶囊内镜视频摘要任务，并构建首个数据集VideoCAP，包含240个全长视频及临床诊断标注。同时提出DiCE框架，模拟临床阅读流程，通过候选筛选、上下文组织和证据聚合，生成简洁可靠的诊断摘要，优于现有方法。",
+        "abstract_cn": "胶囊内镜（CE）实现了无创胃肠道筛查，但当前CE研究主要局限于帧级分类和检测，视频级分析尚未充分探索。为弥补这一差距，我们引入并正式定义了一个新任务——诊断驱动的CE视频摘要，该任务要求提取覆盖临床有意义发现的关键证据帧，并基于这些证据帧做出准确诊断。这一设置具有挑战性，因为诊断相关事件极为稀疏，可能被数万个冗余的正常帧淹没，而单个观察常因运动模糊、碎片、镜面高光和快速视角变化而模糊不清。为促进该方向的研究，我们引入了VideoCAP，这是首个基于真实临床报告、具有诊断驱动标注的CE数据集。VideoCAP包含240个全长视频，为关键证据帧提取和诊断提供了真实的监督。为解决该任务，我们进一步提出了DiCE，一个模拟标准CE阅读流程的临床启发式框架。DiCE首先对原始视频进行高效候选筛选，然后使用上下文编织器（Context Weaver）将候选组织成保留不同病变事件的连贯诊断上下文，并使用证据汇聚器（Evidence Converger）将每个上下文内的多帧证据聚合为稳健的片段级判断。实验表明，DiCE始终优于现有方法，生成简洁且临床可靠的诊断摘要。这些结果突显了诊断驱动的上下文推理作为超长CE视频摘要的一种有前景的范式。"
+      }
+    ]
+  },
+  "total_count": 1,
+  "generated_at": "2026-04-24T22:38:38.672493"
+}
