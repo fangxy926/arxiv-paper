@@ -1,0 +1,184 @@
+{
+  "date_range": {
+    "start_date": "2026-04-30",
+    "end_date": "2026-04-30"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "LLM as Clinical Graph Structure Refiner: Enhancing Representation Learning in EEG Seizure Diagnosis",
+        "authors": [
+          "Lincan Li",
+          "Zheng Chen",
+          "Yushun Dong"
+        ],
+        "published": "2026-04-30",
+        "summary": "Electroencephalogram (EEG) signals are vital for automated seizure detection, but their inherent noise makes robust representation learning challenging. Existing graph construction methods, whether correlation-based or learning-based, often generate redundant or irrelevant edges due to the noisy nature of EEG data. This significantly impairs the quality of graph representation and limits downstream task performance. Motivated by the remarkable reasoning and contextual understanding capabilities ",
+        "pdf_url": "https://arxiv.org/pdf/2604.28178v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.28178v1",
+        "abstract": "Electroencephalogram (EEG) signals are vital for automated seizure detection, but their inherent noise makes robust representation learning challenging. Existing graph construction methods, whether correlation-based or learning-based, often generate redundant or irrelevant edges due to the noisy nature of EEG data. This significantly impairs the quality of graph representation and limits downstream task performance. Motivated by the remarkable reasoning and contextual understanding capabilities of large language models (LLMs), we explore the idea of using LLMs as graph edge refiners. Specifically, we propose a two-stage framework: we first verify that LLM-based edge refinement can effectively identify and remove redundant connections, leading to significant improvements in seizure detection accuracy and more meaningful graph structures. Building on this insight, we further develop a robust solution where the initial graph is constructed using a Transformer-based edge predictor and multilayer perceptron, assigning probability scores to potential edges and applying a threshold to determine their existence. The LLM then acts as an edge set refiner, making informed decisions based on both textual and statistical features of node pairs to validate the remaining connections. Extensive experiments on TUSZ dataset demonstrate that our LLM-refined graph learning framework not only enhances task performance but also yields cleaner and more interpretable graph representations.",
+        "llm_keywords": "脑电图, 癫痫检测, 图结构优化, 大语言模型, 表示学习",
+        "llm_summary": "本文提出利用大语言模型作为图边优化器，通过两阶段框架去除脑电图信号中冗余的图连接，提升癫痫检测准确率和图表示的可解释性。",
+        "abstract_cn": "脑电图（EEG）信号对于自动癫痫检测至关重要，但其固有的噪声使得鲁棒表示学习具有挑战性。现有的图构建方法，无论是基于相关性还是基于学习的方法，由于EEG数据的噪声特性，常常生成冗余或无关的边。这严重损害了图表示的质量并限制了下游任务的性能。受大语言模型（LLM）卓越的推理和上下文理解能力的启发，我们探索了将LLM用作图边优化器的想法。具体来说，我们提出了一个两阶段框架：首先验证基于LLM的边优化可以有效识别并移除冗余连接，从而显著提升癫痫检测准确率并生成更有意义的图结构。基于这一发现，我们进一步开发了一个稳健的解决方案，其中初始图通过基于Transformer的边预测器和多层感知机构建，为潜在边分配概率分数并应用阈值确定其存在性。然后，LLM作为边集优化器，基于节点对的文本和统计特征做出明智决策，以验证剩余的连接。在TUSZ数据集上的大量实验表明，我们经过LLM优化的图学习框架不仅提升了任务性能，还生成了更清晰、更具可解释性的图表示。"
+      },
+      {
+        "title": "Echo-α: Large Agentic Multimodal Reasoning Model for Ultrasound Interpretation",
+        "authors": [
+          "Jing Zhang",
+          "Wentao Jiang",
+          "Tao Huang",
+          "Zhiwei Wang",
+          "Jianxin Liu",
+          "Jian Chen",
+          "Ping Ye",
+          "Gang Wang",
+          "Zengmao Wang",
+          "Bo Du",
+          "Dacheng Tao"
+        ],
+        "published": "2026-04-30",
+        "summary": "Ultrasound interpretation requires both precise lesion localization and holistic clinical reasoning, yet existing methods typically excel at only one of these capabilities: specialized detectors offer strong localization but limited reasoning, whereas multimodal large language models (MLLMs) provide flexible reasoning but weak grounding in specialized medical domains. We present Echo-α, an agentic multimodal reasoning model for ultrasound interpretation that unifies these strengths within an inv",
+        "pdf_url": "https://arxiv.org/pdf/2604.28011v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.28011v1",
+        "abstract": "Ultrasound interpretation requires both precise lesion localization and holistic clinical reasoning, yet existing methods typically excel at only one of these capabilities: specialized detectors offer strong localization but limited reasoning, whereas multimodal large language models (MLLMs) provide flexible reasoning but weak grounding in specialized medical domains. We present Echo-α, an agentic multimodal reasoning model for ultrasound interpretation that unifies these strengths within an invoke-and-reason framework. Echo-α is trained to coordinate organ-specific detector outputs, integrate them with global visual context, and convert the resulting evidence into grounded diagnostic decisions beyond detector-only inference. This behavior is established through a nine-task supervised curriculum and then refined by sequential reinforcement learning under different reward trade-offs, yielding Echo-α-Grounding for lesion anchoring and Echo-α-Diagnosis for final diagnosis. On multi-center renal and breast ultrasound benchmarks, Echo-α outperforms competitive baselines on both grounding and diagnosis. In particular, on cross-center test sets, Echo-α-Grounding attains 56.73%/43.78% F1@0.5 and Echo- α-Diagnosis reaches 74.90%/49.20% overall accuracy on renal/breast ultrasound. These results suggest that agentic multimodal reasoning can turn specialized detectors into verifiable clinical evidence, offering a practical route toward ultrasound AI systems that are more accurate, interpretable, and transferable. The repository is at https://github.com/MiliLab/Echo-Alpha.",
+        "llm_keywords": "超声影像, 多模态大语言模型, 智能体推理, 病灶定位, 临床诊断",
+        "llm_summary": "Echo-α是一种用于超声影像解读的智能体多模态推理模型，通过调用与推理框架结合器官检测器与全局视觉上下文，实现精准病灶定位和临床诊断，在肾脏和乳腺超声基准上优于现有方法。",
+        "abstract_cn": "超声影像解读既需要精确的病灶定位，也需要全面的临床推理，然而现有方法通常只擅长其中一种能力：专用检测器定位强但推理有限，而多模态大语言模型（MLLMs）推理灵活但在专业医学领域定位薄弱。我们提出Echo-α，一种用于超声影像解读的智能体多模态推理模型，在调用与推理（invoke-and-reason）框架内统一了这些优势。Echo-α经过训练，能够协调器官专用检测器的输出，将其与全局视觉上下文整合，并将所得证据转化为超越仅依赖检测器的有依据的诊断决策。这一行为通过九任务监督课程建立，随后在不同奖励权衡下通过序列强化学习进行优化，得到用于病灶锚定的Echo-α-Grounding和用于最终诊断的Echo-α-Diagnosis。在多中心肾脏和乳腺超声基准上，Echo-α在定位和诊断方面均优于竞争基线。特别是在跨中心测试集上，Echo-α-Grounding在肾脏/乳腺超声上达到56.73%/43.78%的F1@0.5，Echo-α-Diagnosis达到74.90%/49.20%的总体准确率。这些结果表明，智能体多模态推理可以将专用检测器转化为可验证的临床证据，为构建更准确、可解释且可迁移的超声AI系统提供了一条实用路径。代码仓库位于https://github.com/MiliLab/Echo-Alpha。"
+      },
+      {
+        "title": "Learning from Disagreement: Clinician Overrides as Implicit Preference Signals for Clinical AI in Value-Based Care",
+        "authors": [
+          "Prabhjot Singh",
+          "Abhishek Gupta",
+          "Chris Betz",
+          "Abe Flansburg",
+          "Brett Ives",
+          "Sudeep Lama",
+          "Jung Hoon Son"
+        ],
+        "published": "2026-04-30",
+        "summary": "We reframe clinician overrides of clinical AI recommendations as implicit preference data - the same signal structure exploited by reinforcement learning from human feedback (RLHF), but richer: the annotator is a domain expert, the alternatives carry real consequences, and downstream outcomes are observable. We present a formal framework extending standard preference learning with three contributions: a five-category override taxonomy mapping override types to distinct model update targets; a pr",
+        "pdf_url": "https://arxiv.org/pdf/2604.28010v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.28010v1",
+        "abstract": "We reframe clinician overrides of clinical AI recommendations as implicit preference data - the same signal structure exploited by reinforcement learning from human feedback (RLHF), but richer: the annotator is a domain expert, the alternatives carry real consequences, and downstream outcomes are observable. We present a formal framework extending standard preference learning with three contributions: a five-category override taxonomy mapping override types to distinct model update targets; a preference formulation conditioned on patient state s, organizational context c, and clinician capability kappa, where kappa decomposes into execution capability kappa-exec and alignment capability kappa-align; and a dual learning architecture that jointly trains a reward model and a capability model via alternating optimization, preventing a failure mode we term suppression bias-the systematic suppression of correct-but-difficult recommendations when clinician capability falls below the execution threshold. We argue that chronic disease management under outcome-based payment contracts produces override data with uniquely favorable properties-longitudinal density, concentrated decision space, outcome labels, and natural capability variation-and that training environments combining longitudinal outcome measurement with aligned financial incentives are a necessary condition for learning a reward model aligned with patient trajectory rather than with encounter economics. This framework emerged from operational work to improve clinician capability in a live value-based care deployment.",
+        "llm_keywords": "临床AI, 偏好学习, 价值医疗, 医生否决, 强化学习",
+        "llm_summary": "本文提出将临床医生对AI建议的否决视为隐式偏好数据，扩展了偏好学习框架，包括五类否决分类、基于患者状态、组织环境和医生能力的偏好公式，以及联合训练奖励模型和能力模型的双重学习架构，以解决抑制偏差问题。",
+        "abstract_cn": "我们将临床医生对临床AI建议的否决重新定义为隐式偏好数据——这与从人类反馈中强化学习（RLHF）所利用的信号结构相同，但更为丰富：标注者是领域专家，替代方案具有实际后果，且下游结果可观测。我们提出了一个形式化框架，通过三项贡献扩展了标准偏好学习：一个五类否决分类法，将否决类型映射到不同的模型更新目标；一个基于患者状态s、组织环境c和临床医生能力kappa（其中kappa分解为执行能力kappa-exec和校准能力kappa-align）的偏好公式；以及一个双重学习架构，通过交替优化联合训练奖励模型和能力模型，防止我们称之为抑制偏差（suppression bias）的失败模式——即当临床医生能力低于执行阈值时，系统性地抑制正确但困难的推荐。我们认为，在基于结果的支付合同下进行慢性病管理，会产生具有独特有利属性的否决数据——纵向密度、集中的决策空间、结果标签以及自然的能力变化——并且，将纵向结果测量与一致的财务激励相结合的培训环境，是学习与患者轨迹而非就诊经济学对齐的奖励模型的必要条件。该框架源于我们在一个实时价值医疗部署中为提高临床医生能力而开展的运营工作。"
+      },
+      {
+        "title": "Simulating clinical interventions with a generative multimodal model of human physiology",
+        "authors": [
+          "Guy Lutsker",
+          "Gal Sapir",
+          "Jordi Merino",
+          "Smadar Shilo",
+          "Anastasia Godneva",
+          "Eli Meirom",
+          "Shie Mannor",
+          "Hagai Rossman",
+          "Gal Chechik",
+          "Eran Segal"
+        ],
+        "published": "2026-04-30",
+        "summary": "Understanding how human health changes over time, and why responses to interventions vary between individuals, remains a central challenge in medicine. Here we present HealthFormer, a decoder-only transformer that models the human physiological trajectory generatively, by training on data from the Human Phenotype Project, a multi-visit cohort of over 15,000 deeply phenotyped individuals. We tokenise each participant's health trajectory across 667 measurements spanning seven domains: blood biomar",
+        "pdf_url": "https://arxiv.org/pdf/2604.27899v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2604.27899v1",
+        "abstract": "Understanding how human health changes over time, and why responses to interventions vary between individuals, remains a central challenge in medicine. Here we present HealthFormer, a decoder-only transformer that models the human physiological trajectory generatively, by training on data from the Human Phenotype Project, a multi-visit cohort of over 15,000 deeply phenotyped individuals. We tokenise each participant's health trajectory across 667 measurements spanning seven domains: blood biomarkers, body composition, sleep physiology, continuous glucose monitoring, gut microbiome, wearable-derived physiology, and behaviour and medication exposure. We train HealthFormer to forecast individual physiological trajectories across these domains, and from this single generative objective a range of clinically relevant tasks can be expressed as queries on the model. We show that, without task-specific training, HealthFormer transfers to four independent cohorts and improves prediction for 27 of 30 incident-disease and mortality endpoints, exceeding established clinical risk scores in every comparison. We further show that the model can simulate interventions in silico: in a held-out personalised-nutrition trial, intervention-conditioned predictions recover individual six-month biomarker changes (e.g., Pearson r = 0.78 for diastolic blood pressure). Across 41 randomised intervention-outcome comparisons drawn from published trials, our results show that the predicted direction of effect agrees in every case, and the predicted mean falls within the reported 95% confidence interval in 30 cases. We position HealthFormer as an initial health world model, from which forecasting, risk stratification, and intervention-conditioned simulation arise as queries, providing a basis for clinical digital twins.",
+        "llm_keywords": "生理轨迹, 生成式模型, 临床干预模拟, 数字孪生, 多模态数据",
+        "llm_summary": "HealthFormer是一种解码器-only的Transformer模型，通过多模态生理数据生成式建模个体健康轨迹，能预测疾病风险、模拟干预效果，并在多个独立队列中优于传统临床风险评分。",
+        "abstract_cn": "理解人类健康随时间的变化以及个体对干预反应差异的原因，仍是医学的核心挑战。本文提出HealthFormer，一种仅解码器的Transformer模型，通过对人类表型项目（Human Phenotype Project）中超过15,000名深度表型个体的多访视数据进行训练，生成式地模拟人类生理轨迹。我们将每个参与者的健康轨迹在667项测量指标上进行分词，这些指标涵盖七个领域：血液生物标志物（blood biomarkers）、身体成分（body composition）、睡眠生理学（sleep physiology）、连续血糖监测（continuous glucose monitoring）、肠道微生物组（gut microbiome）、可穿戴设备衍生的生理数据（wearable-derived physiology）以及行为和药物暴露（behaviour and medication exposure）。我们训练HealthFormer预测个体在这些领域的生理轨迹，并从这个单一的生成目标出发，一系列临床相关任务可以作为对模型的查询来表达。我们展示了，在没有任务特定训练的情况下，HealthFormer能够迁移到四个独立队列，并在30个事件性疾病和死亡率终点中的27个上改进了预测，在每次比较中都超过了既定的临床风险评分。我们进一步展示了该模型可以模拟体外干预（in silico）：在一个保留的个性化营养试验中，干预条件预测恢复了个体六个月的生物标志物变化（例如，舒张压的Pearson r = 0.78）。在来自已发表试验的41个随机干预-结果比较中，我们的结果显示预测的效果方向在每种情况下都一致，并且在30种情况下预测均值落在报告的95%置信区间内。我们将HealthFormer定位为初始健康世界模型（health world model），从中可以产生预测、风险分层和干预条件模拟作为查询，为临床数字孪生（clinical digital twins）提供基础。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "Echo-α: Large Agentic Multimodal Reasoning Model for Ultrasound Interpretation",
+        "authors": [
+          "Jing Zhang",
+          "Wentao Jiang",
+          "Tao Huang",
+          "Zhiwei Wang",
+          "Jianxin Liu",
+          "Jian Chen",
+          "Ping Ye",
+          "Gang Wang",
+          "Zengmao Wang",
+          "Bo Du",
+          "Dacheng Tao"
+        ],
+        "published": "2026-04-30",
+        "summary": "Ultrasound interpretation requires both precise lesion localization and holistic clinical reasoning, yet existing methods typically excel at only one of these capabilities: specialized detectors offer strong localization but limited reasoning, whereas multimodal large language models (MLLMs) provide flexible reasoning but weak grounding in specialized medical domains. We present Echo-α, an agentic multimodal reasoning model for ultrasound interpretation that unifies these strengths within an inv",
+        "pdf_url": "https://arxiv.org/pdf/2604.28011v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2604.28011v1",
+        "abstract": "Ultrasound interpretation requires both precise lesion localization and holistic clinical reasoning, yet existing methods typically excel at only one of these capabilities: specialized detectors offer strong localization but limited reasoning, whereas multimodal large language models (MLLMs) provide flexible reasoning but weak grounding in specialized medical domains. We present Echo-α, an agentic multimodal reasoning model for ultrasound interpretation that unifies these strengths within an invoke-and-reason framework. Echo-α is trained to coordinate organ-specific detector outputs, integrate them with global visual context, and convert the resulting evidence into grounded diagnostic decisions beyond detector-only inference. This behavior is established through a nine-task supervised curriculum and then refined by sequential reinforcement learning under different reward trade-offs, yielding Echo-α-Grounding for lesion anchoring and Echo-α-Diagnosis for final diagnosis. On multi-center renal and breast ultrasound benchmarks, Echo-α outperforms competitive baselines on both grounding and diagnosis. In particular, on cross-center test sets, Echo-α-Grounding attains 56.73%/43.78% F1@0.5 and Echo- α-Diagnosis reaches 74.90%/49.20% overall accuracy on renal/breast ultrasound. These results suggest that agentic multimodal reasoning can turn specialized detectors into verifiable clinical evidence, offering a practical route toward ultrasound AI systems that are more accurate, interpretable, and transferable. The repository is at https://github.com/MiliLab/Echo-Alpha.",
+        "llm_keywords": "超声影像, 多模态大语言模型, 智能体推理, 病灶定位, 临床诊断",
+        "llm_summary": "Echo-α是一种用于超声影像解读的智能体多模态推理模型，通过调用与推理框架结合器官检测器与全局视觉上下文，实现精准病灶定位和临床诊断，在肾脏和乳腺超声基准上优于现有方法。",
+        "abstract_cn": "超声影像解读既需要精确的病灶定位，也需要全面的临床推理，然而现有方法通常只擅长其中一种能力：专用检测器定位强但推理有限，而多模态大语言模型（MLLMs）推理灵活但在专业医学领域定位薄弱。我们提出Echo-α，一种用于超声影像解读的智能体多模态推理模型，在调用与推理（invoke-and-reason）框架内统一了这些优势。Echo-α经过训练，能够协调器官专用检测器的输出，将其与全局视觉上下文整合，并将所得证据转化为超越仅依赖检测器的有依据的诊断决策。这一行为通过九任务监督课程建立，随后在不同奖励权衡下通过序列强化学习进行优化，得到用于病灶锚定的Echo-α-Grounding和用于最终诊断的Echo-α-Diagnosis。在多中心肾脏和乳腺超声基准上，Echo-α在定位和诊断方面均优于竞争基线。特别是在跨中心测试集上，Echo-α-Grounding在肾脏/乳腺超声上达到56.73%/43.78%的F1@0.5，Echo-α-Diagnosis达到74.90%/49.20%的总体准确率。这些结果表明，智能体多模态推理可以将专用检测器转化为可验证的临床证据，为构建更准确、可解释且可迁移的超声AI系统提供了一条实用路径。代码仓库位于https://github.com/MiliLab/Echo-Alpha。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Enhancing multimodal affect recognition in healthcare: the robustness of appraisal dimensions over labels within age groups and in cross-age generalisation",
+        "authors": [
+          "Hippolyte Fournier",
+          "Sina Alisamir",
+          "Safaa Azzakhnini",
+          "Isabella Zsoldos",
+          "Eléonore Trân",
+          "Gérard Bailly",
+          "Frédéric Elisei",
+          "Béatrice Bouchot",
+          "Brice Varini",
+          "Patrick Constant",
+          "Joan Fruitet",
+          "Franck Tarpin-Bernard",
+          "Solange Rossato",
+          "François Portet",
+          "Olivier Koenig",
+          "Hanna Chainay",
+          "Fabien Ringeval"
+        ],
+        "published": "2026-04-30",
+        "summary": "The integration of artificial intelligence (AI) into healthcare has advanced significantly, yet affect recognition remains a major challenge, particularly in AI-assisted interventions such as Computerized Cognitive Training (CCT). The THERADIA-WoZ corpus was developed to enable multimodal affect recognition in the context of AI-driven CCT, focusing on an older adult population. This study extends the corpus by introducing a dataset collected from young adults, allowing direct comparison of affec",
+        "pdf_url": "https://arxiv.org/pdf/2604.27938v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2604.27938v1",
+        "abstract": "The integration of artificial intelligence (AI) into healthcare has advanced significantly, yet affect recognition remains a major challenge, particularly in AI-assisted interventions such as Computerized Cognitive Training (CCT). The THERADIA-WoZ corpus was developed to enable multimodal affect recognition in the context of AI-driven CCT, focusing on an older adult population. This study extends the corpus by introducing a dataset collected from young adults, allowing direct comparison of affect recognition models across age groups. Our objective was to assess whether multimodal models based on dimensions borrowed from appraisal theories outperform those based on categorical labels and to evaluate their generalisation power across age corpora. After comparing both corpora, models were trained and tested using within-corpus, cross-corpus, and mixed-corpus evaluation. Results revealed that appraisal dimensions consistently outperformed categorical labels across all conditions, demonstrating greater predictive accuracy and stability. Notably, categorical labels failed to generalise across age corpora, as performance dropped to chance levels in cross-corpus evaluation. In contrast, appraisal dimensions maintained predictive performance above chance, reinforcing their robustness for cross-age affect recognition. Furthermore, training on both corpora did not improve generalisation beyond within-corpus training. The findings support the theoretical and practical advantages of appraisal dimensions over categorical labels in affective computing. They also highlight the importance of multimodal fusion and deep learning representations for emotion modeling. To facilitate future research, we provide an API for researchers interested in time-continuous emotion prediction, offering valuable tools for behavioral sciences to enhance the measurement of emotional states in various experimental settings.",
+        "llm_keywords": "情感识别, 评价维度, 跨年龄泛化, 多模态融合, 人工智能医疗",
+        "llm_summary": "本研究通过THERADIA-WoZ语料库和新增的青年数据集，比较了基于评价维度和分类标签的多模态情感识别模型在老年和青年群体中的表现。结果显示评价维度在所有条件下均优于分类标签，尤其在跨年龄泛化中保持高于随机水平的预测性能，而分类标签则降至随机水平。研究支持评价维度在情感计算中的理论和实践优势，并强调了多模态融合和深度学习表示的重要性。",
+        "abstract_cn": "人工智能（AI）在医疗领域的整合取得了显著进展，但情感识别仍是一个主要挑战，尤其是在计算机化认知训练（CCT）等AI辅助干预中。THERADIA-WoZ语料库是为实现AI驱动的CCT背景下的多模态情感识别而开发的，重点关注老年人群。本研究通过引入从青年人群中收集的数据集扩展了该语料库，从而能够直接比较不同年龄组的情感识别模型。我们的目标是评估基于评价理论（appraisal theories）维度的多模态模型是否优于基于分类标签（categorical labels）的模型，并评估它们在跨年龄语料库中的泛化能力。在比较两个语料库后，使用语料库内、跨语料库和混合语料库评估对模型进行了训练和测试。结果显示，评价维度（appraisal dimensions）在所有条件下均优于分类标签，表现出更高的预测准确性和稳定性。值得注意的是，分类标签无法在跨年龄语料库中泛化，因为在跨语料库评估中性能降至随机水平。相比之下，评价维度保持了高于随机水平的预测性能，增强了其在跨年龄情感识别中的鲁棒性。此外，在两个语料库上训练并未改善超出语料库内训练的泛化能力。这些发现支持了评价维度相对于分类标签在情感计算中的理论和实践优势，并强调了多模态融合和深度学习表示在情感建模中的重要性。为促进未来研究，我们为对时间连续情感预测感兴趣的研究人员提供了一个API，为行为科学提供了有价值的工具，以增强在各种实验环境中对情感状态的测量。"
+      }
+    ]
+  },
+  "total_count": 5,
+  "generated_at": "2026-05-01T22:47:54.761520"
+}
