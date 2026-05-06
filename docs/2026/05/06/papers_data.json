@@ -1,0 +1,280 @@
+{
+  "date_range": {
+    "start_date": "2026-05-05",
+    "end_date": "2026-05-05"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Safety and accuracy follow different scaling laws in clinical large language models",
+        "authors": [
+          "Sebastian Wind",
+          "Tri-Thien Nguyen",
+          "Jeta Sopa",
+          "Mahshad Lotfinia",
+          "Sebastian Bickelhaup",
+          "Michael Uder",
+          "Harald Köstler",
+          "Gerhard Wellein",
+          "Sven Nebelung",
+          "Daniel Truhn",
+          "Andreas Maier",
+          "Soroosh Tayebi Arasteh"
+        ],
+        "published": "2026-05-05",
+        "summary": "Clinical LLMs are often scaled by increasing model size, context length, retrieval complexity, or inference-time compute, with the implicit expectation that higher accuracy implies safer behavior. This assumption is incomplete in medicine, where a few confident, high-risk, or evidence-contradicting errors can matter more than average benchmark performance. We introduce SaFE-Scale, a framework for measuring how clinical LLM safety changes across model scale, evidence quality, retrieval strategy, ",
+        "pdf_url": "https://arxiv.org/pdf/2605.04039v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2605.04039v1",
+        "abstract": "Clinical LLMs are often scaled by increasing model size, context length, retrieval complexity, or inference-time compute, with the implicit expectation that higher accuracy implies safer behavior. This assumption is incomplete in medicine, where a few confident, high-risk, or evidence-contradicting errors can matter more than average benchmark performance. We introduce SaFE-Scale, a framework for measuring how clinical LLM safety changes across model scale, evidence quality, retrieval strategy, context exposure, and inference-time compute. To instantiate this framework, we introduce RadSaFE-200, a Radiology Safety-Focused Evaluation benchmark of 200 multiple-choice questions with clinician-defined clean evidence, conflict evidence, and option-level labels for high-risk error, unsafe answer, and evidence contradiction. We evaluated 34 locally deployed LLMs across six deployment conditions: closed-book prompting (zero-shot), clean evidence, conflict evidence, standard RAG, agentic RAG, and max-context prompting. Clean evidence produced the strongest improvement, increasing mean accuracy from 73.5% to 94.1%, while reducing high-risk error from 12.0% to 2.6%, contradiction from 12.7% to 2.3%, and dangerous overconfidence from 8.0% to 1.6%. Standard RAG and agentic RAG did not reproduce this safety profile: agentic RAG improved accuracy over standard RAG and reduced contradiction, but high-risk error and dangerous overconfidence remained elevated. Max-context prompting increased latency without closing the safety gap, and additional inference-time compute produced only limited gains. Worst-case analysis showed that clinically consequential errors concentrated in a small subset of questions. Clinical LLM safety is therefore not a passive consequence of scaling, but a deployment property shaped by evidence quality, retrieval design, context construction, and collective failure behavior.",
+        "llm_keywords": "临床大语言模型, 安全性, 缩放定律, 放射学评估, 检索增强生成",
+        "llm_summary": "本文提出SaFE-Scale框架，研究临床大语言模型在规模、证据质量、检索策略等条件下的安全性与准确性变化。通过RadSaFE-200基准测试发现，清晰证据能显著提升准确率并降低高风险错误，而标准RAG和智能体RAG无法复制此安全效果，表明临床LLM安全性是部署属性而非缩放被动结果。",
+        "abstract_cn": "临床大语言模型（Clinical LLMs）通常通过增加模型规模、上下文长度、检索复杂度或推理时计算来扩展，隐含的期望是更高的准确性意味着更安全的行为。这一假设在医学中是不完整的，因为少数自信、高风险或与证据矛盾的错误可能比平均基准性能更重要。我们引入了SaFE-Scale，一个用于衡量临床LLM安全性如何随模型规模、证据质量、检索策略、上下文暴露和推理时计算变化的框架。为了实例化该框架，我们推出了RadSaFE-200，一个放射学安全聚焦评估基准（Radiology Safety-Focused Evaluation benchmark），包含200道多项选择题，配有临床医生定义的清晰证据、冲突证据以及高风险错误、不安全答案和证据矛盾的选项级标签。我们评估了34个本地部署的LLM在六种部署条件下的表现：闭卷提示（零样本）、清晰证据、冲突证据、标准RAG、智能体RAG（agentic RAG）和最大上下文提示。清晰证据产生了最强的改进，将平均准确率从73.5%提高到94.1%，同时将高风险错误从12.0%降低到2.6%，矛盾从12.7%降低到2.3%，危险过度自信从8.0%降低到1.6%。标准RAG和智能体RAG未能复制这种安全特性：智能体RAG比标准RAG提高了准确率并减少了矛盾，但高风险错误和危险过度自信仍然较高。最大上下文提示增加了延迟而未缩小安全差距，额外的推理时计算仅带来有限的收益。最坏情况分析显示，临床后果严重的错误集中在少数问题上。因此，临床LLM的安全性不是缩放（scaling）的被动结果，而是一种由证据质量、检索设计、上下文构建和集体失败行为塑造的部署属性。"
+      },
+      {
+        "title": "SymptomAI: Towards a Conversational AI Agent for Everyday Symptom Assessment",
+        "authors": [
+          "Joseph Breda",
+          "Fadi Yousif",
+          "Beszel Hawkins",
+          "Marinela Cotoi",
+          "Miao Liu",
+          "Ray Luo",
+          "Po-Hsuan Cameron Chen",
+          "Mike Schaekermann",
+          "Samuel Schmidgall",
+          "Xin Liu",
+          "Girish Narayanswamy",
+          "Samuel Solomon",
+          "Maxwell A. Xu",
+          "Xiaoran Fan",
+          "Longfei Shangguan",
+          "Anran Wang",
+          "Bhavna Daryani",
+          "Buddy Herkenham",
+          "Cara Tan",
+          "Mark Malhotra",
+          "Shwetak Patel",
+          "John B. Hernandez",
+          "Quang Duong",
+          "Yun Liu",
+          "Zach Wasson",
+          "Dimitrios Antos",
+          "Bob Lou",
+          "Matthew Thompson",
+          "Jonathan Richina",
+          "Anupam Pathak",
+          "Nichole Young-Lin",
+          "Jake Sunshine",
+          "Daniel McDuff"
+        ],
+        "published": "2026-05-05",
+        "summary": "Language models excel at diagnostic assessments on currated medical case-studies and vignettes, performing on par with, or better than, clinical professionals. However, existing studies focus on complex scenarios with rich context making it difficult to draw conclusions about how these systems perform for patients reporting symptoms in everyday life. We deployed SymptomAI, a set of conversational AI agents for end-to-end patient interviewing and differential diagnosis (DDx), via the Fitbit app i",
+        "pdf_url": "https://arxiv.org/pdf/2605.04012v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.04012v1",
+        "abstract": "Language models excel at diagnostic assessments on currated medical case-studies and vignettes, performing on par with, or better than, clinical professionals. However, existing studies focus on complex scenarios with rich context making it difficult to draw conclusions about how these systems perform for patients reporting symptoms in everyday life. We deployed SymptomAI, a set of conversational AI agents for end-to-end patient interviewing and differential diagnosis (DDx), via the Fitbit app in a study that randomized participants (N=13,917) to interact with five AI agents. This corpus captures diverse communication and a realistic distribution of illnesses from a real world population. A subset of 1,228 participants reported a clinician-provided diagnosis, and 517 of these were further evaluated by a panel of clinicians during over 250 hours of annotation. SymptomAI DDx were significantly more accurate (OR = 2.47, p < 0.001) than those from independent clinicians given the same dialogue in a blinded randomized comparison. Moreover, agentic strategies which conduct a dedicated symptom interview that elicit additional symptom information before providing a diagnosis, perform substantially better than baseline, user-guided conversations (p < 0.001). An auxiliary analysis on 1,509 conversations from a general US population panel validated that these results generalize beyond wearable device users. We used SymptomAI diagnoses as labels for all 13,917 participants to analyze over 500,000 days of wearable metrics across nearly 400 unique conditions. We identified strong associations between acute infections and physiological shifts (e.g., OR > 7 for influenza). While limited by self-reported ground truth, these results demonstrate the benefits of a dedicated and complete symptom interview compared to a user-guided symptom discussion, which is the default of most consumer LLMs.",
+        "llm_keywords": "症状评估, 对话式AI, 差分诊断, 可穿戴设备, 大型语言模型",
+        "llm_summary": "本研究通过Fitbit应用部署了SymptomAI对话代理，对13,917名参与者进行随机实验，发现AI在差分诊断中比临床医生更准确，且专用症状访谈策略优于用户引导对话。",
+        "abstract_cn": "语言模型在基于精选医学案例和场景的诊断评估中表现出色，与临床专业人员相当甚至更优。然而，现有研究聚焦于具有丰富上下文的复杂场景，难以推断这些系统在患者报告日常症状时的表现。我们通过Fitbit应用部署了SymptomAI，一组用于端到端患者访谈和差分诊断（DDx）的对话式AI代理，并随机分配参与者（N=13,917）与五个AI代理互动。该语料库捕捉了来自真实世界人群的多样化沟通和疾病分布。其中1,228名参与者报告了临床医生提供的诊断，其中517名在超过250小时的标注中由临床医生小组进一步评估。在盲法随机比较中，SymptomAI的DDx准确率显著高于独立临床医生（OR = 2.47, p < 0.001）。此外，在提供诊断前进行专门症状访谈以获取额外症状信息的代理策略，显著优于基线用户引导对话（p < 0.001）。对来自美国普通人群小组的1,509次对话的辅助分析验证了这些结果可推广到可穿戴设备用户之外。我们使用SymptomAI诊断为所有13,917名参与者标注，分析了近400种独特条件下超过500,000天的可穿戴指标。我们发现急性感染与生理变化之间存在强关联（例如，流感的OR > 7）。尽管受限于自我报告的金标准，这些结果证明了专用且完整的症状访谈相比用户引导的症状讨论（大多数消费级LLM的默认方式）的优势。"
+      },
+      {
+        "title": "RD-ViT: Recurrent-Depth Vision Transformer for Semantic Segmentation with Reduced Data Dependence Extending the Recurrent-Depth Transformer Architecture to Dense Prediction",
+        "authors": [
+          "Renjie He"
+        ],
+        "published": "2026-05-05",
+        "summary": "Vision Transformers (ViTs) achieve state-of-the-art segmentation accuracy but require large training datasets because each layer has unique parameters that must be learned independently. We present RD-ViT, a Recurrent-Depth Vision Transformer that adapts the Recurrent-Depth Transformer (RDT) architecture to dense prediction tasks, supporting both 2D and 3D inputs. RD-ViT replaces the deep stack of unique transformer blocks with a single shared block looped T times, augmented with LTI-stable stat",
+        "pdf_url": "https://arxiv.org/pdf/2605.03999v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.03999v1",
+        "abstract": "Vision Transformers (ViTs) achieve state-of-the-art segmentation accuracy but require large training datasets because each layer has unique parameters that must be learned independently. We present RD-ViT, a Recurrent-Depth Vision Transformer that adapts the Recurrent-Depth Transformer (RDT) architecture to dense prediction tasks, supporting both 2D and 3D inputs. RD-ViT replaces the deep stack of unique transformer blocks with a single shared block looped T times, augmented with LTI-stable state injection for guaranteed convergence, Adaptive Computation Time (ACT) for spatial compute allocation, depth-wise LoRA adaptation, and optional Mixture-of-Experts (MoE) feed-forward networks for category-specific specialization. We evaluate on the ACDC cardiac MRI segmentation benchmark in both 2D slice-level and 3D volumetric settings with exclusively real experiments executed in Google Colab. In 2D, RD-ViT outperforms standard ViT at 10% training data (Dice 0.774 vs 0.762) and at full data (0.882 vs 0.872). In 3D, RD-ViT with MoE achieves Dice 0.812 with 3.0M parameters, reaching 99.4% of standard ViT performance (0.817) at 53% of the parameter count. MoE expert utilization analysis reveals that different experts spontaneously specialize for different cardiac structures (RV, MYO, LV) without explicit routing supervision. ACT halting maps show higher compute allocation at cardiac boundaries, and the mean ponder time decreases from 2.6 to 1.4 iterations during training, demonstrating learned computational efficiency. Depth extrapolation enables inference with more loops than training without degradation. All code, notebooks, and results are publicly released.",
+        "llm_keywords": "视觉Transformer, 语义分割, 循环深度, 自适应计算时间, 混合专家",
+        "llm_summary": "本文提出RD-ViT，一种循环深度视觉Transformer，通过共享块循环、状态注入、自适应计算时间和混合专家机制，在减少数据依赖的同时提升语义分割性能，在ACDC心脏MRI数据集上以更少参数达到或超越标准ViT。",
+        "abstract_cn": "视觉Transformer（ViT）在语义分割中取得了最先进的精度，但由于每层都有独立学习的参数，需要大量训练数据。我们提出RD-ViT，一种循环深度视觉Transformer，将循环深度Transformer（RDT）架构适配到密集预测任务，支持2D和3D输入。RD-ViT用单个共享块循环T次替代深层独立Transformer块堆叠，并引入LTI稳定状态注入以保证收敛、自适应计算时间（ACT）以分配空间计算、深度LoRA适配以及可选的混合专家（MoE）前馈网络用于类别特定专业化。我们在ACDC心脏MRI分割基准上进行了2D切片级和3D体积级评估，所有实验均在Google Colab中执行。在2D中，RD-ViT在10%训练数据下优于标准ViT（Dice 0.774 vs 0.762），在全数据下也更好（0.882 vs 0.872）。在3D中，带MoE的RD-ViT以3.0M参数达到Dice 0.812，为标准ViT性能（0.817）的99.4%，参数仅为53%。MoE专家利用率分析显示，不同专家自发地针对不同心脏结构（RV、MYO、LV）进行专门化，无需显式路由监督。ACT停止图显示心脏边界处计算分配更高，平均思考时间从训练时的2.6迭代降至1.4迭代，展示了学习到的计算效率。深度外推使得推理时可以使用比训练时更多的循环而不退化。所有代码、笔记本和结果均已公开。"
+      },
+      {
+        "title": "EQUITRIAGE: A Fairness Audit of Gender Bias in LLM-Based Emergency Department Triage",
+        "authors": [
+          "Richard J. Young",
+          "Alice M. Matthews"
+        ],
+        "published": "2026-05-05",
+        "summary": "Emergency department triage assigns patients an acuity score that determines treatment priority, and clinical evidence documents persistent gender disparities in human acuity assessment. As hospitals pilot large language models (LLMs) as triage decision support, a critical question is whether these models reproduce or mitigate known biases. We present EQUITRIAGE, a fairness audit of LLM-based ESI assignment evaluating five models (Gemini-3-Flash, Nemotron-3-Super, DeepSeek-V3.1, Mistral-Small-3.",
+        "pdf_url": "https://arxiv.org/pdf/2605.03998v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.03998v1",
+        "abstract": "Emergency department triage assigns patients an acuity score that determines treatment priority, and clinical evidence documents persistent gender disparities in human acuity assessment. As hospitals pilot large language models (LLMs) as triage decision support, a critical question is whether these models reproduce or mitigate known biases. We present EQUITRIAGE, a fairness audit of LLM-based ESI assignment evaluating five models (Gemini-3-Flash, Nemotron-3-Super, DeepSeek-V3.1, Mistral-Small-3.2, GPT-4.1-Nano) across 374,275 evaluations on 18,714 MIMIC-IV-ED vignettes under four prompt strategies. Of 9,368 originals, 9,346 are paired with a gender-swapped counterfactual. All five models produced flip rates above a pre-registered 5% threshold (9.9% to 43.8%). Two showed directional female undertriage (DeepSeek F/M 2.15:1, Gemini 1.34:1); two were near-parity; one had high sensitivity with weak male-direction asymmetry. DeepSeek's directional bias coexisted with a low outcome-linked calibration gap (0.013 against MIMIC-IV admission), a Chouldechova-style dissociation between within-group calibration and between-pair counterfactual invariance. Demographic blinding reduced Gemini's flip rate to 0.5%; an age-preserving blind variant left DeepSeek with residual F/M 1.25, implicating age as a residual channel. Chain-of-thought prompting degraded accuracy for all five models. A two-model ablation reveals opposite underlying mechanisms for the same directional phenotype: in Gemini the signal is emergent in the combined name+gender swap, while in DeepSeek the gender token alone carries it. EQUITRIAGE shows that group parity, counterfactual invariance, and gender calibration are distinct fairness properties, that intervention effectiveness is model-dependent, and that per-model counterfactual auditing should precede clinical deployment.",
+        "llm_keywords": "公平性审计, 性别偏见, 急诊分诊, 大语言模型, 反事实不变性",
+        "llm_summary": "本研究对五种大语言模型在急诊分诊中的性别偏见进行公平性审计，发现所有模型均存在高于阈值的性别翻转率，部分模型存在女性分诊不足的定向偏差，且干预措施效果因模型而异，表明在临床部署前需进行逐模型反事实审计。",
+        "abstract_cn": "急诊分诊为患者分配决定治疗优先级的病情严重程度评分，临床证据表明人类病情评估中存在持续的性别差异。随着医院试点使用大语言模型（LLMs）作为分诊决策支持，一个关键问题是这些模型是否会再现或减轻已知偏见。我们提出了EQUITRIAGE，一项对基于LLM的ESI（急诊严重程度指数）分配的公平性审计，评估了五种模型（Gemini-3-Flash、Nemotron-3-Super、DeepSeek-V3.1、Mistral-Small-3.2、GPT-4.1-Nano），在四种提示策略下对18,714个MIMIC-IV-ED（重症监护医疗信息集市第四版急诊科）病例进行了374,275次评估。在9,368个原始病例中，9,346个配有性别交换的反事实病例。所有五种模型的翻转率均高于预先登记的5%阈值（9.9%至43.8%）。两种模型显示出定向的女性分诊不足（DeepSeek女性/男性比2.15:1，Gemini 1.34:1）；两种模型接近均等；一种模型具有高敏感性但男性方向不对称性较弱。DeepSeek的定向偏差与较低的结局关联校准差距（相对于MIMIC-IV入院率为0.013）共存，这是一种Chouldechova式的组内校准与配对间反事实不变性之间的分离。人口统计学信息屏蔽将Gemini的翻转率降至0.5%；一种保留年龄的盲化变体使DeepSeek残留女性/男性比1.25，暗示年龄是一个残余信息通道。链式思维提示（chain-of-thought prompting）降低了所有五种模型的准确性。一个双模型消融实验揭示了相同定向表型背后的相反机制：在Gemini中，信号在姓名+性别交换的组合中涌现，而在DeepSeek中，仅性别标记本身就携带该信号。EQUITRIAGE表明，群体均等性、反事实不变性和性别校准是不同的公平性属性，干预效果依赖于模型，并且在临床部署前应进行逐模型的反事实审计。"
+      },
+      {
+        "title": "A Domain Incremental Continual Learning Benchmark for ICU Time Series Model Transportability",
+        "authors": [
+          "Ryan King",
+          "Conrad Krueger",
+          "Ethan Veselka",
+          "Tianbao Yang",
+          "Bobak J. Mortazavi"
+        ],
+        "published": "2026-05-05",
+        "summary": "In recent years, machine learning has made significant progress in clinical outcome prediction, demonstrating increasingly accurate results. However, the substantial resources required for hospitals to train these models, such as data collection, labeling, and computational power, limit the feasibility for smaller hospitals to develop their own models. An alternative approach involves transferring a machine learning model trained by a large hospital to smaller hospitals, allowing them to fine-tu",
+        "pdf_url": "https://arxiv.org/pdf/2605.03832v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.03832v1",
+        "abstract": "In recent years, machine learning has made significant progress in clinical outcome prediction, demonstrating increasingly accurate results. However, the substantial resources required for hospitals to train these models, such as data collection, labeling, and computational power, limit the feasibility for smaller hospitals to develop their own models. An alternative approach involves transferring a machine learning model trained by a large hospital to smaller hospitals, allowing them to fine-tune the model on their specific patient data.\n  However, these models are often trained and validated on data from a single hospital, raising concerns about their generalizability to new data. Our research shows that there are notable differences in measurement distributions and frequencies across various regions in the United States. To address this, we propose a benchmark that tests a machine learning model's ability to transfer from a source domain to different regions across the country. This benchmark assesses a model's capacity to learn meaningful information about each new domain while retaining key features from the original domain.\n  Using this benchmark, we frame the transfer of a machine learning model from one region to another as a domain incremental learning problem. While the task of patient outcome prediction remains the same, the input data distribution varies, necessitating a model that can effectively manage these shifts. We evaluate two popular domain incremental learning methods: data replay, which stores examples from previous data sources for fine-tuning on the current source, and Elastic Weight Consolidation (EWC), a model parameter regularization method that maintains features important for both data sources.",
+        "llm_keywords": "持续学习, 域增量学习, 重症监护室, 时间序列模型, 模型迁移",
+        "llm_summary": "本文提出一个基准测试，用于评估机器学习模型在不同地区ICU时间序列数据上的域增量学习能力，通过数据回放和弹性权重巩固两种方法，解决模型迁移中的分布变化问题。",
+        "abstract_cn": "近年来，机器学习在临床结局预测方面取得了显著进展，结果越来越准确。然而，医院训练这些模型所需的巨大资源（如数据收集、标注和计算能力）限制了小型医院自行开发模型的可能性。一种替代方案是将大型医院训练的机器学习模型转移到小型医院，使其能够在特定患者数据上对模型进行微调。但这类模型通常是在单一医院的数据上训练和验证的，这引发了对其在新数据上泛化能力的担忧。我们的研究表明，美国不同地区的测量分布和频率存在显著差异。为解决这一问题，我们提出了一个基准测试，用于评估机器学习模型从源域向全国不同地区迁移的能力。该基准测试评估模型学习每个新域中有意义信息的能力，同时保留原始域的关键特征。利用该基准测试，我们将机器学习模型从一个地区到另一个地区的迁移视为一个域增量学习问题。虽然患者结局预测任务保持不变，但输入数据分布会发生变化，因此需要能够有效管理这些变化的模型。我们评估了两种流行的域增量学习方法：数据回放（data replay），即存储来自先前数据源的样本用于当前源的微调；以及弹性权重巩固（Elastic Weight Consolidation, EWC），这是一种模型参数正则化方法，能够保留对两个数据源都重要的特征。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Safety and accuracy follow different scaling laws in clinical large language models",
+        "authors": [
+          "Sebastian Wind",
+          "Tri-Thien Nguyen",
+          "Jeta Sopa",
+          "Mahshad Lotfinia",
+          "Sebastian Bickelhaup",
+          "Michael Uder",
+          "Harald Köstler",
+          "Gerhard Wellein",
+          "Sven Nebelung",
+          "Daniel Truhn",
+          "Andreas Maier",
+          "Soroosh Tayebi Arasteh"
+        ],
+        "published": "2026-05-05",
+        "summary": "Clinical LLMs are often scaled by increasing model size, context length, retrieval complexity, or inference-time compute, with the implicit expectation that higher accuracy implies safer behavior. This assumption is incomplete in medicine, where a few confident, high-risk, or evidence-contradicting errors can matter more than average benchmark performance. We introduce SaFE-Scale, a framework for measuring how clinical LLM safety changes across model scale, evidence quality, retrieval strategy, ",
+        "pdf_url": "https://arxiv.org/pdf/2605.04039v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2605.04039v1",
+        "abstract": "Clinical LLMs are often scaled by increasing model size, context length, retrieval complexity, or inference-time compute, with the implicit expectation that higher accuracy implies safer behavior. This assumption is incomplete in medicine, where a few confident, high-risk, or evidence-contradicting errors can matter more than average benchmark performance. We introduce SaFE-Scale, a framework for measuring how clinical LLM safety changes across model scale, evidence quality, retrieval strategy, context exposure, and inference-time compute. To instantiate this framework, we introduce RadSaFE-200, a Radiology Safety-Focused Evaluation benchmark of 200 multiple-choice questions with clinician-defined clean evidence, conflict evidence, and option-level labels for high-risk error, unsafe answer, and evidence contradiction. We evaluated 34 locally deployed LLMs across six deployment conditions: closed-book prompting (zero-shot), clean evidence, conflict evidence, standard RAG, agentic RAG, and max-context prompting. Clean evidence produced the strongest improvement, increasing mean accuracy from 73.5% to 94.1%, while reducing high-risk error from 12.0% to 2.6%, contradiction from 12.7% to 2.3%, and dangerous overconfidence from 8.0% to 1.6%. Standard RAG and agentic RAG did not reproduce this safety profile: agentic RAG improved accuracy over standard RAG and reduced contradiction, but high-risk error and dangerous overconfidence remained elevated. Max-context prompting increased latency without closing the safety gap, and additional inference-time compute produced only limited gains. Worst-case analysis showed that clinically consequential errors concentrated in a small subset of questions. Clinical LLM safety is therefore not a passive consequence of scaling, but a deployment property shaped by evidence quality, retrieval design, context construction, and collective failure behavior.",
+        "llm_keywords": "临床大语言模型, 安全性, 缩放定律, 放射学评估, 检索增强生成",
+        "llm_summary": "本文提出SaFE-Scale框架，研究临床大语言模型在规模、证据质量、检索策略等条件下的安全性与准确性变化。通过RadSaFE-200基准测试发现，清晰证据能显著提升准确率并降低高风险错误，而标准RAG和智能体RAG无法复制此安全效果，表明临床LLM安全性是部署属性而非缩放被动结果。",
+        "abstract_cn": "临床大语言模型（Clinical LLMs）通常通过增加模型规模、上下文长度、检索复杂度或推理时计算来扩展，隐含的期望是更高的准确性意味着更安全的行为。这一假设在医学中是不完整的，因为少数自信、高风险或与证据矛盾的错误可能比平均基准性能更重要。我们引入了SaFE-Scale，一个用于衡量临床LLM安全性如何随模型规模、证据质量、检索策略、上下文暴露和推理时计算变化的框架。为了实例化该框架，我们推出了RadSaFE-200，一个放射学安全聚焦评估基准（Radiology Safety-Focused Evaluation benchmark），包含200道多项选择题，配有临床医生定义的清晰证据、冲突证据以及高风险错误、不安全答案和证据矛盾的选项级标签。我们评估了34个本地部署的LLM在六种部署条件下的表现：闭卷提示（零样本）、清晰证据、冲突证据、标准RAG、智能体RAG（agentic RAG）和最大上下文提示。清晰证据产生了最强的改进，将平均准确率从73.5%提高到94.1%，同时将高风险错误从12.0%降低到2.6%，矛盾从12.7%降低到2.3%，危险过度自信从8.0%降低到1.6%。标准RAG和智能体RAG未能复制这种安全特性：智能体RAG比标准RAG提高了准确率并减少了矛盾，但高风险错误和危险过度自信仍然较高。最大上下文提示增加了延迟而未缩小安全差距，额外的推理时计算仅带来有限的收益。最坏情况分析显示，临床后果严重的错误集中在少数问题上。因此，临床LLM的安全性不是缩放（scaling）的被动结果，而是一种由证据质量、检索设计、上下文构建和集体失败行为塑造的部署属性。"
+      },
+      {
+        "title": "A Robust Unsupervised Domain Adaptation Framework for Medical Image Classification Using RKHS-MMD",
+        "authors": [
+          "Sapna Sachan",
+          "Rakesh Kumar Sanodiya",
+          "Amulya Kumar Mahto"
+        ],
+        "published": "2026-05-05",
+        "summary": "Labeling medical images is a major bottleneck in the field of medical imaging, as it requires domain-specific expertise, and it gets further complicated due to variability across different medical centers and different imaging devices. Such heterogeneity introduces domain shifts and modality discrepancies, which limits the generalization of trained models. To address this important challenge, we propose an unsupervised domain adaptation framework that combines transfer learning with a Reproducin",
+        "pdf_url": "https://arxiv.org/pdf/2605.03787v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2605.03787v1",
+        "abstract": "Labeling medical images is a major bottleneck in the field of medical imaging, as it requires domain-specific expertise, and it gets further complicated due to variability across different medical centers and different imaging devices. Such heterogeneity introduces domain shifts and modality discrepancies, which limits the generalization of trained models. To address this important challenge, we propose an unsupervised domain adaptation framework that combines transfer learning with a Reproducing Kernel Hilbert Space based Maximum Mean Discrepancy loss for the alignment of source and target domains. By jointly optimizing classification and RKHS-MMD losses, the methodology enhances generalization to unannotated medical datasets while diminishing reliance on manual annotation. Experimental evaluations presented on two chest X-ray datasets, which are obtained from different medical centers, show outstanding improvements over models trained without adaptation. Furthermore, we perform a comparative study to see that RKHS-MMD performs better than the standard Maximum Mean Discrepancy in reducing modality gap, emphasizing its effectiveness for medical image classification and also its strong capability in advanced AI-driven medical diagnostics.",
+        "llm_keywords": "无监督域适应, 医学图像分类, 再生核希尔伯特空间, 最大均值差异, 迁移学习",
+        "llm_summary": "本文提出一种无监督域适应框架，结合迁移学习与RKHS-MMD损失对齐源域和目标域，减少标注依赖，在胸部X光数据集上显著提升分类性能。",
+        "abstract_cn": "标注医学图像是医学成像领域的主要瓶颈，因为它需要特定领域的专业知识，并且由于不同医疗中心和不同成像设备的差异而变得更加复杂。这种异质性引入了域偏移和模态差异，限制了训练模型的泛化能力。为了解决这一重要挑战，我们提出了一种无监督域适应框架，该框架将迁移学习与基于再生核希尔伯特空间的最大均值差异（RKHS-MMD）损失相结合，用于对齐源域和目标域。通过联合优化分类损失和RKHS-MMD损失，该方法增强了对未标注医学数据集的泛化能力，同时减少了对人工标注的依赖。在两个来自不同医疗中心的胸部X光数据集上进行的实验评估显示，与未进行域适应的模型相比，该方法取得了显著的改进。此外，我们进行了一项比较研究，发现RKHS-MMD在减少模态差距方面优于标准最大均值差异（MMD），强调了其在医学图像分类中的有效性及其在先进AI驱动的医学诊断中的强大能力。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "SymptomAI: Towards a Conversational AI Agent for Everyday Symptom Assessment",
+        "authors": [
+          "Joseph Breda",
+          "Fadi Yousif",
+          "Beszel Hawkins",
+          "Marinela Cotoi",
+          "Miao Liu",
+          "Ray Luo",
+          "Po-Hsuan Cameron Chen",
+          "Mike Schaekermann",
+          "Samuel Schmidgall",
+          "Xin Liu",
+          "Girish Narayanswamy",
+          "Samuel Solomon",
+          "Maxwell A. Xu",
+          "Xiaoran Fan",
+          "Longfei Shangguan",
+          "Anran Wang",
+          "Bhavna Daryani",
+          "Buddy Herkenham",
+          "Cara Tan",
+          "Mark Malhotra",
+          "Shwetak Patel",
+          "John B. Hernandez",
+          "Quang Duong",
+          "Yun Liu",
+          "Zach Wasson",
+          "Dimitrios Antos",
+          "Bob Lou",
+          "Matthew Thompson",
+          "Jonathan Richina",
+          "Anupam Pathak",
+          "Nichole Young-Lin",
+          "Jake Sunshine",
+          "Daniel McDuff"
+        ],
+        "published": "2026-05-05",
+        "summary": "Language models excel at diagnostic assessments on currated medical case-studies and vignettes, performing on par with, or better than, clinical professionals. However, existing studies focus on complex scenarios with rich context making it difficult to draw conclusions about how these systems perform for patients reporting symptoms in everyday life. We deployed SymptomAI, a set of conversational AI agents for end-to-end patient interviewing and differential diagnosis (DDx), via the Fitbit app i",
+        "pdf_url": "https://arxiv.org/pdf/2605.04012v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.04012v1",
+        "abstract": "Language models excel at diagnostic assessments on currated medical case-studies and vignettes, performing on par with, or better than, clinical professionals. However, existing studies focus on complex scenarios with rich context making it difficult to draw conclusions about how these systems perform for patients reporting symptoms in everyday life. We deployed SymptomAI, a set of conversational AI agents for end-to-end patient interviewing and differential diagnosis (DDx), via the Fitbit app in a study that randomized participants (N=13,917) to interact with five AI agents. This corpus captures diverse communication and a realistic distribution of illnesses from a real world population. A subset of 1,228 participants reported a clinician-provided diagnosis, and 517 of these were further evaluated by a panel of clinicians during over 250 hours of annotation. SymptomAI DDx were significantly more accurate (OR = 2.47, p < 0.001) than those from independent clinicians given the same dialogue in a blinded randomized comparison. Moreover, agentic strategies which conduct a dedicated symptom interview that elicit additional symptom information before providing a diagnosis, perform substantially better than baseline, user-guided conversations (p < 0.001). An auxiliary analysis on 1,509 conversations from a general US population panel validated that these results generalize beyond wearable device users. We used SymptomAI diagnoses as labels for all 13,917 participants to analyze over 500,000 days of wearable metrics across nearly 400 unique conditions. We identified strong associations between acute infections and physiological shifts (e.g., OR > 7 for influenza). While limited by self-reported ground truth, these results demonstrate the benefits of a dedicated and complete symptom interview compared to a user-guided symptom discussion, which is the default of most consumer LLMs.",
+        "llm_keywords": "症状评估, 对话式AI, 差分诊断, 可穿戴设备, 大型语言模型",
+        "llm_summary": "本研究通过Fitbit应用部署了SymptomAI对话代理，对13,917名参与者进行随机实验，发现AI在差分诊断中比临床医生更准确，且专用症状访谈策略优于用户引导对话。",
+        "abstract_cn": "语言模型在基于精选医学案例和场景的诊断评估中表现出色，与临床专业人员相当甚至更优。然而，现有研究聚焦于具有丰富上下文的复杂场景，难以推断这些系统在患者报告日常症状时的表现。我们通过Fitbit应用部署了SymptomAI，一组用于端到端患者访谈和差分诊断（DDx）的对话式AI代理，并随机分配参与者（N=13,917）与五个AI代理互动。该语料库捕捉了来自真实世界人群的多样化沟通和疾病分布。其中1,228名参与者报告了临床医生提供的诊断，其中517名在超过250小时的标注中由临床医生小组进一步评估。在盲法随机比较中，SymptomAI的DDx准确率显著高于独立临床医生（OR = 2.47, p < 0.001）。此外，在提供诊断前进行专门症状访谈以获取额外症状信息的代理策略，显著优于基线用户引导对话（p < 0.001）。对来自美国普通人群小组的1,509次对话的辅助分析验证了这些结果可推广到可穿戴设备用户之外。我们使用SymptomAI诊断为所有13,917名参与者标注，分析了近400种独特条件下超过500,000天的可穿戴指标。我们发现急性感染与生理变化之间存在强关联（例如，流感的OR > 7）。尽管受限于自我报告的金标准，这些结果证明了专用且完整的症状访谈相比用户引导的症状讨论（大多数消费级LLM的默认方式）的优势。"
+      },
+      {
+        "title": "TRACE: A Metrologically-Grounded Engineering Framework for Trustworthy Agentic AI Systems in Operationally Critical Domains",
+        "authors": [
+          "Serhii Zabolotnii"
+        ],
+        "published": "2026-05-05",
+        "summary": "We introduce TRACE, a cross-domain engineering framework for trustworthy agentic AI in operationally critical domains. TRACE combines a four-layer reference architecture with an explicit classical-ML vs. LLM-validator split (L2a/L2b), a stateful orchestration-and-escalation policy (L3), and bounded human supervision (L4); a metrologically grounded trust-metric suite mapped to GUM/VIM/ISO 17025; and a Model-Parsimony principle quantified by the Computational Parsimony Ratio (CPR). Three instantia",
+        "pdf_url": "https://arxiv.org/pdf/2605.03838v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.03838v1",
+        "abstract": "We introduce TRACE, a cross-domain engineering framework for trustworthy agentic AI in operationally critical domains. TRACE combines a four-layer reference architecture with an explicit classical-ML vs. LLM-validator split (L2a/L2b), a stateful orchestration-and-escalation policy (L3), and bounded human supervision (L4); a metrologically grounded trust-metric suite mapped to GUM/VIM/ISO 17025; and a Model-Parsimony principle quantified by the Computational Parsimony Ratio (CPR). Three instantiations--clinical decision support, industrial multi-domain operations, and a judicial AI assistant--transfer the samearchitecture and metrics across principally different governance contexts. The L2a/L2b separation makes the use of large language models a deliberate design decision rather than an architectural default, with parsimony quantified through CPR. TRACE introduces CPR as a first-class design principle in trustworthy-AI engineering.",
+        "llm_keywords": "可信人工智能, 工程框架, 度量学, 大语言模型, 关键领域",
+        "llm_summary": "TRACE是一个面向操作关键领域的可信代理AI工程框架，结合四层架构、经典ML与LLM验证器分离、状态化编排策略、有界人类监督及度量学信任指标，通过计算简约比量化模型简约性，并在临床、工业、司法三个领域验证。",
+        "abstract_cn": "我们提出了TRACE，一个面向操作关键领域的可信代理AI跨域工程框架。TRACE结合了一个四层参考架构，其中包含明确的经典ML与LLM验证器分离（L2a/L2b）、状态化编排与升级策略（L3）以及有界人类监督（L4）；一套基于度量学的信任指标套件，映射到GUM/VIM/ISO 17025标准；以及一个通过计算简约比（CPR）量化的模型简约原则。三个实例——临床决策支持、工业多域操作和司法AI助手——将相同的架构和指标应用于原则上不同的治理环境。L2a/L2b分离使得使用大语言模型成为一种有意的设计决策而非架构默认，简约性通过CPR量化。TRACE将CPR作为可信AI工程中的一等设计原则引入。"
+      }
+    ]
+  },
+  "total_count": 7,
+  "generated_at": "2026-05-06T22:50:50.024801"
+}
