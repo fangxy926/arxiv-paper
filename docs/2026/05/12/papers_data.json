@@ -1,0 +1,273 @@
+{
+  "date_range": {
+    "start_date": "2026-05-11",
+    "end_date": "2026-05-11"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗数据集",
+    "医疗智能体"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Counterfactual Stress Testing for Image Classification Models",
+        "authors": [
+          "Moritz Stammel",
+          "Fabio De Sousa Ribeiro",
+          "Raghav Mehta",
+          "Mélanie Roschewitz",
+          "Ben Glocker"
+        ],
+        "published": "2026-05-11",
+        "summary": "Deep learning models in medical imaging often fail when deployed in new clinical environments due to distribution shifts in demographics, scanner hardware, or acquisition protocols. A central challenge is underspecification, where models with similar validation performance exhibit divergent real-world failure modes. Although stress testing has emerged as a tool to assess this, current methods typically rely on simple, uninformed perturbations (e.g., brightness or contrast changes), which fail to",
+        "pdf_url": "https://arxiv.org/pdf/2605.10894v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10894v1",
+        "abstract": "Deep learning models in medical imaging often fail when deployed in new clinical environments due to distribution shifts in demographics, scanner hardware, or acquisition protocols. A central challenge is underspecification, where models with similar validation performance exhibit divergent real-world failure modes. Although stress testing has emerged as a tool to assess this, current methods typically rely on simple, uninformed perturbations (e.g., brightness or contrast changes), which fail to capture clinically realistic variation and can overestimate robustness. In this work, we introduce a counterfactual stress testing framework based on causal generative models that create realistic \"what if\" images by intervening on attributes such as scanner type and patient sex while preserving anatomical identity, enabling controlled and semantically meaningful evaluation under targeted distribution shifts. Across two imaging modalities (chest X-ray and mammography), three model architectures, and multiple shift scenarios, we show that counterfactual stress tests provide a substantially more accurate proxy for real out-of-distribution performance than classical perturbations, capturing the direction and relative magnitude of performance changes as well as model ranking. These results suggest that causal generative models can serve as practical simulators for robustness assessment, offering a more reliable basis for evaluating medical AI systems prior to deployment.",
+        "llm_keywords": "反事实压力测试, 因果生成模型, 分布偏移, 医学影像分类, 鲁棒性评估",
+        "llm_summary": "本文提出基于因果生成模型的反事实压力测试框架，通过干预扫描仪类型、患者性别等属性生成逼真的“假设”图像，在保留解剖结构的同时评估模型在分布偏移下的性能。实验表明该方法比传统扰动更准确地反映真实分布外性能，可作为医学AI部署前的可靠评估工具。",
+        "abstract_cn": "医学影像中的深度学习模型在部署到新临床环境时，常因人口统计、扫描仪硬件或采集协议的分布偏移（distribution shift）而失败。核心挑战是欠规格化（underspecification），即验证性能相似的模型在真实世界中表现出不同的失败模式。尽管压力测试（stress testing）已成为评估手段，但现有方法通常依赖简单、无信息的扰动（如亮度或对比度变化），无法捕捉临床真实变异，且可能高估鲁棒性。本文提出基于因果生成模型（causal generative models）的反事实压力测试框架，通过干预扫描仪类型和患者性别等属性生成逼真的“假设”（what if）图像，同时保留解剖结构，从而在目标分布偏移下实现可控且语义有意义的评估。在两种影像模态（胸部X光片和乳腺摄影）、三种模型架构及多种偏移场景中，我们证明反事实压力测试比经典扰动更准确地反映真实分布外性能，能捕捉性能变化的方向和相对幅度以及模型排名。这些结果表明，因果生成模型可作为鲁棒性评估的实用模拟器，为部署前评估医学AI系统提供更可靠的基础。"
+      },
+      {
+        "title": "Grounded or Guessing? LVLM Confidence Estimation via Blind-Image Contrastive Ranking",
+        "authors": [
+          "Reza Khanmohammadi",
+          "Erfan Miahi",
+          "Simerjot Kaur",
+          "Charese H. Smiley",
+          "Ivan Brugere",
+          "Kundan Thind",
+          "Mohammad M. Ghassemi"
+        ],
+        "published": "2026-05-11",
+        "summary": "Large vision-language models suffer from visual ungroundedness: they can produce a fluent, confident, and even correct response driven entirely by language priors, with the image contributing nothing to the prediction. Existing confidence estimation methods cannot detect this, as they observe model behavior under normal inference with no mechanism to determine whether a prediction was shaped by the image or by text alone. We introduce BICR (Blind-Image Contrastive Ranking), a model-agnostic conf",
+        "pdf_url": "https://arxiv.org/pdf/2605.10893v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10893v1",
+        "abstract": "Large vision-language models suffer from visual ungroundedness: they can produce a fluent, confident, and even correct response driven entirely by language priors, with the image contributing nothing to the prediction. Existing confidence estimation methods cannot detect this, as they observe model behavior under normal inference with no mechanism to determine whether a prediction was shaped by the image or by text alone. We introduce BICR (Blind-Image Contrastive Ranking), a model-agnostic confidence estimation framework that makes this contrast explicit during training by extracting hidden states from a frozen LVLM twice: once with the real image-question pair, and once with the image blacked out while the question is held fixed. A lightweight probe is trained on the real-image hidden state and regularized by a ranking loss that penalizes higher confidence on the blacked-out view, teaching it to treat visual grounding as a signal of reliability at zero additional inference cost. Evaluated across five modern LVLMs and seven baselines on a benchmark covering visual question answering, object hallucination detection, medical imaging, and financial document understanding, BICR achieves the best cross-LVLM average on both calibration and discrimination simultaneously, with statistically significant discrimination gains robust to cluster-aware analysis at 4-18x fewer parameters than the strongest probing baseline.",
+        "llm_keywords": "视觉语言模型, 置信度估计, 视觉接地, 对比学习, 盲图像对比排序",
+        "llm_summary": "本文提出BICR框架，通过对比真实图像与黑屏图像下的模型隐藏状态，训练轻量级探针估计置信度，以检测视觉语言模型是否依赖语言先验而非图像。在多个模型和任务上，BICR以更少参数实现最优校准与判别性能。",
+        "abstract_cn": "大型视觉语言模型（LVLM）存在视觉非接地性问题：它们可能仅依赖语言先验生成流畅、自信甚至正确的响应，而图像对预测毫无贡献。现有置信度估计方法无法检测此问题，因为它们仅观察正常推理下的模型行为，缺乏机制判断预测是由图像还是仅由文本驱动。我们提出BICR（盲图像对比排序），一种模型无关的置信度估计框架，通过在训练期间从冻结的LVLM中两次提取隐藏状态（一次使用真实图像-问题对，一次使用图像黑屏但问题保持不变）来显式进行这种对比。一个轻量级探针在真实图像隐藏状态上训练，并通过排序损失进行正则化，该损失惩罚在黑屏视图上给出更高置信度，从而教会它将视觉接地视为可靠性的信号，且零额外推理成本。在涵盖视觉问答、物体幻觉检测、医学影像和金融文档理解的基准上，对五个现代LVLM和七个基线进行评估，BICR在标定和判别两方面同时实现了最佳跨LVLM平均值，且具有统计显著的判别增益，在聚类鲁棒分析中，其参数比最强的探针基线少4-18倍。"
+      },
+      {
+        "title": "Neural at ArchEHR-QA 2026: One Method Fits All: Unified Prompt Optimization for Clinical QA over EHRs",
+        "authors": [
+          "Abrar Majeedi",
+          "Viswanatha Reddy Gajjala",
+          "Sai Prasanna Teja Reddy Bogireddy",
+          "Siddhant Rai"
+        ],
+        "published": "2026-05-11",
+        "summary": "Automated question answering (QA) over electronic health records (EHRs) demands precise evidence retrieval, faithful answer generation, and explicit grounding of answers in clinical notes. In this work, we present Neural1.5, our method for the ArchEHR-QA 2026 shared task at CL4Health@LREC 2026, which comprises four subtasks: question interpretation, evidence identification, answer generation, and evidence alignment. Our approach decouples the task into independent, modular stages and employs DSP",
+        "pdf_url": "https://arxiv.org/pdf/2605.10877v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10877v1",
+        "abstract": "Automated question answering (QA) over electronic health records (EHRs) demands precise evidence retrieval, faithful answer generation, and explicit grounding of answers in clinical notes. In this work, we present Neural1.5, our method for the ArchEHR-QA 2026 shared task at CL4Health@LREC 2026, which comprises four subtasks: question interpretation, evidence identification, answer generation, and evidence alignment. Our approach decouples the task into independent, modular stages and employs DSPy\"s MIPROv2 optimizer to automatically discover high-performing prompts, jointly tuning instructions and few-shot demonstrations for each stage. Within every stage, self-consistency voting over multiple stochastic inference runs suppresses spurious errors and improves reliability, while stage-specific verification mechanisms (e.g., self-reflection and chain-of-verification for alignment) further refine output quality. Among all teams that participated in all four subtasks, our method ranks second overall (mean rank 4.00), placing 4th, 1st, 4th, and 7th on Subtasks 1-4, respectively. These results demonstrate that systematic, per-stage prompt optimization combined with self-consistency mechanisms is a cost-effective alternative to model fine-tuning for multifaceted clinical QA.",
+        "llm_keywords": "电子健康记录, 临床问答, 提示优化, 自一致性, 模块化方法",
+        "llm_summary": "本文提出Neural1.5方法，通过DSPy的MIPROv2优化器自动优化各阶段提示，结合自一致性投票和阶段验证机制，在ArchEHR-QA 2026四项子任务中取得综合第二，证明系统化提示优化是微调的有效替代方案。",
+        "abstract_cn": "电子健康记录（EHR）上的自动问答（QA）需要精确的证据检索、忠实的答案生成以及答案在临床笔记中的明确依据。在本文中，我们介绍了Neural1.5，这是我们在CL4Health@LREC 2026的ArchEHR-QA 2026共享任务中的方法，该任务包含四个子任务：问题解释、证据识别、答案生成和证据对齐。我们的方法将任务解耦为独立的模块化阶段，并使用DSPy的MIPROv2优化器自动发现高性能提示，联合调整每个阶段的指令和少样本示例。在每个阶段内，对多次随机推理运行进行自一致性投票（self-consistency voting）以抑制虚假错误并提高可靠性，而阶段特定的验证机制（例如，用于对齐的自我反思和验证链（chain-of-verification））进一步优化输出质量。在所有参与全部四个子任务的团队中，我们的方法总体排名第二（平均排名4.00），在子任务1-4中分别排名第4、第1、第4和第7。这些结果表明，系统性的逐阶段提示优化结合自一致性机制是多方面临床问答中模型微调的一种经济有效的替代方案。"
+      },
+      {
+        "title": "AssayBench: An Assay-Level Virtual Cell Benchmark for LLMs and Agents",
+        "authors": [
+          "Edward De Brouwer",
+          "Carl Edwards",
+          "Alexander Wu",
+          "Jenna Collier",
+          "Graham Heimberg",
+          "Xiner Li",
+          "Meena Subramaniam",
+          "Ehsan Hajiramezanali",
+          "David Richmond",
+          "Jan-Christian Hütter",
+          "Sara Mostafavi",
+          "Gabriele Scalia"
+        ],
+        "published": "2026-05-11",
+        "summary": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outpu",
+        "pdf_url": "https://arxiv.org/pdf/2605.10876v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.10876v1",
+        "abstract": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outputs, making it particularly well-suited to LLMs and agentic systems. Yet, no standard benchmark currently exists for this task, as existing efforts focus on narrower molecular readouts that are only indirectly aligned with the phenotypic endpoints driving many real-world drug discovery workflows. In this work, we present AssayBench, a benchmark for phenotypic screen prediction, built from 1,920 publicly available CRISPR screens spanning five broad classes of cellular phenotypes. We formulate the screen prediction task as a gene rank prediction for each screen and introduce the adjusted nDCG, a continuous metric for comparing performance across heterogeneous assays. Our extensive evaluation shows that existing methods remain far from empirically estimated performance ceilings and zero-shot generalist LLMs outperform biology-specific LLMs and trainable baselines. Optimization techniques such as fine-tuning, ensembling, and prompt optimization can further improve LLM performance on this task. Overall, AssayBench offers a practical testbed for measuring progress toward in silico phenotypic screening and, more broadly, virtual cell models.",
+        "llm_keywords": "虚拟细胞, 表型筛选, 基准测试, 大语言模型, CRISPR筛选",
+        "llm_summary": "本文提出AssayBench基准，用于评估大语言模型和智能体在表型筛选预测任务上的表现。该基准基于1920个公开CRISPR筛选数据，涵盖五类细胞表型，并引入调整后的nDCG指标。评估显示现有方法远未达到性能上限，零样本通用大语言模型优于生物学专用模型和可训练基线。",
+        "abstract_cn": "近年来，机器学习和大规模生物数据集的进展重新激发了构建虚拟细胞（virtual cell）的前景，这是一种能够加速生物发现的细胞行为计算模型。该愿景最引人注目的承诺之一是能够进行计算机表型筛选（in silico phenotypic screens），即模型预测在未见过的生物学背景下细胞扰动的影响。这一任务将异构文本输入与多样化的表型输出相结合，特别适合大语言模型（LLMs）和智能体系统。然而，目前尚无针对该任务的标准基准，因为现有工作集中于更狭窄的分子读数，这些读数与驱动许多实际药物发现流程的表型终点（phenotypic endpoints）仅间接相关。在这项工作中，我们提出了AssayBench，一个用于表型筛选预测的基准，基于1920个公开可用的CRISPR筛选数据构建，涵盖五大类细胞表型。我们将筛选预测任务定义为每个筛选的基因排名预测，并引入了调整后的nDCG（adjusted nDCG），一种用于比较异构测定性能的连续指标。我们的广泛评估表明，现有方法远未达到经验估计的性能上限，且零样本通用大语言模型优于生物学专用大语言模型和可训练基线。微调（fine-tuning）、集成（ensembling）和提示优化（prompt optimization）等优化技术可以进一步提高大语言模型在此任务上的表现。总体而言，AssayBench为衡量计算机表型筛选及更广泛的虚拟细胞模型进展提供了一个实用的测试平台。"
+      },
+      {
+        "title": "Verification Mirage: Mapping the Reliability Boundary of Self-Verification in Medical VQA",
+        "authors": [
+          "Ruinan Jin",
+          "Beidi Zhao",
+          "Myeongkyun Kang",
+          "Qiong Zhang",
+          "Xiaoxiao Li"
+        ],
+        "published": "2026-05-11",
+        "summary": "Self-verification, re-invoking the same vision language model (VLM) in a fresh context to check its own generated answer, is increasingly used as a default safety layer for medical visual question answering (VQA). We argue that this practice is fundamentally unreliable. We introduce [METHOD NAME], a diagnostic framework for mapping the reliability boundary of medical VLM self-verification by decomposing verifier behavior into discrimination capability and agreement bias. Because the verifier and",
+        "pdf_url": "https://arxiv.org/pdf/2605.10850v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10850v1",
+        "abstract": "Self-verification, re-invoking the same vision language model (VLM) in a fresh context to check its own generated answer, is increasingly used as a default safety layer for medical visual question answering (VQA). We argue that this practice is fundamentally unreliable. We introduce [METHOD NAME], a diagnostic framework for mapping the reliability boundary of medical VLM self-verification by decomposing verifier behavior into discrimination capability and agreement bias. Because the verifier and answer generator are capacity-coupled, the verifier can overly agree with the generator, creating a verification mirage: a regime with both high verifier error and high agreement bias, driven by false acceptance of incorrect answers. Evaluating six open-weight VLMs across five medical VQA datasets and seven medical tasks, we find that this boundary is strongly task-conditioned. Knowledge-intensive clinical tasks fall deepest into the mirage, simpler tasks are more resistant, and perceptual tasks lie in between. Verification also fails to provide an independent safety signal: logistic mixed-effects analysis shows that verifier error and agreement bias become more likely when the generator is wrong, while saliency analyses show that verifiers under-attend to image evidence relative to generators, a phenomenon we call the lazy verifier. Cross-verification reduces but does not eliminate the mirage. Moreover, when verification is reused in multi-turn actor-verifier loops, most initially wrong answers become locked in by false verification. Since our experiments use clean benchmarks, the observed reliability boundary likely underestimates failures in real clinical deployment.",
+        "llm_keywords": "自验证, 医学视觉问答, 可靠性边界, 验证幻象, 懒惰验证器",
+        "llm_summary": "本文指出医学VQA中自验证机制不可靠，提出诊断框架分析验证器行为，发现知识密集型临床任务易陷入验证幻象，验证器存在懒惰验证现象，交叉验证无法消除该问题。",
+        "abstract_cn": "自验证（self-verification）即在新的上下文中重新调用同一视觉语言模型（VLM）来检查其自身生成的答案，正被越来越多地用作医学视觉问答（VQA）的默认安全层。我们认为这种做法从根本上不可靠。我们引入[METHOD NAME]，一种诊断框架，通过将验证器行为分解为判别能力和一致性偏差（agreement bias）来映射医学VLM自验证的可靠性边界。由于验证器和答案生成器在能力上耦合，验证器可能过度同意生成器，从而产生验证幻象（verification mirage）：一种同时具有高验证器错误和高一致性偏差的状态，由错误答案的虚假接受驱动。在六个开放权重的VLM、五个医学VQA数据集和七个医学任务上的评估发现，该边界强烈依赖于任务条件。知识密集型临床任务最深地陷入幻象，简单任务更具抵抗力，感知任务介于两者之间。验证也未能提供独立的安全信号：逻辑混合效应分析显示，当生成器错误时，验证器错误和一致性偏差更可能发生；而显著性分析显示，验证器相对于生成器对图像证据的关注不足，我们称之为懒惰验证器（lazy verifier）。交叉验证（cross-verification）减少了但并未消除幻象。此外，当验证在多轮参与者-验证器循环中被重复使用时，大多数最初错误的答案因虚假验证而被锁定。由于我们的实验使用干净的基准测试，观察到的可靠性边界可能低估了实际临床部署中的失败。"
+      },
+      {
+        "title": "Clin-JEPA: A Multi-Phase Co-Training Framework for Joint-Embedding Predictive Pretraining on EHR Patient Trajectories",
+        "authors": [
+          "Yixuan Yang",
+          "Mehak Arora",
+          "Ryan Zhang",
+          "Baraa Abed",
+          "Junseob Kim",
+          "Tilendra Choudhary",
+          "Md Hassanuzzaman",
+          "Kevin Zhu",
+          "Ayman Ali",
+          "Chengkun Yang",
+          "Alasdair Edward Gent",
+          "Victor Moas",
+          "Rishikesan Kamaleswaran"
+        ],
+        "published": "2026-05-11",
+        "summary": "We present Clin-JEPA, a multi-phase co-training framework for joint-embedding predictive (JEPA) pretraining on EHR patient trajectories. JEPA architectures have enabled latent-space planning in robotics and high-quality representation learning in vision, but extending the paradigm to EHR data -- to obtain a single backbone that simultaneously forecasts patient trajectories and serves diverse downstream risk-prediction tasks without per-task fine-tuning -- remains an open challenge. Existing JEPA",
+        "pdf_url": "https://arxiv.org/pdf/2605.10840v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10840v1",
+        "abstract": "We present Clin-JEPA, a multi-phase co-training framework for joint-embedding predictive (JEPA) pretraining on EHR patient trajectories. JEPA architectures have enabled latent-space planning in robotics and high-quality representation learning in vision, but extending the paradigm to EHR data -- to obtain a single backbone that simultaneously forecasts patient trajectories and serves diverse downstream risk-prediction tasks without per-task fine-tuning -- remains an open challenge. Existing JEPA frameworks either discard the predictor after pretraining (I-JEPA, V-JEPA) or train it on a frozen pretrained encoder (V-JEPA 2-AC), leaving the encoder unaware of the rollout signal that the retained predictor must use at inference; co-training the encoder and predictor under a shared JEPA prediction objective would supply this grounding, but naïve co-training is unstable, with representation collapse and online/target drift causing autoregressive rollout to diverge. Clin-JEPA's five-phase pretraining curriculum -- predictor warmup, joint refinement, EMA target alignment, hard sync, and predictor finalization -- addresses each failure mode by phase, stably co-training a Qwen3-8B-based encoder and a 92M-parameter latent trajectory predictor. On MIMIC-IV ICU data, three independent evaluations support the framework: (1) latent $\\ell_1$ rollout drift uniquely converges ($-$15.7%) over 48-hour horizons while baselines and ablations diverge (+3% to +4951%); (2) the encoder learns a clinically discriminative latent geometry (deteriorating-patient cohorts displace 4.83$\\times$ further than stable patients in latent space, vs $\\leq$2.62$\\times$ for baseline encoders); (3) a single backbone outperforms strong tabular and sequence baselines on multi-task downstream evaluation. Clin-JEPA achieves mean AUROC 0.851 on ICareFM EEP and 0.883 on 8 binary risk tasks (+0.038 and +0.041 vs baseline average).",
+        "llm_keywords": "电子健康记录, 联合嵌入预测, 多阶段协同训练, 患者轨迹预测, 风险预测",
+        "llm_summary": "Clin-JEPA提出一种多阶段协同训练框架，用于电子健康记录（EHR）患者轨迹的联合嵌入预测（JEPA）预训练。通过五阶段课程稳定协同训练编码器和预测器，在MIMIC-IV ICU数据上实现低漂移、高判别性潜在空间，并提升多任务下游风险预测性能。",
+        "abstract_cn": "我们提出了Clin-JEPA，一种用于电子健康记录（EHR）患者轨迹的联合嵌入预测（JEPA）预训练的多阶段协同训练框架。JEPA架构已在机器人学的潜在空间规划和视觉的高质量表示学习中取得成果，但将该范式扩展到EHR数据——以获得一个单一骨干网络，能够同时预测患者轨迹并服务于多种下游风险预测任务而无需针对每个任务进行微调——仍然是一个开放挑战。现有的JEPA框架要么在预训练后丢弃预测器（I-JEPA, V-JEPA），要么在冻结的预训练编码器上训练预测器（V-JEPA 2-AC），使得编码器无法感知推理时保留的预测器必须使用的展开信号；在共享的JEPA预测目标下协同训练编码器和预测器将提供这种基础，但简单的协同训练不稳定，表示崩溃和在线/目标漂移导致自回归展开发散。Clin-JEPA的五阶段预训练课程——预测器预热、联合精炼、指数移动平均（EMA）目标对齐、硬同步和预测器最终化——按阶段解决每个失败模式，稳定地协同训练基于Qwen3-8B的编码器和92M参数的潜在轨迹预测器。在MIMIC-IV ICU数据上，三个独立评估支持该框架：（1）潜在ℓ1展开漂移在48小时范围内唯一收敛（-15.7%），而基线和消融实验发散（+3%至+4951%）；（2）编码器学习到临床可区分的潜在几何结构（恶化患者队列在潜在空间中的位移是稳定患者的4.83倍，而基线编码器≤2.62倍）；（3）单个骨干网络在多任务下游评估中优于强表格和序列基线。Clin-JEPA在ICareFM EEP上达到平均AUROC 0.851，在8个二元风险任务上达到0.883（比基线平均值高0.038和0.041）。"
+      },
+      {
+        "title": "CLEF: EEG Foundation Model for Learning Clinical Semantics",
+        "authors": [
+          "Peng Cao",
+          "Ali Mirzazadeh",
+          "Jong Woo Lee",
+          "Aleksandar Videnovic",
+          "Dina Katabi"
+        ],
+        "published": "2026-05-11",
+        "summary": "Clinical EEG interpretation requires reasoning over full EEG sessions and integrating signal patterns with clinical context. Existing EEG foundation models are largely designed for short-window decoding and do not incorporate clinical context. We introduce CLEF, a clinically grounded long-context EEG foundation model. CLEF represents EEG sessions as 3D multitaper spectrogram tokens, enabling tractable Transformer modeling at session scale, and aligns embeddings with neurologist reports and struc",
+        "pdf_url": "https://arxiv.org/pdf/2605.10817v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10817v1",
+        "abstract": "Clinical EEG interpretation requires reasoning over full EEG sessions and integrating signal patterns with clinical context. Existing EEG foundation models are largely designed for short-window decoding and do not incorporate clinical context. We introduce CLEF, a clinically grounded long-context EEG foundation model. CLEF represents EEG sessions as 3D multitaper spectrogram tokens, enabling tractable Transformer modeling at session scale, and aligns embeddings with neurologist reports and structured EHR data through contrastive objectives. We evaluate CLEF on a new 234-task benchmark spanning disease phenotypes, medication exposures, and EEG findings, with more than 260k EEG sessions from over 108k patients. CLEF outperforms prior EEG foundation models on 229 of 234 tasks, improving mean AUROC from 0.65 to 0.74. Reconstruction-only pretraining surpasses prior EEG foundation models, while report and EHR alignment yields further gains. Held-out concept and external-cohort experiments suggest that these representations transfer beyond observed alignment targets. These results support session-scale, clinically grounded representation learning as a promising foundation-model paradigm for clinical EEG.",
+        "llm_keywords": "脑电图, 基础模型, 临床语义, 对比学习, 表示学习",
+        "llm_summary": "CLEF是一种临床导向的长上下文脑电图基础模型，将脑电图会话表示为三维多窗谱图令牌，并通过对比学习与神经科医生报告和结构化电子健康记录对齐。在包含超过26万次脑电图会话的234任务基准测试中，CLEF在229个任务上优于现有模型，平均AUROC从0.65提升至0.74。",
+        "abstract_cn": "临床脑电图（EEG）解读需要对完整的脑电图会话进行推理，并将信号模式与临床背景相结合。现有的脑电图基础模型主要设计用于短窗口解码，且未纳入临床背景。我们提出了CLEF，一种临床导向的长上下文脑电图基础模型。CLEF将脑电图会话表示为三维多窗谱图令牌（3D multitaper spectrogram tokens），从而能够在会话尺度上进行可处理的Transformer建模，并通过对比学习目标（contrastive objectives）将嵌入与神经科医生报告和结构化电子健康记录（EHR）数据对齐。我们在一个包含超过26万次脑电图会话（来自超过10.8万名患者）的234任务基准测试上评估了CLEF，该基准涵盖疾病表型、药物暴露和脑电图发现。CLEF在234个任务中的229个上优于先前的脑电图基础模型，平均AUROC从0.65提升至0.74。仅使用重构预训练（reconstruction-only pretraining）就超越了先前的脑电图基础模型，而报告和EHR对齐带来了进一步的性能提升。留出概念（held-out concept）和外部队列实验表明，这些表示能够迁移到超出观察到的对齐目标之外。这些结果支持将会话尺度、临床导向的表示学习作为临床脑电图的一种有前景的基础模型范式。"
+      },
+      {
+        "title": "New AI-Driven Tools for Enhancing Campus Well-being: A Prevention and Intervention Approach",
+        "authors": [
+          "Jinwen Tang"
+        ],
+        "published": "2026-05-11",
+        "summary": "Campus well-being underpins academic success, yet many universities lack effective methods for monitoring satisfaction and detecting mental health risks. This dissertation addresses these gaps through prevention (improving feedback collection) and intervention (advancing mental health detection), unified under an integrated framework. For prevention, we developed TigerGPT, a personalized survey chatbot leveraging LLMs to engage users in context-aware conversations grounded in conversational desi",
+        "pdf_url": "https://arxiv.org/pdf/2605.10804v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.10804v1",
+        "abstract": "Campus well-being underpins academic success, yet many universities lack effective methods for monitoring satisfaction and detecting mental health risks. This dissertation addresses these gaps through prevention (improving feedback collection) and intervention (advancing mental health detection), unified under an integrated framework. For prevention, we developed TigerGPT, a personalized survey chatbot leveraging LLMs to engage users in context-aware conversations grounded in conversational design and engagement theory, achieving 75% usability and 81% satisfaction. To address its limitations in repetitiveness and response depth, we introduced AURA, a reinforcement-learning framework that adapts follow-up question types (validate, specify, reflect, probe) within a session using an LSDE quality signal (Length, Self-disclosure, Emotion, Specificity), initialized from 96 prior conversations. AURA achieved +0.12 mean quality gain (p=0.044, d=0.66), with 63% fewer specification prompts and 10x more validation behavior. For intervention, we examine Expressive Narrative Stories (ENS) for mental health screening, showing BERT(128) captures nuanced linguistic features without keyword cues, while conventional classifiers depend heavily on explicit mental health terms. We then developed PsychoGPT, an LLM built on DSM-5 and PHQ-8 guidelines that performs initial distress classification, symptom-level scoring, and reconciliation with external ratings for explainable assessment. To reduce hallucinations, we proposed Stacked Multi-Model Reasoning (SMMR), layering expert models where early layers handle localized subtasks and later layers reconcile findings, outperforming single-model solutions on DAIC-WOZ in accuracy, F1, and PHQ-8 scoring. Finally, a cohesive framework unifies these tools, enabling adaptive survey insights to flow directly into specialized mental health detection models.",
+        "llm_keywords": "校园福祉, 人工智能, 心理健康检测, 对话系统, 强化学习",
+        "llm_summary": "本文提出一个集成框架，通过预防（改进反馈收集）和干预（心理健康检测）提升校园福祉。预防方面开发了TigerGPT聊天机器人和AURA强化学习框架；干预方面利用Expressive Narrative Stories和PsychoGPT进行心理健康筛查，并提出Stacked Multi-Model Reasoning减少幻觉。",
+        "abstract_cn": "校园福祉是学术成功的基础，但许多大学缺乏监测满意度和检测心理健康风险的有效方法。本论文通过预防（改进反馈收集）和干预（推进心理健康检测）来弥补这些不足，并统一在一个集成框架下。在预防方面，我们开发了TigerGPT，一个基于大型语言模型（LLMs）的个性化调查聊天机器人，利用对话设计和参与理论进行上下文感知对话，实现了75%的可用性和81%的满意度。为解决其重复性和回答深度不足的问题，我们引入了AURA，一个强化学习框架，在会话中自适应调整后续问题类型（验证、细化、反思、探究），使用基于长度、自我披露、情感和具体性的LSDE质量信号，并从96个先前对话中初始化。AURA实现了平均质量增益+0.12（p=0.044, d=0.66），细化提示减少63%，验证行为增加10倍。在干预方面，我们研究了用于心理健康筛查的表达性叙事故事（ENS），显示BERT(128)能捕捉细微的语言特征而无需关键词线索，而传统分类器则严重依赖显式心理健康术语。随后我们开发了PsychoGPT，一个基于DSM-5和PHQ-8指南构建的大型语言模型（LLM），执行初始痛苦分类、症状级评分以及与外部评分协调以实现可解释评估。为减少幻觉，我们提出了堆叠多模型推理（SMMR），分层部署专家模型，早期层处理局部子任务，后期层协调结果，在DAIC-WOZ数据集上的准确率、F1分数和PHQ-8评分方面均优于单模型方案。最后，一个统一的框架将这些工具整合在一起，使自适应调查洞察能直接流入专门的心理健康检测模型。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "AssayBench: An Assay-Level Virtual Cell Benchmark for LLMs and Agents",
+        "authors": [
+          "Edward De Brouwer",
+          "Carl Edwards",
+          "Alexander Wu",
+          "Jenna Collier",
+          "Graham Heimberg",
+          "Xiner Li",
+          "Meena Subramaniam",
+          "Ehsan Hajiramezanali",
+          "David Richmond",
+          "Jan-Christian Hütter",
+          "Sara Mostafavi",
+          "Gabriele Scalia"
+        ],
+        "published": "2026-05-11",
+        "summary": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outpu",
+        "pdf_url": "https://arxiv.org/pdf/2605.10876v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.10876v1",
+        "abstract": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outputs, making it particularly well-suited to LLMs and agentic systems. Yet, no standard benchmark currently exists for this task, as existing efforts focus on narrower molecular readouts that are only indirectly aligned with the phenotypic endpoints driving many real-world drug discovery workflows. In this work, we present AssayBench, a benchmark for phenotypic screen prediction, built from 1,920 publicly available CRISPR screens spanning five broad classes of cellular phenotypes. We formulate the screen prediction task as a gene rank prediction for each screen and introduce the adjusted nDCG, a continuous metric for comparing performance across heterogeneous assays. Our extensive evaluation shows that existing methods remain far from empirically estimated performance ceilings and zero-shot generalist LLMs outperform biology-specific LLMs and trainable baselines. Optimization techniques such as fine-tuning, ensembling, and prompt optimization can further improve LLM performance on this task. Overall, AssayBench offers a practical testbed for measuring progress toward in silico phenotypic screening and, more broadly, virtual cell models.",
+        "llm_keywords": "虚拟细胞, 表型筛选, 基准测试, 大语言模型, CRISPR筛选",
+        "llm_summary": "本文提出AssayBench基准，用于评估大语言模型和智能体在表型筛选预测任务上的表现。该基准基于1920个公开CRISPR筛选数据，涵盖五类细胞表型，并引入调整后的nDCG指标。评估显示现有方法远未达到性能上限，零样本通用大语言模型优于生物学专用模型和可训练基线。",
+        "abstract_cn": "近年来，机器学习和大规模生物数据集的进展重新激发了构建虚拟细胞（virtual cell）的前景，这是一种能够加速生物发现的细胞行为计算模型。该愿景最引人注目的承诺之一是能够进行计算机表型筛选（in silico phenotypic screens），即模型预测在未见过的生物学背景下细胞扰动的影响。这一任务将异构文本输入与多样化的表型输出相结合，特别适合大语言模型（LLMs）和智能体系统。然而，目前尚无针对该任务的标准基准，因为现有工作集中于更狭窄的分子读数，这些读数与驱动许多实际药物发现流程的表型终点（phenotypic endpoints）仅间接相关。在这项工作中，我们提出了AssayBench，一个用于表型筛选预测的基准，基于1920个公开可用的CRISPR筛选数据构建，涵盖五大类细胞表型。我们将筛选预测任务定义为每个筛选的基因排名预测，并引入了调整后的nDCG（adjusted nDCG），一种用于比较异构测定性能的连续指标。我们的广泛评估表明，现有方法远未达到经验估计的性能上限，且零样本通用大语言模型优于生物学专用大语言模型和可训练基线。微调（fine-tuning）、集成（ensembling）和提示优化（prompt optimization）等优化技术可以进一步提高大语言模型在此任务上的表现。总体而言，AssayBench为衡量计算机表型筛选及更广泛的虚拟细胞模型进展提供了一个实用的测试平台。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "AssayBench: An Assay-Level Virtual Cell Benchmark for LLMs and Agents",
+        "authors": [
+          "Edward De Brouwer",
+          "Carl Edwards",
+          "Alexander Wu",
+          "Jenna Collier",
+          "Graham Heimberg",
+          "Xiner Li",
+          "Meena Subramaniam",
+          "Ehsan Hajiramezanali",
+          "David Richmond",
+          "Jan-Christian Hütter",
+          "Sara Mostafavi",
+          "Gabriele Scalia"
+        ],
+        "published": "2026-05-11",
+        "summary": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outpu",
+        "pdf_url": "https://arxiv.org/pdf/2605.10876v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗大模型",
+          "医疗数据集",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.10876v1",
+        "abstract": "Recent advances in machine learning and large-scale biological data collections have revived the prospect of building a virtual cell, a computational model of cellular behavior that could accelerate biological discovery. One of the most compelling promises of this vision is the ability to perform in silico phenotypic screens, in which a model predicts the effects of cellular perturbations in unseen biological contexts. This task combines heterogeneous textual inputs with diverse phenotypic outputs, making it particularly well-suited to LLMs and agentic systems. Yet, no standard benchmark currently exists for this task, as existing efforts focus on narrower molecular readouts that are only indirectly aligned with the phenotypic endpoints driving many real-world drug discovery workflows. In this work, we present AssayBench, a benchmark for phenotypic screen prediction, built from 1,920 publicly available CRISPR screens spanning five broad classes of cellular phenotypes. We formulate the screen prediction task as a gene rank prediction for each screen and introduce the adjusted nDCG, a continuous metric for comparing performance across heterogeneous assays. Our extensive evaluation shows that existing methods remain far from empirically estimated performance ceilings and zero-shot generalist LLMs outperform biology-specific LLMs and trainable baselines. Optimization techniques such as fine-tuning, ensembling, and prompt optimization can further improve LLM performance on this task. Overall, AssayBench offers a practical testbed for measuring progress toward in silico phenotypic screening and, more broadly, virtual cell models.",
+        "llm_keywords": "虚拟细胞, 表型筛选, 基准测试, 大语言模型, CRISPR筛选",
+        "llm_summary": "本文提出AssayBench基准，用于评估大语言模型和智能体在表型筛选预测任务上的表现。该基准基于1920个公开CRISPR筛选数据，涵盖五类细胞表型，并引入调整后的nDCG指标。评估显示现有方法远未达到性能上限，零样本通用大语言模型优于生物学专用模型和可训练基线。",
+        "abstract_cn": "近年来，机器学习和大规模生物数据集的进展重新激发了构建虚拟细胞（virtual cell）的前景，这是一种能够加速生物发现的细胞行为计算模型。该愿景最引人注目的承诺之一是能够进行计算机表型筛选（in silico phenotypic screens），即模型预测在未见过的生物学背景下细胞扰动的影响。这一任务将异构文本输入与多样化的表型输出相结合，特别适合大语言模型（LLMs）和智能体系统。然而，目前尚无针对该任务的标准基准，因为现有工作集中于更狭窄的分子读数，这些读数与驱动许多实际药物发现流程的表型终点（phenotypic endpoints）仅间接相关。在这项工作中，我们提出了AssayBench，一个用于表型筛选预测的基准，基于1920个公开可用的CRISPR筛选数据构建，涵盖五大类细胞表型。我们将筛选预测任务定义为每个筛选的基因排名预测，并引入了调整后的nDCG（adjusted nDCG），一种用于比较异构测定性能的连续指标。我们的广泛评估表明，现有方法远未达到经验估计的性能上限，且零样本通用大语言模型优于生物学专用大语言模型和可训练基线。微调（fine-tuning）、集成（ensembling）和提示优化（prompt optimization）等优化技术可以进一步提高大语言模型在此任务上的表现。总体而言，AssayBench为衡量计算机表型筛选及更广泛的虚拟细胞模型进展提供了一个实用的测试平台。"
+      }
+    ]
+  },
+  "total_count": 8,
+  "generated_at": "2026-05-12T23:01:00.925583"
+}
