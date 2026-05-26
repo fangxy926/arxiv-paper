@@ -1,0 +1,255 @@
+{
+  "date_range": {
+    "start_date": "2026-05-25",
+    "end_date": "2026-05-25"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "What Makes a Medical Checker Trainable? Diagnosing Signal Collapse and Reward Hacking in Checker-Guided RAG for Biomedical QA",
+        "authors": [
+          "Yuelyu Ji",
+          "Min Gu Kwak",
+          "Hang Zhang",
+          "Xizhi Wu",
+          "Chenyu Li",
+          "Yanshan Wan"
+        ],
+        "published": "2026-05-25",
+        "summary": "Medical RAG needs evidence-grounded claims, so plugging a claim-level NLI checker into retrieval-augmented RL is intuitive. \\textbf{We find that the checker's \\emph{output distribution} during training, not its held-out accuracy, decides whether it provides trainable gradient.} We compare four NLI checker back-ends as process rewards inside a GRPO-trained medical RAG agent (Qwen2.5-7B, replicated on Qwen3-4B and Llama-3.1-8B) across four held-out medical QA benchmarks. Three diagnostic findings ",
+        "pdf_url": "https://arxiv.org/pdf/2605.25988v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.25988v1",
+        "abstract": "Medical RAG needs evidence-grounded claims, so plugging a claim-level NLI checker into retrieval-augmented RL is intuitive. \\textbf{We find that the checker's \\emph{output distribution} during training, not its held-out accuracy, decides whether it provides trainable gradient.} We compare four NLI checker back-ends as process rewards inside a GRPO-trained medical RAG agent (Qwen2.5-7B, replicated on Qwen3-4B and Llama-3.1-8B) across four held-out medical QA benchmarks. Three diagnostic findings emerge. \\textbf{(i)} Signal collapse is log-prob-specific: LLM log-probability scoring labels over 97\\% of claims neutral -- collapsing the RL gradient to zero -- while a calibrated MedNLI classifier scores the same pairs non-degenerately. \\textbf{(ii)} Moderate signal beats strong signal on answer quality: a strong proprietary checker triggers a three-step reward-hacking cascade -- ultra-short answers, search avoidance, language collapse -- so a moderate-signal local classifier trains a higher-quality model (\\textbf{+12\\% BERTScore over zero-shot, no GPT dependency}). \\textbf{(iii)} Signal strength is policy-dependent: the same checker registers as moderate on one policy but strong on another without triggering the cascade end-state. We frame these as boundary conditions for verifier-as-reward systems.",
+        "llm_keywords": "医学检索增强生成, 奖励黑客, 信号坍缩, 验证器训练, 过程奖励",
+        "llm_summary": "研究发现医学RAG中NLI检查器的输出分布决定其可训练性，而非准确率。信号坍缩与奖励黑客问题影响训练效果，适度信号优于强信号，且信号强度依赖策略。",
+        "abstract_cn": "医学检索增强生成（Medical RAG）需要基于证据的声明，因此在检索增强的强化学习（RL）中插入声明级别的自然语言推理（NLI）检查器是直观的做法。我们发现，检查器在训练期间的输出分布（output distribution），而非其留出集准确率（held-out accuracy），决定了它是否提供可训练的梯度。我们比较了四种NLI检查器后端作为过程奖励（process rewards），用于基于GRPO训练的医学RAG智能体（Qwen2.5-7B，并在Qwen3-4B和Llama-3.1-8B上复现），在四个留出医学问答基准上进行了评估。出现了三个诊断性发现：（i）信号坍缩（signal collapse）是对数概率特有的：大语言模型（LLM）的对数概率评分将超过97%的声明标记为中性，导致RL梯度归零，而校准的MedNLI分类器对相同配对给出非退化评分。（ii）在答案质量上，适度信号优于强信号：一个强大的专有检查器触发三步奖励黑客级联（reward-hacking cascade）——超短答案、搜索回避、语言坍缩——因此一个适度信号的本地分类器训练出更高质量的模型（相比零样本提升+12% BERTScore，无需依赖GPT）。（iii）信号强度依赖于策略：同一个检查器在一个策略上表现为适度信号，在另一个策略上表现为强信号，但未触发级联的最终状态。我们将这些视为验证器作为奖励系统（verifier-as-reward systems）的边界条件。"
+      },
+      {
+        "title": "PathWISE: Multi-Agent Cancer Pathway Triaging Ontology Learning from Clinical Flowcharts",
+        "authors": [
+          "Sofiat Abioye",
+          "Ufaq Khan",
+          "Shazad Ashraf",
+          "Mohammed Adil Butt",
+          "Andrew D. Beggs",
+          "Adam Byfield",
+          "Anusha Jose",
+          "William Poulett",
+          "Ben Wallace",
+          "Junaid Qadir",
+          "Muhammad Bilal"
+        ],
+        "published": "2026-05-25",
+        "summary": "Clinical pathways are disseminated as visual flowcharts where spatial topology, arrow direction, colour coding, and font weight encode critical triage logic that remains inaccessible to computational systems. We present PathWISE, a five-phase pipeline combining four LLM-based agents with a deterministic depth-first search auditor and a Java compiler critic, transforming these non-computable artefacts into validated, executable HL7 Clinical Quality Language (CQL) libraries deployable as FHIR CDS ",
+        "pdf_url": "https://arxiv.org/pdf/2605.25970v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.25970v1",
+        "abstract": "Clinical pathways are disseminated as visual flowcharts where spatial topology, arrow direction, colour coding, and font weight encode critical triage logic that remains inaccessible to computational systems. We present PathWISE, a five-phase pipeline combining four LLM-based agents with a deterministic depth-first search auditor and a Java compiler critic, transforming these non-computable artefacts into validated, executable HL7 Clinical Quality Language (CQL) libraries deployable as FHIR CDS Hooks services. Purpose-built agents extract flowchart structure into a typed directed graph, perform deterministic path enumeration, conduct a structured semantic audit of every node's computability, generate terminology-constrained CQL definitions verified by the official Java CQL-to-ELM compiler, and produce routing logic covering 100% of enumerated patient journeys. Demonstrated across five UK NHS cancer pathways (colorectal, lung, skin, upper GI, and breast), PathWISE audits up to 183 nodes (182 under the Hybrid configuration), identifies 544 structured governance findings across four issue categories, achieves 100% syntactic compilation success, with UNCOMPUTABLE nodes receiving false placeholders that preserve compilability while surfacing governance gaps for clinical review, and produces zero hallucinated terminology codes for dictionary-covered concepts. Critically, PathWISE confines non-deterministic LLM inference to knowledge extraction while deterministic graph mathematics and a standard compiler underpin every verification step.",
+        "llm_keywords": "临床路径, 多智能体, 本体学习, 癌症路径, 临床质量语言",
+        "llm_summary": "PathWISE是一个五阶段流水线，结合四个基于大语言模型的智能体、确定性深度优先搜索审计器和Java编译器批评者，将临床流程图转化为可执行的HL7 CQL库，并在五个英国NHS癌症路径上验证了其有效性。",
+        "abstract_cn": "临床路径以视觉流程图形式传播，其中空间拓扑、箭头方向、颜色编码和字体粗细编码了关键的分类逻辑，但这些逻辑对计算系统不可访问。我们提出PathWISE，一个五阶段流水线，结合四个基于大语言模型（LLM）的智能体与一个确定性深度优先搜索审计器和一个Java编译器批评者，将这些不可计算的人工制品转化为经过验证、可执行的HL7临床质量语言（CQL）库，并部署为FHIR CDS Hooks服务。专用智能体将流程图结构提取为类型化有向图，执行确定性路径枚举，对每个节点的可计算性进行结构化语义审计，生成受术语约束的CQL定义（由官方Java CQL-to-ELM编译器验证），并产生覆盖100%枚举患者旅程的路由逻辑。在五个英国NHS癌症路径（结直肠、肺、皮肤、上消化道和乳腺）上展示，PathWISE审计多达183个节点（混合配置下为182个），识别出四个问题类别下的544个结构化治理发现，实现100%的语法编译成功，其中UNCOMPUTABLE节点接收虚假占位符以保持可编译性，同时暴露治理差距供临床审查，并为词典覆盖的概念生成零个幻觉术语代码。关键的是，PathWISE将非确定性LLM推理限制在知识提取中，而确定性图数学和标准编译器支撑每一步验证。"
+      },
+      {
+        "title": "A Clinically Validated Foundation Model for Comprehensive Lung Pathology Interpretation",
+        "authors": [
+          "Zhengrui Guo",
+          "Zhengyu Zhang",
+          "Jiabo Ma",
+          "Yihui Wang",
+          "Fengtao Zhou",
+          "Yingxue Xu",
+          "Ling Liang",
+          "Chenglong Zhao",
+          "Qi Xie",
+          "Jinbang Li",
+          "Shujing Guo",
+          "Fangyi Han",
+          "Zhijian Cen",
+          "Ziyi Liu",
+          "Cheng Jin",
+          "Junlin Hou",
+          "Zhixuan Chen",
+          "Yu Cai",
+          "Lijuan Qu",
+          "Shifu Chen",
+          "Yueping Liu",
+          "Zhe Wang",
+          "Xiuming Zhang",
+          "Muyan Cai",
+          "Li Liang",
+          "Hao Chen"
+        ],
+        "published": "2026-05-25",
+        "summary": "Pathological assessment guides lung cancer diagnosis, treatment selection, and prognostic evaluation, yet current CPath approaches rely on task-specific models for isolated objectives. Although pan-cancer foundation models offer versatility, they lack subspecialty-level depth and have not been evaluated across clinical workflows or prospectively validated in real-world settings. We introduce PulmoFoundation, a multi-center, prospectively validated, randomized controlled trial (RCT)-evaluated fou",
+        "pdf_url": "https://arxiv.org/pdf/2605.25878v1",
+        "primary_category": "eess.IV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.25878v1",
+        "abstract": "Pathological assessment guides lung cancer diagnosis, treatment selection, and prognostic evaluation, yet current CPath approaches rely on task-specific models for isolated objectives. Although pan-cancer foundation models offer versatility, they lack subspecialty-level depth and have not been evaluated across clinical workflows or prospectively validated in real-world settings. We introduce PulmoFoundation, a multi-center, prospectively validated, randomized controlled trial (RCT)-evaluated foundation model for comprehensive lung pathology assessment across pre-operative, intra-operative, and post-operative care. Built upon Virchow2 via subspecialty-specific pretraining using ~40,000 diagnostic H&E-stained whole-slide images (WSIs), PulmoFoundation was systematically evaluated on ~26,000 WSIs across 32 clinically relevant tasks. In addition to accurately predicting molecular markers and patient survival, our model achieves clinical-grade performance in core diagnostic tasks across biopsy, frozen section, and surgical resection slides. In a registered prospective study of 1,357 patients across 11 diagnostic tasks, our model achieved an average AUC of 92.3%. Using pre-specified triage thresholds, PulmoFoundation could reduce additional second-review burden for 68.8% of biopsies and 83.0% of frozen sections, and defer 44.5% of IHC stain orders, with PPVs of 1.0, 0.991, and 0.966. Beyond prospective validation, we conducted a crossover RCT with eight pathologists, in which AI assistance improved diagnostic accuracy across 4,928 case-reader pairs (91.7% w/ AI vs. 83.8% w/o AI). AI assistance also reduced median diagnostic time by 19.6%, increased diagnostic confidence by 8.7%, and improved inter-rater agreement from moderate (kappa = 0.56) to substantial (kappa = 0.76). Together, these evaluations support PulmoFoundation as a clinically validated decision-support system for lung pathology.",
+        "llm_keywords": "肺病理, 基础模型, 临床验证, 人工智能辅助诊断, 随机对照试验",
+        "llm_summary": "本文介绍PulmoFoundation，一个基于Virchow2、经多中心前瞻性验证和随机对照试验评估的肺病理基础模型。该模型在约4万张H&E染色全切片图像上预训练，并在约2.6万张图像上评估了32项临床任务，包括分子标志物预测和生存分析。前瞻性研究显示平均AUC达92.3%，可显著减少二次阅片负担和免疫组化染色需求。随机对照试验中，AI辅助将诊断准确率从83.8%提升至91.7%，诊断时间缩短19.6%，信心提高8.7%，观察者间一致性从中等（κ=0.56）提升至显著（κ=0.76）。",
+        "abstract_cn": "病理评估指导肺癌诊断、治疗选择和预后评估，但当前的计算病理学（CPath）方法依赖于针对孤立目标的特定任务模型。尽管泛癌基础模型具有多功能性，但它们缺乏亚专科级别的深度，且未在临床工作流程中进行评估或在真实世界环境中进行前瞻性验证。我们介绍了PulmoFoundation，这是一个经过多中心、前瞻性验证和随机对照试验（RCT）评估的基础模型，用于术前、术中和术后的全面肺病理评估。该模型基于Virchow2，通过使用约40,000张诊断性苏木精-伊红（H&E）染色全切片图像（WSI）进行亚专科特异性预训练，并在约26,000张WSI上系统评估了32项临床相关任务。除了准确预测分子标志物和患者生存率外，我们的模型在活检、冰冻切片和手术切除切片的核心诊断任务中达到了临床级性能。在一项涵盖1,357名患者、11项诊断任务的注册前瞻性研究中，我们的模型平均曲线下面积（AUC）达到92.3%。使用预设的分诊阈值，PulmoFoundation可以减少68.8%的活检和83.0%的冰冻切片的额外二次阅片负担，并推迟44.5%的免疫组化（IHC）染色订单，阳性预测值（PPV）分别为1.0、0.991和0.966。除前瞻性验证外，我们还进行了一项包含八名病理学家的交叉随机对照试验（RCT），在4,928个病例-阅片者配对中，人工智能（AI）辅助将诊断准确率从83.8%提升至91.7%。AI辅助还将中位诊断时间缩短了19.6%，诊断信心提高了8.7%，并将观察者间一致性从中等（kappa = 0.56）提升至显著（kappa = 0.76）。这些评估共同支持PulmoFoundation作为肺病理学临床验证的决策支持系统。"
+      },
+      {
+        "title": "Context-driven Missing-Modality Learning for Robust Medical Diagnosis with Image-Tabular Data",
+        "authors": [
+          "Tianling Liu",
+          "Lequan Yu",
+          "Tong Han",
+          "Liang Wan"
+        ],
+        "published": "2026-05-25",
+        "summary": "While multimodal data integrating diverse imaging and clinical tabular records is crucial for accurate medical diagnosis, the arbitrary absence of specific modalities is prevalent in clinical practice, severely degrading the performance of multimodal models. Existing methods either discard missing modalities, leading to information loss, or struggle to synthesize them without capturing complex inter-modal dependencies. To address these limitations, we propose a novel Context-driven Missing-Modal",
+        "pdf_url": "https://arxiv.org/pdf/2605.25968v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.25968v1",
+        "abstract": "While multimodal data integrating diverse imaging and clinical tabular records is crucial for accurate medical diagnosis, the arbitrary absence of specific modalities is prevalent in clinical practice, severely degrading the performance of multimodal models. Existing methods either discard missing modalities, leading to information loss, or struggle to synthesize them without capturing complex inter-modal dependencies. To address these limitations, we propose a novel Context-driven Missing-Modality Learning (CMML) framework, which sequentially performs modality synthesis and semantic alignment to achieve robust diagnosis under arbitrary missing conditions. Specifically, we design a Cascade Residual Transformer-based Autoencoder (CRTA) that leverages learnable context tokens acting as dataset-level semantic prior to capture inter-modal dependencies and synthesize key missing representations. These representations are further enriched by modality-specific memory banks. To resolve the discrepancy between original available and synthesized representations, we transform the learned context tokens into instance-adaptive semantic references by infusing multimodal representations from the CRTA's outputs. This reference guides the alignment of heterogeneous modality representations into a unified space, where class-aware contrastive refinement is finally applied to explore discriminative diagnostic cues. Extensive evaluations on skin lesion (Derm7pt), ocular disease (ODIR), and meningioma (MEN) datasets demonstrate that CMML significantly outperforms state-of-the-art (SOTA) methods, yielding AVG AUC improvements of 1.26%, 0.97%, and 1.32%, respectively.",
+        "llm_keywords": "多模态学习, 缺失模态, 医学诊断, 上下文学习, 语义对齐",
+        "llm_summary": "本文提出上下文驱动的缺失模态学习框架(CMML)，通过级联残差Transformer自编码器(CRTA)和语义对齐，解决临床中模态缺失导致的诊断性能下降问题，在三个医学数据集上超越现有方法。",
+        "abstract_cn": "尽管整合多种成像和临床表格记录的多模态数据对于准确医学诊断至关重要，但临床实践中特定模态的任意缺失普遍存在，严重降低了多模态模型的性能。现有方法要么丢弃缺失模态导致信息丢失，要么在不捕捉复杂模态间依赖关系的情况下难以合成缺失模态。为解决这些限制，我们提出了一种新颖的上下文驱动的缺失模态学习(CMML)框架，该框架顺序执行模态合成和语义对齐，以在任意缺失条件下实现稳健诊断。具体地，我们设计了一个级联残差Transformer自编码器(CRTA)，利用可学习的上下文标记作为数据集级语义先验来捕捉模态间依赖关系并合成关键的缺失表示。这些表示进一步通过模态特定记忆库得到丰富。为解决原始可用表示与合成表示之间的差异，我们通过注入来自CRTA输出的多模态表示，将学习到的上下文标记转化为实例自适应的语义参考。该参考指导异构模态表示对齐到统一空间，最后应用类别感知对比精炼来探索判别性诊断线索。在皮肤病变(Derm7pt)、眼部疾病(ODIR)和脑膜瘤(MEN)数据集上的广泛评估表明，CMML显著优于最先进(SOTA)方法，平均AUC分别提升了1.26%、0.97%和1.32%。"
+      },
+      {
+        "title": "EchoPilot: Training-Free Ultrasound Video Segmentation via Scale-Space Semantic Prompting and Reliability-Gated Memory",
+        "authors": [
+          "Ruiqiang Xiao",
+          "Zhaohu Xing",
+          "Yijun Yang",
+          "Zhenyan Han",
+          "Weiming Wang",
+          "Kaishun Wu",
+          "Lei Zhu"
+        ],
+        "published": "2026-05-25",
+        "summary": "Ultrasound video segmentation is clinically valuable yet difficult due to speckle noise, weak boundaries, and rapid anatomical deformation. Recent promptable foundation models enable point-guided segmentation, but their direct deployment in ultrasound remains unreliable: a single point provides insufficient spatial context to resolve scale ambiguity, and greedy memory updates amplify early errors into severe temporal drift. We present EchoPilot, a training-free framework for ultrasound video seg",
+        "pdf_url": "https://arxiv.org/pdf/2605.25944v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.25944v1",
+        "abstract": "Ultrasound video segmentation is clinically valuable yet difficult due to speckle noise, weak boundaries, and rapid anatomical deformation. Recent promptable foundation models enable point-guided segmentation, but their direct deployment in ultrasound remains unreliable: a single point provides insufficient spatial context to resolve scale ambiguity, and greedy memory updates amplify early errors into severe temporal drift. We present EchoPilot, a training-free framework for ultrasound video segmentation under sparse first-frame interaction, requiring only a single point click and an anatomical category name. EchoPilot orchestrates a frozen medical vision-language model (VLM) for semantic localization, a vision foundation model (VFM) for dense geometric feature extraction, and a promptable video segmentor for mask prediction and propagation. To resolve initialization ambiguity, we propose Scale-Space Semantic Prompting, which first selects an optimal contextual view via a parameter-free S.E.E.D. (Semantic Energy-Entropy Density) criterion, and then synthesizes geometrically precise auxiliary point prompts from dense foundation features without additional user interaction. To reduce propagation drift, a Reliability-Gated Memory update is further introduced to selectively freeze the segmentor's memory bank under uncertain predictions, preventing error accumulation. We also contribute the first dynamic fetal placenta ultrasound video segmentation dataset with 671 annotated frames. Across three ultrasound video datasets, EchoPilot achieves state-of-the-art performance under the sparse-interactive setting, consistently outperforming training-free baselines and finetuned specialists.",
+        "llm_keywords": "超声视频分割, 无训练框架, 尺度空间语义提示, 可靠性门控记忆, 稀疏交互",
+        "llm_summary": "EchoPilot是一个无训练框架，通过单点点击和类别名称实现超声视频分割。它结合冻结的医学视觉语言模型、视觉基础模型和可提示视频分割器，利用尺度空间语义提示解决初始化模糊，并通过可靠性门控记忆减少传播漂移，在多个数据集上达到最优性能。",
+        "abstract_cn": "超声视频分割在临床上很有价值，但由于散斑噪声、弱边界和快速解剖变形而困难。最近的可提示基础模型实现了点引导分割，但它们在超声中的直接部署仍然不可靠：单个点提供的空间上下文不足以解决尺度模糊性，贪婪的记忆更新会将早期错误放大为严重的时间漂移。我们提出了EchoPilot，一个在稀疏第一帧交互下进行超声视频分割的无训练框架，仅需一次单点点击和一个解剖类别名称。EchoPilot协调一个冻结的医学视觉语言模型（VLM）进行语义定位、一个视觉基础模型（VFM）进行密集几何特征提取，以及一个可提示视频分割器进行掩码预测和传播。为了解决初始化模糊性，我们提出了尺度空间语义提示（Scale-Space Semantic Prompting），它首先通过无参数的S.E.E.D.（语义能量熵密度）准则选择最优上下文视图，然后从密集基础特征中合成几何精确的辅助点提示，无需额外的用户交互。为了减少传播漂移，进一步引入了可靠性门控记忆更新（Reliability-Gated Memory update），在不确定预测下选择性地冻结分割器的记忆库，防止错误累积。我们还贡献了第一个动态胎儿胎盘超声视频分割数据集，包含671个标注帧。在三个超声视频数据集上，EchoPilot在稀疏交互设置下实现了最先进的性能，始终优于无训练基线和微调专家。"
+      },
+      {
+        "title": "From Reports to Ontologies: Ontology-Guided Representation Learning for 12-Lead ECG",
+        "authors": [
+          "Lei Xu",
+          "Fahad Sohrab",
+          "Mehmet Yamac",
+          "Merja Heinaniemi",
+          "Moncef Gabbouj"
+        ],
+        "published": "2026-05-25",
+        "summary": "The 12-lead electrocardiogram (ECG) is a quasi-periodic, multi-channel signal with diagnostic content spanning timescales from millisecond waveform morphology to multi-second rhythm dynamics. Existing ECG representation learning relies on signal-only self-supervision or ECG-text multimodal alignment, neither of which exploits the structured diagnostic codes attached to every clinical recording. We present \\textbf{MAR-ECG}, an ontology-guided masked autoregressive framework that supervises the en",
+        "pdf_url": "https://arxiv.org/pdf/2605.25883v1",
+        "primary_category": "cs.CE",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2605.25883v1",
+        "abstract": "The 12-lead electrocardiogram (ECG) is a quasi-periodic, multi-channel signal with diagnostic content spanning timescales from millisecond waveform morphology to multi-second rhythm dynamics. Existing ECG representation learning relies on signal-only self-supervision or ECG-text multimodal alignment, neither of which exploits the structured diagnostic codes attached to every clinical recording. We present \\textbf{MAR-ECG}, an ontology-guided masked autoregressive framework that supervises the encoder with a curated 40-node SNOMED-CT cardiac graph through \\emph{graph alignment}, eliminating the need for paired clinical reports. MAR-ECG combines two complementary objectives. First, \\emph{graph-smoothed contrastive learning} (GSCL) anchors the encoder's rhythm-pooled features to the SNOMED graph, softening supervision targets by ontology distance so that clinically related concepts reinforce one another rather than function as hard negatives. Second, \\emph{multi-scale physiological supervision} complements GSCL with signal-derived patch auxiliaries that target rhythm-physiology statistics extracted automatically from the input, extending supervision beyond the patch tier at no annotation cost. Pretrained on ${\\sim}40$K publicly available 12-lead ECGs with SNOMED-CT codes and evaluated by frozen linear probing on five downstream classification benchmarks, MAR-ECG consistently outperforms a strong masked-autoregressive baseline, with mean gains in the low-label regime. Despite the absence of paired clinical text, MAR-ECG achieves performance competitive with state-of-the-art multimodal ECG-text methods.",
+        "llm_keywords": "心电图, 本体论, 表示学习, 自监督学习, 知识图谱",
+        "llm_summary": "本文提出MAR-ECG框架，利用SNOMED-CT本体图指导12导联心电图表示学习，通过图平滑对比学习和多尺度生理监督，无需临床报告即可提升下游分类性能。",
+        "abstract_cn": "12导联心电图（ECG）是一种准周期、多通道信号，其诊断内容跨越从毫秒级波形形态到多秒级节律动力学的时间尺度。现有的心电图表示学习依赖于仅信号的自我监督或心电图-文本多模态对齐，这两种方法都没有利用附在每个临床记录上的结构化诊断代码。我们提出了MAR-ECG，一种本体引导的掩码自回归框架，通过图对齐（graph alignment）使用一个精心整理的40节点SNOMED-CT心脏图来监督编码器，消除了对配对临床报告的需求。MAR-ECG结合了两个互补的目标。首先，图平滑对比学习（GSCL）将编码器的节律池化特征锚定到SNOMED图，通过本体距离软化监督目标，使得临床相关的概念相互增强而不是作为硬负样本。其次，多尺度生理监督通过从输入中自动提取的信号派生补丁辅助目标来补充GSCL，这些目标针对节律-生理统计量，在无需标注成本的情况下将监督扩展到补丁层级。在约4万份公开可用的带有SNOMED-CT代码的12导联心电图上进行预训练，并在五个下游分类基准上通过冻结线性探测进行评估，MAR-ECG始终优于强大的掩码自回归基线，在低标签设置下平均增益显著。尽管没有配对的临床文本，MAR-ECG达到了与最先进的多模态心电图-文本方法竞争的性能。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "What Makes a Medical Checker Trainable? Diagnosing Signal Collapse and Reward Hacking in Checker-Guided RAG for Biomedical QA",
+        "authors": [
+          "Yuelyu Ji",
+          "Min Gu Kwak",
+          "Hang Zhang",
+          "Xizhi Wu",
+          "Chenyu Li",
+          "Yanshan Wan"
+        ],
+        "published": "2026-05-25",
+        "summary": "Medical RAG needs evidence-grounded claims, so plugging a claim-level NLI checker into retrieval-augmented RL is intuitive. \\textbf{We find that the checker's \\emph{output distribution} during training, not its held-out accuracy, decides whether it provides trainable gradient.} We compare four NLI checker back-ends as process rewards inside a GRPO-trained medical RAG agent (Qwen2.5-7B, replicated on Qwen3-4B and Llama-3.1-8B) across four held-out medical QA benchmarks. Three diagnostic findings ",
+        "pdf_url": "https://arxiv.org/pdf/2605.25988v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.25988v1",
+        "abstract": "Medical RAG needs evidence-grounded claims, so plugging a claim-level NLI checker into retrieval-augmented RL is intuitive. \\textbf{We find that the checker's \\emph{output distribution} during training, not its held-out accuracy, decides whether it provides trainable gradient.} We compare four NLI checker back-ends as process rewards inside a GRPO-trained medical RAG agent (Qwen2.5-7B, replicated on Qwen3-4B and Llama-3.1-8B) across four held-out medical QA benchmarks. Three diagnostic findings emerge. \\textbf{(i)} Signal collapse is log-prob-specific: LLM log-probability scoring labels over 97\\% of claims neutral -- collapsing the RL gradient to zero -- while a calibrated MedNLI classifier scores the same pairs non-degenerately. \\textbf{(ii)} Moderate signal beats strong signal on answer quality: a strong proprietary checker triggers a three-step reward-hacking cascade -- ultra-short answers, search avoidance, language collapse -- so a moderate-signal local classifier trains a higher-quality model (\\textbf{+12\\% BERTScore over zero-shot, no GPT dependency}). \\textbf{(iii)} Signal strength is policy-dependent: the same checker registers as moderate on one policy but strong on another without triggering the cascade end-state. We frame these as boundary conditions for verifier-as-reward systems.",
+        "llm_keywords": "医学检索增强生成, 奖励黑客, 信号坍缩, 验证器训练, 过程奖励",
+        "llm_summary": "研究发现医学RAG中NLI检查器的输出分布决定其可训练性，而非准确率。信号坍缩与奖励黑客问题影响训练效果，适度信号优于强信号，且信号强度依赖策略。",
+        "abstract_cn": "医学检索增强生成（Medical RAG）需要基于证据的声明，因此在检索增强的强化学习（RL）中插入声明级别的自然语言推理（NLI）检查器是直观的做法。我们发现，检查器在训练期间的输出分布（output distribution），而非其留出集准确率（held-out accuracy），决定了它是否提供可训练的梯度。我们比较了四种NLI检查器后端作为过程奖励（process rewards），用于基于GRPO训练的医学RAG智能体（Qwen2.5-7B，并在Qwen3-4B和Llama-3.1-8B上复现），在四个留出医学问答基准上进行了评估。出现了三个诊断性发现：（i）信号坍缩（signal collapse）是对数概率特有的：大语言模型（LLM）的对数概率评分将超过97%的声明标记为中性，导致RL梯度归零，而校准的MedNLI分类器对相同配对给出非退化评分。（ii）在答案质量上，适度信号优于强信号：一个强大的专有检查器触发三步奖励黑客级联（reward-hacking cascade）——超短答案、搜索回避、语言坍缩——因此一个适度信号的本地分类器训练出更高质量的模型（相比零样本提升+12% BERTScore，无需依赖GPT）。（iii）信号强度依赖于策略：同一个检查器在一个策略上表现为适度信号，在另一个策略上表现为强信号，但未触发级联的最终状态。我们将这些视为验证器作为奖励系统（verifier-as-reward systems）的边界条件。"
+      },
+      {
+        "title": "PathWISE: Multi-Agent Cancer Pathway Triaging Ontology Learning from Clinical Flowcharts",
+        "authors": [
+          "Sofiat Abioye",
+          "Ufaq Khan",
+          "Shazad Ashraf",
+          "Mohammed Adil Butt",
+          "Andrew D. Beggs",
+          "Adam Byfield",
+          "Anusha Jose",
+          "William Poulett",
+          "Ben Wallace",
+          "Junaid Qadir",
+          "Muhammad Bilal"
+        ],
+        "published": "2026-05-25",
+        "summary": "Clinical pathways are disseminated as visual flowcharts where spatial topology, arrow direction, colour coding, and font weight encode critical triage logic that remains inaccessible to computational systems. We present PathWISE, a five-phase pipeline combining four LLM-based agents with a deterministic depth-first search auditor and a Java compiler critic, transforming these non-computable artefacts into validated, executable HL7 Clinical Quality Language (CQL) libraries deployable as FHIR CDS ",
+        "pdf_url": "https://arxiv.org/pdf/2605.25970v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型",
+          "医疗智能体"
+        ],
+        "arxiv_id": "2605.25970v1",
+        "abstract": "Clinical pathways are disseminated as visual flowcharts where spatial topology, arrow direction, colour coding, and font weight encode critical triage logic that remains inaccessible to computational systems. We present PathWISE, a five-phase pipeline combining four LLM-based agents with a deterministic depth-first search auditor and a Java compiler critic, transforming these non-computable artefacts into validated, executable HL7 Clinical Quality Language (CQL) libraries deployable as FHIR CDS Hooks services. Purpose-built agents extract flowchart structure into a typed directed graph, perform deterministic path enumeration, conduct a structured semantic audit of every node's computability, generate terminology-constrained CQL definitions verified by the official Java CQL-to-ELM compiler, and produce routing logic covering 100% of enumerated patient journeys. Demonstrated across five UK NHS cancer pathways (colorectal, lung, skin, upper GI, and breast), PathWISE audits up to 183 nodes (182 under the Hybrid configuration), identifies 544 structured governance findings across four issue categories, achieves 100% syntactic compilation success, with UNCOMPUTABLE nodes receiving false placeholders that preserve compilability while surfacing governance gaps for clinical review, and produces zero hallucinated terminology codes for dictionary-covered concepts. Critically, PathWISE confines non-deterministic LLM inference to knowledge extraction while deterministic graph mathematics and a standard compiler underpin every verification step.",
+        "llm_keywords": "临床路径, 多智能体, 本体学习, 癌症路径, 临床质量语言",
+        "llm_summary": "PathWISE是一个五阶段流水线，结合四个基于大语言模型的智能体、确定性深度优先搜索审计器和Java编译器批评者，将临床流程图转化为可执行的HL7 CQL库，并在五个英国NHS癌症路径上验证了其有效性。",
+        "abstract_cn": "临床路径以视觉流程图形式传播，其中空间拓扑、箭头方向、颜色编码和字体粗细编码了关键的分类逻辑，但这些逻辑对计算系统不可访问。我们提出PathWISE，一个五阶段流水线，结合四个基于大语言模型（LLM）的智能体与一个确定性深度优先搜索审计器和一个Java编译器批评者，将这些不可计算的人工制品转化为经过验证、可执行的HL7临床质量语言（CQL）库，并部署为FHIR CDS Hooks服务。专用智能体将流程图结构提取为类型化有向图，执行确定性路径枚举，对每个节点的可计算性进行结构化语义审计，生成受术语约束的CQL定义（由官方Java CQL-to-ELM编译器验证），并产生覆盖100%枚举患者旅程的路由逻辑。在五个英国NHS癌症路径（结直肠、肺、皮肤、上消化道和乳腺）上展示，PathWISE审计多达183个节点（混合配置下为182个），识别出四个问题类别下的544个结构化治理发现，实现100%的语法编译成功，其中UNCOMPUTABLE节点接收虚假占位符以保持可编译性，同时暴露治理差距供临床审查，并为词典覆盖的概念生成零个幻觉术语代码。关键的是，PathWISE将非确定性LLM推理限制在知识提取中，而确定性图数学和标准编译器支撑每一步验证。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "Double Triangle Annotation: A Scalable Human-in-the-Loop Framework for High-Precision Historical Document Annotation",
+        "authors": [
+          "Yi Ren"
+        ],
+        "published": "2026-05-25",
+        "summary": "Evaluating structured-information extraction from historical documents at scale requires high-precision ground-truth annotations, yet traditional manual labeling is expensive and fully automated pipelines built on large language models are prone to hallucination. We propose Double Triangle Annotation, a two-layer human-in-the-loop framework that leverages cross-model consensus to automate the majority of annotation work while ensuring high-precision outputs. In the first layer, two architectural",
+        "pdf_url": "https://arxiv.org/pdf/2605.25781v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2605.25781v1",
+        "abstract": "Evaluating structured-information extraction from historical documents at scale requires high-precision ground-truth annotations, yet traditional manual labeling is expensive and fully automated pipelines built on large language models are prone to hallucination. We propose Double Triangle Annotation, a two-layer human-in-the-loop framework that leverages cross-model consensus to automate the majority of annotation work while ensuring high-precision outputs. In the first layer, two architecturally independent Multimodal Large Language Models annotate each document in parallel; when they agree, the label is auto-accepted, and disagreements are routed to a human jury. A second layer cross-checks two such systems against each other, escalating residual conflicts to a domain expert. The framework rests on a single assumption -- error independence between models -- requires no distributional priors or task-specific calibration, and becomes more autonomous as model capability improves. On the Guides Rosenwald, a corpus of French medical directories spanning 1887-1906, the framework achieves a final Word Error Rate of 0.003. Applied at scale, model consensus auto-accepts over 85% of 13,595 fields. We release the resulting benchmark -- the first structured-extraction ground truth for the Rosenwald Guides -- to support future work on historical document processing.",
+        "llm_keywords": "历史文档标注, 人机协同框架, 多模态大语言模型, 高精度标注, 交叉验证",
+        "llm_summary": "提出双三角形标注框架，利用两个独立多模态大语言模型并行标注，一致时自动接受，不一致时由人工裁决，再通过第二层交叉验证，实现高精度历史文档标注，在法国医疗目录数据集上词错误率仅0.003，自动接受率超85%。",
+        "abstract_cn": "大规模评估从历史文档中提取结构化信息需要高精度的真实标注，但传统人工标注成本高昂，而基于大语言模型的完全自动化流程容易产生幻觉。我们提出双三角形标注（Double Triangle Annotation），一种双层人机协同框架，利用跨模型共识自动化大部分标注工作，同时确保高精度输出。第一层中，两个架构独立的多模态大语言模型（Multimodal Large Language Models）并行标注每个文档；当它们一致时，标签自动接受，不一致则提交给人工评审团。第二层将两个这样的系统相互交叉检查，将剩余冲突升级给领域专家。该框架基于一个单一假设——模型之间的误差独立性——无需分布先验或任务特定校准，并且随着模型能力的提升而变得更加自主。在Guides Rosenwald（一个涵盖1887-1906年的法国医疗目录语料库）上，该框架实现了0.003的最终词错误率（Word Error Rate）。大规模应用时，模型共识自动接受了13,595个字段中的85%以上。我们发布了由此产生的基准——Rosenwald指南的第一个结构化提取真实标注——以支持未来历史文档处理的研究。"
+      }
+    ]
+  },
+  "total_count": 7,
+  "generated_at": "2026-05-26T23:16:11.862218"
+}
