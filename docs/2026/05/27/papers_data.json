@@ -1,0 +1,36 @@
+{
+  "date_range": {
+    "start_date": "2026-05-26",
+    "end_date": "2026-05-26"
+  },
+  "topics": [
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗数据集": [
+      {
+        "title": "Transfer Learning using 66 Diseases for Disease Forecasting Applications",
+        "authors": [
+          "Lauren J Beesley",
+          "Alexander C Murph",
+          "Dave Osthus",
+          "Lauren A Castro"
+        ],
+        "published": "2026-05-26",
+        "summary": "Disease forecasting models typically rely on a single data stream, making models brittle when histories are short or noisy. Recent top-performing models have shown that synthesizing multiple reporting systems for the same disease improves performance. Other recent work takes this idea a step further, using transfer learning to train a forecasting model for one disease using data from a different disease. We expand upon each of these approaches greatly, training machine learning models on data th",
+        "pdf_url": "https://arxiv.org/pdf/2605.27269v1",
+        "primary_category": "cs.LG",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2605.27269v1",
+        "abstract": "Disease forecasting models typically rely on a single data stream, making models brittle when histories are short or noisy. Recent top-performing models have shown that synthesizing multiple reporting systems for the same disease improves performance. Other recent work takes this idea a step further, using transfer learning to train a forecasting model for one disease using data from a different disease. We expand upon each of these approaches greatly, training machine learning models on data that span 66 infectious diseases and several data streams. We investigate the value of incorporating different data streams for forecasting 20 different disease data streams. We find that incorporating other data streams improves forecasting in the vast majority (84.9%) of time series and model structures considered. However, our work highlights that the quality of the added data matters, where adding data extremely different from the target data stream can sometimes degrade forecast performance. A major contribution of this work is in compiling a publicly-available database of data for use by the infectious disease forecasting community.",
+        "llm_keywords": "迁移学习, 传染病预测, 多数据流, 疾病预测模型",
+        "llm_summary": "该研究利用66种传染病数据和多数据流训练机器学习模型，发现整合不同数据流可改善84.9%的时间序列预测，但数据质量至关重要，并构建了公开数据库。",
+        "abstract_cn": "疾病预测模型通常依赖单一数据流，当历史数据短或噪声大时模型脆弱。近期最优模型表明，整合同一疾病的多个报告系统可提升性能。其他研究进一步利用迁移学习，用不同疾病数据训练预测模型。本研究大幅扩展了这些方法，在涵盖66种传染病及多个数据流的数据上训练机器学习模型，并探究了整合不同数据流对预测20种疾病数据流的价值。我们发现，在绝大多数（84.9%）时间序列和模型结构中，整合其他数据流改善了预测效果。然而，研究强调新增数据的质量至关重要，加入与目标数据流差异极大的数据有时会降低预测性能。本工作的主要贡献是编制了一个可供传染病预测社区使用的公开数据库。"
+      }
+    ]
+  },
+  "total_count": 1,
+  "generated_at": "2026-05-27T23:19:25.927264"
+}
