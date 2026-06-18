@@ -1,0 +1,157 @@
+{
+  "date_range": {
+    "start_date": "2026-06-17",
+    "end_date": "2026-06-17"
+  },
+  "topics": [
+    "医疗大模型",
+    "医疗智能体",
+    "医疗数据集"
+  ],
+  "papers_by_topic": {
+    "医疗大模型": [
+      {
+        "title": "Confidence is Not Reliability: Rethinking MC Dropout in Brain Tumour Segmentation",
+        "authors": [
+          "Xin Ci Wong",
+          "Duygu Sarikaya",
+          "Kieran Zucker",
+          "Marc De Kamps",
+          "Nishant Ravikumar"
+        ],
+        "published": "2026-06-17",
+        "summary": "Glioma segmentation in multiparametric MRI is a critical component of treatment planning. A segmentation model that fails silently on treatment-critical sub-regions represents a patient safety risk that overlap-based metrics such as Dice scores cannot expose. We ask whether voxel-level uncertainty estimation via Monte Carlo (MC) Dropout can reliably identify segmentation errors in clinically critical sub-regions, and whether calibration failure modes are detectable from standard reporting metric",
+        "pdf_url": "https://arxiv.org/pdf/2606.19300v1",
+        "primary_category": "cs.CV",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2606.19300v1",
+        "abstract": "Glioma segmentation in multiparametric MRI is a critical component of treatment planning. A segmentation model that fails silently on treatment-critical sub-regions represents a patient safety risk that overlap-based metrics such as Dice scores cannot expose. We ask whether voxel-level uncertainty estimation via Monte Carlo (MC) Dropout can reliably identify segmentation errors in clinically critical sub-regions, and whether calibration failure modes are detectable from standard reporting metrics alone. In an empirical two-model case study on 126 BraTS21 patients, we evaluate a high-performance pretrained SegResNet and a locally trained UNet with residual units (UNet-Res). MC dropout preserved segmentation accuracy ($|Δ\\text{Dice}|$ $<0.01$) while achieving strong uncertainty-error alignment (AUROC for entropy (H) $\\approx$0.97), indicating uncertainty correctly ranks erroneous voxels above correct ones. Entropy-based patient stratification identified a high-uncertainty subgroup with substantially lower segmentation performance (median whole-tumour Dice $0.835$ vs. $0.925$), supporting uncertainty as a practical triage signal. However, global alignment can mask important region-specific differences. Despite similar AUROC, UNet-Res exhibited near-zero enhancing tumour entropy ($0.054$) and Expected Calibration Error (ECE) of $0.915$, with a Dice of only $0.714$, indicating severely miscalibrated confidence on the most clinically critical sub-region, a failure mode invisible to standard Dice and AUROC reporting. These findings demonstrate that strong uncertainty-error alignment is necessary but insufficient for clinical safety: sub-region-specific calibration assessment must accompany AUROC evaluation when selecting models for clinical deployment.",
+        "llm_keywords": "脑肿瘤分割, 不确定性估计, MC Dropout, 校准误差, 临床安全",
+        "llm_summary": "本文通过对比两种模型在脑肿瘤分割中的表现，发现MC Dropout能有效识别分割错误，但全局不确定性-误差对齐可能掩盖关键子区域的校准失败，强调临床部署需结合子区域校准评估。",
+        "abstract_cn": "多参数MRI中的胶质瘤分割是治疗计划的关键组成部分。在治疗关键子区域上无声失败的分割模型会带来患者安全风险，而Dice分数等基于重叠的指标无法暴露这种风险。我们探究通过蒙特卡洛(MC) Dropout进行的体素级不确定性估计能否可靠地识别临床关键子区域中的分割错误，以及校准失败模式是否仅从标准报告指标中可检测。在一项基于126名BraTS21患者的两模型实证案例研究中，我们评估了高性能预训练SegResNet和本地训练的带残差单元的UNet(UNet-Res)。MC Dropout在保持分割准确性(|ΔDice|<0.01)的同时实现了强不确定性-误差对齐(熵(H)的AUROC≈0.97)，表明不确定性正确地将错误体素排在正确体素之上。基于熵的患者分层识别出一个高不确定性亚组，其分割性能显著较低(全肿瘤Dice中位数0.835 vs. 0.925)，支持不确定性作为实用的分诊信号。然而，全局对齐可能掩盖重要的区域特异性差异。尽管AUROC相似，UNet-Res在增强肿瘤区域表现出接近零的熵(0.054)和0.915的期望校准误差(ECE)，而Dice仅为0.714，表明在最临床关键子区域上存在严重校准错误的置信度，这是一种标准Dice和AUROC报告无法发现的失败模式。这些发现表明，强不确定性-误差对齐对于临床安全是必要但不充分的：在临床部署选择模型时，必须将子区域特异性校准评估与AUROC评估相结合。"
+      },
+      {
+        "title": "Trade-offs in Medical LLM Adaptation: An Empirical Study in French QA",
+        "authors": [
+          "Ikram Belmadani",
+          "Oumaima El Khettari",
+          "Carlos Ramisch",
+          "Frederic Bechet",
+          "Richard Dufour",
+          "Benoit Favre"
+        ],
+        "published": "2026-06-17",
+        "summary": "The development of large language models (LLMs) has led to an increased focus on their adaptation to specialized domains and languages, yet the effectiveness of domain adaptation strategies remains unclear. We present a study of medical domain adaptation using French medical question-answering (QA) as a case study. We compare continual pretraining (CPT), supervised fine-tuning (SFT), and their combination across three model families, multiple sizes, and three initialization types, explicitly dis",
+        "pdf_url": "https://arxiv.org/pdf/2606.19266v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2606.19266v1",
+        "abstract": "The development of large language models (LLMs) has led to an increased focus on their adaptation to specialized domains and languages, yet the effectiveness of domain adaptation strategies remains unclear. We present a study of medical domain adaptation using French medical question-answering (QA) as a case study. We compare continual pretraining (CPT), supervised fine-tuning (SFT), and their combination across three model families, multiple sizes, and three initialization types, explicitly disentangling adaptation effects from base model choice. We evaluate both multiple-choice (MCQA) and open-ended QA (OEQA) under greedy and constrained decoding using automatic metrics and LLM-as-a-Judge evaluation. For MCQA, CPT+SFT most often achieves the best scores, but gains over SFT are small and frequently not statistically significant, making SFT a strong and cost-effective default. For OEQA, CPT consistently improves overlap-based metrics, while SFT often degrades generation quality; instruction tuning and CPT+SFT are preferred by LLM-based evaluation. Cross-lingual experiments further show effective transfer from French adaptation to English benchmarks. Overall, we provide practical guidelines for selecting adaptation strategies under computational constraints.",
+        "llm_keywords": "大语言模型, 医学领域适应, 法语问答, 持续预训练, 监督微调",
+        "llm_summary": "本研究以法语医学问答为例，比较了持续预训练、监督微调及其组合在三种模型家族、多种规模和初始化类型下的效果，发现监督微调在多项选择问答中性价比高，持续预训练提升开放式问答的生成质量，并提供了适应策略选择指南。",
+        "abstract_cn": "大语言模型（LLMs）的发展使得其向专业领域和语言的适应越来越受关注，但领域适应策略的有效性仍不明确。我们以法语医学问答（QA）为案例，研究了医学领域适应。我们比较了持续预训练（CPT）、监督微调（SFT）及其组合，涉及三个模型家族、多种规模和三种初始化类型，明确区分了适应效果与基础模型选择。我们在贪婪解码和约束解码下，使用自动指标和LLM-as-a-Judge评估，对多项选择问答（MCQA）和开放式问答（OEQA）进行了评估。对于MCQA，CPT+SFT通常取得最佳分数，但相比SFT的提升很小且常不显著，因此SFT是强大且成本效益高的默认选择。对于OEQA，CPT持续改善基于重叠的指标，而SFT常降低生成质量；基于LLM的评估更偏好指令微调和CPT+SFT。跨语言实验进一步显示，法语适应能有效迁移到英语基准测试。总体而言，我们为在计算约束下选择适应策略提供了实用指南。"
+      },
+      {
+        "title": "Language Models as Interfaces, Not Oracles: A Hybrid LLM-ML System for Pediatric Appendicitis",
+        "authors": [
+          "Soheyl Bateni",
+          "Maryam Abdolali"
+        ],
+        "published": "2026-06-17",
+        "summary": "Large language models (LLMs) can make clinical decision support more accessible by interpreting free-text documentation, but their direct use as diagnostic engines is limited by sensitivity to prompts, information order, and plausible but incorrect outputs. Structured machine-learning models offer more stable risk prediction, yet they require tabular inputs that are difficult to integrate with narrative clinical workflows. We present ClaMPAPP (Clinical Language-assisted Machine-learning Pipeline",
+        "pdf_url": "https://arxiv.org/pdf/2606.19183v1",
+        "primary_category": "cs.CL",
+        "topics": [
+          "医疗大模型"
+        ],
+        "arxiv_id": "2606.19183v1",
+        "abstract": "Large language models (LLMs) can make clinical decision support more accessible by interpreting free-text documentation, but their direct use as diagnostic engines is limited by sensitivity to prompts, information order, and plausible but incorrect outputs. Structured machine-learning models offer more stable risk prediction, yet they require tabular inputs that are difficult to integrate with narrative clinical workflows. We present ClaMPAPP (Clinical Language-assisted Machine-learning Pipeline for Appendicitis), a hybrid system that uses an LLM as an interface rather than as the final decision-maker. ClaMPAPP extracts schema-constrained clinical features from note-like narratives, applies deterministic plausibility checks, and passes validated features to an XGBoost classifier trained on clinical, laboratory, and ultrasound variables. We evaluated ClaMPAPP on two independent pediatric appendicitis cohorts from German hospitals and compared it with end-to-end LLM baselines, including open-source and proprietary models. To preserve ground truth while testing free-text input, narratives were generated from structured electronic health records through template rendering and constrained LLM rewriting, with additional sentence-order permutation to assess positional robustness. ClaMPAPP achieved the strongest overall diagnostic performance in both internal and external validation while minimizing missed appendicitis cases, the key safety concern in acute triage. End-to-end LLMs showed unstable sensitivity-specificity trade-offs and greater degradation under narrative reordering. These results support an LLM-as-interface, ML-as-predictor design that separates natural-language usability from predictive inference and provides a more auditable pathway for clinical decision support.",
+        "llm_keywords": "大语言模型, 临床决策支持, 儿童阑尾炎, 混合系统, 机器学习",
+        "llm_summary": "提出ClaMPAPP混合系统，将大语言模型作为接口而非决策者，提取临床特征后由XGBoost分类器诊断儿童阑尾炎，在德国医院数据上表现优于端到端LLM，提高了诊断稳定性和安全性。",
+        "abstract_cn": "大语言模型（LLMs）可以通过解释自由文本文档使临床决策支持更易获取，但它们直接作为诊断引擎使用时，受提示敏感性、信息顺序以及看似合理但错误的输出所限制。结构化机器学习模型提供更稳定的风险预测，但它们需要表格化输入，难以与叙事性临床工作流程整合。我们提出ClaMPAPP（Clinical Language-assisted Machine-learning Pipeline for Appendicitis），一种混合系统，将LLM作为接口而非最终决策者。ClaMPAPP从类似笔记的叙述中提取模式约束的临床特征，应用确定性合理性检查，并将验证后的特征传递给基于临床、实验室和超声变量训练的XGBoost分类器。我们在来自德国医院的两个独立儿童阑尾炎队列上评估了ClaMPAPP，并将其与端到端LLM基线（包括开源和专有模型）进行了比较。为了在测试自由文本输入时保留真实标签，通过模板渲染和约束性LLM重写从结构化电子健康记录生成叙述，并附加句子顺序排列以评估位置鲁棒性。ClaMPAPP在内部和外部验证中均实现了最强的整体诊断性能，同时最大程度减少了漏诊阑尾炎病例，这是急性分诊中的关键安全问题。端到端LLM显示出不稳定的敏感度-特异度权衡，并且在叙述重排序下退化更严重。这些结果支持LLM作为接口、ML作为预测器的设计，将自然语言可用性与预测推理分离，并为临床决策支持提供了更可审计的路径。"
+      }
+    ],
+    "医疗智能体": [
+      {
+        "title": "TxBench-PP: Analyzing AI Agent Performance on Small-Molecule Preclinical Pharmacology",
+        "authors": [
+          "Hannah Le",
+          "Ramesh Ramasamy",
+          "Alex Urrutia",
+          "Mahsa Yazdani",
+          "Tim Proctor",
+          "Kenny Workman"
+        ],
+        "published": "2026-06-17",
+        "summary": "Artificial intelligence (AI) agents promise to accelerate drug discovery by compressing interpretation and decision-making loops, but practical deployment requires trusted evaluation on realistic program decisions. We introduce TherapeuticsBench Preclinical Pharmacology (TxBench-PP), a verifiable benchmark for small-molecule preclinical pharmacology and the first focused slice of a broader TherapeuticsBench effort across drug-discovery stages and therapeutic modalities. TxBench-PP tests whether ",
+        "pdf_url": "https://arxiv.org/pdf/2606.19245v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗智能体",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2606.19245v1",
+        "abstract": "Artificial intelligence (AI) agents promise to accelerate drug discovery by compressing interpretation and decision-making loops, but practical deployment requires trusted evaluation on realistic program decisions. We introduce TherapeuticsBench Preclinical Pharmacology (TxBench-PP), a verifiable benchmark for small-molecule preclinical pharmacology and the first focused slice of a broader TherapeuticsBench effort across drug-discovery stages and therapeutic modalities. TxBench-PP tests whether agents can recover accurate conclusions from real-world assay data rather than memorized facts from literature. The benchmark contains 100 evaluations indexed by program stage, assay type, and task structure, spanning mechanism-of-action (MoA) and pharmacodynamic (PD) reasoning, compound-target engagement, causal target validation, developability and safety, and translational efficacy. Agents receive realistic workflow snapshots, inspect files in a coding environment, and return structured answers graded deterministically. Across 16 model-harness configurations, comprising 11 models and 4,800 trajectories, no system reliably recovered preclinical pharmacology decisions. The strongest configuration, Claude Opus 4.8 / Pi, passed 59.3\\% of endpoint attempts (178/300; 95\\% CI, 51.1-67.6), followed by GPT-5.5 / Pi at 55.3\\% (166/300; 47.0-63.6).",
+        "llm_keywords": "人工智能, 药物发现, 临床前药理学, 基准测试, 小分子",
+        "llm_summary": "本文介绍TxBench-PP基准，用于评估AI代理在小分子临床前药理学中的表现。测试包含100个评估任务，涵盖多种推理类型。结果显示最强配置Claude Opus 4.8/Pi通过率仅59.3%，表明尚无AI系统能可靠恢复临床前药理学决策。",
+        "abstract_cn": "人工智能（AI）代理有望通过压缩解释和决策循环来加速药物发现，但实际部署需要对现实项目决策进行可信评估。我们引入了TherapeuticsBench临床前药理学（TxBench-PP），这是一个针对小分子临床前药理学的可验证基准，也是更广泛的TherapeuticsBench在药物发现阶段和治疗模式中的首个聚焦切片。TxBench-PP测试代理能否从真实实验数据中恢复准确结论，而非从文献中记忆事实。该基准包含100个按项目阶段、实验类型和任务结构索引的评估，涵盖作用机制（MoA）和药效学（PD）推理、化合物-靶点结合、因果靶点验证、可开发性与安全性以及转化疗效。代理接收真实工作流快照，在编码环境中检查文件，并返回确定性评分的结构化答案。在16种模型-工具配置（包括11个模型和4,800条轨迹）中，没有系统能可靠恢复临床前药理学决策。最强配置Claude Opus 4.8/Pi通过了59.3%的端点尝试（178/300；95%置信区间，51.1-67.6），其次是GPT-5.5/Pi，通过率为55.3%（166/300；47.0-63.6）。"
+      }
+    ],
+    "医疗数据集": [
+      {
+        "title": "TxBench-PP: Analyzing AI Agent Performance on Small-Molecule Preclinical Pharmacology",
+        "authors": [
+          "Hannah Le",
+          "Ramesh Ramasamy",
+          "Alex Urrutia",
+          "Mahsa Yazdani",
+          "Tim Proctor",
+          "Kenny Workman"
+        ],
+        "published": "2026-06-17",
+        "summary": "Artificial intelligence (AI) agents promise to accelerate drug discovery by compressing interpretation and decision-making loops, but practical deployment requires trusted evaluation on realistic program decisions. We introduce TherapeuticsBench Preclinical Pharmacology (TxBench-PP), a verifiable benchmark for small-molecule preclinical pharmacology and the first focused slice of a broader TherapeuticsBench effort across drug-discovery stages and therapeutic modalities. TxBench-PP tests whether ",
+        "pdf_url": "https://arxiv.org/pdf/2606.19245v1",
+        "primary_category": "cs.AI",
+        "topics": [
+          "医疗智能体",
+          "医疗数据集"
+        ],
+        "arxiv_id": "2606.19245v1",
+        "abstract": "Artificial intelligence (AI) agents promise to accelerate drug discovery by compressing interpretation and decision-making loops, but practical deployment requires trusted evaluation on realistic program decisions. We introduce TherapeuticsBench Preclinical Pharmacology (TxBench-PP), a verifiable benchmark for small-molecule preclinical pharmacology and the first focused slice of a broader TherapeuticsBench effort across drug-discovery stages and therapeutic modalities. TxBench-PP tests whether agents can recover accurate conclusions from real-world assay data rather than memorized facts from literature. The benchmark contains 100 evaluations indexed by program stage, assay type, and task structure, spanning mechanism-of-action (MoA) and pharmacodynamic (PD) reasoning, compound-target engagement, causal target validation, developability and safety, and translational efficacy. Agents receive realistic workflow snapshots, inspect files in a coding environment, and return structured answers graded deterministically. Across 16 model-harness configurations, comprising 11 models and 4,800 trajectories, no system reliably recovered preclinical pharmacology decisions. The strongest configuration, Claude Opus 4.8 / Pi, passed 59.3\\% of endpoint attempts (178/300; 95\\% CI, 51.1-67.6), followed by GPT-5.5 / Pi at 55.3\\% (166/300; 47.0-63.6).",
+        "llm_keywords": "人工智能, 药物发现, 临床前药理学, 基准测试, 小分子",
+        "llm_summary": "本文介绍TxBench-PP基准，用于评估AI代理在小分子临床前药理学中的表现。测试包含100个评估任务，涵盖多种推理类型。结果显示最强配置Claude Opus 4.8/Pi通过率仅59.3%，表明尚无AI系统能可靠恢复临床前药理学决策。",
+        "abstract_cn": "人工智能（AI）代理有望通过压缩解释和决策循环来加速药物发现，但实际部署需要对现实项目决策进行可信评估。我们引入了TherapeuticsBench临床前药理学（TxBench-PP），这是一个针对小分子临床前药理学的可验证基准，也是更广泛的TherapeuticsBench在药物发现阶段和治疗模式中的首个聚焦切片。TxBench-PP测试代理能否从真实实验数据中恢复准确结论，而非从文献中记忆事实。该基准包含100个按项目阶段、实验类型和任务结构索引的评估，涵盖作用机制（MoA）和药效学（PD）推理、化合物-靶点结合、因果靶点验证、可开发性与安全性以及转化疗效。代理接收真实工作流快照，在编码环境中检查文件，并返回确定性评分的结构化答案。在16种模型-工具配置（包括11个模型和4,800条轨迹）中，没有系统能可靠恢复临床前药理学决策。最强配置Claude Opus 4.8/Pi通过了59.3%的端点尝试（178/300；95%置信区间，51.1-67.6），其次是GPT-5.5/Pi，通过率为55.3%（166/300；47.0-63.6）。"
+      },
+      {
+        "title": "A Clinician-Centered Pipeline for Annotation and Evaluation in Ultrasound AI Studies",
+        "authors": [
+          "Fangyijie Wang",
+          "Jianjun Yu",
+          "Wentao Shi",
+          "Haixia Huang",
+          "Ran Shi",
+          "Guénolé Silvestre",
+          "Kathleen M. Curran"
+        ],
+        "published": "2026-06-17",
+        "summary": "Clinician-centered evaluation is critical for validating medical AI systems, especially in ultrasound imaging where quantitative metrics do not always capture clinical usability. Existing medical image platforms primarily focus on dataset labeling. They lack integrated support for blinded model comparison and reproducible evaluation workflows. We present a clinician-centered pipeline for remote annotation and evaluation in ultrasound AI studies. The proposed pipeline uses a centralized server an",
+        "pdf_url": "https://arxiv.org/pdf/2606.19174v1",
+        "primary_category": "cs.HC",
+        "topics": [
+          "医疗数据集"
+        ],
+        "arxiv_id": "2606.19174v1",
+        "abstract": "Clinician-centered evaluation is critical for validating medical AI systems, especially in ultrasound imaging where quantitative metrics do not always capture clinical usability. Existing medical image platforms primarily focus on dataset labeling. They lack integrated support for blinded model comparison and reproducible evaluation workflows. We present a clinician-centered pipeline for remote annotation and evaluation in ultrasound AI studies. The proposed pipeline uses a centralized server and lightweight browser interfaces to enable clinicians to perform annotation, blinded ranking, and review without local dataset downloads. The pipeline also supports multi-rater participation, centralized result aggregation, and automated statistical analysis. We validate the pipeline in a fetal ultrasound segmentation study with six raters spanning expert, generalist, and non-expert experience levels. The system automatically generated Spearman correlation, Kendall's $τ$, and top-1 selection statistics. Results indicated moderate to strong agreement across experts and other groups. The blinded evaluation results showed a tendency for later active learning models to be preferred. These outcomes suggest that the pipeline can support clinician-centered annotation and reproducible human-\\ac{AI} evaluation studies in ultrasound imaging. The proposed pipeline is available on \\href{https://github.com/13204942/SonoRate}{GitHub}.",
+        "llm_keywords": "超声成像, 临床中心评估, 人工智能, 标注管道, 盲法比较",
+        "llm_summary": "本文提出一个以临床医生为中心的管道，用于超声AI研究中的远程标注和评估，支持盲法比较和多评分者参与，并在胎儿超声分割研究中验证其有效性。",
+        "abstract_cn": "以临床医生为中心的评估对于验证医学人工智能（AI）系统至关重要，尤其是在超声成像中，定量指标并不总能捕捉临床可用性。现有的医学图像平台主要关注数据集标注，缺乏对盲法模型比较和可重复评估工作流的集成支持。我们提出了一个以临床医生为中心的管道，用于超声AI研究中的远程标注和评估。该管道使用集中式服务器和轻量级浏览器界面，使临床医生无需本地下载数据集即可进行标注、盲法排名和审查。该管道还支持多评分者参与、集中结果聚合和自动统计分析。我们在一个胎儿超声分割研究中验证了该管道，涉及六名评分者，涵盖专家、全科医生和非专家经验水平。系统自动生成了斯皮尔曼相关系数（Spearman correlation）、肯德尔τ（Kendall's τ）和top-1选择统计量。结果显示专家与其他组之间存在中等至强一致性。盲法评估结果表明，后期的主动学习模型更受青睐。这些结果表明，该管道可以支持超声成像中以临床医生为中心的标注和可重复的人机交互（human-AI）评估研究。该管道可在GitHub（https://github.com/13204942/SonoRate）上获取。"
+      }
+    ]
+  },
+  "total_count": 5,
+  "generated_at": "2026-06-18T23:45:58.611461"
+}
